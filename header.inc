@@ -24,14 +24,14 @@
 
 
 <a class="flags" title="deutsch" href="index.php?lang=de">
-    <img src="images/flagDE.png" alt="DE" title="Deutsch">
+    <img src="images/flags/flagDE.png" alt="DE" title="Deutsch">
 </a>
 <a class="flags" title="english" href="index.php">
-    <img src="images/flagEN.png" alt="EN" title="English">
+    <img src="images/flags/flagEN.png" alt="EN" title="English">
 </a>
 <a class="flags" title="français" href="index.php?lang=fr">
-    <img src="images/flagFR.png" alt="FR" title="Français">
+    <img src="images/flags/flagFR.png" alt="FR" title="Français">
 </a>
 <a class="flags" title="italien" href="index.php?lang=it">
-    <img src="images/flagIT.png" alt="FR" title="Français">
+    <img src="images/flags/flagIT.png" alt="IT" title="Français">
 </a>
