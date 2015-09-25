@@ -5,33 +5,40 @@
  * Date: 25.09.2015
  * Time: 09:42
  */
+include_once 'translations/class.Translator.php';
+$translate;
+if (isset ( $_GET ['lang'] )) {
+    $translate = new Translator ( $_GET ['lang'] );
+} else {
+    $translate = new Translator ( 'en' );
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>EcoTronic</title>
-    <meta charset="UTF-8" />
+    <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<a href="index.php"><img src="images/logo.png" alt="EcoElectronics" title="Accueil"></a>
+<div class="bannerHead">
+    <a href="index.php"><img src="images/logo.png" id="logo" alt="EcoElectronics" title="Accueil"></a>
 
 
-<form method="post" action="adminLoginPage.php">
-    <input type="text" name="searchBar" value="Find your old product..." onfocus="this.value=''">
-    <input type="submit" name="searchButton" value="search">
-</form>
+    <form method="post" action="adminLoginPage.php">
+        <input type="text" name="searchBar" value="<?php $translate->__('Find your old product...')?>" onfocus="this.value=''">
+        <input type="submit" name="searchButton" value="search">
+    </form>
 
+    <a href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
+    <h1><?php $translate->__('idea')?></h1>
 
-<a class="flags" title="deutsch" href="index.php?lang=de">
-    <img src="images/flags/flagDE.png" alt="DE" title="Deutsch">
-</a>
-<a class="flags" title="english" href="index.php">
-    <img src="images/flags/flagEN.png" alt="EN" title="English">
-</a>
-<a class="flags" title="français" href="index.php?lang=fr">
-    <img src="images/flags/flagFR.png" alt="FR" title="Français">
-</a>
-<a class="flags" title="italien" href="index.php?lang=it">
-    <img src="images/flags/flagIT.png" alt="IT" title="Français">
-</a>
+<div class="languages">
+    <a href="index.php"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>
+    <a href="index.php?lang=fr"><img class ="flags"  src="images/flags/flagFR.png" alt="FR" title="Français"></a>
+    <a href="index.php?lang=de"><img class ="flags" src="images/flags/flagDE.png" alt="DE" title="Deutsch"></a>
+    <a href="index.php?lang=it"><img class ="flags" src="images/flags/flagIT.png" alt="IT" title="Italien"></a>
+</div>
+
+</div>
+
