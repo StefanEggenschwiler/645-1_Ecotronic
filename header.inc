@@ -28,7 +28,7 @@ if (isset ( $_GET ['lang'] )) {
     <div class="searchBar">
         <form method="post" action="adminLoginPage.php">
             <input id="searchBar" type="text" name="searchBar" value="<?php $translate->__('Find your old product...')?>" onfocus="this.value=''">
-            <input type="submit" name="searchButton" value="search">
+            <input type="submit" name="searchButton" value="<?php $translate->__('Search')?>">
         </form>
         <a href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
     </div>
