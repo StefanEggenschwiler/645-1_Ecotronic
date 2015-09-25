@@ -1,7 +1,11 @@
 body
 {
     font-family: arial, sans-serif;
+    background: url('../images/background.jpg');
+    background-size: cover;
+
 }
+
 
 .bannerHead *
 {
@@ -18,6 +22,8 @@ body
 .flags, #copyrightLogo
 {
     width:2em;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .searchBar
@@ -37,10 +43,16 @@ body
 {
     position:absolute;
     left:50%;
-    transform:translate(-50%,0)
+    transform:translate(-50%,0);
+    bottom:10px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #logo
 {
     width:15em;
 }
+
+
+

@@ -8,20 +8,17 @@ if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( 'en' );
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-
-</head>
-
-
-<body>
-
-</body>
 
 <footer id="bannerFooter">
     <div>
-        <img id="copyrightLogo" src="images/copyright.png" id="copyright" alt="Copyright" title="Copyright">
+        Web Design
+        <a href="adminLoginPage.php"><img src="images/copyright.png" id="copyrightLogo" alt="Copyright" title="Copyright"></a>
+        HES-SO Valais
     </div>
 </footer>
+
+
+</body>
+
+</html>
 
