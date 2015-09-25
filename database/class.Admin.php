@@ -1,5 +1,6 @@
 <?php
 class Admin
+
 {
     private $id;
     private $firstname;
