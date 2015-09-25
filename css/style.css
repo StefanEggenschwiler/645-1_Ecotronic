@@ -8,10 +8,6 @@ body
     display: inline-block;
 }
 
-#logo
-{
-    width:15em;
-}
 
 .languages
 {
@@ -19,7 +15,7 @@ body
     right:2em;
 }
 
-.flags
+.flags, #copyrightLogo
 {
     width:2em;
 }
@@ -30,7 +26,21 @@ body
     left:50%;
     transform:translate(-50%,0);
 }
+
+
 #searchBar
 {
     width:30em;
+}
+
+#bannerFooter
+{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,0)
+}
+
+#logo
+{
+    width:15em;
 }
