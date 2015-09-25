@@ -1,4 +1,6 @@
 <?php
+include_once 'header.inc';
+include_once 'footer.inc';
 /**
  * Created by PhpStorm.
  * User: Muhamed
