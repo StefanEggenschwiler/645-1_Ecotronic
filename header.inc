@@ -25,12 +25,16 @@ if (isset ( $_GET ['lang'] )) {
     <a href="index.php"><img src="images/logo.png" id="logo" alt="EcoElectronics" title="Accueil"></a>
 
 
-    <form method="post" action="adminLoginPage.php">
-        <input type="text" name="searchBar" value="<?php $translate->__('Find your old product...')?>" onfocus="this.value=''">
-        <input type="submit" name="searchButton" value="search">
-    </form>
+    <div class="searchBar">
+        <form method="post" action="adminLoginPage.php">
+            <input id="searchBar" type="text" name="searchBar" value="<?php $translate->__('Find your old product...')?>" onfocus="this.value=''">
+            <input type="submit" name="searchButton" value="search">
+        </form>
+        <a href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
+    </div>
 
-    <a href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
+
+
 
 <div class="languages">
     <a href="index.php"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>

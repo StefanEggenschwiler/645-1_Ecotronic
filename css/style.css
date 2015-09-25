@@ -23,3 +23,14 @@ body
 {
     width:2em;
 }
+
+.searchBar
+{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,0);
+}
+#searchBar
+{
+    width:40em;
+}
