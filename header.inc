@@ -16,7 +16,7 @@ if (isset ( $_GET ['lang'] )) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EcoTronic</title>
+    <title>Eco Electronics</title>
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -38,7 +38,7 @@ if (isset ( $_GET ['lang'] )) {
 
 <div class="languages">
     <a href="index.php"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>
-    <a href="index.php?lang=fr"><img class ="flags"  src="images/flags/flagFR.png" alt="FR" title="Français"></a>
+    <a href="index.php?lang=fr"><img class ="flags"  src="images/flags/flagFR.png" alt="FR" title="Franï¿½ais"></a>
     <a href="index.php?lang=de"><img class ="flags" src="images/flags/flagDE.png" alt="DE" title="Deutsch"></a>
     <a href="index.php?lang=it"><img class ="flags" src="images/flags/flagIT.png" alt="IT" title="Italien"></a>
 </div>
