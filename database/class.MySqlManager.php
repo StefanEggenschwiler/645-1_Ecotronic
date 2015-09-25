@@ -28,6 +28,4 @@ class MySqlManager {
         return new User($row['id'], $row['firstname'], $row['lastname'],
             $row['username'], $row['password']);
     }
-
-    public function
 }

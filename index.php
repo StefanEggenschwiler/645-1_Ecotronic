@@ -6,16 +6,6 @@ include_once 'header.inc';
  * Date: 25.09.2015
  * Time: 09:33
  */
-
-
-$record=mysql_query("SELECT brandName FROM brand");
-$list = array();
-while($row=mysql_fetch_assoc($record)){
-    //fill array how to fill array that will look like bellow from database???
-    $list[] = row;
-}
-
-
 $categories = array("Vacuum cleaner", "Kettle", "Freezer", "Chest freezer", "Oven", "Humidifier", "Washing dish", "Dish washer", "Coffee machine", "Baking trays", "Isolated freezer", "Dryer", "Extraction hood");
 $brands = array();
 $classifications = array("A+++", "A++","A+", "A", "B", "C", "D");
