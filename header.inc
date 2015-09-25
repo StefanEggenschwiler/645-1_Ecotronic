@@ -31,7 +31,6 @@ if (isset ( $_GET ['lang'] )) {
     </form>
 
     <a href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
-    <h1><?php $translate->__('idea')?></h1>
 
 <div class="languages">
     <a href="index.php"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>
