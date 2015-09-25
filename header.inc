@@ -32,3 +32,6 @@
 <a class="flags" title="français" href="index.php?lang=fr">
     <img src="images/flagFR.png" alt="FR" title="Français">
 </a>
+<a class="flags" title="italien" href="index.php?lang=it">
+    <img src="images/flagIT.png" alt="FR" title="Français">
+</a>
