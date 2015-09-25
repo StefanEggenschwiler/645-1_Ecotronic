@@ -135,7 +135,10 @@ CREATE TABLE IF NOT EXISTS `device` (
   `discount` decimal(10,0) DEFAULT NULL,
   `discountStart` date DEFAULT NULL,
   `discountEnd` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`typeId`) REFERENCES type(id),
+  FOREIGN KEY (`brandId`) REFERENCES brand(id),
+  FOREIGN KEY (`efficiencyClassId`) REFERENCES efficiencyclass(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
