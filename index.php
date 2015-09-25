@@ -7,3 +7,10 @@ include_once 'footer.inc';
  * Date: 25.09.2015
  * Time: 09:33
  */
+?>
+<ul>
+    <li><?php $translate->__('Category')?></li>
+    <li><?php $translate->__('Brand')?></li>
+    <li><?php $translate->__('kWh/year')?></li>
+    <li><?php $translate->__('Price')?></li>
+</ul>
