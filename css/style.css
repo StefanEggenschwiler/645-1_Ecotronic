@@ -88,6 +88,21 @@ nav.vertical > ul > li > div > ul > li:hover > a {
     vertical-align: middle;
 }
 
+.centerVertical
+{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,0);
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
 
 .loginBlock {
     width: 420px;
