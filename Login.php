@@ -7,9 +7,11 @@ include_once 'footer.inc';
 
 <div class="loginBlock centered">
     <h1>Admin Login</h1>
-    <input type="text" value="" placeholder="Username" id="username" /> </br></br>
-    <input type="password" value="" placeholder="Password" id="password" />
-    </br>
-    </br>
-    <button>Login</button>
+    <form method="post" action="LoggedIn.php">
+        <input type="text" name="user" placeholder="Username" id="username" /> </br></br>
+        <input type="password" name="pwd" placeholder="Password" id="password" />
+        </br>
+        </br>
+        <button type="submit" value="login" name="action">Login</button>
+    </form>
 </div>

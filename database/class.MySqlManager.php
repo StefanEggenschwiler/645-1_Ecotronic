@@ -21,12 +21,16 @@ class MySqlManager {
     public function checkLogin($uname, $pwd){
         $query = "SELECT * FROM admin WHERE username='$uname'";
         $result = $this->_conn->executeQuery($query);
-        $row = $result->fetch();
-        if($row) {
-            if (password_verify($pwd, $row['password'])) {
-                return new Admin($row['id'], $row['firstname'], $row['lastname'],
-                    $row['username']);
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                if (password_verify($pwd, $row['password'])) {
+                    echo "User successfully logged in!";
+                    return new Admin($row['id'], $row['firstname'], $row['lastname'],
+                        $row['username']);
+                }
             }
+        } else {
+            echo "0 results";
         }
         return false;
     }
