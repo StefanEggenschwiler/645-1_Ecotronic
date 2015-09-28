@@ -6,15 +6,13 @@ class Admin
     private $firstname;
     private $lastname;
     private $username;
-    private $password;
 
-    public function __construct($id, $firstname, $lastname, $username, $password)
+    public function __construct($id, $firstname, $lastname, $username)
     {
         $this->id = $id;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->username = $username;
-        $this->password = $password;
     }
 
     //getter
@@ -30,9 +28,6 @@ class Admin
     public function getUsername(){
         return $this->firstname;
     }
-    public function getPassword(){
-        return $this->firstname;
-    }
 
     //setter
     public function setId($id){
@@ -46,8 +41,5 @@ class Admin
     }
     public function setUsername($username){
         $this->username = $username;
-    }
-    public function setPassword($password){
-        $this->password = $password;
     }
 }

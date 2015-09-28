@@ -19,13 +19,18 @@ class MySqlManager {
     }
 
     public function checkLogin($uname, $pwd){
-        $pwd = sha1($pwd);
-        $query = "SELECT * FROM user WHERE username='$uname' AND
-		password='$pwd'";
+        $query = "SELECT * FROM user WHERE username='$uname'";
         $result = $this->_conn->selectDB($query);
         $row = $result->fetch();
-        if(!$row) return false;
-        return new User($row['id'], $row['firstname'], $row['lastname'],
-            $row['username'], $row['password']);
+        if($row) {
+            if (password_verify($pwd, $row['password'])) {
+                return new User($row['id'], $row['firstname'], $row['lastname'],
+                    $row['username']);
+            } else {
+                return false;
+            }
+
+        }
+        return false;
     }
 }
