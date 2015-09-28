@@ -3,7 +3,6 @@ include_once 'header.inc';
 include_once 'footer.inc';
 ?>
 
-<div class="logo"></div>
 
 <div class="loginBlock centered">
     <h1>Admin login</h1>
