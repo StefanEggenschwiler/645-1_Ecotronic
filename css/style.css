@@ -13,13 +13,12 @@ body
 
 /* Settings of the box menu */
 div.wrapper {
-    width: 250px;
+    width: 15em;
 }
 
 /* Sub menu settings */
 nav.vertical {
     border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0,0,0,.15);
     overflow: hidden;
     text-align: left;
 }
