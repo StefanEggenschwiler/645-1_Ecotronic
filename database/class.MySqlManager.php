@@ -20,7 +20,7 @@ class MySqlManager {
 
     public function checkLogin($uname, $pwd){
         $query = "SELECT * FROM admin WHERE username='$uname'";
-        $result = $this->_conn->selectDB($query);
+        $result = $this->_conn->executeQuery($query);
         $row = $result->fetch();
         if($row) {
             if (password_verify($pwd, $row['password'])) {
@@ -33,7 +33,7 @@ class MySqlManager {
 
     public function getBrandNames(){
         $query = "SELECT * FROM brand";
-        $result = $this->_conn->selectDB($query);
+        $result = $this->_conn->executeQuery($query);
         $brandNames =  array();
 
         if (mysqli_num_rows($result) > 0) {

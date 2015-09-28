@@ -11,12 +11,10 @@ class MySqlConnector {
     private $_connection;
 
     public function __construct() {
-        try {
-            $this->_connection = new mysqli(self::HOST, self::USER, self::PWD, self::DATABASE);
-
-            //$this->_connection = new PDO ( 'mysql:host=' . self::HOST . ';port=' . self::PORT . ';dbname=' . self::DATABASE, self::USER, self::PWD );
-        } catch ( PDOException $e ) {
-            die ( 'Connection failed: ' . $e->getMessage () );
+        $this->_connection = new mysqli(self::HOST, self::USER, self::PWD, self::DATABASE);
+        if ($this->_connection->connect_errno) {
+            echo "Failed to connect to MySQL: (".$this->_connection->connect_errno.") ".
+                $this->_connection->connect_error;
         }
     }
 
@@ -28,23 +26,9 @@ class MySqlConnector {
         return $this->_connection;
     }
 
-    public function selectDB($query){
-        //	var_dump($test);
-        //	print_r($this->_connection->errorInfo()); exit;
-        $result = $this->getConnection()->query($query)
-        or die(print_r($this->getConnection()->errorInfo(), true));
-        return $result;
-    }
-
     public function executeQuery($query){
-        $result = $this->getConnection()->exec($query);
-        $e = $this->getConnection()->errorInfo();
-        if($e[1]!=null) {
-            if ($e[1] == 1062)
-                return 'doublon';
-            else
-                die(print_r($this->getConnection()->errorInfo(),true));
-        }
+        $result = $this->getConnection()->query($query)
+        or die(print_r($this->getConnection()->errno, true));
         return $result;
     }
 }
