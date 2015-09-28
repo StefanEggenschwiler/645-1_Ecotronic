@@ -7,7 +7,7 @@ class MySqlManager {
     private $_conn;
 
     public function __construct(){
-        $this->_conn = new MySqlConn();
+        $this->_conn = new MySqlConnector();
     }
 
     public function createAdmin($fname, $lname, $uname, $pwd) {
@@ -33,6 +33,19 @@ class MySqlManager {
 
     public function getBrandNames(){
         $query = "SELECT * FROM brand";
+        $result = $this->_conn->selectDB($query);
+        $brandNames =  array();
 
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $brandNames[] = $row["brandName"];
+
+            }
+        } else {
+            echo "0 results";
+        }
+
+        return $brandNames;
     }
 }

@@ -23,7 +23,7 @@ class MySqlConnector {
     public function getConnection(){
         if(!isset($this->_connection) ||
             $this->_connection == null){
-            new MySqlConn();
+            new MySqlConnector();
         }
         return $this->_connection;
     }
