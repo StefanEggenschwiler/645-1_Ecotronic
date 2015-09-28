@@ -1,6 +1,6 @@
 <?php
 include_once 'database/class.Admin.php';
-require_once 'class.MySqlConn.php';
+require_once 'class.MySqlConnector.php';
 
 class MySqlManager {
 
