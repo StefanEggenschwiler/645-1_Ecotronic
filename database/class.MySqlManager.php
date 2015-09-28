@@ -31,21 +31,49 @@ class MySqlManager {
         return false;
     }
 
-    public function getBrandNames(){
-        $query = "SELECT * FROM brand";
+    public function getTypes() {
+        $query = "SELECT * FROM type";
         $result = $this->_conn->executeQuery($query);
-        $brandNames =  array();
+        $types =  array();
 
         if (mysqli_num_rows($result) > 0) {
-            // output data of each row
             while($row = mysqli_fetch_assoc($result)) {
-                $brandNames[] = $row["brandName"];
-
+                $types[] = new Type($row["id"], $row["typeName"]);
             }
         } else {
             echo "0 results";
         }
+        return $types;
+    }
 
-        return $brandNames;
+    public function getEfficiencyClasses() {
+        $query = "SELECT * FROM efficiencyclass";
+        $result = $this->_conn->executeQuery($query);
+        $efficiencyClasses =  array();
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $efficiencyClasses[] = new EfficiencyClass($row["id"], $row["className"]);
+            }
+        } else {
+            echo "0 results";
+        }
+        return $efficiencyClasses;
+    }
+
+
+    public function getBrands(){
+        $query = "SELECT * FROM brand";
+        $result = $this->_conn->executeQuery($query);
+        $brands =  array();
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $brands[] = new Brand($row["id"], $row["brandName"]);
+            }
+        } else {
+            echo "0 results";
+        }
+        return $brands;
     }
 }

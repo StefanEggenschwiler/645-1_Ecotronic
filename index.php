@@ -1,6 +1,10 @@
 <?php
 include_once 'header.inc';
 require_once 'database/class.MySqlManager.php';
+require_once 'database/class.Type.php';
+require_once 'database/class.Brand.php';
+require_once 'database/class.Device.php';
+require_once 'database/class.EfficiencyClass.php';
 /**
  * Created by PhpStorm.
  * User: Muhamed
@@ -8,9 +12,9 @@ require_once 'database/class.MySqlManager.php';
  * Time: 09:33
  */
 $mySqlManager = new MySqlManager();
-$categories = array("Vacuum cleaner", "Kettle", "Freezer", "Chest freezer", "Oven", "Humidifier", "Washing dish", "Dish washer", "Coffee machine", "Baking trays", "Isolated freezer", "Dryer", "Extraction hood");
-$brands = $mySqlManager->getBrandNames();
-$classifications = array("A+++", "A++","A+", "A", "B", "C", "D");
+$types = $mySqlManager->getTypes();
+$brands = $mySqlManager->getBrands();
+$efficiencyClasses = $mySqlManager->getEfficiencyClasses();
 $consumptions = array();
 
 ?>
@@ -22,9 +26,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Category')?></a>
                 <div>
                     <ul>
-                        <?php foreach($categories as $value){
+                        <?php foreach($types as $value){
                             echo "<li><a href='#'>";
-                            echo $translate->__($value);
+                            echo $translate->__($value->getTypeName());
                             echo "</a></li>";
                         } ?>
                     </ul>
@@ -36,7 +40,7 @@ $consumptions = array();
                     <ul>
                         <?php foreach($brands as $value){
                             echo "<li><a href='#'>";
-                            echo $value;
+                            echo $value->getBrandName();
                             echo "</a></li>";
                         } ?>
                     </ul>
@@ -46,9 +50,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Classification')?></a>
                 <div>
                     <ul>
-                        <?php foreach($classifications as $value){
+                        <?php foreach($efficiencyClasses as $value){
                             echo "<li><a href='#'>";
-                            echo $translate->__($value);
+                            echo $translate->__($value->getClassName());
                             echo "</a></li>";
                         } ?>
                     </ul>
