@@ -10,16 +10,16 @@ class MySqlManager {
         $this->_conn = new MySqlConn();
     }
 
-    public function saveUser($fname, $lname, $uname, $pwd) {
-        $pwd = sha1 ( $pwd );
-        $query = "INSERT into user(firstname, lastname,
+    public function createAdmin($fname, $lname, $uname, $pwd) {
+        $pwd = password_hash($pwd, PASSWORD_BCRYPT);
+        $query = "INSERT INTO admin(firstname, lastname,
 	username, password) VALUES('$fname',
 	'$lname', '$uname', '$pwd');";
         return $this->_conn->executeQuery($query);
     }
 
     public function checkLogin($uname, $pwd){
-        $query = "SELECT * FROM user WHERE username='$uname'";
+        $query = "SELECT * FROM admin WHERE username='$uname'";
         $result = $this->_conn->selectDB($query);
         $row = $result->fetch();
         if($row) {
