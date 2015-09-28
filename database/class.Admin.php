@@ -30,9 +30,6 @@ class Admin
     }
 
     //setter
-    public function setId($id){
-        $this->id = $id;
-    }
     public function setFirstname($firstname){
         $this->firstname = $firstname;
     }
