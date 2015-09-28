@@ -17,7 +17,7 @@ class MySqlManager {
     }
 
     public function checkLogin($uname, $pwd){
-        $this->_conn->getConnection()->real_escape_string($uname);
+        $uname = $this->_conn->getConnection()->real_escape_string($uname);
         $query = "SELECT * FROM admin WHERE username='$uname'";
         $result = $this->_conn->executeQuery($query);
         if (mysqli_num_rows($result) > 0) {
