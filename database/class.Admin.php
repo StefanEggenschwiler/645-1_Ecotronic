@@ -17,16 +17,16 @@ class Admin
 
     //getter
     public function getId(){
-        return $this->firstname;
+        return $this->id;
     }
     public function getFirstname(){
         return $this->firstname;
     }
     public function getLastname(){
-        return $this->firstname;
+        return $this->lastname;
     }
     public function getUsername(){
-        return $this->firstname;
+        return $this->username;
     }
 
     //setter
