@@ -30,4 +30,9 @@ class MySqlManager {
         }
         return false;
     }
+
+    public function getBrandNames(){
+        $query = "SELECT * FROM brand";
+
+    }
 }
