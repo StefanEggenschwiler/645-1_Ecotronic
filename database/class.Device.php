@@ -20,7 +20,7 @@ class Device {
     private $discount;
     private $discountStart;
     private $discountEnd;
-    public function __construct($id, $type, $efficiencyClass, $brand, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
+    public function __construct($id, $type, $brand, $efficiencyClass, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
         $this->id = $id;
         $this->type = $type;
         $this->efficiencyClass = $efficiencyClass;
