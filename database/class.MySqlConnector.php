@@ -12,7 +12,9 @@ class MySqlConnector {
 
     public function __construct() {
         try {
-            $this->_connection = new PDO ( 'mysql:host=' . self::HOST . ';port=' . self::PORT . ';dbname=' . self::DATABASE, self::USER, self::PWD );
+            $this->_connection = new mysqli(self::HOST, self::USER, self::PWD, self::DATABASE);
+
+            //$this->_connection = new PDO ( 'mysql:host=' . self::HOST . ';port=' . self::PORT . ';dbname=' . self::DATABASE, self::USER, self::PWD );
         } catch ( PDOException $e ) {
             die ( 'Connection failed: ' . $e->getMessage () );
         }
