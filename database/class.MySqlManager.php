@@ -27,10 +27,12 @@ class MySqlManager {
                     echo "User successfully logged in!";
                     return new Admin($row['id'], $row['firstname'], $row['lastname'],
                         $row['username']);
+                } else {
+                    echo "Wrong Username or Password!";
                 }
             }
         } else {
-            echo "0 results";
+            echo "User not found!";
         }
         return false;
     }

@@ -12,6 +12,8 @@ if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
         authenticate($mysql);
     }
+} else {
+    echo 'ACCESS DENIED!';
 }
 
 function authenticate($mysql) {
