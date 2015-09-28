@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2015 at 12:52 PM
+-- Generation Time: Sep 28, 2015 at 09:45 AM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.5.8
 
@@ -34,9 +34,17 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` char(40) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `password` char(72) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `firstname`, `lastname`, `username`, `password`) VALUES
+  (1, 'TestFirstname', 'TestLastname', 'admin1', '$2y$10$Kvt4/FPgS4KlC41WZ56NdOklHiQI.CGt/xH8HKBWwYv7WP/luo1Um');
 
 -- --------------------------------------------------------
 
@@ -75,15 +83,95 @@ INSERT INTO `brand` (`id`, `brandName`) VALUES
   (17, 'Blomberg'),
   (18, 'Schulthess'),
   (19, 'Haier'),
+  (20, 'Solis'),
+  (21, 'Primotecq'),
+  (22, 'Rotel'),
+  (23, 'Tefal'),
+  (24, 'Melitta'),
+  (25, 'Russell Hobbs'),
+  (26, 'WMF'),
+  (27, 'Braun'),
   (28, 'Philips'),
+  (29, 'Unold'),
+  (30, 'Severin'),
   (31, 'WESCO'),
+  (32, 'Necono AG'),
+  (33, 'Venta'),
+  (34, 'Stylies'),
+  (35, 'Stadler Form'),
+  (36, 'Turmix'),
+  (37, 'Boneco'),
+  (38, 'Solis'),
+  (39, 'Stöckli'),
   (40, 'Dirt Devil'),
   (41, 'TRISA'),
   (42, 'Kärcher'),
   (43, 'Rowenta'),
   (44, 'Dyson'),
   (45, 'Mio-Star'),
-  (55, 'Fust');
+  (46, 'KISS'),
+  (47, 'NESPRESSO/Turmix'),
+  (48, 'NESPRESSO/Koenig'),
+  (49, 'DELIZIO'),
+  (50, 'Tchibo'),
+  (52, 'Krups'),
+  (53, 'Koenig'),
+  (55, 'Fust'),
+  (56, 'NESPRESSO/DeLonghi'),
+  (57, 'Tchibo/Saeco');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `efficiencyclass`
+--
+
+DROP TABLE IF EXISTS `efficiencyclass`;
+CREATE TABLE IF NOT EXISTS `efficiencyclass` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `className` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `efficiencyclass`
+--
+
+INSERT INTO `efficiencyclass` (`id`, `className`) VALUES
+  (1, 'A'),
+  (2, 'A+'),
+  (3, 'A++'),
+  (4, 'A+++'),
+  (5, 'A+++/A'),
+  (6, 'A++/B');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type`
+--
+
+DROP TABLE IF EXISTS `type`;
+CREATE TABLE IF NOT EXISTS `type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `typeName` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `type`
+--
+
+INSERT INTO `type` (`id`, `typeName`) VALUES
+  (1, 'Oven'),
+  (2, 'Steamer'),
+  (3, 'Freezer'),
+  (4, 'Dish Washer'),
+  (7, 'Fridge'),
+  (9, 'Vacuum Cleaner'),
+  (10, 'Washing Machine'),
+  (11, 'Laundry Dryer'),
+  (13, 'Kitchen Hood');
 
 -- --------------------------------------------------------
 
@@ -113,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `device` (
   FOREIGN KEY (`typeId`) REFERENCES type(id),
   FOREIGN KEY (`brandId`) REFERENCES brand(id),
   FOREIGN KEY (`efficiencyClassId`) REFERENCES efficiencyclass(id)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=294 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `device`
@@ -290,58 +378,6 @@ INSERT INTO `device` (`id`, `typeId`, `brandId`, `efficiencyClassId`, `image`, `
   (NULL, 13, 31, 2, 'http://www.topten.ch/uploads/icons/list/products/haushalt/dunstabzugshauben/wesco_fhe_scala110.jpg', 'FHE scala 110', '3550.00', '159.00', '53.00', 'CEQLC-96OE0-AXQI4-W133O', 1995, 'http://www.wesco.ch/', 'http://www.melectronics.ch/', NULL, NULL, NULL),
   (NULL, 13, 31, 1, 'http://www.topten.ch/uploads/icons/list/products/haushalt/dunstabzugshauben/wesco_fh_muro_vetro.jpg', 'FH muro vetro', '2450.00', '177.00', '59.00', 'L6VZD-VKJ94-DZMEC-H9O5R', 1996, 'http://www.wesco.ch/', 'http://www.melectronics.ch/', NULL, NULL, NULL);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `efficiencyclass`
---
-
-DROP TABLE IF EXISTS `efficiencyclass`;
-CREATE TABLE IF NOT EXISTS `efficiencyclass` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `className` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `efficiencyclass`
---
-
-INSERT INTO `efficiencyclass` (`id`, `className`) VALUES
-  (1, 'A'),
-  (2, 'A+'),
-  (3, 'A++'),
-  (4, 'A+++'),
-  (5, 'A+++/A'),
-  (6, 'A++/B');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `type`
---
-
-DROP TABLE IF EXISTS `type`;
-CREATE TABLE IF NOT EXISTS `type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `typeName` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
-
---
--- Dumping data for table `type`
---
-
-INSERT INTO `type` (`id`, `typeName`) VALUES
-  (1, 'Oven'),
-  (2, 'Steamer'),
-  (3, 'Freezer'),
-  (4, 'Dish Washer'),
-  (7, 'Fridge'),
-  (9, 'Vacuum Cleaner'),
-  (10, 'Washing Machine'),
-  (11, 'Laundry Dryer'),
-  (13, 'Kitchen Hood');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
