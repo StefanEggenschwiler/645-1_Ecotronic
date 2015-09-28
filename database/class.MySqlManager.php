@@ -1,5 +1,5 @@
 <?php
-include_once 'database/class.User.php';
+include_once 'database/class.Admin.php';
 require_once 'class.MySqlConn.php';
 
 class MySqlManager {
@@ -24,12 +24,9 @@ class MySqlManager {
         $row = $result->fetch();
         if($row) {
             if (password_verify($pwd, $row['password'])) {
-                return new User($row['id'], $row['firstname'], $row['lastname'],
+                return new Admin($row['id'], $row['firstname'], $row['lastname'],
                     $row['username']);
-            } else {
-                return false;
             }
-
         }
         return false;
     }
