@@ -13,6 +13,7 @@ $consumptions = array();
 
 ?>
 
+
 <div class="wrapper">
     <nav class="vertical">
         <ul>
