@@ -21,7 +21,6 @@ function authenticate($mysql) {
     $pwd = $_POST['pwd'];
     $result = $mysql->checkLogin($uname, $pwd);
     if (!$result) {
-        echo 'no result!';
         exit;
     }
     exit;
