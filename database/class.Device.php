@@ -1,9 +1,13 @@
 <?php
+include_once 'database/class.Type.php';
+include_once 'database/class.Brand.php';
+include_once 'database/class.EfficiencyClass.php';
+
 class Device {
     private $id;
-    private $typeId;
-    private $efficiencyClassId;
-    private $brandId;
+    private $type;
+    private $efficiencyClass;
+    private $brand;
     private $image;
     private $model;
     private $price;
@@ -16,14 +20,11 @@ class Device {
     private $discount;
     private $discountStart;
     private $discountEnd;
-    private $brandName;
-    private $typeName;
-    private $className;
-    public function __construct($id, $typeId, $efficiencyClassId, $brandId, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd, $brandName, $typeName, $className) {
+    public function __construct($id, $type, $efficiencyClass, $brand, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
         $this->id = $id;
-        $this->typeId = $typeId;
-        $this->efficiencyClassId = $efficiencyClassId;
-        $this->brandId = $brandId;
+        $this->type = $type;
+        $this->efficiencyClass = $efficiencyClass;
+        $this->brand = $brand;
         $this->image = $image;
         $this->model = $model;
         $this->price = $price;
@@ -36,23 +37,20 @@ class Device {
         $this->discount = $discount;
         $this->discountStart = $discountStart;
         $this->discountEnd = $discountEnd;
-        $this->brandName = $brandName;
-        $this->typeName = $typeName;
-        $this->className = $className;
     }
 
     // getter
     public function getId() {
         return $this->id;
     }
-    public function getTypeId() {
-        return $this->typeId;
+    public function getType() {
+        return $this->type;
     }
-    public function getEfficiencyClassId() {
-        return $this->efficiencyClassId;
+    public function getEfficiencyClass() {
+        return $this->efficiencyClass;
     }
-    public function getBrandId() {
-        return $this->brandId;
+    public function getBrand() {
+        return $this->brand;
     }
     public function getImage() {
         return $this->image;
@@ -90,28 +88,16 @@ class Device {
     public function getDiscountEnd() {
         return $this->discountEnd;
     }
-    public function getBrandName() {
-        return $this->brandName;
-    }
-    public function getTypeName() {
-        return $this->typeName;
-    }
-    public function getClassName() {
-        return $this->className;
-    }
 
     // setter
-    public function setId($Id) {
-        $this->id = $Id;
+    public function setType($type) {
+        $this->type = $type;
     }
-    public function setTypeId($typeId) {
-        $this->id = $typeId;
+    public function setEfficiencyClass($efficiencyClass) {
+        $this->efficiencyClass = $efficiencyClass;
     }
-    public function setEfficiencyClassId($efficiencyClassId) {
-        $this->efficiencyClassId = $efficiencyClassId;
-    }
-    public function setBrandId($brandId) {
-        $this->brandId = $brandId;
+    public function setBrand($brand) {
+        $this->brand = $brand;
     }
     public function setImage($image) {
         $this->image = $image;
@@ -148,14 +134,5 @@ class Device {
     }
     public function setDiscountEnd($discountEnd) {
         $this->discountEnd = $discountEnd;
-    }
-    public function setBrandName($brandName) {
-        $this->brandName = $brandName;
-    }
-    public function setTypeName($typeName) {
-        $this->typeName = $typeName;
-    }
-    public function setClassName($className) {
-        $this->className = $className;
     }
 }
