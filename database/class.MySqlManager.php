@@ -12,13 +12,12 @@ class MySqlManager {
 
     public function createAdmin($fname, $lname, $uname, $pwd) {
         $pwd = password_hash($pwd, PASSWORD_BCRYPT);
-        $query = "INSERT INTO admin(firstname, lastname,
-	username, password) VALUES('$fname',
-	'$lname', '$uname', '$pwd');";
+        $query = "INSERT INTO admin(firstname, lastname, username, password) VALUES('$fname', '$lname', '$uname', '$pwd');";
         return $this->_conn->executeQuery($query);
     }
 
     public function checkLogin($uname, $pwd){
+        $this->_conn->real_escape_string($uname);
         $query = "SELECT * FROM admin WHERE username='$uname'";
         $result = $this->_conn->executeQuery($query);
         if (mysqli_num_rows($result) > 0) {
