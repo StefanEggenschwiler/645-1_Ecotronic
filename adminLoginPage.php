@@ -1,9 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muhamed
- * Date: 25.09.2015
- * Time: 10:49
- */
+include_once 'header.inc';
+include_once 'footer.inc';
 ?>
 
+<div class="logo"></div>
+
+<div class="loginBlock fullCenter">
+    <h1>Admin login</h1>
+    <input type="text" value="" placeholder="Username" id="username" /> </br></br>
+    <input type="password" value="" placeholder="Password" id="password" />
+    </br>
+    </br>
+    <button>Give me access</button>
+</div>
