@@ -13,6 +13,7 @@ if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( 'en' );
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
