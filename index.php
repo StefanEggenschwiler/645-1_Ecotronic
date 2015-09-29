@@ -51,7 +51,7 @@ $consumptions = array();
                 <div>
                     <ul>
                         <?php foreach($efficiencyClasses as $key=>$value){
-                            echo "<li id='$key$'><a href='#'>";
+                            echo "<li id='$key'><a href='#'>";
                             echo $value->getClassName();
                             echo "</a></li>";
                         } ?>
