@@ -1,8 +1,11 @@
 <?php
-include_once 'database/class.Admin.php';
+include_once 'dto/class.Device.php';
+include_once 'dto/class.Type.php';
+include_once 'dto/class.Brand.php';
+include_once 'dto/class.EfficiencyClass.php';
 require_once 'class.MySqlConnector.php';
 
-class MySqlManager {
+class Model {
 
     private $_conn;
 

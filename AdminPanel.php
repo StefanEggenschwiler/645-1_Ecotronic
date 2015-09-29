@@ -1,25 +1,25 @@
 <?php
-require_once 'database/class.MySqlManager.php';
+require_once 'database/class.Model.php';
 /**
  * Created by PhpStorm.
  * User: Sasa
  * Date: 28.09.15
  * Time: 11:28
  */
-$mysql = new MySqlManager ();
+$model = new Model ();
 
 if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
-        authenticate($mysql);
+        authenticate();
     }
 } else {
     echo 'ACCESS DENIED!';
 }
 
-function authenticate($mysql) {
+function authenticate() {
     $uname = $_POST['user'];
     $pwd = $_POST['pwd'];
-    $result = $mysql->checkLogin($uname, $pwd);
+    $result = $this->model->checkLogin($uname, $pwd);
     if (!$result) {
         exit;
     }

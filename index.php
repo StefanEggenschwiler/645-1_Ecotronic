@@ -1,20 +1,20 @@
 <?php
 include_once 'header.inc';
-require_once 'database/class.MySqlManager.php';
-require_once 'database/class.Type.php';
-require_once 'database/class.Brand.php';
-require_once 'database/class.Device.php';
-require_once 'database/class.EfficiencyClass.php';
+require_once 'database/class.Model.php';
+require_once 'dto/class.Type.php';
+require_once 'dto/class.Brand.php';
+require_once 'dto/class.Device.php';
+require_once 'dto/class.EfficiencyClass.php';
 /**
  * Created by PhpStorm.
  * User: Muhamed
  * Date: 25.09.2015
  * Time: 09:33
  */
-$mySqlManager = new MySqlManager();
-$types = $mySqlManager->getTypes();
-$brands = $mySqlManager->getBrands();
-$efficiencyClasses = $mySqlManager->getEfficiencyClasses();
+$model = new Model();
+$types = $model->getTypes();
+$brands = $model->getBrands();
+$efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 
 ?>
