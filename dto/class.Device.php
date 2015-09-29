@@ -1,7 +1,7 @@
 <?php
-include_once 'database/class.Type.php';
-include_once 'database/class.Brand.php';
-include_once 'database/class.EfficiencyClass.php';
+include_once 'dto/class.Type.php';
+include_once 'dto/class.Brand.php';
+include_once 'dto/class.EfficiencyClass.php';
 
 class Device {
     private $id;
@@ -20,7 +20,7 @@ class Device {
     private $discount;
     private $discountStart;
     private $discountEnd;
-    public function __construct($id, $type, $efficiencyClass, $brand, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
+    public function __construct($id, $type, $brand, $efficiencyClass, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
         $this->id = $id;
         $this->type = $type;
         $this->efficiencyClass = $efficiencyClass;

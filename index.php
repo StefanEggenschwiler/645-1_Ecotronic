@@ -1,14 +1,20 @@
 <?php
 include_once 'header.inc';
+require_once 'database/class.Model.php';
+require_once 'dto/class.Type.php';
+require_once 'dto/class.Brand.php';
+require_once 'dto/class.Device.php';
+require_once 'dto/class.EfficiencyClass.php';
 /**
  * Created by PhpStorm.
  * User: Muhamed
  * Date: 25.09.2015
  * Time: 09:33
  */
-$categories = array("Vacuum cleaner", "Kettle", "Freezer", "Chest freezer", "Oven", "Humidifier", "Washing dish", "Dish washer", "Coffee machine", "Baking trays", "Isolated freezer", "Dryer", "Extraction hood");
-$brands = array();
-$classifications = array("A+++", "A++","A+", "A", "B", "C", "D");
+$model = new Model();
+$types = $model->getTypes();
+$brands = $model->getBrands();
+$efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 
 ?>
@@ -20,9 +26,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Category')?></a>
                 <div>
                     <ul>
-                        <?php foreach($categories as $value){
-                            echo "<li><a href='#'>";
-                            echo $translate->__($value);
+                        <?php foreach($types as $key=>$value){
+                            echo "<li id='$key'><a href='#'>";
+                            echo $translate->__($value->getTypeName());
                             echo "</a></li>";
                         } ?>
                     </ul>
@@ -32,9 +38,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Brand')?></a>
                 <div>
                     <ul>
-                        <?php foreach($brands as $value){
-                            echo "<li><a href='#'>";
-                            echo $translate->__($value);
+                        <?php foreach($brands as $key=>$value){
+                            echo "<li id='$key'><a href='#'>";
+                            echo  $value->getBrandName();
                             echo "</a></li>";
                         } ?>
                     </ul>
@@ -44,9 +50,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Classification')?></a>
                 <div>
                     <ul>
-                        <?php foreach($classifications as $value){
-                            echo "<li><a href='#'>";
-                            echo $translate->__($value);
+                        <?php foreach($efficiencyClasses as $key=>$value){
+                            echo "<li id='$key'><a href='#'>";
+                            echo $value->getClassName();
                             echo "</a></li>";
                         } ?>
                     </ul>
