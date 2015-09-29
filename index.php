@@ -26,8 +26,8 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Category')?></a>
                 <div>
                     <ul>
-                        <?php foreach($types as $value){
-                            echo "<li><a href='#'>";
+                        <?php foreach($types as $key=>$value){
+                            echo "<li id='$key'><a href='#'>";
                             echo $translate->__($value->getTypeName());
                             echo "</a></li>";
                         } ?>
@@ -38,9 +38,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Brand')?></a>
                 <div>
                     <ul>
-                        <?php foreach($brands as $value){
-                            echo "<li><a href='#'>";
-                            echo $value->getBrandName();
+                        <?php foreach($brands as $key=>$value){
+                            echo "<li id='$key'><a href='#'>";
+                            echo  $value->getBrandName();
                             echo "</a></li>";
                         } ?>
                     </ul>
@@ -50,9 +50,9 @@ $consumptions = array();
                 <a href="#"><?php $translate->__('Classification')?></a>
                 <div>
                     <ul>
-                        <?php foreach($efficiencyClasses as $value){
-                            echo "<li><a href='#'>";
-                            echo $translate->__($value->getClassName());
+                        <?php foreach($efficiencyClasses as $key=>$value){
+                            echo "<li id='$key$'><a href='#'>";
+                            echo $value->getClassName();
                             echo "</a></li>";
                         } ?>
                     </ul>
