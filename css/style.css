@@ -9,9 +9,13 @@ body
     background-size: cover;
 }
 
+
+#menu
+{
+    width:15em;
+}
 .menu, .submenu
 {
-
     width:15em;
 }
 .menu{
@@ -58,7 +62,9 @@ body
 }
 
 #show {
-    background: blue;
+    position:absolute;
+    padding:50px;
+
 }
 
 .submenu label:hover, .submenu label:active, .submenu label:focus{
@@ -171,11 +177,10 @@ body
 {
     position:absolute;
     left:50%;
+    bottom:0px;
     transform:translate(-50%,0);
-    bottom:10px;
     text-align: center;
     vertical-align: middle;
-    z-index: 10;
 }
 
 #logo
@@ -209,6 +214,5 @@ body
     font-style:italic;
     color:grey;
 }
-
 
 

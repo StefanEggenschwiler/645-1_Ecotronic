@@ -76,9 +76,7 @@ $showedItems = $model->getBrands();
         </div>
     </div>
 
-    <div class="menu">
-        <label href="#" id="show"><?php $translate->__('Show')?></label>
-    </div>
+    <label href="#" id="show"><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
 
 
 </div>
