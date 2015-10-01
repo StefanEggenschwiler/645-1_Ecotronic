@@ -6,7 +6,7 @@ include_once 'footer.inc';
 
 <div class="loginBlock centered">
     <h1>Admin Login</h1>
-        <form method="post" action="AdminPanel.php">
+        <form method="post" action="AdminPage.php">
             <input type="text" name="user" placeholder="Username" id="username" required /> </br></br>
             <input type="password" name="pwd" placeholder="Password" id="password" required />
             </br>
