@@ -71,7 +71,6 @@ class Model {
         return $efficiencyClasses;
     }
 
-
     public function getBrands(){
         $query = "SELECT * FROM brand";
         $result = $this->_conn->executeQuery($query);
@@ -85,5 +84,56 @@ class Model {
             echo "0 results";
         }
         return $brands;
+    }
+
+    /**
+     * <p>Function used to get an array of devices<p>
+     * @param $typeId
+     * @param $brandId
+     * @param $efficiencyClassId
+     * @param $priceLow
+     * @param $priceHigh
+     * @param $energyConsumptionLow
+     * @param $energyConsumptionHigh
+     * @return array|null
+     */
+    public function getDevicesByFilter($typeId, $brandId, $efficiencyClassId, $priceLow, $priceHigh, $energyConsumptionLow, $energyConsumptionHigh) {
+        $query = "SELECT * FROM `device` WHERE `typeId` = $typeId AND `brandId` = $brandId AND `efficiencyClassId` = $efficiencyClassId
+        AND `price` BETWEEN $priceLow AND $priceHigh AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh;";
+        if(is_null($brandId)) {
+            $query = str_replace("AND `brandId` = $brandId ", "", $query);
+        }
+        if(is_null($efficiencyClassId)) {
+            $query = str_replace(" AND `efficiencyClassId` = $efficiencyClassId", "", $query);
+        }
+        if(is_null($brandId)) {
+            $query = str_replace(" AND `brandId` = $brandId", "", $query);
+        }
+        if(is_null($priceLow) && is_null($priceHigh)) {
+            $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", "", $query);
+        } else if(is_null($priceLow)) {
+            $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", " AND `price` BETWEEN 0 AND $priceHigh", $query);
+        } else if(is_null($priceHigh)) {
+        $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", " AND `price` BETWEEN $priceLow AND 10000", $query);
+        }
+        if(is_null($energyConsumptionLow) && is_null($energyConsumptionHigh)) {
+            $query = str_replace(" AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh", "", $query);
+        } else if(is_null($energyConsumptionLow)) {
+            $query = str_replace(" AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh", " AND `energyConsumption` BETWEEN 0 AND $energyConsumptionHigh", $query);
+        } else if(is_null($energyConsumptionHigh)){
+            $query = str_replace(" AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh", " AND `energyConsumption` BETWEEN $energyConsumptionLow AND 10000", $query);
+        }
+        $result = $this->_conn->executeQuery($query);
+        $devices = array();
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $devices[] = new Device($row["id"], $row["typeId"], $row["brandId"], $row["efficiencyClassId"], $row["image"], $row["model"], $row["price"], $row["energyPrice"], $row["energyConsumption"], $row["serialNumber"], $row["productionYear"], $row["manufacturerLink"], $row["shopLink"], $row["discount"], $row["discountStart"], $row["discountEnd"]);
+            }
+        } else {
+            echo "0 results";
+            return null;
+        }
+        return $devices;
     }
 }

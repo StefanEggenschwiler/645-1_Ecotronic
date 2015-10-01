@@ -5,9 +5,9 @@ include_once 'dto/class.EfficiencyClass.php';
 
 class Device {
     private $id;
-    private $type;
-    private $efficiencyClass;
-    private $brand;
+    private $typeId;
+    private $brandId;
+    private $efficiencyClassId;
     private $image;
     private $model;
     private $price;
@@ -20,11 +20,11 @@ class Device {
     private $discount;
     private $discountStart;
     private $discountEnd;
-    public function __construct($id, $type, $brand, $efficiencyClass, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
+    public function __construct($id, $typeId, $brandId, $efficiencyClassId, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
         $this->id = $id;
-        $this->type = $type;
-        $this->efficiencyClass = $efficiencyClass;
-        $this->brand = $brand;
+        $this->typeId = $typeId;
+        $this->brandId = $brandId;
+        $this->efficiencyClassId = $efficiencyClassId;
         $this->image = $image;
         $this->model = $model;
         $this->price = $price;
@@ -43,14 +43,14 @@ class Device {
     public function getId() {
         return $this->id;
     }
-    public function getType() {
-        return $this->type;
+    public function getTypeId() {
+        return $this->typeId;
     }
-    public function getEfficiencyClass() {
-        return $this->efficiencyClass;
+    public function getEfficiencyClassId() {
+        return $this->efficiencyClassId;
     }
-    public function getBrand() {
-        return $this->brand;
+    public function getBrandId() {
+        return $this->brandId;
     }
     public function getImage() {
         return $this->image;
@@ -90,14 +90,14 @@ class Device {
     }
 
     // setter
-    public function setType($type) {
-        $this->type = $type;
+    public function setTypeId($typeId) {
+        $this->typeId = $typeId;
     }
-    public function setEfficiencyClass($efficiencyClass) {
-        $this->efficiencyClass = $efficiencyClass;
+    public function setEfficiencyClassId($efficiencyClassId) {
+        $this->efficiencyClassId = $efficiencyClassId;
     }
-    public function setBrand($brand) {
-        $this->brand = $brand;
+    public function setBrandId($brandId) {
+        $this->brandId = $brandId;
     }
     public function setImage($image) {
         $this->image = $image;
