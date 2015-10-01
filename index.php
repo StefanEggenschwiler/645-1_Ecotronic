@@ -23,11 +23,11 @@ $consumptions = array();
     <nav class="vertical">
         <ul>
             <li>
-                <a href="#"><?php $translate->__('Category')?></a>
+                <a><?php $translate->__('Category')?></a>
                 <div>
                     <ul>
                         <?php foreach($types as $key=>$value){
-                            echo "<li id='$key'><a href='#'>";
+                            echo "<li id='$key'><a>";
                             echo $translate->__($value->getTypeName());
                             echo "</a></li>";
                         } ?>
@@ -35,11 +35,11 @@ $consumptions = array();
                 </div>
             </li>
             <li>
-                <a href="#"><?php $translate->__('Brand')?></a>
+                <a><?php $translate->__('Brand')?></a>
                 <div>
                     <ul>
                         <?php foreach($brands as $key=>$value){
-                            echo "<li id='$key'><a href='#'>";
+                            echo "<li id='$key'><a>";
                             echo  $value->getBrandName();
                             echo "</a></li>";
                         } ?>
@@ -47,11 +47,11 @@ $consumptions = array();
                 </div>
             </li>
             <li>
-                <a href="#"><?php $translate->__('Classification')?></a>
+                <a><?php $translate->__('Classification')?></a>
                 <div>
                     <ul>
                         <?php foreach($efficiencyClasses as $key=>$value){
-                            echo "<li id='$key'><a href='#'>";
+                            echo "<li id='$key'><a>";
                             echo $value->getClassName();
                             echo "</a></li>";
                         } ?>
@@ -59,7 +59,7 @@ $consumptions = array();
                 </div>
             </li>
             <li>
-                <a href="#"><?php $translate->__('kWh/year')?></a>
+                <a><?php $translate->__('kWh/year')?></a>
                 <div>
                     <ul>
 
@@ -67,7 +67,7 @@ $consumptions = array();
                 </div>
             </li>
             <li>
-                <a href="#"><?php $translate->__('Price')?></a>
+                <a><?php $translate->__('Price')?></a>
                 <div>
                     <ul>
 
