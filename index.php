@@ -16,10 +16,11 @@ $types = $model->getTypes();
 $brands = $model->getBrands();
 $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
+$showedItems = $model->getBrands();
 
 ?>
 
-<div class="wrapper">
+    <div class="wrapper">
     <nav class="vertical">
         <ul>
             <li>
@@ -76,6 +77,15 @@ $consumptions = array();
             </li>
         </ul>
     </nav>
+    <div class="centerShowItems">
+        <ul>
+            <?php foreach($showedItems as $key=>$value){
+                echo "<li id='$key'><a href='#'>";
+                echo $value->getBrandName();
+                echo "</a></li>";
+            } ?>
+        </ul>
+    </div>
 <?php
 include_once 'footer.inc';
 ?>

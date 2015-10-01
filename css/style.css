@@ -1,3 +1,7 @@
+html
+{
+    overflow-y: scroll;
+}
 body
 {
     font-family: arial, sans-serif;
@@ -173,17 +177,38 @@ nav.vertical > ul > li > div > ul > li:hover > a {
 
 #bannerFooter
 {
-    position:absolute;
+    position:relative;
     left:50%;
     transform:translate(-50%,0);
-    bottom:10px;
     text-align: center;
     vertical-align: middle;
+    z-index: 10;
 }
 
 #logo
 {
     width:15em;
+}
+
+
+
+
+.centerShowItems
+{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,0);
+    top:5em;
+    width:60em;
+    background-color: black;
+}
+
+.centerShowItems li
+{
+    list-style-type: none;
+    display: inline-block;
+    width:15em;
+    margin:0.5em;
 }
 
 
