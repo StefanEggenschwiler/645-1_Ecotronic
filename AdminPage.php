@@ -22,7 +22,7 @@ else
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Admin</title>
-    <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
 </head>
 <body>
 <div id="header">
@@ -34,7 +34,7 @@ else
                 <a href="#">Profile Settings</a>
                 <span>|</span>
 
-                <a href="logout.php">Log out</a> <!--end the session and go back to the index page-->
+                <a href="logout.php">Log out</a>
             </div>
 
         </div>
