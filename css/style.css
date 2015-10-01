@@ -1,3 +1,7 @@
+html
+{
+    overflow-y: scroll;
+}
 body
 {
     font-family: arial, sans-serif;
@@ -6,68 +10,69 @@ body
 
 }
 
-* {
-    padding: 0;
-    outline: none;
+#menu{
+    width:150px;
+    margin:20px auto 0 auto;
+}
+.menu, .sub
+{
+    text-align:center;
+}
+.menu{
+    height:18px;
+    width:150px;
+    padding:2px 0;
+    background:#404040;
+    color:#fff;
+}
+.sub{
+    height:18px;
+    width:150px;
+    padding:1px 0;
+    background:#808080;
+    color:#fff;
 }
 
-/* Settings of the box menu */
-div.wrapper {
-    width: 15em;
+.menu a{
+    display:block;
+    width:100%;
+    height:100%;
+    color:#fff;
+    font-family:arial,sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    text-decoration:none;
+    background:#404040;
 }
-
-/* Sub menu settings */
-nav.vertical {
-    border-radius: 4px;
-    overflow: hidden;
-    text-align: left;
+.sub a{
+    display:block;
+    width:100%;
+    height:100%;
+    color:#fff;
+    font-family:arial,sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    text-decoration:none;
+    background:#808080;
 }
-
-nav.vertical > ul {
-    list-style-type: none;
-}
-
-nav.vertical > ul > li {
-    display: block;
-}
-
-/* Style of the Menu title */
-nav.vertical > ul > li > a {
-    background-color: rgb(0,204,0);
-    border-bottom: 1px solid rgba(255,255,255,.1);
-    color: rgb(255,255,255);
-    display: block;
-    font-size: .85rem;
-    font-weight: 500;
-    height: 50px;
-    letter-spacing: .5rem;
-    line-height: 50px;
-    text-transform: uppercase;
-    transition: all .1s ease;
-    text-decoration: none;
-    text-align: center;
+.menu a:hover, .sousmenu a:hover, .menu a:active, .sousmenu a:active, .menu a:focus, .sousmenu a:focus{
+    background:#ca0008;
 }
 
 
-/* When you go with your mouse on the title of the menu */
-nav.vertical > ul > li > a:hover {
-    background-color: rgb(0, 150, 0);
-    cursor: pointer;
-}
 
-/* Background of the submenu */
-nav.vertical > ul > li > div > ul > li > a {
-    background-color: rgb(255,255,255);
-    border-bottom: 1px solid rgba(0,0,0,.05);
-    color: #333331;
-    display: block;
 
-}
-/* When you are on the submenu*/
-nav.vertical > ul > li > div > ul > li:hover > a {
-    background-color: rgb(0,250,0);
-    color: rgb(255,255,255);
-}
+
+
+
+
+
+
+
+
+
+
+
 
 .bannerHead *
 {
@@ -152,14 +157,8 @@ nav.vertical > ul > li > div > ul > li:hover > a {
 }
 
 .loginBlock button:hover {
-    background: #74DF00;
+    background: #04B45F;
 }
-
-
-
-
-
-
 
 
 
@@ -173,16 +172,37 @@ nav.vertical > ul > li > div > ul > li:hover > a {
 
 #bannerFooter
 {
+    position:relative;
     left:50%;
     transform:translate(-50%,0);
-    bottom:10px;
     text-align: center;
     vertical-align: middle;
+    z-index: 10;
 }
 
 #logo
 {
     width:15em;
+}
+
+
+
+
+.centerShowItems
+{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,0);
+    top:5em;
+    width:60em;
+}
+
+.centerShowItems li
+{
+    list-style-type: none;
+    display: inline-block;
+    width:13em;
+    margin:0.5em;
 }
 
 
