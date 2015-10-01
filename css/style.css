@@ -7,10 +7,7 @@ body
     font-family: arial, sans-serif;
     background: url('../images/background.jpg');
     background-size: cover;
-
 }
-
-
 
 .menu, .submenu
 {
@@ -196,7 +193,7 @@ body
     transform:translate(-50%,0);
     top:5em;
     width:60em;
-    background-color: black;
+    background-color: rgb(152,251,152);
 }
 
 .centerShowItems li
