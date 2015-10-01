@@ -25,7 +25,7 @@ $showedItems = $model->getBrands();
     <div class="menu" id="menu1" onclick="displayMenu(this)">
         <a href="#"><?php $translate->__('Category')?></a>
     </div>
-    <div id="submenu1" style="display:none">
+    <div id="submenu1" style="display:block">
         <?php foreach($types as $key=>$value){
             echo "<div class='submenu'>";
             echo "<a>";

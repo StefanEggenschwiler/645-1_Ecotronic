@@ -14,19 +14,17 @@ body
 .menu, .submenu
 {
     text-align:center;
+    width:15em;
 }
 .menu{
-    height:18px;
-    width:150px;
-    padding:2px 0;
-    background:#404040;
+    height:50px;
+    background: #2abb3f;
     color:#fff;
+
 }
 .submenu {
-    height:18px;
-    width:150px;
-    padding:1px 0;
-    background:#808080;
+    height:30px;
+    background:rgb(0, 200, 0);
     color:#fff;
 }
 
@@ -36,10 +34,10 @@ body
     height:100%;
     color:#fff;
     font-family:arial,sans-serif;
-    font-size:12px;
+    font-size:15px;
     font-weight:bold;
     text-decoration:none;
-    background:#404040;
+    background: rgb(0,150,0);
 }
 .submenu a{
     display:block;
@@ -50,13 +48,15 @@ body
     font-size:12px;
     font-weight:bold;
     text-decoration:none;
-    background:#808080;
+    background:rgb(0, 200, 0);
 }
-.menu a:hover, .submenu a:hover, .menu a:active, .submenu a:active, .menu a:focus, .submenu a:focus{
-    background:#ca0008;
+.submenu a:hover, .submenu a:active, .submenu a:focus{
+    background:rgb(0,250,0);
 }
-
-
+.menu a:hover, .menu a:focus, .menu a:active
+{
+    background:rgb(0,175,0)
+}
 
 
 
