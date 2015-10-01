@@ -21,6 +21,7 @@ if (isset ( $_GET ['lang'] )) {
     <title>Eco Electronics</title>
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="javascript/javascript.js"></script>
 </head>
 <body>
 <div class="bannerHead">

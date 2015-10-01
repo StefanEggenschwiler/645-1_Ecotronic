@@ -5,15 +5,15 @@
 function displayMenu(obj){
 
     var idMenu     = obj.id;
-    var idSousMenu = 'sous' + idMenu;
-    var sousMenu   = document.getElementById(idSousMenu);
+    var idSubMenu = 'sub' + idMenu;
+    var subMenu   = document.getElementById(idSubMenu);
 
 
-    if(sousMenu.style.display == "none"){
-        sousMenu.style.display = "block";
+    if(subMenu.style.display == "none"){
+        subMenu.style.display = "block";
     }
     else{
-        sousMenu.style.display = "none";
+        subMenu.style.display = "none";
     }
 
 }
