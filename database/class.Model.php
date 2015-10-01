@@ -67,9 +67,9 @@ class Model {
     }
 
     public function deleteType($typeId) {
-
+        $query = "DELETE FROM `type` WHERE `id`= $typeId";
+        $this->_conn->executeQuery($query);
     }
-
 
     // CRUD EfficiencyClasses
     public function getEfficiencyClasses() {
@@ -153,9 +153,5 @@ class Model {
             return null;
         }
         return $devices;
-    }
-
-    public function getEfficiencyClassByType($typeId) {
-
     }
 }
