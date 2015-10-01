@@ -1,4 +1,5 @@
 <?php
+include_once 'dto/class.Admin.php';
 include_once 'dto/class.Device.php';
 include_once 'dto/class.Type.php';
 include_once 'dto/class.Brand.php';

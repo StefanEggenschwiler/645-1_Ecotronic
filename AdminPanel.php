@@ -6,7 +6,6 @@ require_once 'database/class.Model.php';
  * Date: 28.09.15
  * Time: 11:28
  */
-$model = new Model ();
 
 if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
@@ -17,9 +16,10 @@ if (isset ( $_POST ['action'] )) {
 }
 
 function authenticate() {
+    $model = new Model ();
     $uname = $_POST['user'];
     $pwd = $_POST['pwd'];
-    $result = $this->model->checkLogin($uname, $pwd);
+    $result = $model->checkLogin($uname, $pwd);
     if (!$result) {
         exit;
     }
