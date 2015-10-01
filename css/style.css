@@ -173,7 +173,6 @@ nav.vertical > ul > li > div > ul > li:hover > a {
 
 #bannerFooter
 {
-    position:absolute;
     left:50%;
     transform:translate(-50%,0);
     bottom:10px;
