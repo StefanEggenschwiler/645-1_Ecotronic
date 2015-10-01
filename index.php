@@ -26,10 +26,10 @@ $showedItems = $model->getBrands();
         <a href="#"><?php $translate->__('Category')?></a>
     </div>
     <div id="submenu1" style="display:block">
-        <?php foreach($types as $key=>$value){
+        <?php foreach($types as $value){
             echo "<div class='submenu'>";
             echo "<a>";
-            echo $translate->__($value->getTypeName())."</br>";
+            echo $translate->__($value)."</br>";
             echo "</a></div>";
         } ?>
     </div>
@@ -38,9 +38,9 @@ $showedItems = $model->getBrands();
         <a href="#"><?php $translate->__('Brand')?></a>
     </div>
     <div id="submenu2" style="display:none">
-        <?php foreach($brands as $key=>$value){
+        <?php foreach($brands as $value){
             echo "<div class='submenu'><a>";
-            echo $translate->__($value->getBrandName())."</br>";
+            echo $value."</br>";
             echo "</a></div>";
         } ?>
     </div>
@@ -51,9 +51,9 @@ $showedItems = $model->getBrands();
         <a href="#"><?php $translate->__('Classification')?></a>
     </div>
     <div id="submenu3" style="display:none">
-        <?php foreach($efficiencyClasses as $key=>$value){
+        <?php foreach($efficiencyClasses as $value){
             echo "<div class='submenu'><a>";
-            echo $translate->__($value->getClassName())."</br>";
+            echo $value."</br>";
             echo "</a></div>";
         } ?>
         </div>
@@ -84,9 +84,9 @@ $showedItems = $model->getBrands();
 
     <div class="centerShowItems">
         <ul>
-            <?php foreach($showedItems as $key=>$value){
-                echo "<li id='$key'><a href='#'>";
-                echo $value->getBrandName();
+            <?php foreach($showedItems as $value){
+                echo "<li><a href='#'>";
+                echo $value;
                 echo "</a></li>";
             } ?>
         </ul>

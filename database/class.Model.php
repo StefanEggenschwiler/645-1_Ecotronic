@@ -40,7 +40,7 @@ class Model {
         }
         return false;
     }
-
+    // CRUD TYPES
     public function getTypes() {
         $query = "SELECT * FROM type";
         $result = $this->_conn->executeQuery($query);
@@ -48,7 +48,7 @@ class Model {
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $types[] = new Type($row["id"], $row["typeName"]);
+                $types[] = $row["typeName"];
             }
         } else {
             echo "0 results";
@@ -56,6 +56,23 @@ class Model {
         return $types;
     }
 
+    public function createType($typeName) {
+        $typeName = $this->_conn->getConnection()->real_escape_string($typeName);
+        $query = "INSERT INTO `type`(`id`, `typeName`) VALUES (null,'$typeName')";
+        $this->_conn->executeQuery($query);
+    }
+
+    public function updateType($typeId, $typeName) {
+        $query = "UPDATE `type` SET `typeName`='$typeName' WHERE `id`= $typeId";
+        $this->_conn->executeQuery($query);
+    }
+
+    public function deleteType($typeId) {
+
+    }
+
+
+    // CRUD EfficiencyClasses
     public function getEfficiencyClasses() {
         $query = "SELECT * FROM efficiencyclass";
         $result = $this->_conn->executeQuery($query);
@@ -63,7 +80,7 @@ class Model {
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $efficiencyClasses[] = new EfficiencyClass($row["id"], $row["className"]);
+                $efficiencyClasses[] = $row["className"];
             }
         } else {
             echo "0 results";
@@ -71,6 +88,7 @@ class Model {
         return $efficiencyClasses;
     }
 
+    // CRUD BRANDS
     public function getBrands(){
         $query = "SELECT * FROM brand";
         $result = $this->_conn->executeQuery($query);
@@ -78,7 +96,7 @@ class Model {
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $brands[] = new Brand($row["id"], $row["brandName"]);
+                $brands[] = $row["brandName"];
             }
         } else {
             echo "0 results";
@@ -86,6 +104,7 @@ class Model {
         return $brands;
     }
 
+    // CRUD DEVICES
     /**
      * <p>Function used to get an array of devices<p>
      * @param $typeId
@@ -135,5 +154,9 @@ class Model {
             return null;
         }
         return $devices;
+    }
+
+    public function getEfficiencyClassByType($typeId) {
+
     }
 }
