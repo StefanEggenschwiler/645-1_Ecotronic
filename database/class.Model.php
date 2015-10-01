@@ -115,17 +115,17 @@ class Model {
      * @param $energyConsumptionHigh
      * @return array|null
      */
-    public function getDevicesByFilter($typeId, $brandId, $efficiencyClassId, $priceLow, $priceHigh, $energyConsumptionLow, $energyConsumptionHigh) {
-        $query = "SELECT * FROM `device` WHERE `typeId` = $typeId AND `brandId` = $brandId AND `efficiencyClassId` = $efficiencyClassId
-        AND `price` BETWEEN $priceLow AND $priceHigh AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh;";
-        if(is_null($brandId)) {
-            $query = str_replace("AND `brandId` = $brandId ", "", $query);
+    public function getDevicesByFilter($type, $brand, $efficiencyClass, $priceLow, $priceHigh, $energyConsumptionLow, $energyConsumptionHigh) {
+        $query = "SELECT * FROM `device` WHERE `typeId` = (SELECT `id` FROM `type` WHERE `typeName` = '$type')
+        AND `brandId` = (SELECT `id` FROM `brand` WHERE `brandName` = '$brand')
+        AND `efficiencyClassId` = (SELECT `id` FROM `efficiencyclass` WHERE `className` = '$efficiencyClass')
+        AND `price` BETWEEN $priceLow AND $priceHigh
+        AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh;";
+        if(is_null($brand)) {
+            $query = str_replace("AND `brandId` = (SELECT `id` FROM `brand` WHERE `brandName` = '$brand')", "", $query);
         }
-        if(is_null($efficiencyClassId)) {
-            $query = str_replace(" AND `efficiencyClassId` = $efficiencyClassId", "", $query);
-        }
-        if(is_null($brandId)) {
-            $query = str_replace(" AND `brandId` = $brandId", "", $query);
+        if(is_null($efficiencyClass)) {
+            $query = str_replace(" AND `efficiencyClassId` = (SELECT `id` FROM `efficiencyclass` WHERE `className` = '$efficiencyClass'", "", $query);
         }
         if(is_null($priceLow) && is_null($priceHigh)) {
             $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", "", $query);
