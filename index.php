@@ -20,47 +20,46 @@ $showedItems = $model->getBrands();
 
 ?>
 
-    <div id="menu">
+<div id="menu">
 
     <div class="menu" id="menu1" onclick="displayMenu(this)">
-        <a href="#"><?php $translate->__('Category')?></a>
+        <label href="#"><?php $translate->__('Category')?></label>
     </div>
     <div id="submenu1" style="display:block">
         <?php foreach($types as $value){
-            echo "<div class='submenu'>";
-            echo "<a>";
-            echo $translate->__($value)."</br>";
-            echo "</a></div>";
+            echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
+            echo $translate->__($value);
+            echo "</label></div>";
         } ?>
     </div>
 
     <div class="menu" id="menu2" onclick="displayMenu(this)">
-        <a href="#"><?php $translate->__('Brand')?></a>
+        <label href="#"> <?php $translate->__('Brand')?></label>
     </div>
     <div id="submenu2" style="display:none">
         <?php foreach($brands as $value){
-            echo "<div class='submenu'><a>";
+            echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
             echo $value."</br>";
-            echo "</a></div>";
+            echo "</label></div>";
         } ?>
     </div>
 
 
 
     <div class="menu" id="menu3" onclick="displayMenu(this)">
-        <a href="#"><?php $translate->__('Classification')?></a>
+        <label href="#"><?php $translate->__('Classification')?></label>
     </div>
     <div id="submenu3" style="display:none">
         <?php foreach($efficiencyClasses as $value){
-            echo "<div class='submenu'><a>";
+            echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
             echo $value."</br>";
-            echo "</a></div>";
+            echo "</label></div>";
         } ?>
         </div>
     </div>
 
     <div class="menu" id="menu4" onclick="displayMenu(this)">
-        <a href="#"><?php $translate->__('kwh/year')?></a>
+        <label href="#"><?php $translate->__('kwh/year')?></label>
     </div>
     <div id="submenu4" style="display:none">
         <div class='submenu'>
@@ -69,13 +68,19 @@ $showedItems = $model->getBrands();
     </div>
 
     <div class="menu" id="menu5" onclick="displayMenu(this)">
-        <a href="#"><?php $translate->__('Price')?></a>
+        <label href="#"><?php $translate->__('Price')?></label>
     </div>
     <div id="submenu5" style="display:none">
         <div class='submenu'>
            Price
         </div>
     </div>
+
+    <div class="menu">
+        <label href="#" id="show"><?php $translate->__('Show')?></label>
+    </div>
+
+
 </div>
 
 

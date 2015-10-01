@@ -17,3 +17,8 @@ function displayMenu(obj){
     }
 
 }
+
+function changeColor(obj){
+
+
+}
