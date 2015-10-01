@@ -29,7 +29,5 @@ include_once 'footer.inc';
                 }
             }?>
 
-
-
         </form>
 </div>
