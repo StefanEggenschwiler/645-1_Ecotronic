@@ -38,7 +38,7 @@ $showedItems = $model->getBrands();
         <a href="#"><?php $translate->__('Brand')?></a>
     </div>
     <div id="submenu2" style="display:none">
-        <?php foreach(brands as $key=>$value){
+        <?php foreach($brands as $key=>$value){
             echo "<div class='submenu'><a>";
             echo $translate->__($value->getBrandName())."</br>";
             echo "</a></div>";
