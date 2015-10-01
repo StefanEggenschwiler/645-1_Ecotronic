@@ -1,28 +1,24 @@
 <?php
-require_once 'database/class.Model.php';
-/**
- * Created by PhpStorm.
- * User: Sasa
- * Date: 28.09.15
- * Time: 11:28
- */
+require_once 'dto/class.Admin.php';
 
-if (isset ( $_POST ['action'] )) {
-    if ($_POST ['action'] == 'login') {
-        authenticate();
-    }
-} else {
-    echo 'ACCESS DENIED!';
+$admin = new Admin();
+
+session_start();
+
+
+if (isset ( $_SESSION ['user'] )) {
+    $admin = $_SESSION ['user'];
+
+
 }
-
-function authenticate() {
-    $model = new Model ();
-    $uname = $_POST['user'];
-    $pwd = $_POST['pwd'];
-    $result = $model->checkLogin($uname, $pwd);
-    if (!$result) {
-        exit;
-    }
+else
+{
+    header ('location: Login.php');
     exit;
 }
+
 ?>
+
+
+
+

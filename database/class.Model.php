@@ -27,7 +27,6 @@ class Model {
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 if (password_verify($pwd, $row['password'])) {
-                    echo "User successfully logged in!";
                     return new Admin($row['id'], $row['firstname'], $row['lastname'],
                         $row['username']);
                 } else {

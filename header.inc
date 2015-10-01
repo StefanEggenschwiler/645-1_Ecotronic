@@ -30,7 +30,7 @@ if (isset ( $_GET ['lang'] )) {
 
     <div class="centerVertical">
         <form method="post" action="Login.php">
-            <input id="searchBar" type="text" name="searchBar" value="" placeholder="<?php $translate->__('Find your old product...')?>searc">
+            <input id="searchBar" type="text" name="searchBar" value="" placeholder="<?php $translate->__('Find your old product...')?>">
             <input type="submit" name="searchButton" value="<?php $translate->__('Search')?>">
         </form>
         <a href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
