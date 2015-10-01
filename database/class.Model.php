@@ -31,11 +31,11 @@ class Model {
                     return new Admin($row['id'], $row['firstname'], $row['lastname'],
                         $row['username']);
                 } else {
-                    echo "Wrong Username or Password!";
+                    die(header("location:Login.php?loginFailed=true&reason=password"));
                 }
             }
         } else {
-            echo "User not found!";
+            die(header("location:Login.php?loginFailed=true&reason=notfound"));
         }
         return false;
     }
