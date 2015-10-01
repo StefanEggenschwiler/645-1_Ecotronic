@@ -33,7 +33,8 @@ else
                 <span>|</span>
                 <a href="#">Profile Settings</a>
                 <span>|</span>
-                <a href="#">Log out</a>
+
+                <a href="logout.php">Log out</a> <!--end the session and go back to the index page-->
             </div>
 
         </div>
