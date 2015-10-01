@@ -23,8 +23,11 @@ include_once 'footer.inc';
                 -->
 
             <?php $reasons = array("password" => "Wrong Username or Password", "notfound" => "Username not found.");
-            if ($_GET["loginFailed"])
-                echo '<span style="color:red;">'.$reasons[$_GET["reason"]].'</span>';?>
+            if (isset ( $_GET ['loginFailed'] )) {
+                if ($_GET["loginFailed"]) {
+                    echo '<span style="color:red;">'.$reasons[$_GET["reason"]].'</span>';
+                }
+            }?>
 
 
 
