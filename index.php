@@ -81,7 +81,7 @@ $showedItems = $model->getBrands();
 
 
 
-
+<!-- Center div to show the selected devices-->
     <div class="centerShowItems">
         <ul>
             <?php foreach($showedItems as $value){
@@ -91,6 +91,7 @@ $showedItems = $model->getBrands();
             } ?>
         </ul>
     </div>
+
 <?php
 include_once 'footer.inc';
 ?>

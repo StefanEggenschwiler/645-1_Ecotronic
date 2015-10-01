@@ -113,7 +113,7 @@ body
     margin-bottom: 40px;
 }
 
-.loginBlock input {
+.loginBlock input, #searchBar {
     width: 100%;
     height: 35px;
     border-radius: 5px;
@@ -127,7 +127,7 @@ body
 
 }
 
-.loginBlock button {
+.loginBlock button, #searchButton {
     width: 100%;
     height: 40px;
     background: #04B45F;
@@ -147,13 +147,13 @@ body
 }
 
 
-
-
-
-
 #searchBar
 {
     width:30em;
+}
+#searchButton
+{
+    width: 10em;
 }
 
 #bannerFooter
@@ -191,6 +191,12 @@ body
     display: inline-block;
     width:13em;
     margin:0.5em;
+}
+
+.italicText
+{
+    font-style:italic;
+    color:grey;
 }
 
 
