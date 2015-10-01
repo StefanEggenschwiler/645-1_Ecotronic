@@ -1,8 +1,6 @@
 <?php
 require_once 'dto/class.Admin.php';
 
-$admin = new Admin();
-
 session_start();
 
 
@@ -21,4 +19,32 @@ else
 
 
 
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all" />
+</head>
+<body>
+<div id="header">
+    <div class="shell">
+        <div id="top">
+            <div id="top-navigation">
+                Welcome <strong><?php echo $admin->getUsername(); ?></strong>
+                <span>|</span>
+                <a href="#">Profile Settings</a>
+                <span>|</span>
+                <a href="#">Log out</a>
+            </div>
 
+        </div>
+
+        <div id="navigation">
+            <ul>
+                <li><a href="#" class="active"><span>Add a new article</span></a></li>
+                <li><a href="#"><span>Update/Delete an article</span></a></li>
+                <li><a href="#"><span>Change discount</span></a></li>
+                <li><a href="#"><span>Manage Translations</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
