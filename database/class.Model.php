@@ -31,6 +31,7 @@ class Model {
                     return new Admin($row['id'], $row['firstname'], $row['lastname'],
                         $row['username']);
                 } else {
+                    //wrong password entered
                     die(header("location:Login.php?loginFailed=true&reason=password"));
                 }
             }

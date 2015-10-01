@@ -16,15 +16,15 @@ include_once 'footer.inc';
             </br>
             </br>
 
-            <!--if the user enter a wrong user password -> Message in red : Wrong Username or Password
-           //if the user enter a wrong username -> Message in red : User not found.-->
 
+            <!--
+                if the user enter a wrong user password -> Message in red : Wrong Username or Password
+                if the user enter a wrong username -> Message in red : User not found.
+                -->
 
-            <?php $reasons = array("password" => "Wrong Username or Password", "notfound" => "User not found.");
+            <?php $reasons = array("password" => "Wrong Username or Password", "notfound" => "Username not found.");
             if ($_GET["loginFailed"])
                 echo '<span style="color:red;">'.$reasons[$_GET["reason"]].'</span>';?>
-
-
 
 
 
