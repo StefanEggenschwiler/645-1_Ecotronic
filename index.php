@@ -29,7 +29,9 @@ $showedItems = $model->getBrands();
     </div>
     <div id="submenu1" style="display:block">
         <?php foreach($types as $value){
-            echo "<div class='submenu'><label href='#'> <input type='radio' name='cat'>";
+            echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' value='" ;
+            echo $translate->__($value);
+            echo "'>";
             echo $translate->__($value);
             echo "</label></div>";
         } ?>
@@ -78,7 +80,7 @@ $showedItems = $model->getBrands();
         </div>
     </div>
 
-    <label href="#" id="show"><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
+    <label href="#" id="show" onclick="selectedCategory()"><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
 
 
 </div>

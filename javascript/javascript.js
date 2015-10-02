@@ -18,7 +18,17 @@ function displayMenu(obj){
 
 }
 
-function changeColor(obj){
 
+function selectedCategory(){
 
+    var selectedCategory;
+    var categories = document.getElementsByName("cat")
+
+    for(var i = 0; i < categories.length; i++) {
+        if(categories[i].checked == true) {
+            selectedCategory = categories[i].value;
+        }
+    }
+
+    alert(selectedCategory);
 }
