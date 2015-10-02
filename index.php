@@ -63,7 +63,7 @@ $showedItems = $model->getBrands();
     </div>
     <div id="submenu4" style="display:none">
         <div class='submenu'>
-           Kwh
+            <label style="text-align:center"> EN DESSOUS DE : <input size="4" type="text"> </label>
         </div>
     </div>
 
@@ -72,7 +72,7 @@ $showedItems = $model->getBrands();
     </div>
     <div id="submenu5" style="display:none">
         <div class='submenu'>
-           Price
+            <label style="text-align:center">DE <input size="3" type="text"> À <input size="3" type="text"></label>
         </div>
     </div>
 
