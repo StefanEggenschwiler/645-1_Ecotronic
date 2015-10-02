@@ -55,7 +55,7 @@ $showedItems = $model->getBrands();
             echo $value."</br>";
             echo "</label></div>";
         } ?>
-        </div>
+    </div>
 
 
     <div class="menu" id="menu4" onclick="displayMenu(this)">
