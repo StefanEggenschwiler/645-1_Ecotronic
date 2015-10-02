@@ -154,4 +154,18 @@ class Model {
         }
         return $devices;
     }
+
+
+    public function displayDevices(){
+        $showedItems = $this->getDevicesByFilter('Fridge', null, null, null, null, null, null);
+        foreach($showedItems as $value){
+            echo "<li><a href='#'>";
+            echo "<img src=";
+            echo$value->getImage();
+            echo "></br>";
+            echo $value->getModel();
+            echo "</a></li>";
+        }
+    }
+
 }

@@ -1,3 +1,12 @@
 I have no idea=Je n'ai aucune idée
 Find your old product...=Trouvez votre ancien produit...
 Search=Chercher
+Oven=Four
+Steamer=Cuiseur à vapeur
+Freezer=Congélateur
+Dish Washer= Lave-vaisselle
+Fridge=Réfrigétaeur
+Vacuum Cleaner=Aspirateur
+Washing Machine=Machine à lessive
+Laundry Dryer=Sèche-Linge
+Kitchen Hood=Hotte de cuisine

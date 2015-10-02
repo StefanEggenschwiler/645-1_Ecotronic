@@ -1,6 +1,5 @@
 <?php
 include_once 'headerLogin.inc';
-include_once 'footer.inc';
 ?>
 
 

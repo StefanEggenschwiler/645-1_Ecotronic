@@ -21,7 +21,7 @@ function displayMenu(obj){
 
 function selectedCategory(){
 
-    var selectedCategory;
+    var selectedCategory = null;
     var categories = document.getElementsByName("cat")
 
     for(var i = 0; i < categories.length; i++) {

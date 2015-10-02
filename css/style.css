@@ -50,7 +50,6 @@ body
     font-size:20px;
     font-weight:bold;
     text-decoration:none;
-    background: rgb(0,150,0);
 }
 .submenu label {
     display:block;
@@ -73,14 +72,14 @@ body
     padding:50px;
 
 }
-
+.menu label:hover
+{
+    background:rgb(0,85,0)
+}
 .submenu label:hover, .submenu label:active, .submenu label:focus{
     background:rgb(0,250,0);
 }
-.menu label:hover, .menu label:active
-{
-    background:rgb(0,175,0)
-}
+
 
 
 
@@ -149,6 +148,17 @@ body
     box-sizing: border-box;
     margin-bottom: 15px;
 
+}
+
+.menuInput
+{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 0 20px 0 20px;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 15px;
 }
 
 .loginBlock button, #searchButton {
@@ -288,6 +298,11 @@ body
 {
     font-style:italic;
     color:grey;
+}
+
+.menuLabel
+{
+    text-align: center;
 }
 
 
