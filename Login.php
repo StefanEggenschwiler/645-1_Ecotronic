@@ -1,5 +1,5 @@
 <?php
-include_once 'headerAdmin.inc';
+include_once 'headerLogin.inc';
 include_once 'footer.inc';
 ?>
 

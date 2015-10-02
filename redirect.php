@@ -25,7 +25,7 @@ function authenticate() {
     session_start(); // the result is Admin Object, successfully logged in, the sessions start
     $_SESSION['user'] = $result;
 
-    header ('location: AdminPage.php');
+    header ('location: adminPage.php');
     exit;
 }
 ?>
