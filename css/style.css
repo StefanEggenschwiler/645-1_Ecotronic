@@ -5,8 +5,8 @@ html
 body
 {
     font-family: arial, sans-serif;
-    background: url('../images/background.jpg');
-    background-size: cover;
+    background:linear-gradient(90deg, #f3f45a, #67d347, #f3f45a);
+    background-size: 100%;
 }
 
 .wrapper
