@@ -17,9 +17,10 @@ $brands = $model->getBrands();
 $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
+$selectedCategory = null;
 
 if (isset($_GET['category'])) {
-    $showedItems = $model->getDevicesByFilter($_GET['deviceByCategory'],null, null, null, null, null, null);
+    $selectedCategory = $_GET['deviceByCategory'];
 }
 
 ?>
@@ -92,7 +93,11 @@ if (isset($_GET['category'])) {
     <div class="centerShowItems">
         <ul>
             <?php
-            $model->displayDevices();
+            if(!is_null($selectedCategory)){
+                $model->displayDevices($selectedCategory);
+
+            }
+
             ?>
         </ul>
     </div>

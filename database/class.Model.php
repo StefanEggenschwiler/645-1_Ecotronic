@@ -156,8 +156,8 @@ class Model {
     }
 
 
-    public function displayDevices(){
-        $showedItems = $this->getDevicesByFilter('Fridge', null, null, null, null, null, null);
+    public function displayDevices($category){
+        $showedItems = $this->getDevicesByFilter($category, null, null, null, null, null, null);
         foreach($showedItems as $value){
             echo "<li><a href='#'>";
             echo "<img src=";

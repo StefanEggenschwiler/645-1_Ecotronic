@@ -30,5 +30,4 @@ function selectedCategory(){
         }
     }
 
-    alert(selectedCategory);
 }
