@@ -125,7 +125,7 @@ class Model {
             $query = str_replace("AND `brandId` = (SELECT `id` FROM `brand` WHERE `brandName` = '$brand')", "", $query);
         }
         if(is_null($efficiencyClass)) {
-            $query = str_replace(" AND `efficiencyClassId` = (SELECT `id` FROM `efficiencyclass` WHERE `className` = '$efficiencyClass'", "", $query);
+            $query = str_replace(" AND `efficiencyClassId` = (SELECT `id` FROM `efficiencyclass` WHERE `className` = '$efficiencyClass')", "", $query);
         }
         if(is_null($priceLow) && is_null($priceHigh)) {
             $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", "", $query);
