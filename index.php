@@ -29,7 +29,7 @@ $showedItems = $model->getBrands();
     </div>
     <div id="submenu1" style="display:block">
         <?php foreach($types as $value){
-            echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
+            echo "<div class='submenu'><label href='#'> <input type='radio' name='cat'>";
             echo $translate->__($value);
             echo "</label></div>";
         } ?>
