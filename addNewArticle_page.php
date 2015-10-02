@@ -28,7 +28,7 @@ $showedItems = $model->getBrands();
             } ?>
         </select>
 
-        </br> </br>
+        </br>
 
         Select a brand
         <select>
@@ -38,7 +38,7 @@ $showedItems = $model->getBrands();
             } ?>
         </select>
 
-        </br> </br>
+        </br>
 
         Choose a year
         <select>
@@ -51,14 +51,14 @@ $showedItems = $model->getBrands();
             <option value="2000">2010</option>
         </select>
 
-        </br> </br>
+        </br>
 
         Add a description
         </br>
         <textarea rows="4" cols="60"></textarea>
 
 
-        </br> </br>
+        </br>
 
 
         Select an efficiency class
@@ -70,7 +70,7 @@ $showedItems = $model->getBrands();
         </select>
 
 
-        </br> </br>
+        </br>
 
 
         Select a consumption
@@ -85,7 +85,7 @@ $showedItems = $model->getBrands();
         </select>
 
 
-        </br> </br>
+        </br>
 
 
 
