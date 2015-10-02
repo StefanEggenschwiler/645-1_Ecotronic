@@ -19,6 +19,8 @@ $consumptions = array();
 $showedItems = $model->getBrands();
 
 ?>
+    <div class="wrapper">
+        <div id="menu">
 
 <div id="menu">
 
