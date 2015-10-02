@@ -118,6 +118,7 @@ body
     transform: translate(-50%, -50%);
 }
 
+/* LOGIN BLOCK */
 
 .loginBlock {
     width: 420px;
@@ -147,7 +148,6 @@ body
     outline: none;
     box-sizing: border-box;
     margin-bottom: 15px;
-
 
 }
 
