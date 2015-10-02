@@ -56,7 +56,7 @@ $showedItems = $model->getBrands();
             echo "</label></div>";
         } ?>
         </div>
-    </div>
+
 
     <div class="menu" id="menu4" onclick="displayMenu(this)">
         <label href="#"><?php $translate->__('kwh/year')?></label>
