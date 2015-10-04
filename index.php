@@ -25,8 +25,6 @@ $checked = '' ;
 if(isset($_POST['cat'])) {
 
     $selectedCategoryChoice = $_POST['cat'];
-    echo $selectedCategoryChoice;
-
 }
 
 ?>
@@ -41,10 +39,14 @@ if(isset($_POST['cat'])) {
         </div>
         <div id="submenu1" style="display:block">
             <?php foreach($types as $value){
-                echo "<div class='submenu'><label href='#'> <input type='radio' name='cat";
-                echo "'value='" ;
+                echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' value='" ;
                 echo $value;
-                echo "'>";
+                echo "'";
+                if($value == $selectedCategoryChoice)
+                {
+                    echo " checked";
+                }
+                echo ">";
                 echo $translate->__($value);
                 echo "</label></div>";
             } ?>
