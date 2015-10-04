@@ -43,7 +43,7 @@ else
         <div id="navigation">
             <ul>
                 <li><a href="adminPage.php" class="active"><span>Admin page</span></a></li>
-                <li><a href="addNewArticle_page.php"><span>Add a new article</span></a></li>
+                <li><a href="addNewDevice_page.php"><span>Add a new device</span></a></li>
                 <li><a href="#"><span>Update/Delete an article</span></a></li>
                 <li><a href="#"><span>Change discount</span></a></li>
                 <li><a href="#"><span>Manage Translations</span></a></li>

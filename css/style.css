@@ -1,13 +1,16 @@
 html
 {
     overflow-y: scroll;
+
 }
 body
 {
     font-family: arial, sans-serif;
     background:linear-gradient(90deg, #f3f45a, #67d347, #f3f45a);
     background-size: 100%;
+
 }
+
 
 .wrapper
 {
@@ -193,6 +196,7 @@ body
     border-radius: 7px;
     margin-top: 5%;
     border-top: 7px solid #04B45F;
+
 }
 
 .createNewArticleBlock h1 {
@@ -204,26 +208,13 @@ body
     margin-bottom: 30px;
 }
 
-.createNewArticleBlock textarea {
+.createNewArticleBlock textarea, input, select {
     width: 100%;
     height: 35px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
-    padding: 0 20px 0 20px;
-    outline: none;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-
-}
-
-.createNewArticleBlock select {
-    width: 100%;
-    height: 35px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    padding: 0 20px 0 20px;
+    padding: 0 20px 0 10px;
     outline: none;
     box-sizing: border-box;
     margin-bottom: 15px;

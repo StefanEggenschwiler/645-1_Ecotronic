@@ -15,10 +15,11 @@ $showedItems = $model->getBrands();
 
 ?>
 
+<div style="overflow:auto;">
 
-<div class="createNewArticleBlock centered" xmlns="http://www.w3.org/1999/html">
-    <h1>Add a new article</h1>
-    <form method="post" action="createArticle.php">
+<div class="createNewArticleBlock centered">
+    <h1>Add a new device</h1>
+    <form method="post" action="createDevice.php">
 
         Select a type
         <select>
@@ -39,6 +40,13 @@ $showedItems = $model->getBrands();
         </select>
 
         </br>
+
+        Enter the model
+        </br>
+
+        <input type="text" name="model" id="model" required/> </br>
+
+
 
         Choose a year
         <select>
@@ -87,6 +95,10 @@ $showedItems = $model->getBrands();
 
         </br>
 
+        Enter the image URL
+        </br>
+
+        <input type="text" name="imageURL" id="imageURL" required/> </br>
 
 
         <button type="submit" value="create" name="action" >Create</button>
@@ -94,4 +106,7 @@ $showedItems = $model->getBrands();
         </br>
 
     </form>
+</div>
+
+
 </div>

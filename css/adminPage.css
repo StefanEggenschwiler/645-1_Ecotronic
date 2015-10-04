@@ -4,12 +4,19 @@
     outline: 0;
 }
 
+html
+{
+    overflow-y: scroll;
+
+}
+
 body {
-    background: url('../images/background.jpg');
     font-family: Verdana, sans-serif;
     font-size: 11px;
     line-height: 14px;
     color: #5e5e5e;
+    overflow-y: scroll;
+
 }
 
 
@@ -121,3 +128,6 @@ h3 a {
     font-weight: bold;
     color: #887e42;
 }
+
+
+
