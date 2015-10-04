@@ -168,4 +168,19 @@ class Model {
         }
     }
 
+    public function displayCategories($types, $selectedCategoryChoice, $translate){
+        foreach($types as $value){
+            echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' value='" ;
+            echo $value;
+            echo "'";
+            if($value == $selectedCategoryChoice)
+            {
+                echo " checked";
+            }
+            echo ">";
+            echo $translate->__($value);
+            echo "</label></div>";
+        }
+    }
+
 }

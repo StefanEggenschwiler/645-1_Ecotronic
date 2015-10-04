@@ -38,18 +38,7 @@ if(isset($_POST['cat'])) {
             <label href="#"><?php $translate->__('Category')?></label>
         </div>
         <div id="submenu1" style="display:block">
-            <?php foreach($types as $value){
-                echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' value='" ;
-                echo $value;
-                echo "'";
-                if($value == $selectedCategoryChoice)
-                {
-                    echo " checked";
-                }
-                echo ">";
-                echo $translate->__($value);
-                echo "</label></div>";
-            } ?>
+            <?php $model->displayCategories($types, $selectedCategoryChoice, $translate) ?>
         </div>
 
         <div class="menu" id="menu2" onclick="displayMenu(this)">
