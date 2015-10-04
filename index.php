@@ -18,13 +18,16 @@ $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
 $selectedCategoryChoice = null;
+$checked = '' ;
 
-if(isset($_POST['cat']))
-{
+
+
+if(isset($_POST['cat'])) {
+
     $selectedCategoryChoice = $_POST['cat'];
+    echo $selectedCategoryChoice;
 
 }
-
 
 ?>
 <!-- wrapper contains menu + showedItems-->
@@ -38,7 +41,8 @@ if(isset($_POST['cat']))
         </div>
         <div id="submenu1" style="display:block">
             <?php foreach($types as $value){
-                echo "<div class='submenu'><label href='index.php?=category=true'> <input type='radio' name='cat' value='" ;
+                echo "<div class='submenu'><label href='#'> <input type='radio' name='cat";
+                echo "'value='" ;
                 echo $value;
                 echo "'>";
                 echo $translate->__($value);
