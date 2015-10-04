@@ -61,6 +61,17 @@ class Model {
         $this->_conn->executeQuery($query);
     }
 
+    public function createDevice($typeid, $brandid, $efficiencyClassId, $imageURL, $model, $price, $energyPrice,
+                                 $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
+
+        $query = "INSERT INTO `device`(`typeid`, `brandid`, `efficiencyClassId`, `imageURL`, `model`, `price`, `energyPrice`,
+                                 `energyConsumption`, `serialNumber`, `productionYear`, `manufacturerLink`, `shopLink`)
+                                 VALUES ('$typeid', '$brandid', '$efficiencyClassId', '$imageURL', '$model', '$price', '$energyPrice',
+                                 '$energyConsumption', '$serialNumber', '$productionYear', '$manufacturerLink', '$shopLink')";
+
+        return $this->_conn->executeQuery($query);
+    }
+
     public function updateType($typeId, $typeName) {
         $query = "UPDATE `type` SET `typeName`='$typeName' WHERE `id`= $typeId";
         $this->_conn->executeQuery($query);

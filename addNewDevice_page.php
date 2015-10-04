@@ -15,9 +15,8 @@ $showedItems = $model->getBrands();
 
 ?>
 
-<div style="overflow:auto;">
 
-<div class="createNewArticleBlock centered">
+<div class="createNewArticleBlock centered" style="overflow: scroll">
     <h1>Add a new device</h1>
     <form method="post" action="createDevice.php">
 
@@ -44,11 +43,17 @@ $showedItems = $model->getBrands();
         Enter the model
         </br>
 
-        <input type="text" name="model" id="model" required/> </br>
+        <input type="text" name="model" id="model" required/>
+        </br>
+
+        Enter the serial number
+        </br>
+
+        <input type="text" name="serialnumber" id="serialnumber" required/>
+        </br>
 
 
-
-        Choose a year
+        Select the production year
         <select>
             <option value="2006">2016</option>
             <option value="2005">2015</option>
@@ -61,11 +66,9 @@ $showedItems = $model->getBrands();
 
         </br>
 
-        Add a description
+        Add a short description
         </br>
-        <textarea rows="4" cols="60"></textarea>
-
-
+        <textarea></textarea>
         </br>
 
 
@@ -81,32 +84,32 @@ $showedItems = $model->getBrands();
         </br>
 
 
-        Select a consumption
-        <select>
-            <option value="2006">300W</option>
-            <option value="2005">2015</option>
-            <option value="2004">2014</option>
-            <option value="2003">2013</option>
-            <option value="2002">2012</option>
-            <option value="2001">2011</option>
-            <option value="2000">2010</option>
-        </select>
+        Enter the energy price (kWh/year)
+        </br>
+        <input type="number" name="energyprice" id="energyprice" required/>
+        </br>
 
-
+        Enter the energy consumption
+        </br>
+        <input type="number" name="energyconsumption" id="energyconsumption" required/>
         </br>
 
         Enter the image URL
         </br>
+        <input type="text" name="imageURL" id="imageURL" required/>
+        </br>
 
-        <input type="text" name="imageURL" id="imageURL" required/> </br>
 
+        Enter the price
+        </br>
+        <input type="number" name="price" id="price" required/>
+        </br>
 
-        <button type="submit" value="create" name="action" >Create</button>
+        <button type="submit" value="create" name="create">Create</button>
         </br>
         </br>
 
     </form>
 </div>
 
-
-</div>
+</body>
