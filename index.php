@@ -17,16 +17,20 @@ $brands = $model->getBrands();
 $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
-$selectedCategory = null;
+$selectedCategoryChoice = null;
 
-if (isset($_GET['category'])) {
-    $selectedCategory = $_GET['deviceByCategory'];
+if(isset($_POST['cat']))
+{
+    $selectedCategoryChoice = $_POST['cat'];
+
 }
+
 
 ?>
 <!-- wrapper contains menu + showedItems-->
     <div class="wrapper">
     <!-- left menu filters-->
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
     <div id="menu">
 
         <div class="menu" id="menu1" onclick="displayMenu(this)">
@@ -88,14 +92,14 @@ if (isset($_GET['category'])) {
         <label href="#" id="show" onclick='selectedCategory()' ><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
 
     </div>
+    </form>
 
     <!-- Center div to show the selected devices-->
     <div class="centerShowItems">
         <ul>
             <?php
-            if(!is_null($selectedCategory)){
-                $model->displayDevices($selectedCategory);
-
+            if($selectedCategoryChoice != null){
+                $model->displayDevices($selectedCategoryChoice);
             }
 
             ?>
