@@ -34,6 +34,7 @@ function authenticate() {
 function saveTranslationTable() {
     $german = array();
     $french = array();
+    $italian = array();
     $en = "";
     foreach($_POST as $inputName => $inputValue)
     {
@@ -45,10 +46,15 @@ function saveTranslationTable() {
             } else if (strpos("x" . $inputName, '_fr_') !== false) {
                 $french[] = $en . "=" . $inputValue . "\r\n";
             }
+            else if (strpos("x" . $inputName, '_it_') !== false) {
+                $italian[] = $en . "=" . $inputValue . "\r\n";
+            }
         }
     }
     file_put_contents('translations/de_2.txt', $german);
     file_put_contents('translations/fr_2.txt', $french);
+    file_put_contents('translations/it_2.txt', $italian);
+
 
     header ('location: editTranslation.php');
     exit;

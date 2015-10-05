@@ -4,6 +4,7 @@ include_once 'headerAdmin.inc';
 $handle = fopen("translations/de.txt", "r");
 $german;
 $french;
+$italian;
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         $german[] = explode('=',$line);
@@ -18,6 +19,14 @@ if ($handle) {
     }
     fclose($handle);
 }
+
+$handle = fopen("translations/it.txt", "r");
+if ($handle) {
+    while (($line = fgets($handle)) !== false) {
+        $italian[] = explode('=',$line);
+    }
+    fclose($handle);
+}
 ?>
 <form method="post" action="redirect.php">
     <table>
@@ -25,6 +34,7 @@ if ($handle) {
             <th>English</th>
             <th>German</th>
             <th>French</th>
+            <th>Italian</th>
         </tr>
         <?php for($i = 0; $i < count($german); $i++) {
             echo "<tr><td><label href='#'>";
@@ -38,6 +48,9 @@ if ($handle) {
             echo "<td> <input style=\"width:100%\" type=\"text\" value=\"";
             echo $french[$i][1];
             echo "\" name=\"cell_fr_$i\" required></td>";
+            echo "<td> <input style=\"width:100%\" type=\"text\" value=\"";
+            echo $italian[$i][1];
+            echo "\" name=\"cell_it_$i\" required></td>";
             echo "</tr>";
         }?>
     </table>

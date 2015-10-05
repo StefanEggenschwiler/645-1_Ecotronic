@@ -43,7 +43,7 @@ if($actual_link == 'fr' || $actual_link == 'de' || $actual_link == 'it'){
             <input id="searchBar" type="text" name="searchBar" value="" placeholder="<?php $translate->__('Find your old product...')?>">
             <input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Search')?>">
         </form>
-        <a class="italicText" href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
+        <a class="italicText" href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea')?></a>
     </div>
 
 

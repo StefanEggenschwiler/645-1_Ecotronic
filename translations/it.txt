@@ -1,0 +1,13 @@
+I have no idea=Io hafe no idea, scusi!
+Find your old product...=Finde youre olde producti
+Search=Searchi
+Oven=Burning Pizza Thing
+Steamer=Pizza Thing with Steam
+Freezer=Gellati Storage
+Dish Washer=Washi di Dishi
+Fridge=Frigori
+Vacuum Cleaner=Vacuuumi Cleanor
+Washing Machine=Machina di Washiari
+Laundry Dryer=Driero di Laundri
+Kitchen Hood=Hoodo di Cuisina
+Show=Izze Me, Mario!

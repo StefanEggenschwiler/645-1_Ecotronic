@@ -1,4 +1,4 @@
-﻿I have no idea=Ich habe keine Ahnung
+I have no idea=Ich habe keine Ahnung
 Find your old product...=Finden Sie ihr altes Produkt...
 Search=Suchen
 Oven=Ofen
