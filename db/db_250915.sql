@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `c645_1_ecotronic`
 --
-CREATE DATABASE IF NOT EXISTS `c645_1_ecotronic` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `c645_1_ecotronic` DEFAULT CHARACTER SET utf8_general_ci COLLATE utf8_general_ci;
 USE `c645_1_ecotronic`;
 
 -- --------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` char(72) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admin`
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `brandName` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `brand`
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `efficiencyclass` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `className` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `efficiencyclass`
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `typeName` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `type`
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `device` (
   FOREIGN KEY (`typeId`) REFERENCES type(id),
   FOREIGN KEY (`brandId`) REFERENCES brand(id),
   FOREIGN KEY (`efficiencyClassId`) REFERENCES efficiencyclass(id)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `device`
