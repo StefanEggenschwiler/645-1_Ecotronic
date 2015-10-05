@@ -109,6 +109,29 @@ class Model {
         return $efficiencyClasses;
     }
 
+    public function getEfficiencyClassesByType($type) {
+        $query = "
+          SELECT DISTINCT effc.className
+            FROM device                     dvce,
+                 type                       type,
+                 efficiencyClass            effc
+            WHERE dvce.typeId             = type.id
+              AND dvce.efficiencyClassId  = effc.id
+              AND type.typeName           = '$type'";
+
+        $result = $this->_conn->executeQuery($query);
+        $efficiencyClasses =  array();
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $efficiencyClasses[] = $row["className"];
+            }
+        } else {
+            echo "0 results";
+        }
+        return $efficiencyClasses;
+    }
+
     // CRUD BRANDS
     public function getBrands(){
         $query = "SELECT * FROM brand";
