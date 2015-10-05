@@ -25,6 +25,7 @@ $checked = '' ;
 if(isset($_POST['cat'])) {
 
     $selectedCategoryChoice = $_POST['cat'];
+    $brands = $model->getBrandsByType($selectedCategoryChoice);
 }
 
 ?>
