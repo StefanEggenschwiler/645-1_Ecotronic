@@ -1,3 +1,13 @@
 I have no idea=Ich habe keine Ahnung
 Find your old product...=Finden Sie ihr altes Produkt...
 Search=Suchen
+Oven=Ofen
+Steamer=Dampfgarer
+Freezer=Gefrierschrank
+Dish Washer=Geschirrspülmaschine
+Fridge=Kühlschrank
+Vacuum Cleaner=Staubsauger
+Washing Machine=Waschmaschine
+Laundry Dryer=Trockner
+Kitchen Hood=Dunstabzugshaube
+Show=Anzeigen

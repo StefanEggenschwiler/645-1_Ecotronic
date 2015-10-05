@@ -10,3 +10,4 @@ Vacuum Cleaner=Aspirateur
 Washing Machine=Machine à lessive
 Laundry Dryer=Sèche-Linge
 Kitchen Hood=Hotte de cuisine
+Show=Afficher

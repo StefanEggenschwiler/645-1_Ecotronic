@@ -85,7 +85,7 @@ if(isset($_POST['cat'])) {
             </div>
         </div>
 
-        <label href="#" id="show" onclick='selectedCategory()' ><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
+        <label href="#" id="show"><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
 
     </div>
     </form>
