@@ -13,12 +13,19 @@ $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
 
+
+function createNewDevice() {
+    $this->model->createDevice($typeid, $brandid, $efficiencyClassId, $imageURL, $model, $price, $energyPrice,
+        $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink);
+}
+
+
 ?>
 
 
-<div class="createNewArticleBlock centered" style="overflow: scroll">
+<div class="createNewArticleBlock centered" style="overflow: scroll" xmlns="http://www.w3.org/1999/html">
     <h1>Add a new device</h1>
-    <form method="post" action="createDevice.php">
+    <form method="post" action="addNewDevice_page.php">
 
         Select a type
         <select>
@@ -89,9 +96,20 @@ $showedItems = $model->getBrands();
         <input type="number" name="energyprice" id="energyprice" required/>
         </br>
 
-        Enter the energy consumption
+        Enter the energy consumption (ex: 0.84)
         </br>
         <input type="number" name="energyconsumption" id="energyconsumption" required/>
+        </br>
+
+        Enter the price
+        </br>
+        <input type="number" name="price" id="price" required/>
+        </br>
+
+
+
+        </br>
+        <h2>LINKS</h2>
         </br>
 
         Enter the image URL
@@ -99,17 +117,28 @@ $showedItems = $model->getBrands();
         <input type="text" name="imageURL" id="imageURL" required/>
         </br>
 
+        Enter the manufacturer link
+        </br>
+        <input type="text" name="manufacturerLink" id="manufacturerLink" required/>
+        </br>
 
-        Enter the price
+        Enter the shop link
         </br>
-        <input type="number" name="price" id="price" required/>
+        <input type="text" name="shoplink" id="shoplink" required/>
         </br>
+
+
 
         <button type="submit" value="create" name="create">Create</button>
         </br>
         </br>
 
+
+
+
     </form>
 </div>
 
 </body>
+
+

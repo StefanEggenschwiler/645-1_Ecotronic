@@ -28,6 +28,8 @@ function authenticate() {
     header ('location: adminPage.php');
     exit;
 }
+
+
 ?>
 
 
