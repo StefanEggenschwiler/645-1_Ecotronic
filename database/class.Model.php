@@ -61,14 +61,26 @@ class Model {
         $this->_conn->executeQuery($query);
     }
 
-    public function createDevice($typeid, $brandid, $efficiencyClassId, $imageURL, $model, $price, $energyPrice,
+    public function createDevice($type, $brand, $efficiencyClass, $imageURL, $model, $price, $energyPrice,
                                  $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
 
         $query = "INSERT INTO `device`(`typeid`, `brandid`, `efficiencyClassId`, `imageURL`, `model`, `price`, `energyPrice`,
                                  `energyConsumption`, `serialNumber`, `productionYear`, `manufacturerLink`, `shopLink`)
-                                 VALUES ('$typeid', '$brandid', '$efficiencyClassId', '$imageURL', '$model', '$price', '$energyPrice',
-                                 '$energyConsumption', '$serialNumber', '$productionYear', '$manufacturerLink', '$shopLink')";
 
+                                 VALUES (
+								 SELECT `id` from `type` WHERE `typeName` = '$type',
+								 SELECT `id` from `brand` WHERE `brandName` = '$brand',
+								 SELECT `id` from `efficiencyclass` WHERE `className` = '$efficiencyClass',
+								 '$imageURL',
+								 '$model',
+								 '$price',
+								 '$energyPrice',
+								 '$energyConsumption',
+								 '$serialNumber',
+								 '$productionYear',
+								 '$manufacturerLink',
+								 '$shopLink'
+								 )";
         return $this->_conn->executeQuery($query);
     }
 
@@ -114,12 +126,32 @@ class Model {
         return $brands;
     }
 
+    public function getBrandsByType($type) {
+        $query = "SELECT `brandName` FROM `brand` WHERE `id` = (SELECT `brandId` FROM `device` WHERE `typeId` = (SELECT `id` FROM `type` WHERE `typeName` = '$type'));";
+        $result = $this->_conn->executeQuery($query);
+        $brands =  array();
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $brands[] = $row["brandName"];
+            }
+        } else {
+            echo "0 results";
+        }
+        return $brands;
+    }
+
     // CRUD DEVICES
+    /*
+     * Use coalesce for
+     * Select "Column1 (Dont Want Touched)", coalesce(column2(That you want set to 0 if null),0) as column2 (give it same name as was e.g. "column2"), coalesce(column3(Instead of null set to 1),1) as column3(give it same name as was e.g. "column3")
+    from "MydataTable" Where 'somedates' in ('2015-04-10','2015-04-03','2015-03-27','2015-04-17') and id = 10 order by 'somedates ';
+     */
     /**
      * <p>Function used to get an array of devices<p>
-     * @param $typeId
-     * @param $brandId
-     * @param $efficiencyClassId
+     * @param $type
+     * @param $brand
+     * @param $efficiencyClass
      * @param $priceLow
      * @param $priceHigh
      * @param $energyConsumptionLow
