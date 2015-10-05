@@ -45,7 +45,7 @@ else
                     <li><a href="addNewDevice_page.php"><span>Add a new device</span></a></li>
                     <li><a href="#"><span>Update/Delete an article</span></a></li>
                     <li><a href="#"><span>Change discount</span></a></li>
-                    <li><a href="#"><span>Manage Translations</span></a></li>
+                    <li><a href="editTranslation.php"><span>Manage Translations</span></a></li>
                 </ul>
             </div>
         </div>
