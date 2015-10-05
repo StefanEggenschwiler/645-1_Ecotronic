@@ -31,11 +31,11 @@ class Model {
                         $row['username']);
                 } else {
                     //wrong password entered
-                    die(header("location:Login.php?loginFailed=true&reason=password"));
+                    die(header("location:login.php?loginFailed=true&reason=password"));
                 }
             }
         } else {
-            die(header("location:Login.php?loginFailed=true&reason=notfound"));
+            die(header("location:login.php?loginFailed=true&reason=notfound"));
         }
         return false;
     }

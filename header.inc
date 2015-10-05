@@ -39,7 +39,7 @@ if($actual_link == 'fr' || $actual_link == 'de' || $actual_link == 'it'){
 
 <!-- search bar to find your device-->
     <div class="centerVertical">
-        <form method="post" action="Login.php">
+        <form method="post" action="login.php">
             <input id="searchBar" type="text" name="searchBar" value="" placeholder="<?php $translate->__('Find your old product...')?>">
             <input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Search')?>">
         </form>

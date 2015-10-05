@@ -11,7 +11,7 @@ if (isset ( $_SESSION ['user'] )) {
 }
 else
 {
-    header ('location: Login.php');
+    header ('location: login.php');
     exit;
 }
 
