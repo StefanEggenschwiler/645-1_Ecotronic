@@ -244,7 +244,7 @@ class Model {
 
     public function displayCategories($types, $selectedCategoryChoice, $translate){
         foreach($types as $value){
-            echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' value='" ;
+            echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' onchange='this.form.submit()' value='" ;
             echo $value;
             echo "'";
             if($value == $selectedCategoryChoice)
