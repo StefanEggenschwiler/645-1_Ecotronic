@@ -51,9 +51,9 @@ function saveTranslationTable() {
             }
         }
     }
-    file_put_contents('translations/de_2.txt', $german);
-    file_put_contents('translations/fr_2.txt', $french);
-    file_put_contents('translations/it_2.txt', $italian);
+    file_put_contents('translations/de.txt', $german);
+    file_put_contents('translations/fr.txt', $french);
+    file_put_contents('translations/it.txt', $italian);
 
 
     header ('location: editTranslation.php');

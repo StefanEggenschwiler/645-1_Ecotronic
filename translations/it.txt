@@ -1,4 +1,4 @@
-I have no idea=Io hafe no idea, scusi!
+I have no idea=Io havi no idea, scusi!
 Find your old product...=Finde youre olde producti
 Search=Searchi
 Oven=Burning Pizza Thing
