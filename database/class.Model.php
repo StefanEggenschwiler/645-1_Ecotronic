@@ -66,7 +66,6 @@ class Model {
 
         $query = "INSERT INTO `device`(`typeid`, `brandid`, `efficiencyClassId`, `imageURL`, `model`, `price`, `energyPrice`,
                                  `energyConsumption`, `serialNumber`, `productionYear`, `manufacturerLink`, `shopLink`)
-
                                  VALUES (
 								 SELECT `id` from `type` WHERE `typeName` = '$type',
 								 SELECT `id` from `brand` WHERE `brandName` = '$brand',
@@ -127,7 +126,15 @@ class Model {
     }
 
     public function getBrandsByType($type) {
-        $query = "SELECT `brandName` FROM `brand` WHERE `id` = (SELECT `brandId` FROM `device` WHERE `typeId` = (SELECT `id` FROM `type` WHERE `typeName` = '$type'));";
+        $query = "
+          SELECT DISTINCT brnd.brandName
+            FROM device           dvce,
+                 type             type,
+                 brand            brnd
+            WHERE dvce.typeId   = type.id
+              AND dvce.brandId  = brnd.id
+              AND type.typeName = '$type'";
+
         $result = $this->_conn->executeQuery($query);
         $brands =  array();
 
@@ -164,6 +171,7 @@ class Model {
         AND `efficiencyClassId` = (SELECT `id` FROM `efficiencyclass` WHERE `className` = '$efficiencyClass')
         AND `price` BETWEEN $priceLow AND $priceHigh
         AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh;";
+
         if(is_null($brand)) {
             $query = str_replace("AND `brandId` = (SELECT `id` FROM `brand` WHERE `brandName` = '$brand')", "", $query);
         }
@@ -175,7 +183,7 @@ class Model {
         } else if(is_null($priceLow)) {
             $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", " AND `price` BETWEEN 0 AND $priceHigh", $query);
         } else if(is_null($priceHigh)) {
-        $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", " AND `price` BETWEEN $priceLow AND 10000", $query);
+            $query = str_replace(" AND `price` BETWEEN $priceLow AND $priceHigh", " AND `price` BETWEEN $priceLow AND 10000", $query);
         }
         if(is_null($energyConsumptionLow) && is_null($energyConsumptionHigh)) {
             $query = str_replace(" AND `energyConsumption` BETWEEN $energyConsumptionLow AND $energyConsumptionHigh", "", $query);
