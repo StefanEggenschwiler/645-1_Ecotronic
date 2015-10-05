@@ -1,11 +1,11 @@
-I have no idea=Ich habe keine Ahnung
+ï»¿I have no idea=Ich habe keine Ahnung
 Find your old product...=Finden Sie ihr altes Produkt...
 Search=Suchen
 Oven=Ofen
 Steamer=Dampfgarer
 Freezer=Gefrierschrank
-Dish Washer=Geschirrspülmaschine
-Fridge=Kühlschrank
+Dish Washer=GeschirrspÃ¼lmaschine
+Fridge=KÃ¼hlschrank
 Vacuum Cleaner=Staubsauger
 Washing Machine=Waschmaschine
 Laundry Dryer=Trockner
