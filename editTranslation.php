@@ -19,7 +19,7 @@ if ($handle) {
     fclose($handle);
 }
 ?>
-<form method="post" action="testRedirect.php">
+<form method="post" action="redirect.php">
     <table>
         <tr>
             <th>English</th>
