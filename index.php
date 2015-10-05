@@ -31,7 +31,8 @@ if(isset($_POST['cat'])) {
 <!-- wrapper contains menu + showedItems-->
     <div class="wrapper">
     <!-- left menu filters-->
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];
+                                  echo $_SESSION['lang'];?>">
     <div id="menu">
 
         <div class="menu" id="menu1" onclick="displayMenu(this)">

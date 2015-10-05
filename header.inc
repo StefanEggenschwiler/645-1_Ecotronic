@@ -12,6 +12,16 @@ if (isset ( $_GET ['lang'] )) {
 } else {
     $translate = new Translator ( 'en' );
 }
+session_start();
+$_SESSION["lang"] = "";
+
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$actual_link = substr($actual_link, -2);
+if($actual_link == 'fr' || $actual_link == 'de' || $actual_link == 'it'){
+    $_SESSION['lang'] = '?lang='.$actual_link;
+}else{
+    $_SESSION['lang'] = '';
+}
 ?>
 
 
@@ -35,7 +45,6 @@ if (isset ( $_GET ['lang'] )) {
         </form>
         <a class="italicText" href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea') ?></a>
     </div>
-
 
 
 
