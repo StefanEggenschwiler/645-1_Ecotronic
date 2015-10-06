@@ -271,6 +271,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `brandName` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+ALTER TABLE `brand` ADD UNIQUE(`brandName`);
 
 --
 -- Dumping data for table `brand`
@@ -314,7 +315,6 @@ INSERT INTO `brand` (`id`, `brandName`) VALUES
   (35, 'Stadler Form'),
   (36, 'Turmix'),
   (37, 'Boneco'),
-  (38, 'Solis'),
   (39, 'Stöckli'),
   (40, 'Dirt Devil'),
   (41, 'TRISA'),
@@ -345,6 +345,7 @@ CREATE TABLE IF NOT EXISTS `efficiencyclass` (
   `className` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+ALTER TABLE `efficiencyclass` ADD UNIQUE(`className`);
 
 --
 -- Dumping data for table `efficiencyclass`
@@ -385,6 +386,7 @@ CREATE TABLE IF NOT EXISTS `type` (
   `typeName` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+ALTER TABLE `type` ADD UNIQUE(`typeName`);
 
 
 --

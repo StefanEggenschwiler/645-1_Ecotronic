@@ -12,9 +12,8 @@ class MySqlConnector {
 
     public function __construct() {
         $this->_connection = new mysqli(self::HOST, self::USER, self::PWD, self::DATABASE);
-        if ($this->_connection->connect_errno) {
-            echo "Failed to connect to MySQL: (".$this->_connection->connect_errno.") ".
-                $this->_connection->connect_error;
+        if($this->_connection->connect_errno > 0){
+            die('Unable to connect to database [' . $this->_connection->connect_error . ']');
         }
     }
 
@@ -28,7 +27,8 @@ class MySqlConnector {
 
     public function executeQuery($query){
         $result = $this->getConnection()->query($query)
-        or die(print_r($this->getConnection()->errno, true));
+        or die('Unable to connect to database [' . print_r($this->getConnection()->errno . ']', true));
+        $this->getConnection()->close();
         return $result;
     }
 }
