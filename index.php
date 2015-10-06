@@ -69,11 +69,11 @@ if(isset($_POST['cat'])) {
 
 
         <div class="menu" id="menu4" onclick="displayMenu(this)">
-            <label href="#"><?php $translate->__('kwh/year')?></label>
+            <label href="#"><?php $translate->__('kWh/year')?></label>
         </div>
         <div id="submenu4" style="display:none">
             <div class='submenu'>
-                <label style="text-align:center"> EN DESSOUS DE : <input size="4" type="text"> </label>
+                <label style="text-align:center"> <?php htmlentities($translate->__('Under'), ENT_QUOTES, 'iso8859-1')?> <input size="4" type="text"> </label>
             </div>
         </div>
 
@@ -82,7 +82,7 @@ if(isset($_POST['cat'])) {
         </div>
         <div id="submenu5" style="display:none">
             <div class='submenu'>
-                <label style="text-align:center">DE <input size="3" type="text"> À <input size="3" type="text"></label>
+                <label style="text-align:center"><?php htmlentities($translate->__('Between'), ENT_QUOTES, 'iso8859-1')?> <input size="3" type="text"> <?php htmlentities($translate->__('And'), ENT_QUOTES, 'iso8859-1')?> <input size="3" type="text"></label>
             </div>
         </div>
 
