@@ -235,8 +235,7 @@ class Model {
         foreach($showedItems as $value){
             echo "<li><a href='#'>";
             echo "<img src=";
-            $img = htmlentities($value->getImage(), ENT_QUOTES, 'iso8859-1');
-            echo $img;
+            echo htmlentities($value->getImage(), ENT_QUOTES, 'iso8859-1');
             echo "></br>";
             echo $value->getModel();
             echo "</a></li>";
