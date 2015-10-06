@@ -18,6 +18,7 @@ $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
 $selectedCategoryChoice = null;
+$selectedBrandChoice[] = null;
 $checked = '' ;
 
 
