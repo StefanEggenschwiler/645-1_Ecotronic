@@ -8,6 +8,7 @@ class Device {
     private $typeId;
     private $brandId;
     private $efficiencyClassId;
+    private $discountId;
     private $image;
     private $model;
     private $price;
@@ -17,14 +18,12 @@ class Device {
     private $productionYear;
     private $manufacturerLink;
     private $shopLink;
-    private $discount;
-    private $discountStart;
-    private $discountEnd;
-    public function __construct($id, $typeId, $brandId, $efficiencyClassId, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink, $discount, $discountStart, $discountEnd) {
+    public function __construct($id, $typeId, $brandId, $efficiencyClassId, $discountId, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
         $this->id = $id;
         $this->typeId = $typeId;
         $this->brandId = $brandId;
         $this->efficiencyClassId = $efficiencyClassId;
+        $this->discountId = $discountId;
         $this->image = $image;
         $this->model = $model;
         $this->price = $price;
@@ -34,9 +33,6 @@ class Device {
         $this->productionYear = $productionYear;
         $this->manufacturerLink = $manufacturerLink;
         $this->shopLink = $shopLink;
-        $this->discount = $discount;
-        $this->discountStart = $discountStart;
-        $this->discountEnd = $discountEnd;
     }
 
     // getter
@@ -51,6 +47,9 @@ class Device {
     }
     public function getBrandId() {
         return $this->brandId;
+    }
+    public function getDiscountId() {
+        return $this->discountId;
     }
     public function getImage() {
         return $this->image;
@@ -79,15 +78,6 @@ class Device {
     public function getShopLink() {
         return $this->shopLink;
     }
-    public function getDiscount() {
-        return $this->discount;
-    }
-    public function getDiscountStart() {
-        return $this->discountStart;
-    }
-    public function getDiscountEnd() {
-        return $this->discountEnd;
-    }
 
     // setter
     public function setTypeId($typeId) {
@@ -98,6 +88,9 @@ class Device {
     }
     public function setBrandId($brandId) {
         $this->brandId = $brandId;
+    }
+    public function setDiscountId($discountId) {
+        $this->discountId = $discountId;
     }
     public function setImage($image) {
         $this->image = $image;
@@ -125,14 +118,5 @@ class Device {
     }
     public function setShopLink($shopLink) {
         $this->shopLink = $shopLink;
-    }
-    public function setDiscount($discount) {
-        $this->discount = $discount;
-    }
-    public function setDiscountStart($discountStart) {
-        $this->discountStart = $discountStart;
-    }
-    public function setDiscountEnd($discountEnd) {
-        $this->discountEnd = $discountEnd;
     }
 }

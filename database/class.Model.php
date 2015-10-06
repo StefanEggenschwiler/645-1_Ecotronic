@@ -220,7 +220,7 @@ class Model {
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $devices[] = new Device($row["id"], $row["typeId"], $row["brandId"], $row["efficiencyClassId"], $row["image"], $row["model"], $row["price"], $row["energyPrice"], $row["energyConsumption"], $row["serialNumber"], $row["productionYear"], $row["manufacturerLink"], $row["shopLink"], $row["discount"], $row["discountStart"], $row["discountEnd"]);
+                $devices[] = new Device($row["id"], $row["typeId"], $row["brandId"], $row["efficiencyClassId"], $row["discountId"], $row["image"], $row["model"], $row["price"], $row["energyPrice"], $row["energyConsumption"], $row["serialNumber"], $row["productionYear"], $row["manufacturerLink"], $row["shopLink"]);
             }
         } else {
             echo "0 results";
@@ -235,7 +235,8 @@ class Model {
         foreach($showedItems as $value){
             echo "<li><a href='#'>";
             echo "<img src=";
-            echo$value->getImage();
+            $img = htmlentities($value->getImage(), ENT_QUOTES, 'iso8859-1');
+            echo $img;
             echo "></br>";
             echo $value->getModel();
             echo "</a></li>";
