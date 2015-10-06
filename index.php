@@ -49,7 +49,7 @@ if(isset($_POST['cat'])) {
         <div id="submenu2" style="display:none">
             <?php foreach($brands as $value){
                 echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
-                echo $value."</br>";
+                echo htmlentities($value, ENT_QUOTES, 'iso8859-1')."</br>";
                 echo "</label></div>";
             } ?>
         </div>
