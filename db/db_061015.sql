@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` char(72) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+ALTER TABLE `admin` ADD UNIQUE(`username`);
 
 --
 -- Dumping data for table `admin`
