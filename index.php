@@ -13,7 +13,7 @@ $brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $selectedCategoryChoice = null;
-$selectedBrandChoice[] = null;
+$selectedBrandChoice = array();
 
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
@@ -79,7 +79,7 @@ foreach($brands as $value){
                 </div>
                 <div id="submenu4" style="display:none">
                     <div class='submenu'>
-                        <label style="text-align:center"><?php htmlentities($translate->__('Between'), ENT_QUOTES, 'UTF-8')?> <input size="3" type="text"> <?php htmlentities($translate->__('And'), ENT_QUOTES, 'UTF-8')?> <input size="3" type="text"></label>
+                        <label style="text-align:center"><?php $translate->__('Between')?> <input size="3" type="text"> <?php $translate->__('And')?> <input size="3" type="text"></label>
                     </div>
                 </div>
 
@@ -96,7 +96,11 @@ foreach($brands as $value){
             <ul>
                 <?php
                 if($selectedCategoryChoice != null) {
-                    $model->displayDevicesWithoutFilters($selectedCategoryChoice);
+                    if($selectedBrandChoice != null){
+                        $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice);
+                    }else{
+                        $model->displayDevicesWithoutFilters($selectedCategoryChoice);
+                    }
                 }
                 ?>
             </ul>
