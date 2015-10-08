@@ -11,7 +11,7 @@ require_once 'class.MySqlConnector.php';
 
 class Model {
 
-    private $_conn;
+    // Fields
     private $typeDao;
     private $brandDao;
     private $deviceDao;
@@ -22,7 +22,6 @@ class Model {
         $this->brandDao = new BrandDAO();
         $this->deviceDao = new DeviceDAO();
         $this->efficiencyClassDao = new EfficiencyClassDAO();
-        $this->_conn = new MySqlConnector();
     }
 
     public function getAllTypes() {

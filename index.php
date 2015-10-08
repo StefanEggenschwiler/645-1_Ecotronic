@@ -10,7 +10,7 @@ require_once 'dto/class.EfficiencyClass.php';
 $model = new Model();
 
 $types = $model->getAllTypes();
-$brands = $model->getAllTypes();
+$brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $selectedCategoryChoice = null;
