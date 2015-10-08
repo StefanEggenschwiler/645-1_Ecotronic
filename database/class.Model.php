@@ -232,8 +232,8 @@ class Model {
     }
 
 
-    public function displayDevices($category){
-        $showedItems = $this->getDevicesByFilter($category, null, null, null, null, null, null);
+    public function displayDevicesWithFilters($category, $brands){
+        $showedItems = $this->getDevicesByFilter($category, $brands, null, null, null, null, null);
         foreach($showedItems as $value){
             echo "<li><a href='#'>";
             echo "<img src=";
@@ -241,6 +241,24 @@ class Model {
             echo "></br>";
             echo $value->getModel();
             echo "</a></li>";
+        }
+    }
+
+    public function displayDevicesWithoutFilters($category){
+        $showedItems = $this->getDevicesByFilter($category, null, null, null, null, null, null);
+        foreach($showedItems as $value){
+            echo "<li><table><tr><a href='#'>";
+            echo "<td><img src=";
+            echo htmlentities($value->getImage(), ENT_QUOTES, 'iso8859-1');
+            echo "></td><td>";
+            echo $value->getBrandId()."</br>";
+            echo $value->getModel()."</br>";
+            echo $value->getEfficiencyClassId();
+            echo "</tr></td>";
+            echo "<tr><td>";
+            echo $value->getPrice()."</td><td><input type='submit'></td>";
+            echo "</tr>";
+            echo "</a></table></li>";
         }
     }
 

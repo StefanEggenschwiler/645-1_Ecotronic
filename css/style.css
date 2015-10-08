@@ -276,11 +276,10 @@ body
 }
 
 
-
-
 .centerShowItems
 {
     margin-left: 15em;
+    margin-right: 15em;
 }
 
 .centerShowItems li
@@ -306,6 +305,14 @@ body
 .menuLabel
 {
     text-align: center;
+}
+
+.rightComparator
+{
+    float: right;
+    background: blue;
+    width:15em;
+    height: 635px;
 }
 
 
