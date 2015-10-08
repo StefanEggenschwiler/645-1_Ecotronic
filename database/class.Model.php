@@ -12,16 +12,22 @@ require_once 'class.MySqlConnector.php';
 class Model {
 
     // Fields
+    private $adminDao;
     private $typeDao;
     private $brandDao;
     private $deviceDao;
     private $efficiencyClassDao;
 
     public function __construct(){
+        $this->adminDao = new AdminDAO();
         $this->typeDao = new TypeDAO();
         $this->brandDao = new BrandDAO();
         $this->deviceDao = new DeviceDAO();
         $this->efficiencyClassDao = new EfficiencyClassDAO();
+    }
+
+    public function checkLogin($username, $password) {
+        return $this->adminDao->authenticate($username, $password);
     }
 
     public function getAllTypes() {
