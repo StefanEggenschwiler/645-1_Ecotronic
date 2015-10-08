@@ -11,7 +11,7 @@ $types = $model->getAllTypes();
 $brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
-$showedItems = $model->getBrands();
+$showedItems = $model->getAllBrands();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     createNewDevice();
@@ -33,8 +33,8 @@ function createNewDevice() {
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-    $this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
-            $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
+    var_dump($this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
+            $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink));
 }
 
 ?>
@@ -49,7 +49,7 @@ function createNewDevice() {
         <select name="selectType">
             <?php
             foreach($types as $value){
-                echo '<option>'.$value.'</option>';
+                echo '<option>'.$value->getTypeName().'</option>';
             } ?>
         </select>
 
@@ -59,7 +59,7 @@ function createNewDevice() {
         <select name="selectBrand">
             <?php
             foreach($brands as $value){
-                echo '<option>'. htmlentities($value, ENT_QUOTES, 'iso8859-1').'</option>';
+                echo '<option>'. $value->getBrandName().'</option>';
             } ?>
         </select>
 
@@ -95,7 +95,7 @@ function createNewDevice() {
         <select name="selectEfficiencyClassName">
             <?php
             foreach($efficiencyClasses as $value){
-                echo '<option>'.$value.'</option>';
+                echo '<option>'.$value->getClassName().'</option>';
             } ?>
         </select>
 
