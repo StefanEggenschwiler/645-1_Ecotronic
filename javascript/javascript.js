@@ -20,10 +20,11 @@ $(function () {
 
     var namePage = location.pathname.split('/').slice(-1)[0];
 
-    if(namePage == "addNewDevice_page.php" || ""){
+    if(namePage == "admin.php" || "addNewDevice.php" || "updateDeleteDevices.php" || "editDiscount.php" || "editTranslation.php" ){
 
         $("a").removeClass("active");
         $("#addNewDevicePage").addClass("active");
+
 
     }
 

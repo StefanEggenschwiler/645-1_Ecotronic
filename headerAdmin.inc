@@ -48,7 +48,7 @@ header('Content-Type: text/html; charset=UTF-8');
                     <li><a id="adminPage" href="admin.php" class="active"><span>Admin page</span></a></li>
                     <li><a id="addNewDevicePage" href="addNewDevice.php"><span>Add a new device</span></a></li>
                     <li><a id="updateDeletePage" href="updateDeleteDevices.php"><span>Update/Delete an article</span></a></li>
-                    <li><a id="discountPage" href="discount.php"><span>Change discount</span></a></li>
+                    <li><a id="discountPage" href="editDiscount.php"><span>Change discount</span></a></li>
                     <li><a id="translationsPage" href="editTranslation.php"><span>Manage Translations</span></a></li>
                 </ul>
             </div>
