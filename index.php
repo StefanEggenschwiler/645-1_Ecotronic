@@ -15,8 +15,6 @@ $consumptions = array();
 $selectedCategoryChoice = null;
 $selectedBrandChoice[] = null;
 
-
-
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
@@ -53,7 +51,7 @@ foreach($brands as $value){
                         echo "<div class='submenu'><label href='#'> <input type='checkbox' ";
                         echo "name='".$value->getBrandName()."' value='".$value->getBrandName()."'";
                         foreach($selectedBrandChoice as $key){
-                            if($key == $value){
+                            if($key == $value->getBrandName()){
                                 echo 'checked';
                             }
                         }
