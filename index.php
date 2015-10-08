@@ -77,7 +77,7 @@ foreach($brands as $value){
                 <div class="menu" id="menu4" onclick="displayMenu(this)">
                     <label href="#"><?php $translate->__('Price')?></label>
                 </div>
-                <div id="submenu5" style="display:none">
+                <div id="submenu4" style="display:none">
                     <div class='submenu'>
                         <label style="text-align:center"><?php htmlentities($translate->__('Between'), ENT_QUOTES, 'UTF-8')?> <input size="3" type="text"> <?php htmlentities($translate->__('And'), ENT_QUOTES, 'UTF-8')?> <input size="3" type="text"></label>
                     </div>
