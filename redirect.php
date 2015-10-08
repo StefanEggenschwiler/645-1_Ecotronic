@@ -5,6 +5,8 @@ require_once 'database/class.Model.php';
 if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
         authenticate(); // the user is logging in
+    } else if ($_POST ['action'] == 'translationSubmit') {
+        saveTranslationTable();
     }
 } else {
     echo 'ACCESS DENIED!';
@@ -18,19 +20,45 @@ function authenticate() {
     $pwd = $_POST['pwd'];
     $result = $model->checkLogin($uname, $pwd);
 
-    if (!$result) { // something is wrong
+    if(!$result) {
+        header ('location: login.php');
         exit;
     }
-
     session_start(); // the result is Admin Object, successfully logged in, the sessions start
     $_SESSION['user'] = $result;
 
-    header ('location: Admin.php');
+    header ('location: admin.php');
     exit;
 }
 
+function saveTranslationTable() {
+    $german = array();
+    $french = array();
+    $italian = array();
+    $en = "";
+    foreach($_POST as $inputName => $inputValue)
+    {
+        if(strpos("x" . $inputName,'cell') !== false) {
+            if (strpos("x" . $inputName, '_en_') !== false) {
+                $en = $inputValue;
+            } else if (strpos("x" . $inputName, '_de_') !== false) {
+                $german[] = $en . "=" . $inputValue . "\r\n";
+            } else if (strpos("x" . $inputName, '_fr_') !== false) {
+                $french[] = $en . "=" . $inputValue . "\r\n";
+            }
+            else if (strpos("x" . $inputName, '_it_') !== false) {
+                $italian[] = $en . "=" . $inputValue . "\r\n";
+            }
+        }
+    }
+    file_put_contents('translations/de.txt', $german);
+    file_put_contents('translations/fr.txt', $french);
+    file_put_contents('translations/it.txt', $italian);
 
 
+    header ('location: editTranslation.php');
+    exit;
+}
 ?>
 
 
