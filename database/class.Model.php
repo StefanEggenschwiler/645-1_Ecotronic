@@ -35,6 +35,7 @@ class Model {
                 }
             }
         } else {
+            //user not found in the database
             die(header("location:login.php?loginFailed=true&reason=notfound"));
         }
         return false;
@@ -80,6 +81,7 @@ class Model {
 								 '$manufacturerLink',
 								 '$shopLink'
 								 )";
+
         return $this->_conn->executeQuery($query);
     }
 

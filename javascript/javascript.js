@@ -14,3 +14,17 @@ function displayMenu(obj){
 
 }
 
+//when the page is loaded
+
+$(function () {
+
+    var namePage = location.pathname.split('/').slice(-1)[0];
+
+    if(namePage == "addNewDevice_page.php" || ""){
+
+        $("a").removeClass("active");
+        $("#addNewDevicePage").addClass("active");
+
+    }
+
+})

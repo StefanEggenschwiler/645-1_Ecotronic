@@ -26,6 +26,7 @@ header('Content-Type: text/html; charset=UTF-8');
     <title>Admin</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="javascript/javascript.js"></script>
 
     <div id="header">
@@ -44,11 +45,11 @@ header('Content-Type: text/html; charset=UTF-8');
 
             <div id="navigation">
                 <ul>
-                    <li><a href="admin_Page.php" class="active"><span>Admin page</span></a></li>
-                    <li><a href="addNewDevice_page.php"><span>Add a new device</span></a></li>
-                    <li><a href="#"><span>Update/Delete an article</span></a></li>
-                    <li><a href="#"><span>Change discount</span></a></li>
-                    <li><a href="editTranslation.php"><span>Manage Translations</span></a></li>
+                    <li><a id="adminPage" href="admin.php" class="active"><span>Admin page</span></a></li>
+                    <li><a id="addNewDevicePage" href="addNewDevice.php"><span>Add a new device</span></a></li>
+                    <li><a id="updateDeletePage" href="updateDeleteDevices.php"><span>Update/Delete an article</span></a></li>
+                    <li><a id="discountPage" href="discount.php"><span>Change discount</span></a></li>
+                    <li><a id="translationsPage" href="editTranslation.php"><span>Manage Translations</span></a></li>
                 </ul>
             </div>
         </div>

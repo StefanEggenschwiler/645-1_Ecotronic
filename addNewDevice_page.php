@@ -14,7 +14,11 @@ $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
 
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    createNewDevice();
+
+}
 
 
 function createNewDevice() {
@@ -32,22 +36,18 @@ function createNewDevice() {
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-    echo($selectTypeName . " " . $selectBrandName . " " . $selectEfficiencyClassName . " " . $imageURL . " " . $model . " " . $price . " " .
-        $energyPrice . " " . $energyConsumption . " " . $serialNumber . " " . $selectProductionYear . " " . $manufacturerLink . " " . $shopLink);
-
-   // $this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
-      //  $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
-
+    $this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
+            $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
 
 }
-
 
 ?>
 
 
-<div class="createNewArticleBlock centered" style="overflow: scroll">
-    <h1>Add a new device</h1>
-    <form method="post" action="addNewDevice_page.php"">
+<div>
+    <div class="createNewArticleBlock">
+        <h1>Add a new device</h1>
+        <form method="post"">
 
         Select a type
         <select name="selectType">
@@ -83,20 +83,15 @@ function createNewDevice() {
 
         Select the production year
         <select name="selectProductionYear">
-            <option value="2006">2016</option>
-            <option value="2005">2015</option>
-            <option value="2004">2014</option>
-            <option value="2003">2013</option>
-            <option value="2002">2012</option>
-            <option value="2001">2011</option>
-            <option value="2000">2010</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
         </select>
 
-        </br>
-
-        Add a short description
-        </br>
-        <textarea name="description"></textarea>
         </br>
 
 
@@ -155,11 +150,18 @@ function createNewDevice() {
         </br>
 
 
+        <?php $reasons = array("error" => "Error while inserting", "inserted" => "New device successfully inserted!");
+        if (isset ( $_GET ['insertFailed'] )) {
+            if ($_GET["insertFailed"]) {
+                echo '<span style="color:red;">'.$reasons[$_GET["reason"]].'</span>';
+            }
+        }?>
+
+        </form>
+    </div>
+
+    </body>
 
 
-    </form>
+
 </div>
-
-</body>
-
-

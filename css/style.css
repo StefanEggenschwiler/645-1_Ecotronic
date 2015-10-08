@@ -12,6 +12,7 @@ body
 }
 
 
+
 .wrapper
 {
     position:relative;
@@ -189,12 +190,10 @@ body
 
 
 .createNewArticleBlock {
-    width: 600px;
-    height: 600px;
     padding: 20px;
     background: #fff;
     border-radius: 7px;
-    margin-top: 5%;
+    margin: 5% 20% 5% 20%;
     border-top: 7px solid #04B45F;
 
 }
