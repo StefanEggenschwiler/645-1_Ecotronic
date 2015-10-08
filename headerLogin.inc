@@ -7,6 +7,9 @@ if (isset ( $_GET ['lang'] )) {
 } else {
     $translate = new Translator ( 'en' );
 }
+
+header('Content-Type: text/html; charset=UTF-8');
+
 ?>
 
 

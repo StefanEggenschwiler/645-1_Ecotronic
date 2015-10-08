@@ -17,6 +17,7 @@ $brands = $model->getBrands();
 $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
+asort($showedItems); // SORT THE ARRAY
 $selectedCategoryChoice = null;
 $selectedBrandChoice[] = null;
 $checked = '' ;

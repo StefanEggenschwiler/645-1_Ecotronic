@@ -9,6 +9,7 @@ require_once 'dto/class.EfficiencyClass.php';
 $model = new Model();
 $types = $model->getTypes();
 $brands = $model->getBrands();
+asort($brands); // SORT THE ARRAY
 $efficiencyClasses = $model->getEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
@@ -62,7 +63,7 @@ function createNewDevice() {
         <select name="selectBrand">
             <?php
             foreach($brands as $value){
-                echo '<option>'.$value.'</option>';
+                echo '<option>'. htmlentities($value, ENT_QUOTES, 'iso8859-1').'</option>';
             } ?>
         </select>
 
