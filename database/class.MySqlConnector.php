@@ -28,7 +28,6 @@ class MySqlConnector {
     public function executeQuery($query){
         $result = $this->getConnection()->query($query)
         or die('Unable to connect to database [' . print_r($this->getConnection()->errno . ']', true));
-        $this->getConnection()->close();
         return $result;
     }
 }
