@@ -28,10 +28,20 @@ class Model {
         $this->efficiencyClassDao = new EfficiencyClassDAO();
     }
 
+    // ADMIN
     public function checkLogin($username, $password) {
         return $this->adminDao->authenticate($username, $password);
     }
 
+    // DEVICES
+    public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price,
+                                 $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink,
+                                 $shopLink) {
+        return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model,
+            $price, $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
+    }
+
+    // TYPES
     public function getAllTypes() {
         $types = $this->typeDao->getAll();
         usort($types, function($a, $b)
@@ -41,6 +51,7 @@ class Model {
         return $types;
     }
 
+    // BRANDS
     public function getAllBrands() {
         $brands = $this->brandDao->getAll();
         usort($brands, function($a, $b)
@@ -59,6 +70,7 @@ class Model {
         return $brands;
     }
 
+    // EFFICIENCY CLASSES
     public function getAllEfficiencyClasses() {
         $ecs = $this->efficiencyClassDao->getAll();
         usort($ecs, function($a, $b)
@@ -77,6 +89,7 @@ class Model {
         return $ecs;
     }
 
+    // DISPLAY
     public function displayDevicesWithFilters($category, $brands){
         $showedItems = $this->deviceDao->getByFilter($category, $brands);
         //$showedItems = $this->getDevicesByFilter($category, $brands, null, null, null, null, null);

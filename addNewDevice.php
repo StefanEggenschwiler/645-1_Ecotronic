@@ -7,17 +7,14 @@ require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
 
 $model = new Model();
-$types = $model->getTypes();
-$brands = $model->getBrands();
-asort($brands); // SORT THE ARRAY
-$efficiencyClasses = $model->getEfficiencyClasses();
+$types = $model->getAllTypes();
+$brands = $model->getAllBrands();
+$efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getBrands();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     createNewDevice();
-
 }
 
 
@@ -38,7 +35,6 @@ function createNewDevice() {
 
     $this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
             $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
-
 }
 
 ?>
