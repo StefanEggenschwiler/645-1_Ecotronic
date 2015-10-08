@@ -1,35 +1,33 @@
 <?php
-class Admin
-
-{
+class Admin {
+    // Fields
     private $id;
     private $firstname;
     private $lastname;
     private $username;
+    private $password;
 
-    public function __construct($id, $firstname, $lastname, $username)
-    {
-        $this->id = $id;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->username = $username;
-    }
-
-    //getter
+    // Getter
     public function getId(){
         return $this->id;
     }
     public function getFirstname(){
-        return $this->firstname;
+        return htmlentities(utf8_encode($this->firstname), ENT_QUOTES, 'UTF-8');
     }
     public function getLastname(){
-        return $this->lastname;
+        return htmlentities(utf8_encode($this->lastname), ENT_QUOTES, 'UTF-8');
     }
     public function getUsername(){
-        return $this->username;
+        return htmlentities(utf8_encode($this->username), ENT_QUOTES, 'UTF-8');
+    }
+    public function getPassword(){
+        $pw = $this->password;
+        $this->password = null;
+        unset($this->password);
+        return $pw;
     }
 
-    //setter
+    // Setter
     public function setFirstname($firstname){
         $this->firstname = $firstname;
     }

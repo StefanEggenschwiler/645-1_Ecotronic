@@ -7,28 +7,26 @@ require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
 
 $model = new Model();
-$types = $model->getTypes();
-$brands = $model->getBrands();
-asort($brands); // SORT THE ARRAY
-$efficiencyClasses = $model->getEfficiencyClasses();
+$types = $model->getAllTypes();
+$brands = $model->getAllBrands();
+$efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
-$showedItems = $model->getBrands();
+$showedItems = $model->getAllBrands();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     createNewDevice();
-
 }
 
 
 function createNewDevice() {
+    global $model;
     $selectTypeName = $_POST['selectType'];
     $selectBrandName = $_POST['selectBrand'];
     $selectEfficiencyClassName = $_POST['selectEfficiencyClassName'];
     $selectProductionYear = $_POST['selectProductionYear'];
 
     $imageURL = $_POST['imageURL'];
-    $model = $_POST['model'];
+    $modelName = $_POST['model'];
     $price = $_POST['price'];
     $energyPrice = $_POST['energyPrice'];
     $energyConsumption = $_POST['energyConsumption'];
@@ -36,9 +34,8 @@ function createNewDevice() {
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-    $this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
+    $model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
             $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
-
 }
 
 ?>
@@ -53,7 +50,7 @@ function createNewDevice() {
         <select name="selectType">
             <?php
             foreach($types as $value){
-                echo '<option>'.$value.'</option>';
+                echo '<option>'.$value->getTypeName().'</option>';
             } ?>
         </select>
 
@@ -63,7 +60,7 @@ function createNewDevice() {
         <select name="selectBrand">
             <?php
             foreach($brands as $value){
-                echo '<option>'. htmlentities($value, ENT_QUOTES, 'iso8859-1').'</option>';
+                echo '<option>'. $value->getBrandName().'</option>';
             } ?>
         </select>
 
@@ -99,7 +96,7 @@ function createNewDevice() {
         <select name="selectEfficiencyClassName">
             <?php
             foreach($efficiencyClasses as $value){
-                echo '<option>'.$value.'</option>';
+                echo '<option>'.$value->getClassName().'</option>';
             } ?>
         </select>
 

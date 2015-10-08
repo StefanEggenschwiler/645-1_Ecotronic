@@ -1,15 +1,12 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.DatabaseConnector.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
 
-class Type
+class TypeDAO
 {
     // Database Connection
     private $_conn;
-
-    // Fields
-    public $id = "";
-    public $typeName = "";
 
     public function __construct()
     {
@@ -19,7 +16,7 @@ class Type
     public function getAll() {
         $stmt = $this->_conn->getConnection()->query('
         SELECT * FROM type');
-        $stmt->setFetchMode(PDO::FETCH_INTO, new Type);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Type');
         return $stmt->fetchAll();
     }
 
@@ -38,12 +35,7 @@ class Type
         END');
         $stmt->bindParam(':newName', $newName, PDO::PARAM_STR, 50);
         $stmt->bindParam(':oldName', $oldName, PDO::PARAM_STR, 50);
-        $stmt->execute();
-        if($stmt->rowCount() == 1) {
-            return true;
-        } else{
-            return false;
-        }
+        return $stmt->execute();
     }
 
     public function delete($typeName) {

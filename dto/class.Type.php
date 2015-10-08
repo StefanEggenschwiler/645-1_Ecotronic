@@ -1,31 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Stefan
- * Date: 28-Sep-15
- * Time: 11:20
- */
-class Type
 
-{
+class Type {
+    // Fields
     private $id;
     private $typeName;
 
-    public function __construct($id, $typeName)
-    {
-        $this->id = $id;
-        $this->typeName = $typeName;
-    }
-
-    //getter
+    // Getter
     public function getId(){
         return $this->id;
     }
     public function getTypeName(){
-        return $this->typeName;
+        return htmlentities(utf8_encode($this->typeName), ENT_QUOTES, 'UTF-8');
     }
 
-    //setter
+    // Setter
     public function setTypeName($typeName){
         $this->typeName = $typeName;
     }

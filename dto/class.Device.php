@@ -4,6 +4,8 @@ include_once 'dto/class.Brand.php';
 include_once 'dto/class.EfficiencyClass.php';
 
 class Device {
+
+    // Fields
     private $id;
     private $typeId;
     private $brandId;
@@ -18,24 +20,8 @@ class Device {
     private $productionYear;
     private $manufacturerLink;
     private $shopLink;
-    public function __construct($id, $typeId, $brandId, $efficiencyClassId, $discountId, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
-        $this->id = $id;
-        $this->typeId = $typeId;
-        $this->brandId = $brandId;
-        $this->efficiencyClassId = $efficiencyClassId;
-        $this->discountId = $discountId;
-        $this->image = $image;
-        $this->model = $model;
-        $this->price = $price;
-        $this->energyPrice = $energyPrice;
-        $this->energyConsumption = $energyConsumption;
-        $this->serialNumber = $serialNumber;
-        $this->productionYear = $productionYear;
-        $this->manufacturerLink = $manufacturerLink;
-        $this->shopLink = $shopLink;
-    }
 
-    // getter
+    // Getter
     public function getId() {
         return $this->id;
     }
@@ -52,10 +38,10 @@ class Device {
         return $this->discountId;
     }
     public function getImage() {
-        return $this->image;
+        return htmlentities(utf8_encode($this->image), ENT_QUOTES, 'UTF-8');
     }
     public function getModel() {
-        return $this->model;
+        return htmlentities(utf8_encode($this->model), ENT_QUOTES, 'UTF-8');
     }
     public function getPrice() {
         return $this->price;
@@ -67,19 +53,19 @@ class Device {
         return $this->energyConsumption;
     }
     public function getSerialNumber() {
-        return $this->serialNumber;
+        return htmlentities(utf8_encode($this->serialNumber), ENT_QUOTES, 'UTF-8');
     }
     public function getProductionYear() {
         return $this->productionYear;
     }
     public function getManufacturerLink() {
-        return $this->manufacturerLink;
+        return htmlentities(utf8_encode($this->manufacturerLink), ENT_QUOTES, 'UTF-8');
     }
     public function getShopLink() {
-        return $this->shopLink;
+        return htmlentities(utf8_encode($this->shopLink), ENT_QUOTES, 'UTF-8');
     }
 
-    // setter
+    // Setter
     public function setTypeId($typeId) {
         $this->typeId = $typeId;
     }

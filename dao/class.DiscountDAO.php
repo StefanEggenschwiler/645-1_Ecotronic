@@ -1,15 +1,12 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.DatabaseConnector.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Discount.php';
 
-class Brand
+class DiscountDAO
 {
     // Database Connection
     private $_conn;
-
-    // Fields
-    public $id = "";
-    public $brandName = "";
 
     public function __construct()
     {
@@ -18,11 +15,12 @@ class Brand
 
     public function getAll() {
         $stmt = $this->_conn->getConnection()->query('
-        SELECT * FROM brand');
-        $stmt->setFetchMode(PDO::FETCH_INTO, new Brand);
+        SELECT * FROM discount');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Discount');
         return $stmt->fetchAll();
     }
 
+    /*
     public function getByType($typeName) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT DISTINCT brand.id, brand.brandName
@@ -62,11 +60,12 @@ class Brand
             return false;
         }
     }
+    */
 
-    public function delete($brandName) {
+    public function delete($discountId) {
         $stmt = $this->_conn->getConnection()->prepare('
-        DELETE FROM brand WHERE brandName = :brandName');
-        $stmt->bindParam(':brandName', $brandName, PDO::PARAM_STR, 60);
+        DELETE FROM discount WHERE id = :discountId');
+        $stmt->bindParam(':discountId', $discountId, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
