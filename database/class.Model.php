@@ -1,8 +1,10 @@
 <?php
+require_once 'dao/class.AdminDAO.php';
 require_once 'dao/class.BrandDAO.php';
 require_once 'dao/class.DeviceDAO.php';
 require_once 'dao/class.TypeDAO.php';
 require_once 'dao/class.EfficiencyClassDAO.php';
+require_once 'dto/class.Admin.php';
 require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
