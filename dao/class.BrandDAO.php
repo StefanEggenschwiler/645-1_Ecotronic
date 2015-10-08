@@ -1,15 +1,12 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.DatabaseConnector.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 
-class Brand
+class BrandDAO
 {
     // Database Connection
     private $_conn;
-
-    // Fields
-    public $id = "";
-    public $brandName = "";
 
     public function __construct()
     {
@@ -19,7 +16,7 @@ class Brand
     public function getAll() {
         $stmt = $this->_conn->getConnection()->query('
         SELECT * FROM brand');
-        $stmt->setFetchMode(PDO::FETCH_INTO, new Brand);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Brand');
         return $stmt->fetchAll();
     }
 
@@ -31,13 +28,8 @@ class Brand
 	        AND device.brandId = brand.id
             AND type.typeName  = :typeName');
         $stmt->bindParam(':typeName', $typeName, PDO::PARAM_STR, 60);
-        $stmt->setFetchMode(PDO::FETCH_INTO, new Brand);
-        $stmt->execute();
-        if($stmt->rowCount() > 0) {
-            return $stmt->fetchAll();
-        } else {
-            return false;
-        }
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Brand');
+        return $stmt->execute();
     }
 
     public function create($brandName) {
@@ -55,12 +47,7 @@ class Brand
         END');
         $stmt->bindParam(':newName', $newName, PDO::PARAM_STR, 60);
         $stmt->bindParam(':oldName', $oldName, PDO::PARAM_STR, 60);
-        $stmt->execute();
-        if($stmt->rowCount() == 1) {
-            return true;
-        } else{
-            return false;
-        }
+        return $stmt->execute();
     }
 
     public function delete($brandName) {

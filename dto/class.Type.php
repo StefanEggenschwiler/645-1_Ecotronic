@@ -1,23 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Stefan
- * Date: 28-Sep-15
- * Time: 11:20
- */
-class Type
 
-{
+class Type {
+    // Fields
     private $id;
     private $typeName;
 
-    public function __construct($id, $typeName)
-    {
-        $this->id = $id;
-        $this->typeName = $typeName;
-    }
-
-    //getter
+    // Getter
     public function getId(){
         return $this->id;
     }
@@ -25,7 +13,7 @@ class Type
         return $this->typeName;
     }
 
-    //setter
+    // Setter
     public function setTypeName($typeName){
         $this->typeName = $typeName;
     }

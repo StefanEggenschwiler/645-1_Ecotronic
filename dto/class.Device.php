@@ -4,6 +4,8 @@ include_once 'dto/class.Brand.php';
 include_once 'dto/class.EfficiencyClass.php';
 
 class Device {
+
+    // Fields
     private $id;
     private $typeId;
     private $brandId;
@@ -18,24 +20,8 @@ class Device {
     private $productionYear;
     private $manufacturerLink;
     private $shopLink;
-    public function __construct($id, $typeId, $brandId, $efficiencyClassId, $discountId, $image, $model, $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
-        $this->id = $id;
-        $this->typeId = $typeId;
-        $this->brandId = $brandId;
-        $this->efficiencyClassId = $efficiencyClassId;
-        $this->discountId = $discountId;
-        $this->image = $image;
-        $this->model = $model;
-        $this->price = $price;
-        $this->energyPrice = $energyPrice;
-        $this->energyConsumption = $energyConsumption;
-        $this->serialNumber = $serialNumber;
-        $this->productionYear = $productionYear;
-        $this->manufacturerLink = $manufacturerLink;
-        $this->shopLink = $shopLink;
-    }
 
-    // getter
+    // Getter
     public function getId() {
         return $this->id;
     }
@@ -79,7 +65,7 @@ class Device {
         return $this->shopLink;
     }
 
-    // setter
+    // Setter
     public function setTypeId($typeId) {
         $this->typeId = $typeId;
     }

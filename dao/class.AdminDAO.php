@@ -1,38 +1,31 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.DatabaseConnector.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Admin.php';
 
-class Admin
+class AdminDAO
 {
     // Database Connection
     private $_conn;
 
-    // Fields
-    public $username = "";
-    public $firstname = "";
-    public $lastname = "";
-
-    public function __construct($username)
+    public function __construct()
     {
         $this->_conn = new PdoConnector();
-        $this->username = $username;
     }
 
-    public function authenticate($password) {
+    public function authenticate($username, $password) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT * FROM admin WHERE username = :username');
-        $stmt->bindParam(':username', $this->username, PDO::PARAM_STR, 50);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR, 50);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Admin');
         $stmt->execute();
+
         if($stmt->rowCount() > 0) {
-            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                if (password_verify($password, $row['password'])) {
-                    $this->username = $row['username'];
-                    $this->firstname = $row['firstname'];
-                    $this->lastname = $row['lastname'];
-                    return true;
-                } else {
-                    return false;
-                }
+            $admin = $stmt->fetch();
+            if (password_verify($password, $admin->getPassword())) {
+                return $admin;
+            } else {
+                return false;
             }
         } else {
             return false;
@@ -47,7 +40,6 @@ class Admin
         $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR, 50);
         $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR, 50);
         $stmt->bindParam(':password', password_hash($password, PASSWORD_BCRYPT), PDO::PARAM_STR, 72);
-
         return $stmt->execute();
     }
 
@@ -59,11 +51,6 @@ class Admin
         $stmt->bindParam(':firstname', $newFirstname, PDO::PARAM_STR, 50);
         $stmt->bindParam(':lastname', $newLastname, PDO::PARAM_STR, 50);
         $stmt->bindParam(':password', password_hash($newPassword, PASSWORD_BCRYPT), PDO::PARAM_STR, 72);
-        $stmt->execute();
-        if($stmt->rowCount() == 1) {
-            return true;
-        } else{
-            return false;
-        }
+        return $stmt->execute();
     }
 }

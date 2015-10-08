@@ -1,21 +1,13 @@
 <?php
-class Admin
-
-{
+class Admin {
+    // Fields
     private $id;
     private $firstname;
     private $lastname;
     private $username;
+    private $password;
 
-    public function __construct($id, $firstname, $lastname, $username)
-    {
-        $this->id = $id;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->username = $username;
-    }
-
-    //getter
+    // Getter
     public function getId(){
         return $this->id;
     }
@@ -28,8 +20,14 @@ class Admin
     public function getUsername(){
         return $this->username;
     }
+    public function getPassword(){
+        $pw = $this->password;
+        $this->password = null;
+        unset($this->password);
+        return $pw;
+    }
 
-    //setter
+    // Setter
     public function setFirstname($firstname){
         $this->firstname = $firstname;
     }

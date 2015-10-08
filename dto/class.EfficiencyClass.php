@@ -1,23 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Stefan
- * Date: 28-Sep-15
- * Time: 11:21
- */
-class EfficiencyClass
 
-{
+class EfficiencyClass {
+    // Fields
     private $id;
     private $className;
 
-    public function __construct($id, $className)
-    {
-        $this->id = $id;
-        $this->className = $className;
-    }
-
-    //getter
+    // Getter
     public function getId(){
         return $this->id;
     }
@@ -25,7 +13,7 @@ class EfficiencyClass
         return $this->className;
     }
 
-    //setter
+    // Setter
     public function setClassName($className){
         $this->className = $className;
     }

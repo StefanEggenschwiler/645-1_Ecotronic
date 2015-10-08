@@ -1,23 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Stefan
- * Date: 28-Sep-15
- * Time: 11:20
- */
-class Brand
 
-{
+class Brand {
+    // Fields
     private $id;
     private $brandName;
 
-    public function __construct($id, $brandName)
-    {
-        $this->id = $id;
-        $this->brandName = $brandName;
-    }
-
-    //getter
+    // Getter
     public function getId(){
         return $this->id;
     }
@@ -25,7 +13,7 @@ class Brand
         return $this->brandName;
     }
 
-    //setter
+    // Setter
     public function setBrandName($brandName){
         $this->brandName = $brandName;
     }
