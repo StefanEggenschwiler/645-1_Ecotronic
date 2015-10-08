@@ -8,7 +8,6 @@ require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
 
 $model = new Model();
-
 $types = $model->getAllTypes();
 $brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();

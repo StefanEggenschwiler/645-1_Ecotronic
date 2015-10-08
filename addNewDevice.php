@@ -19,13 +19,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 function createNewDevice() {
+    global $model;
     $selectTypeName = $_POST['selectType'];
     $selectBrandName = $_POST['selectBrand'];
     $selectEfficiencyClassName = $_POST['selectEfficiencyClassName'];
     $selectProductionYear = $_POST['selectProductionYear'];
 
     $imageURL = $_POST['imageURL'];
-    $model = $_POST['model'];
+    $modelName = $_POST['model'];
     $price = $_POST['price'];
     $energyPrice = $_POST['energyPrice'];
     $energyConsumption = $_POST['energyConsumption'];
@@ -33,8 +34,8 @@ function createNewDevice() {
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-    var_dump($this->model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price, $energyPrice,
-            $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink));
+    $model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
+            $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
 }
 
 ?>
