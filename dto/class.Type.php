@@ -10,7 +10,7 @@ class Type {
         return $this->id;
     }
     public function getTypeName(){
-        return $this->typeName;
+        return htmlentities(utf8_encode($this->typeName), ENT_QUOTES, 'UTF-8');
     }
 
     // Setter

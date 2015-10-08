@@ -38,10 +38,10 @@ class Device {
         return $this->discountId;
     }
     public function getImage() {
-        return $this->image;
+        return htmlentities(utf8_encode($this->image), ENT_QUOTES, 'UTF-8');
     }
     public function getModel() {
-        return $this->model;
+        return htmlentities(utf8_encode($this->model), ENT_QUOTES, 'UTF-8');
     }
     public function getPrice() {
         return $this->price;
@@ -53,16 +53,16 @@ class Device {
         return $this->energyConsumption;
     }
     public function getSerialNumber() {
-        return $this->serialNumber;
+        return htmlentities(utf8_encode($this->serialNumber), ENT_QUOTES, 'UTF-8');
     }
     public function getProductionYear() {
         return $this->productionYear;
     }
     public function getManufacturerLink() {
-        return $this->manufacturerLink;
+        return htmlentities(utf8_encode($this->manufacturerLink), ENT_QUOTES, 'UTF-8');
     }
     public function getShopLink() {
-        return $this->shopLink;
+        return htmlentities(utf8_encode($this->shopLink), ENT_QUOTES, 'UTF-8');
     }
 
     // Setter

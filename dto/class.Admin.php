@@ -12,13 +12,13 @@ class Admin {
         return $this->id;
     }
     public function getFirstname(){
-        return $this->firstname;
+        return htmlentities(utf8_encode($this->firstname), ENT_QUOTES, 'UTF-8');
     }
     public function getLastname(){
-        return $this->lastname;
+        return htmlentities(utf8_encode($this->lastname), ENT_QUOTES, 'UTF-8');
     }
     public function getUsername(){
-        return $this->username;
+        return htmlentities(utf8_encode($this->username), ENT_QUOTES, 'UTF-8');
     }
     public function getPassword(){
         $pw = $this->password;

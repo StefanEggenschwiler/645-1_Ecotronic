@@ -50,9 +50,9 @@ class DeviceDAO
         if(!is_null($priceHigh)) {
             $stmt->bindParam(':priceHigh', $priceHigh, PDO::PARAM_STR, 20);
         }
-        echo $sql;
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
-        return $stmt->execute();
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     public function create($type, $brand, $efficiencyClass, $imageUrl, $model, $price, $energyPrice,

@@ -1,16 +1,27 @@
 <?php
-include_once 'dto/class.Admin.php';
-include_once 'dto/class.Device.php';
-include_once 'dto/class.Type.php';
-include_once 'dto/class.Brand.php';
-include_once 'dto/class.EfficiencyClass.php';
+require_once 'dao/class.BrandDAO.php';
+require_once 'dao/class.DeviceDAO.php';
+require_once 'dao/class.TypeDAO.php';
+require_once 'dao/class.EfficiencyClassDAO.php';
+require_once 'dto/class.Type.php';
+require_once 'dto/class.Brand.php';
+require_once 'dto/class.Device.php';
+require_once 'dto/class.EfficiencyClass.php';
 require_once 'class.MySqlConnector.php';
 
 class Model {
 
     private $_conn;
+    private $typeDao;
+    private $brandDao;
+    private $deviceDao;
+    private $efficiencyClasseDao;
 
     public function __construct(){
+        $this->typeDao = new TypeDAO();
+        $this->brandDao = new BrandDAO();
+        $this->deviceDao = new DeviceDAO();
+        $this->efficiencyClasseDao = new EfficiencyClassDAO();
         $this->_conn = new MySqlConnector();
     }
 
@@ -233,11 +244,12 @@ class Model {
 
 
     public function displayDevicesWithFilters($category, $brands){
-        $showedItems = $this->getDevicesByFilter($category, $brands, null, null, null, null, null);
+        $showedItems = $this->deviceDao->getByFilter($category, $brands);
+        //$showedItems = $this->getDevicesByFilter($category, $brands, null, null, null, null, null);
         foreach($showedItems as $value){
             echo "<li><a href='#'>";
             echo "<img src=";
-            echo htmlentities($value->getImage(), ENT_QUOTES, 'iso8859-1');
+            echo $value->getImage();
             echo "></br>";
             echo $value->getModel();
             echo "</a></li>";
@@ -245,11 +257,12 @@ class Model {
     }
 
     public function displayDevicesWithoutFilters($category){
-        $showedItems = $this->getDevicesByFilter($category, null, null, null, null, null, null);
+        $showedItems = $this->deviceDao->getByFilter($category);
+        //$showedItems = $this->getDevicesByFilter($category, null, null, null, null, null, null);
         foreach($showedItems as $value){
             echo "<li><table><tr><a href='#'>";
             echo "<td><img src=";
-            echo htmlentities($value->getImage(), ENT_QUOTES, 'iso8859-1');
+            echo $value->getImage();
             echo "></td><td>";
             echo $value->getBrandId()."</br>";
             echo $value->getModel()."</br>";
@@ -265,14 +278,14 @@ class Model {
     public function displayCategories($types, $selectedCategoryChoice, $translate){
         foreach($types as $value){
             echo "<div class='submenu'><label href='#'> <input type='radio' name='cat' onchange='this.form.submit()' value='" ;
-            echo $value;
+            echo $value->getTypeName();
             echo "'";
-            if($value == $selectedCategoryChoice)
+            if($value->getTypeName() == $selectedCategoryChoice)
             {
                 echo " checked";
             }
             echo ">";
-            echo $translate->__($value);
+            echo $translate->__($value->getTypeName());
             echo "</label></div>";
         }
     }

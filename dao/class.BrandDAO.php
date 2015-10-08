@@ -29,7 +29,8 @@ class BrandDAO
             AND type.typeName  = :typeName');
         $stmt->bindParam(':typeName', $typeName, PDO::PARAM_STR, 60);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Brand');
-        return $stmt->execute();
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     public function create($brandName) {

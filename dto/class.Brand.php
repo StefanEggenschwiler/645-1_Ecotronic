@@ -10,7 +10,7 @@ class Brand {
         return $this->id;
     }
     public function getBrandName(){
-        return $this->brandName;
+        return htmlentities(utf8_encode($this->brandName), ENT_QUOTES, 'UTF-8');
     }
 
     // Setter

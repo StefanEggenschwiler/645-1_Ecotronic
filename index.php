@@ -1,36 +1,51 @@
 <?php
 include_once 'header.inc';
+
 require_once 'database/class.Model.php';
+require_once 'dao/class.BrandDAO.php';
+require_once 'dao/class.DeviceDAO.php';
+require_once 'dao/class.TypeDAO.php';
+require_once 'dao/class.EfficiencyClassDAO.php';
 require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
-/**
- * Created by PhpStorm.
- * User: Muhamed
- * Date: 25.09.2015
- * Time: 09:33
- */
+
 $model = new Model();
-$types = $model->getTypes();
-$brands = $model->getBrands();
-$efficiencyClasses = $model->getEfficiencyClasses();
+$typeDao = new TypeDAO();
+$brandDao = new BrandDAO();
+$deviceDao = new DeviceDAO();
+$efficiencyClasseDao = new EfficiencyClassDAO();
+
+$types = $typeDao->getAll();
+usort($types, function($a, $b)
+{
+    return strcmp($a->getTypeName(), $b->getTypeName());
+});
+$brands = $brandDao->getAll();
+usort($brands, function($a, $b)
+{
+    return strcmp($a->getBrandName(), $b->getBrandName());
+});
+
+$efficiencyClasses = $efficiencyClasseDao->getAll();
+usort($efficiencyClasses, function($a, $b)
+{
+    return strcmp($a->getClassName(), $b->getClassName());
+});
 $consumptions = array();
-$showedItems = $model->getBrands();
-asort($showedItems); // SORT THE ARRAY
 $selectedCategoryChoice = null;
 $selectedBrandChoice[] = null;
 
 
 
 if(isset($_POST['cat'])) {
-
     $selectedCategoryChoice = $_POST['cat'];
-    $brands = $model->getBrandsByType($selectedCategoryChoice);
+    $brands = $brandDao->getByType($selectedCategoryChoice);
 }
 foreach($brands as $value){
-    if (isset($_POST[$value])) {
-        $selectedBrandChoice[] = $value;
+    if (isset($_POST[$value->getBrandName()])) {
+        $selectedBrandChoice[] = $value->getBrandName();
     }
 }
 
@@ -55,16 +70,17 @@ foreach($brands as $value){
                     <label href="#"> <?php $translate->__('Brand')?></label>
                 </div>
                 <div id="submenu2" style="display:none">
-                    <?php foreach($brands as $value){
+                    <?php
+                    foreach($brands as $value){
                         echo "<div class='submenu'><label href='#'> <input type='checkbox' ";
-                        echo "name='".$value."' value='".$value."'";
+                        echo "name='".$value->getBrandName()."' value='".$value->getBrandName()."'";
                         foreach($selectedBrandChoice as $key){
                             if($key == $value){
                                 echo 'checked';
                             }
                         }
                         echo ">";
-                        echo htmlentities($value, ENT_QUOTES, 'iso8859-1')."</br>";
+                        echo $value->getBrandName()."</br>";
                         echo "</label></div>";
                     } ?>
                 </div>
@@ -77,7 +93,7 @@ foreach($brands as $value){
                 <div id="submenu3" style="display:none">
                     <?php foreach($efficiencyClasses as $value){
                         echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
-                        echo $value."</br>";
+                        echo $value->getClassName()."</br>";
                         echo "</label></div>";
                     } ?>
                 </div>
@@ -87,7 +103,7 @@ foreach($brands as $value){
                 </div>
                 <div id="submenu5" style="display:none">
                     <div class='submenu'>
-                        <label style="text-align:center"><?php htmlentities($translate->__('Between'), ENT_QUOTES, 'iso8859-1')?> <input size="3" type="text"> <?php htmlentities($translate->__('And'), ENT_QUOTES, 'iso8859-1')?> <input size="3" type="text"></label>
+                        <label style="text-align:center"><?php htmlentities($translate->__('Between'), ENT_QUOTES, 'UTF-8')?> <input size="3" type="text"> <?php htmlentities($translate->__('And'), ENT_QUOTES, 'UTF-8')?> <input size="3" type="text"></label>
                     </div>
                 </div>
 
@@ -103,17 +119,12 @@ foreach($brands as $value){
         <div class="centerShowItems">
             <ul>
                 <?php
-
                 if($selectedCategoryChoice != null) {
                     $model->displayDevicesWithoutFilters($selectedCategoryChoice);
                 }
-
-
                 ?>
             </ul>
         </div>
-
-
         </form>
     </div>
 

@@ -10,7 +10,7 @@ class EfficiencyClass {
         return $this->id;
     }
     public function getClassName(){
-        return $this->className;
+        return htmlentities(utf8_encode($this->className), ENT_QUOTES, 'UTF-8');
     }
 
     // Setter
