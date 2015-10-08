@@ -24,6 +24,7 @@ else
     <title>Admin</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
+    <script type="text/javascript" src="javascript/javascript.js"></script>
 
     <div id="header">
         <div class="shell">
