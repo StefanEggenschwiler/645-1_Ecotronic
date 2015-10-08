@@ -2,37 +2,16 @@
 include_once 'header.inc';
 
 require_once 'database/class.Model.php';
-require_once 'dao/class.BrandDAO.php';
-require_once 'dao/class.DeviceDAO.php';
-require_once 'dao/class.TypeDAO.php';
-require_once 'dao/class.EfficiencyClassDAO.php';
 require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
 
 $model = new Model();
-$typeDao = new TypeDAO();
-$brandDao = new BrandDAO();
-$deviceDao = new DeviceDAO();
-$efficiencyClasseDao = new EfficiencyClassDAO();
 
-$types = $typeDao->getAll();
-usort($types, function($a, $b)
-{
-    return strcmp($a->getTypeName(), $b->getTypeName());
-});
-$brands = $brandDao->getAll();
-usort($brands, function($a, $b)
-{
-    return strcmp($a->getBrandName(), $b->getBrandName());
-});
-
-$efficiencyClasses = $efficiencyClasseDao->getAll();
-usort($efficiencyClasses, function($a, $b)
-{
-    return strcmp($a->getClassName(), $b->getClassName());
-});
+$types = $model->getAllTypes();
+$brands = $model->getAllTypes();
+$efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $selectedCategoryChoice = null;
 $selectedBrandChoice[] = null;
@@ -41,7 +20,7 @@ $selectedBrandChoice[] = null;
 
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
-    $brands = $brandDao->getByType($selectedCategoryChoice);
+    $brands = $model->getBrandsByType($selectedCategoryChoice);
 }
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
