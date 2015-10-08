@@ -64,8 +64,8 @@ class Model {
     public function createDevice($type, $brand, $efficiencyClass, $imageURL, $model, $price, $energyPrice,
                                  $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
 
-        $query = "INSERT INTO `device`(`typeid`, `brandid`, `efficiencyClassId`, `image`, `model`, `price`, `energyPrice`,
-                                 `energyConsumption`, `serialNumber`, `productionYear`, `manufacturerLink`, `shopLink`)
+        $query = "INSERT INTO `device`(`id`, `typeId`, `brandId`, `efficiencyClassId`, `image`, `model`, `price`, `energyPrice`,
+                  `energyConsumption`, `serialNumber`, `productionYear`, `manufacturerLink`, `shopLink`)
                                  VALUES (
 								 (SELECT `id` from `type` WHERE `typeName` = '$type'),
 								 (SELECT `id` from `brand` WHERE `brandName` = '$brand'),
