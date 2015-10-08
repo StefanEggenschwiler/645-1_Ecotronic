@@ -22,6 +22,7 @@ if($actual_link == 'fr' || $actual_link == 'de' || $actual_link == 'it'){
 }else{
     $_SESSION['lang'] = '';
 }
+header('Content-Type: text/html; charset=UTF-8');
 ?>
 
 

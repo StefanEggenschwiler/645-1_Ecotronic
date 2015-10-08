@@ -1,6 +1,6 @@
 <?php
 
-class MySqlConnector {
+class PdoConnector {
 
     const HOST = "127.0.0.1";
     const PORT = "3306";
@@ -11,16 +11,19 @@ class MySqlConnector {
     private $_connection;
 
     public function __construct() {
-        $this->_connection = new mysqli(self::HOST, self::USER, self::PWD, self::DATABASE);
-        if($this->_connection->connect_errno > 0){
-            die('Unable to connect to database [' . $this->_connection->connect_error . ']');
+        try {
+            $this->_connection = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::DATABASE, self::USER, self::PWD);
+            $this->_connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            print 'Unable to connect to database [ ' . $e->getMessage() . ' ]';
+            die();
         }
     }
 
     public function getConnection(){
         if(!isset($this->_connection) ||
             $this->_connection == null){
-            new MySqlConnector();
+            new PdoConnector();
         }
         return $this->_connection;
     }
