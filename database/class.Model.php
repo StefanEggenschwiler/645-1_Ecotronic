@@ -177,4 +177,13 @@ class Model {
         }
     }
 
+    public function getMaxPriceOfDevices($devices) {
+        $max = 0;
+        foreach ($devices as $key=>$val) {
+            if ($val->getPrice() > $max) {
+                $max = $val->getPrice();
+            }
+        }
+        return $max;
+    }
 }
