@@ -120,7 +120,7 @@ if (isset($_POST['priceOfSlider']))
                 <?php
 
                 if($selectedCategoryChoice != null) {
-                    if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice){
+                    if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice != null){
 
                         $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
                     }else {
