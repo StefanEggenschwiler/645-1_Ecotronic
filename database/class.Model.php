@@ -92,20 +92,16 @@ class Model {
     // DISPLAY
     public function displayDevicesWithFilters($category, $brands){
         $showedItems = $this->deviceDao->getByFilter($category, $brands);
-        //$showedItems = $this->getDevicesByFilter($category, $brands, null, null, null, null, null);
-        foreach($showedItems as $value){
-            echo "<li><a href='#'>";
-            echo "<img src=";
-            echo $value->getImage();
-            echo "></br>";
-            echo $value->getModel();
-            echo "</a></li>";
-        }
+        $this->displayDevicesForm($showedItems);
     }
 
     public function displayDevicesWithoutFilters($category){
         $showedItems = $this->deviceDao->getByFilter($category);
-        //$showedItems = $this->getDevicesByFilter($category, null, null, null, null, null, null);
+        $this->displayDevicesForm($showedItems);
+
+    }
+
+    private function displayDevicesForm($showedItems){
         foreach($showedItems as $value){
             echo "<li><table><tr><a href='#'>";
             echo "<td><img src=";
