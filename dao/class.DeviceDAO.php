@@ -142,12 +142,11 @@ class DeviceDAO
     public function getAutoCompleteEntries() {
         $models = array();
         $stmt = $this->_conn->getConnection()->query('
-        SELECT device.model, brand.brandName FROM device, brand WHERE device.brandId = brand.id');
+        SELECT * FROM device');
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($rows as $row) {
-            $models[] =  $row['brandName'].' - '.$row['model'];
+            $models[] =  $row['model'];
         }
-        var_dump(json_encode($models));
         echo json_encode($models);
     }
 }
