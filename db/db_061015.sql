@@ -409,15 +409,18 @@ INSERT INTO `type` (`id`, `typeName`) VALUES
 
 ALTER TABLE `device`
 ADD FOREIGN KEY (`typeId`)
-REFERENCES type(id);
+REFERENCES type(id)
+ON DELETE CASCADE;
 
 ALTER TABLE `device`
 ADD FOREIGN KEY (`brandId`)
-REFERENCES brand(id);
+REFERENCES brand(id)
+ON DELETE CASCADE;
 
 ALTER TABLE `device`
 ADD FOREIGN KEY (`efficiencyClassId`)
-REFERENCES efficiencyclass(id);
+REFERENCES efficiencyclass(id)
+ON DELETE CASCADE;
 
 ALTER TABLE `device`
 ADD FOREIGN KEY (`discountId`)

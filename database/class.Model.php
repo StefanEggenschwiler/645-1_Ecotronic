@@ -33,6 +33,10 @@ class Model {
         return $this->adminDao->authenticate($username, $password);
     }
 
+    public function updateAdmin($username, $newFirstname, $newLastname, $newPassword) {
+        return $this->adminDao->update($username, $newFirstname, $newLastname, $newPassword);
+    }
+
     // DEVICES
     public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price,
                                  $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink,
@@ -49,6 +53,18 @@ class Model {
             return strcmp($a->getTypeName(), $b->getTypeName());
         });
         return $types;
+    }
+
+    public function createType($typeName) {
+        return $this->typeDao->create($typeName);
+    }
+
+    public function updateType($oldName, $newName) {
+        return $this->typeDao->update($oldName, $newName);
+    }
+
+    public function deleteType($typeName) {
+        return $this->typeDao->delete($typeName);
     }
 
     // BRANDS
