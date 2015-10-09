@@ -140,6 +140,10 @@ class Model {
     // DISPLAY
     public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null){
         $showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass, $price);
+        usort($showedItems, function($a, $b)
+        {
+            return strcmp($a->getPrice(), $b->getPrice());
+        });
         $this->displayDevicesForm($showedItems);
     }
 
