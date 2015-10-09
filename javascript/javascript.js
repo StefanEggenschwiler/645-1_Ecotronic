@@ -14,19 +14,18 @@ function displayMenu(obj){
 
 }
 
-//when the page is loaded
+//when a page is loaded by clicking on a tab,
+// it will look at the name of the page and change de class to the tab to be "active"
 
 $(function () {
-    var namePage = location.pathname.split('/').slice(-1)[0];
+        $("a").removeClass('active');
 
-    if(namePage == "admin.php" || "addNewDevice.php" || "updateDeleteDevices.php" || "editDiscount.php" || "editTranslation.php" ){
-
-        $("a").removeClass("active");
-        $("#addNewDevicePage").addClass("active");
-
-    }
-
-})
+        var $parent = $(this);
+        if (!$parent.hasClass('active')) {
+            $parent.addClass('active');
+        }
+        e.preventDefault();
+});
 
 
 function displayPrice(newPriceValue)
