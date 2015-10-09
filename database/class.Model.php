@@ -49,6 +49,10 @@ class Model {
             $price, $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
     }
 
+    public function getDevicesByFilter($type, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
+        return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceLow, $priceHigh);
+    }
+
     // TYPES
     public function getAllTypes() {
         $types = $this->typeDao->getAll();

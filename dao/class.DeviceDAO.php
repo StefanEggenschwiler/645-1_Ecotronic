@@ -143,4 +143,8 @@ class DeviceDAO
         $stmt->bindParam(':deviceId', $deviceId, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    public function getModelsForAutoComplete() {
+
+    }
 }
