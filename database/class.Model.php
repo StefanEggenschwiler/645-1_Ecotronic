@@ -190,4 +190,8 @@ class Model {
         }
         return $max;
     }
+
+    public function getAutoCompleteEntries() {
+        $this->deviceDao->getAutoCompleteEntries();
+    }
 }

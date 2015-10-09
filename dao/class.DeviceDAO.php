@@ -25,7 +25,7 @@ class DeviceDAO
         return $stmt->fetchAll();
     }
 
-    public function getByFilter($type, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
+    public function getByFilter($type, $brands = null, $efficiencyClasses = null, $priceHigh = null) {
         if(!empty($brands)) {
             $inBrand = "";
             foreach($brands as $k => $v)
@@ -47,12 +47,10 @@ class DeviceDAO
         device.brandId = brand.id AND
         device.efficiencyClassId = efficiencyclass.id AND
         device.typeId = type.id AND
-        device.typeId = (SELECT id FROM type WHERE typeName = :type)  %s %s %s %s %s ;',
+        device.typeId = (SELECT id FROM type WHERE typeName = :type)  %s %s %s ;',
             !empty($brands)   ? 'AND device.brandId IN (SELECT id FROM brand WHERE brandName IN ('.$inBrand.'))'   : null,
             !empty($efficiencyClasses) ? 'AND device.efficiencyClassId IN (SELECT id FROM efficiencyclass WHERE className IN ('.$inClass.'))' : null,
-            !empty($priceLow) &&  empty($priceHigh) ? 'AND device.price BETWEEN :priceLow AND 100000' : null,
-             empty($priceLow) && !empty($priceHigh) ? 'AND device.price BETWEEN 0 AND :priceHigh' : null,
-            !empty($priceLow) && !empty($priceHigh) ? 'AND device.price BETWEEN :priceLow AND :priceHigh' : null);
+            !empty($priceHigh) ? 'AND device.price BETWEEN 0 AND :priceHigh' : null);
         $stmt = $this->_conn->getConnection()->prepare($sql);
         $stmt->bindParam(':type', $type, PDO::PARAM_STR, 50);
         if(!empty($brands)) {
@@ -66,9 +64,6 @@ class DeviceDAO
                 $ids = explode(',', $inClass);
                 $stmt->bindParam($ids[$i], $efficiencyClasses[$i], PDO::PARAM_STR, 50);
             }
-        }
-        if(!empty($priceLow)) {
-            $stmt->bindParam(':priceLow', $priceLow, PDO::PARAM_STR, 20);
         }
         if(!empty($priceHigh)) {
             $stmt->bindParam(':priceHigh', $priceHigh, PDO::PARAM_STR, 20);
@@ -144,7 +139,15 @@ class DeviceDAO
         return $stmt->execute();
     }
 
-    public function getModelsForAutoComplete() {
-
+    public function getAutoCompleteEntries() {
+        $models = array();
+        $stmt = $this->_conn->getConnection()->query('
+        SELECT device.model, brand.brandName FROM device, brand WHERE device.brandId = brand.id');
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($rows as $row) {
+            $models[] =  $row['brandName'].' - '.$row['model'];
+        }
+        var_dump(json_encode($models));
+        echo json_encode($models);
     }
 }
