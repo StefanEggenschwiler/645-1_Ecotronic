@@ -17,6 +17,7 @@ $selectedBrandChoice = array();
 $selectedEfficiencyClassChoice = array();
 $selectedPriceChoice = 0;
 
+
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
@@ -32,6 +33,11 @@ foreach($efficiencyClasses as $value){
     if (isset($_POST[$value->getClassName()])) {
         $selectedEfficiencyClassChoice[] = $value->getClassName();
     }
+}
+
+if (isset($_POST['priceOfSlider']))
+{
+    $selectedPriceChoice = $_POST['priceOfSlider'];
 }
 
 
@@ -96,7 +102,7 @@ foreach($efficiencyClasses as $value){
                 </div>
                 <div id="submenu4" style="display:none">
                     <div class='submenu'>
-                        <label style="text-align:center"><?php $translate->__('Max')?></br><input type="range" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="<?php echo $selectedPriceChoice; ?>" oninput="displayPrice(value)" onchange="displayPrice(value)"></br><span id="range">0</span> </label>
+                        <label style="text-align:center"><?php $translate->__('Max')?></br><input type="range" name="priceOfSlider" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="0" oninput="displayPrice(value)" onchange="displayPrice(value)"></br><span id="range">0</span> </label>
                     </div>
                 </div>
 
@@ -115,8 +121,9 @@ foreach($efficiencyClasses as $value){
 
                 if($selectedCategoryChoice != null) {
                     if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null){
+
                         $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
-                    }else{
+                    }else {
                         $model->displayDevicesWithoutFilters($selectedCategoryChoice);
                     }
                 }

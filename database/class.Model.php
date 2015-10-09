@@ -138,8 +138,8 @@ class Model {
     }
 
     // DISPLAY
-    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null){
-        $showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass);
+    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null){
+        $showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass, $price);
         $this->displayDevicesForm($showedItems);
     }
 
