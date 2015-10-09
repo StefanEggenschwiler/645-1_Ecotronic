@@ -33,6 +33,10 @@ class Model {
         return $this->adminDao->authenticate($username, $password);
     }
 
+    public function createAdmin($username, $firstname, $lastname, $password) {
+        return $this->adminDao->create($username, $firstname, $lastname, $password);
+    }
+
     public function updateAdmin($username, $newFirstname, $newLastname, $newPassword) {
         return $this->adminDao->update($username, $newFirstname, $newLastname, $newPassword);
     }
@@ -86,6 +90,18 @@ class Model {
         return $brands;
     }
 
+    public function createBrand($brandName) {
+        return $this->brandDao->create($brandName);
+    }
+
+    public function updateBrand($oldName, $newName) {
+        return $this->brandDao->update($oldName, $newName);
+    }
+
+    public function deleteBrand($brandName) {
+        return $this->brandDao->delete($brandName);
+    }
+
     // EFFICIENCY CLASSES
     public function getAllEfficiencyClasses() {
         $ecs = $this->efficiencyClassDao->getAll();
@@ -103,6 +119,18 @@ class Model {
             return strcmp($a->getClassName(), $b->getClassName());
         });
         return $ecs;
+    }
+
+    public function createEfficiencyClass($efficiencyClassName) {
+        return $this->efficiencyClassDao->create($efficiencyClassName);
+    }
+
+    public function updateEfficiencyClass($oldName, $newName) {
+        return $this->efficiencyClassDao->update($oldName, $newName);
+    }
+
+    public function deleteEfficiencyClass($efficiencyClassName) {
+        return $this->efficiencyClassDao->delete($efficiencyClassName);
     }
 
     // DISPLAY
