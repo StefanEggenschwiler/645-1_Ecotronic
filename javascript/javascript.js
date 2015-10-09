@@ -17,7 +17,6 @@ function displayMenu(obj){
 //when the page is loaded
 
 $(function () {
-
     var namePage = location.pathname.split('/').slice(-1)[0];
 
     if(namePage == "admin.php" || "addNewDevice.php" || "updateDeleteDevices.php" || "editDiscount.php" || "editTranslation.php" ){
@@ -25,7 +24,12 @@ $(function () {
         $("a").removeClass("active");
         $("#addNewDevicePage").addClass("active");
 
-
     }
 
 })
+
+
+function displayPrice(newPriceValue)
+{
+        document.getElementById('range').innerHTML = newPriceValue;
+}

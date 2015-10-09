@@ -94,7 +94,7 @@ foreach($efficiencyClasses as $value){
                 </div>
                 <div id="submenu4" style="display:none">
                     <div class='submenu'>
-                        <label style="text-align:center"><?php $translate->__('Between')?> <input size="3" type="text"> <?php $translate->__('And')?> <input size="3" type="text"></label>
+                        <label style="text-align:center"><?php $translate->__('Max')?></br><input type="range" min="0" max="1000" step="100" value="0" oninput="displayPrice(value)" onchange="displayPrice(value)"></br><span id="range">0</span> </label>
                     </div>
                 </div>
 
