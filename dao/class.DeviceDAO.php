@@ -74,7 +74,6 @@ class DeviceDAO
             $stmt->bindParam(':priceHigh', $priceHigh, PDO::PARAM_STR, 20);
         }
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
-        echo $stmt->queryString;
         $stmt->execute();
         return $stmt->fetchAll();
     }
