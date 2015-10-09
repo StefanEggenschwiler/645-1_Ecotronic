@@ -14,6 +14,7 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $selectedCategoryChoice = null;
 $selectedBrandChoice = array();
+$selectedEfficiencyClassChoice = array();
 
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
@@ -22,6 +23,12 @@ if(isset($_POST['cat'])) {
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
         $selectedBrandChoice[] = $value->getBrandName();
+    }
+}
+
+foreach($efficiencyClasses as $value){
+    if (isset($_POST[$value->getClassName()])) {
+        $selectedEfficiencyClassChoice[] = $value->getClassName();
     }
 }
 
@@ -67,8 +74,16 @@ foreach($brands as $value){
                     <label href="#"><?php $translate->__('Classification')?></label>
                 </div>
                 <div id="submenu3" style="display:none">
-                    <?php foreach($efficiencyClasses as $value){
-                        echo "<div class='submenu'><label href='#'> <input type='checkbox'>";
+                    <?php
+                    foreach($efficiencyClasses as $value){
+                        echo "<div class='submenu'><label href='#'> <input type='checkbox' ";
+                        echo "name='".$value->getClassName()."' value='".$value->getClassName()."'";
+                        foreach($selectedEfficiencyClassChoice as $key){
+                            if($key == $value->getClassName()){
+                                echo 'checked';
+                            }
+                        }
+                        echo ">";
                         echo $value->getClassName()."</br>";
                         echo "</label></div>";
                     } ?>
@@ -95,9 +110,10 @@ foreach($brands as $value){
         <div class="centerShowItems">
             <ul>
                 <?php
+
                 if($selectedCategoryChoice != null) {
-                    if($selectedBrandChoice != null){
-                        $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice);
+                    if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null){
+                        $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice);
                     }else{
                         $model->displayDevicesWithoutFilters($selectedCategoryChoice);
                     }

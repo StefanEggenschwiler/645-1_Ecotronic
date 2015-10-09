@@ -90,8 +90,8 @@ class Model {
     }
 
     // DISPLAY
-    public function displayDevicesWithFilters($category, $brands){
-        $showedItems = $this->deviceDao->getByFilter($category, $brands);
+    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null){
+        $showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass);
         $this->displayDevicesForm($showedItems);
     }
 
@@ -107,9 +107,9 @@ class Model {
             echo "<td><img src=";
             echo $value->getImage();
             echo "></td><td>";
-            echo $value->getBrandId()."</br>";
+            echo $value->getBrandName()."</br>";
             echo $value->getModel()."</br>";
-            echo $value->getEfficiencyClassId();
+            echo $value->getEfficiencyClassName();
             echo "</tr></td>";
             echo "<tr><td>";
             echo $value->getPrice()."</td><td><input type='submit'></td>";
