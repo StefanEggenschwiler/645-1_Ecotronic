@@ -1,4 +1,8 @@
 <?php
+if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
+    header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
+    exit;
+}
 /**
  * Created by PhpStorm.
  * User: Muhamed
@@ -6,23 +10,30 @@
  * Time: 09:42
  */
 include_once 'translations/class.Translator.php';
+
+$cookie_name = 'lang';
+$cookie_value;
+
+
 $translate;
 if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( $_GET ['lang'] );
-} else {
-    $translate = new Translator ( 'en' );
+    $cookie_value = $_GET['lang'];
 }
 session_start();
 $_SESSION["lang"] = "";
 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$actual_link = substr($actual_link, -2);
-if($actual_link == 'fr' || $actual_link == 'de' || $actual_link == 'it'){
-    $_SESSION['lang'] = '?lang='.$actual_link;
+$languageValue = substr($actual_link, -2);
+if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
+    $_SESSION['lang'] = '?lang='.$languageValue;
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }else{
-    $_SESSION['lang'] = '';
+    $_SESSION['lang'] = '?lang=en';
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
 header('Content-Type: text/html; charset=UTF-8');
+
 ?>
 
 
@@ -50,10 +61,10 @@ header('Content-Type: text/html; charset=UTF-8');
 
 
 <div class="languages">
-    <a href="index.php"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>
-    <a href="index.php?lang=fr"><img class ="flags"  src="images/flags/flagFR.png" alt="FR" title="Français"></a>
-    <a href="index.php?lang=de"><img class ="flags" src="images/flags/flagDE.png" alt="DE" title="Deutsch"></a>
-    <a href="index.php?lang=it"><img class ="flags" src="images/flags/flagIT.png" alt="IT" title="Italien"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=en';?>"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=fr';?>"><img class ="flags"  src="images/flags/flagFR.png" alt="FR" title="Français"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=de';?>"><img class ="flags" src="images/flags/flagDE.png" alt="DE" title="Deutsch"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=it';?>"><img class ="flags" src="images/flags/flagIT.png" alt="IT" title="Italien"></a>
 </div>
 
 </div>
