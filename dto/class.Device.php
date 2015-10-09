@@ -32,19 +32,19 @@ class Device {
         return $this->typeId;
     }
     public function getTypeName() {
-        return $this->typeName;
+        return htmlentities(utf8_encode($this->typeName), ENT_QUOTES, 'UTF-8');
     }
     public function getEfficiencyClassId() {
         return $this->efficiencyClassId;
     }
     public function getEfficiencyClassName() {
-        return $this->className;
+        return htmlentities(utf8_encode($this->className), ENT_QUOTES, 'UTF-8');
     }
     public function getBrandId() {
         return $this->brandId;
     }
     public function getBrandName() {
-        return $this->brandName;
+        return htmlentities(utf8_encode($this->brandName), ENT_QUOTES, 'UTF-8');
     }
     public function getDiscountId() {
         return $this->discountId;
