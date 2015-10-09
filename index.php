@@ -19,6 +19,7 @@ $selectedEfficiencyClassChoice = array();
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
+    $efficiencyClasses = $model->getEfficiencyClassesByType($selectedCategoryChoice);
 }
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {

@@ -22,7 +22,7 @@ class EfficiencyClassDAO
 
     public function getByType($typeName) {
         $stmt = $this->_conn->getConnection()->prepare('
-        SELECT DISTINCT efficiencyclass.id, efficiencyclass.brandName
+        SELECT DISTINCT efficiencyclass.id, efficiencyclass.className
           FROM efficiencyclass, type, device
           WHERE device.typeId  = type.id
 	        AND device.efficiencyClassId = efficiencyclass.id
