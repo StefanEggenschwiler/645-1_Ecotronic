@@ -13,36 +13,59 @@ class DeviceDAO
         $this->_conn = new PdoConnector();
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $stmt = $this->_conn->getConnection()->query('
-        SELECT * FROM device');
+        SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
+               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+		FROM device, brand, type, efficiencyclass
+		WHERE device.brandId = brand.id AND device.typeId = type.id AND device.efficiencyClassId = efficiencyclass.id;');
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
         return $stmt->fetchAll();
     }
 
-    public function getByFilter($type, $brands = null, $efficiencyClass = null, $priceLow = null, $priceHigh = null) {
+    public function getByFilter($type, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
         if(!is_null($brands)) {
-            $in = "";
+            $inBrand = "";
             foreach($brands as $k => $v)
-                $in .= ':brand'.$k.',';
-            $in = rtrim($in, ",");
+                $inBrand .= ':brand'.$k.',';
+            $inBrand = rtrim($inBrand, ",");
         }
-        $sql = sprintf('SELECT * FROM device WHERE typeId = (SELECT id FROM type WHERE typeName = :type) %s %s %s %s %s ;',
-            !is_null($brands)   ? 'AND brandId IN (SELECT id FROM brand WHERE brandName IN ('.$in.'))'   : null,
-            !is_null($efficiencyClass) ? 'AND efficiencyClassId = (SELECT id FROM efficiencyclass WHERE className = :efficiencyClass' : null,
-            !is_null($priceLow) &&  is_null($priceHigh) ? 'AND price BETWEEN :priceLow AND 100000' : null,
-             is_null($priceLow) && !is_null($priceHigh) ? 'AND price BETWEEN 0 AND :priceHigh' : null,
-            !is_null($priceLow) && !is_null($priceHigh) ? 'AND price BETWEEN :priceLow AND :priceHigh' : null);
+        if(!is_null($efficiencyClasses)) {
+            $inClass = "";
+            foreach($efficiencyClasses as $k => $v)
+                $inClass .= ':class'.$k.',';
+            $inClass = rtrim($inClass, ",");
+        }
+        $sql = sprintf('
+        SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
+               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+        FROM device, brand, type, efficiencyclass
+        WHERE
+        device.brandId = brand.id AND
+        device.efficiencyClassId = efficiencyclass.id AND
+        device.typeId = type.id AND
+        device.typeId = (SELECT id FROM type WHERE typeName = :type)  %s %s %s %s %s ;',
+            !is_null($brands)   ? 'AND device.brandId IN (SELECT id FROM brand WHERE brandName IN ('.$inBrand.'))'   : null,
+            !is_null($efficiencyClasses) ? 'AND device.efficiencyClassId IN (SELECT id FROM efficiencyclass WHERE className IN ('.$inClass.'))' : null,
+            !is_null($priceLow) &&  is_null($priceHigh) ? 'AND device.price BETWEEN :priceLow AND 100000' : null,
+             is_null($priceLow) && !is_null($priceHigh) ? 'AND device.price BETWEEN 0 AND :priceHigh' : null,
+            !is_null($priceLow) && !is_null($priceHigh) ? 'AND device.price BETWEEN :priceLow AND :priceHigh' : null);
         $stmt = $this->_conn->getConnection()->prepare($sql);
         $stmt->bindParam(':type', $type, PDO::PARAM_STR, 50);
         if(!is_null($brands)) {
             for($i = 0; $i<count($brands); $i++) {
-                $ids = explode(',', $in);
+                $ids = explode(',', $inBrand);
                 $stmt->bindParam($ids[$i], $brands[$i], PDO::PARAM_STR, 50);
             }
         }
-        if(!is_null($efficiencyClass)) {
-            $stmt->bindParam(':efficiencyClass', $efficiencyClass, PDO::PARAM_STR, 50);
+        if(!is_null($efficiencyClasses)) {
+            for($i = 0; $i<count($efficiencyClasses); $i++) {
+                $ids = explode(',', $inClass);
+                $stmt->bindParam($ids[$i], $efficiencyClasses[$i], PDO::PARAM_STR, 50);
+            }
         }
         if(!is_null($priceLow)) {
             $stmt->bindParam(':priceLow', $priceLow, PDO::PARAM_STR, 20);
@@ -51,6 +74,7 @@ class DeviceDAO
             $stmt->bindParam(':priceHigh', $priceHigh, PDO::PARAM_STR, 20);
         }
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
+        echo $stmt->queryString;
         $stmt->execute();
         return $stmt->fetchAll();
     }

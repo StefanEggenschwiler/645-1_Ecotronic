@@ -8,8 +8,11 @@ class Device {
     // Fields
     private $id;
     private $typeId;
+    private $typeName;
     private $brandId;
+    private $brandName;
     private $efficiencyClassId;
+    private $className;
     private $discountId;
     private $image;
     private $model;
@@ -28,11 +31,20 @@ class Device {
     public function getTypeId() {
         return $this->typeId;
     }
+    public function getTypeName() {
+        return $this->typeName;
+    }
     public function getEfficiencyClassId() {
         return $this->efficiencyClassId;
     }
+    public function getEfficiencyClassName() {
+        return $this->className;
+    }
     public function getBrandId() {
         return $this->brandId;
+    }
+    public function getBrandName() {
+        return $this->brandName;
     }
     public function getDiscountId() {
         return $this->discountId;
