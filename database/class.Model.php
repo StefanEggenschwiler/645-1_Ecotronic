@@ -9,7 +9,6 @@ require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
-require_once 'class.MySqlConnector.php';
 
 class Model {
 
