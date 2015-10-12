@@ -22,13 +22,14 @@ header('Content-Type: text/html; charset=UTF-8');
 
 
 <head>
-    <!--Getting the page name -->
+    <!--Getting the page name, like "admin.php" -->
     <?php  $pageName = basename($_SERVER['PHP_SELF']);?>
 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Admin</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/updateDeleteDevice.css" type="text/css" media="all"/>
 
     <script type="text/javascript" src="javascript/javascript.js"></script>
 
@@ -50,7 +51,7 @@ header('Content-Type: text/html; charset=UTF-8');
                 <ul>
                     <li class="<?php echo ($pageName == "admin.php" ? "active" : "")?>"><a id="nav" href="admin.php"><span>Admin page</span></a></li>
                     <li class="<?php echo ($pageName == "addNewDevice.php" ? "active" : "")?>"><a id="nav" href="addNewDevice.php"><span>Add a new device</span></a></li>
-                    <li class="<?php echo ($pageName == "updateDeleteDevices.php" ? "active" : "")?>"><a id="nav" href="updateDeleteDevices.php"><span>Update/Delete an article</span></a></li>
+                    <li class="<?php echo ($pageName == "updateDeleteDevice.php" ? "active" : "")?>"><a id="nav" href="updateDeleteDevice.php"><span>Update/Delete an article</span></a></li>
                     <li class="<?php echo ($pageName == "editDiscount.php" ? "active" : "")?>"><a id="nav" href="editDiscount.php"><span>Change discount</span></a></li>
                     <li class="<?php echo ($pageName == "editTranslation.php" ? "active" : "")?>"><a id="nav" href="editTranslation.php"><span>Manage Translations</span></a></li>
                 </ul>

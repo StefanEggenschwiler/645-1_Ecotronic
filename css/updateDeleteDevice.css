@@ -1,0 +1,93 @@
+.table {
+}
+
+#container {
+    float: left;
+    width: 750px;
+}
+
+.table th {
+    color: #818181;
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: solid 1px #d2d1cb;
+}
+
+.table td {
+    background: #fbfcfc;
+    border-bottom: solid 1px #e0e0e0;
+    padding: 8px 10px;
+}
+
+.table tr.odd td {
+    background: #f8f8f8;
+}
+
+.table tr:hover td {
+    background: #fff9e1;
+}
+
+.table a.ico {
+}
+
+.box {
+    background: #fbfcfc;
+    height: 100%;
+    padding: 1px;
+    margin-bottom: 20px;
+}
+
+.box-head {
+    background: #ba4c32;
+    height: 32px;
+    color: #fff;
+    padding: 0 10px;
+    line-height: 32px;
+    white-space: nowrap;
+    border-bottom: solid 1px #fff;
+}
+
+.box-head .right {
+    padding-top: 5px;
+    line-height: 13px;
+}
+
+.box-head .right label,
+.box-head .right input {
+    float: left;
+}
+
+.box-head .right label {
+    padding: 4px 0 0 0;
+}
+
+.box-head .right input {
+    margin-left: 5px;
+}
+
+.box-content {
+    padding: 10px;
+}
+
+.box-content p {
+    padding-top: 10px;
+}
+
+.box {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 0 6px #978f6c;
+    -webkit-box-shadow: 0 0 6px #978f6c;
+}
+
+.box-head {
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.button {
+    -moz-box-shadow: 0 0 2px #978f6c;
+    -webkit-box-shadow: 0 0 2px #978f6c;
+}
