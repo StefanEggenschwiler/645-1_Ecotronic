@@ -80,15 +80,15 @@ h2 {
     margin-right: 2px;
 }
 
-#navigation ul li a,
-#navigation ul li a span {
+#navigation ul li,
+#navigation ul li span {
     float: left;
     height: 36px;
     background: url(../images/tab.jpg);
     padding: 0 0 0 15px;
 }
 
-#navigation ul li a span {
+#navigation ul li span {
     background-position: right 0;
     padding: 0 15px 0 0;
 }
@@ -99,17 +99,17 @@ h2 {
     text-decoration: none;
 }
 
-#navigation ul li a.active,
-#navigation ul li a:hover {
+#navigation ul li.active,
+#navigation ul li:hover {
     background-position: 0 bottom;
 }
 
-#navigation ul li a.active span,
-#navigation ul li a:hover span {
+#navigation ul li.active span,
+#navigation ul li:hover span {
     background-position: right bottom;
 }
 
-#navigation ul li a.active {
+#navigation ul li.active {
     font-size: 12px;
     font-weight: bold;
     color: black;
@@ -123,4 +123,8 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
+
+
+
+
 

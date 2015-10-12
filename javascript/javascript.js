@@ -17,15 +17,21 @@ function displayMenu(obj){
 //when a page is loaded by clicking on a tab,
 // it will look at the name of the page and change de class to the tab to be "active"
 
-$(function () {
-        $("a").removeClass('active');
+//$(function () {
+//    var namePage = location.pathname.split('/').slice(-1)[0];
+//
+//    if(namePage == "addNewDevice.php"){
+//
+//        $("a").removeClass("active");
+//        $("#nav").addClass("active");
+//
+//    }
+//
+//
+//})
 
-        var $parent = $(this);
-        if (!$parent.hasClass('active')) {
-            $parent.addClass('active');
-        }
-        e.preventDefault();
-});
+
+
 
 
 function displayPrice(newPriceValue)

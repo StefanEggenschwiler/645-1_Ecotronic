@@ -22,11 +22,14 @@ header('Content-Type: text/html; charset=UTF-8');
 
 
 <head>
+    <!--Getting the page name -->
+    <?php  $pageName = basename($_SERVER['PHP_SELF']);?>
+
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Admin</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
     <script type="text/javascript" src="javascript/javascript.js"></script>
 
     <div id="header">
@@ -45,11 +48,11 @@ header('Content-Type: text/html; charset=UTF-8');
 
             <div id="navigation">
                 <ul>
-                    <li><a id="adminPage" href="admin.php" class="active"><span>Admin page</span></a></li>
-                    <li><a id="addNewDevicePage" href="addNewDevice.php"><span>Add a new device</span></a></li>
-                    <li><a id="updateDeletePage" href="updateDeleteDevices.php"><span>Update/Delete an article</span></a></li>
-                    <li><a id="discountPage" href="editDiscount.php"><span>Change discount</span></a></li>
-                    <li><a id="translationsPage" href="editTranslation.php"><span>Manage Translations</span></a></li>
+                    <li class="<?php echo ($pageName == "admin.php" ? "active" : "")?>"><a id="nav" href="admin.php"><span>Admin page</span></a></li>
+                    <li class="<?php echo ($pageName == "addNewDevice.php" ? "active" : "")?>"><a id="nav" href="addNewDevice.php"><span>Add a new device</span></a></li>
+                    <li class="<?php echo ($pageName == "updateDeleteDevices.php" ? "active" : "")?>"><a id="nav" href="updateDeleteDevices.php"><span>Update/Delete an article</span></a></li>
+                    <li class="<?php echo ($pageName == "editDiscount.php" ? "active" : "")?>"><a id="nav" href="editDiscount.php"><span>Change discount</span></a></li>
+                    <li class="<?php echo ($pageName == "editTranslation.php" ? "active" : "")?>"><a id="nav" href="editTranslation.php"><span>Manage Translations</span></a></li>
                 </ul>
             </div>
         </div>
