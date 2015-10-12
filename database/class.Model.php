@@ -53,6 +53,10 @@ class Model {
         return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceLow, $priceHigh);
     }
 
+    public function getDevicesByModel($model) {
+        return $this->deviceDao->getByModel($model);
+    }
+
     // TYPES
     public function getAllTypes() {
         $types = $this->typeDao->getAll();

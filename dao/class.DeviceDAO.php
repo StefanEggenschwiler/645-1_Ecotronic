@@ -73,6 +73,15 @@ class DeviceDAO
         return $stmt->fetchAll();
     }
 
+    public function getByModel($model) {
+        $stmt = $this->_conn->getConnection()->prepare('
+        SELECT * FROM device WHERE device.model LIKE :model');
+        $stmt->bindParam(':model', $model, PDO::PARAM_STR, 200);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function create($type, $brand, $efficiencyClass, $imageUrl, $model, $price, $energyPrice,
                            $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
 
