@@ -79,7 +79,8 @@ class DeviceDAO
                device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
                device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
         FROM device, brand, type, efficiencyclass
-        WHERE device.model LIKE :model');
+        WHERE
+        device.model LIKE :model');
         $stmt->bindParam(':model', $model, PDO::PARAM_STR, 200);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
         $stmt->execute();
