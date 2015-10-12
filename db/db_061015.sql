@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `device` (
   `shopLink` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+ALTER TABLE `device` ADD UNIQUE(`serialNumber`);
 
 --
 -- RELATIONS FOR TABLE `device`:
