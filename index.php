@@ -16,6 +16,7 @@ $selectedCategoryChoice = null;
 $selectedBrandChoice = array();
 $selectedEfficiencyClassChoice = array();
 $selectedPriceChoice = 0;
+$searchBarContent = null;
 
 
 if(isset($_POST['cat'])) {
@@ -35,19 +36,20 @@ foreach($efficiencyClasses as $value){
     }
 }
 
-if (isset($_POST['priceOfSlider']))
-{
+if (isset($_POST['priceOfSlider'])){
     $selectedPriceChoice = $_POST['priceOfSlider'];
 }
 
+if(isset($_POST['searchBar'])){
+    $searchBarContent = ($_POST['searchBar']);
 
+}
 
 ?>
     <!-- wrapper contains menu + showedItems-->
     <div class="wrapper">
         <!-- left menu filters-->
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];
-        echo $_SESSION['lang'];?>">
+
             <div id="menu">
 
                 <div class="menu" id="menu1" onclick="displayMenu(this)">
@@ -119,17 +121,22 @@ if (isset($_POST['priceOfSlider']))
             <ul>
                 <?php
 
-                if($selectedCategoryChoice != null) {
+                if($selectedCategoryChoice != null || $searchBarContent !=null) {
                     if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice != null){
 
                         $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
                     }else {
                         $model->displayDevicesWithoutFilters($selectedCategoryChoice);
                     }
+                    if($searchBarContent!=null){
+                        $myDevices = $model->getDevicesByModel($searchBarContent);
+                        $model->displayDevicesForm($myDevices);
+                    }
                 }
                 ?>
             </ul>
         </div>
+        <!-- end of the form for the whol page, begins int the header.inc-->
         </form>
     </div>
 

@@ -57,10 +57,12 @@ header('Content-Type: text/html; charset=UTF-8');
 
 <!-- search bar to find your device-->
     <div class="centerVertical">
-        <form method="post" action="login.php">
-            <input id="searchBar" type="text" name="searchBar" value="" placeholder="<?php $translate->__('Find your old product...')?>">
-            <input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Search')?>">
-        </form>
+        <!-- start of the form for the whol page, ends in index.php-->
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];
+        echo $_SESSION['lang'];?>">
+            <input id="searchBar" type="text" name="searchBar" placeholder="<?php $translate->__('Find your old product...')?>">
+            <input id="searchButton" type="submit" name="searchBarButton" value="<?php $translate->__('Search')?>">
+
         <a class="italicText" href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea')?></a>
     </div>
 <div class="languages">

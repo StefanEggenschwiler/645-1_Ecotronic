@@ -156,7 +156,7 @@ class Model {
 
     }
 
-    private function displayDevicesForm($showedItems){
+    public function displayDevicesForm($showedItems){
         foreach($showedItems as $value){
             echo "<li><table><tr><a href='#'>";
             echo "<td><img src=";
