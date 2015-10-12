@@ -82,6 +82,7 @@ class DeviceDAO
         WHERE
         device.brandId = brand.id AND
         device.efficiencyClassId = efficiencyclass.id AND
+        device.typeId = type.id AND
         device.model = :model');
         $stmt->bindParam(':model', $model, PDO::PARAM_STR, 200);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
