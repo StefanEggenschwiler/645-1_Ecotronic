@@ -44,6 +44,12 @@ header('Content-Type: text/html; charset=UTF-8');
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="javascript/javascript.js"></script>
+    <!-- load jquery ui css-->
+    <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <!-- load jquery library -->
+    <script src="javascript/jquery-1.11.3.min.js"></script>
+    <!-- load jquery ui js file -->
+    <script src="javascript/jquery-ui.min.js"></script>
 </head>
 <body>
 <div class="bannerHead">
@@ -57,9 +63,6 @@ header('Content-Type: text/html; charset=UTF-8');
         </form>
         <a class="italicText" href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea')?></a>
     </div>
-
-
-
 <div class="languages">
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=en';?>"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=fr';?>"><img class ="flags"  src="images/flags/flagFR.png" alt="FR" title="Français"></a>
@@ -68,3 +71,17 @@ header('Content-Type: text/html; charset=UTF-8');
 </div>
 
 </div>
+<script type="text/javascript">
+    $(function() {
+        var availableTags =
+            <?php
+            include('database/class.Model.php');
+            $model = new Model();
+            $model->getAutoCompleteEntries();
+            ?>;
+        $("#searchBar").autocomplete({
+            source: availableTags,
+            autoFocus:true
+        });
+    });
+</script>
