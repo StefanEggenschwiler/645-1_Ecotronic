@@ -12,7 +12,7 @@ class PdoConnector {
 
     public function __construct() {
         try {
-            $this->_connection = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::DATABASE, self::USER, self::PWD);
+            $this->_connection = new PDO('mysql:host=' . self::HOST . ';port=' . self::PORT . ';dbname=' . self::DATABASE, self::USER, self::PWD);
             $this->_connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             print 'Unable to connect to database [ ' . $e->getMessage() . ' ]';
