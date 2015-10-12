@@ -75,7 +75,7 @@ class DeviceDAO
 
     public function getByModel($model) {
         $stmt = $this->_conn->getConnection()->prepare('
-        SELECT DISTINCT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
+        SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
                device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
                device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
         FROM device, brand, type, efficiencyclass
