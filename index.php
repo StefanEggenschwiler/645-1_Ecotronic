@@ -161,11 +161,6 @@ if(isset($_POST['searchBar'])){
                 }
 
                 if($showedDevices !=null){
-                    $serialNumbersArray = array();
-
-                    foreach($showedDevices as $value){
-                       $serialNumbersArray[] = $value->getSerialNumber();
-                    }
 
                     foreach($showedDevices as $value)
                     {
@@ -174,13 +169,14 @@ if(isset($_POST['searchBar'])){
                         if(isset($_POST[$serialNumber])){
                             $myDevices = $_SESSION['comparedDevices'];
 
-                            if(in_array($serialNumber,$serialNumbersArray, true)){
+                            if(in_array($value,$myDevices)){
+
+                            }else{
                                 $myDevices[] = $value;
                                 $_SESSION['comparedDevices'] = $myDevices;
                             }
                         }
                     }
-                    var_dump($serialNumbersArray);
                     var_dump($_SESSION['comparedDevices']);
                 }
 
