@@ -26,7 +26,7 @@ if(isset($_POST['cat'])) {
     $efficiencyClasses = $model->getEfficiencyClassesByType($selectedCategoryChoice);
 }
 if (isset ( $_POST ['addComparison'] )) {
-    $comparedDevices = array_unique(array_merge($model->getDevicesBySerialNumber($_POST['addComparison']), $comparedDevices));
+    $comparedDevices = array_unique(array_merge($comparedDevices, $model->getDevicesBySerialNumber($_POST['addComparison'])));
     $_SESSION['comparedDevices'] = $comparedDevices;
 }
 foreach($brands as $value){
