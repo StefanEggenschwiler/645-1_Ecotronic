@@ -1,4 +1,5 @@
 <?php
+require_once 'dto/class.Device.php';
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
     exit;

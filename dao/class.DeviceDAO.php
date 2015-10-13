@@ -90,6 +90,23 @@ class DeviceDAO
         return $stmt->fetchAll();
     }
 
+    public function getBySerialNumber($serialNumber) {
+        $stmt = $this->_conn->getConnection()->prepare('
+        SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
+               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+        FROM device, brand, type, efficiencyclass
+        WHERE
+        device.brandId = brand.id AND
+        device.efficiencyClassId = efficiencyclass.id AND
+        device.typeId = type.id AND
+        device.serialNumber = :serialNumber');
+        $stmt->bindParam(':serialNumber', $serialNumber, PDO::PARAM_STR, 200);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function create($type, $brand, $efficiencyClass, $imageUrl, $model, $price, $energyPrice,
                            $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
 

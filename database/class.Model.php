@@ -18,6 +18,7 @@ class Model {
     private $brandDao;
     private $deviceDao;
     private $efficiencyClassDao;
+    private $showedItems = array();
 
     public function __construct(){
         $this->adminDao = new AdminDAO();
@@ -54,6 +55,10 @@ class Model {
 
     public function getDevicesByModel($model) {
         return $this->deviceDao->getByModel($model);
+    }
+
+    public function getDevicesBySerialNumber($serialNumber){
+        return $this->deviceDao->getBySerialNumber($serialNumber);
     }
 
     // TYPES
@@ -142,17 +147,17 @@ class Model {
 
     // DISPLAY
     public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null){
-        $showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass, $price);
-        usort($showedItems, function($a, $b)
+        $this->showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass, $price);
+        usort($this->showedItems, function($a, $b)
         {
             return strcmp($a->getPrice(), $b->getPrice());
         });
-        $this->displayDevicesForm($showedItems);
+        $this->displayDevicesForm($this->showedItems);
     }
 
     public function displayDevicesWithoutFilters($category){
-        $showedItems = $this->deviceDao->getByFilter($category);
-        $this->displayDevicesForm($showedItems);
+        $this->showedItems = $this->deviceDao->getByFilter($category);
+        $this->displayDevicesForm($this->showedItems);
 
     }
 
@@ -167,7 +172,9 @@ class Model {
             echo $value->getEfficiencyClassName();
             echo "</tr></td>";
             echo "<tr><td>";
-            echo $value->getPrice()."</td><td><input type='submit'></td>";
+            echo $value->getPrice()."</td><td><input id='addToCompareListButton' type='submit' name='";
+            echo $value->getSerialNumber();
+            echo "' value='+'></td>";
             echo "</tr>";
             echo "</a></table></li>";
         }
