@@ -23,6 +23,9 @@ if (isset ( $_GET ['lang'] )) {
 }
 session_start();
 $_SESSION["lang"] = "";
+if(!isset($_SESSION['comparedDevices'])){
+    $_SESSION['comparedDevices'] = array();
+}
 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $languageValue = substr($actual_link, -2);

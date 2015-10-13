@@ -172,9 +172,9 @@ class Model {
             echo $value->getEfficiencyClassName();
             echo "</tr></td>";
             echo "<tr><td>";
-            echo $value->getPrice()."</td><td><input id='addToCompareListButton' type='submit' name='";
+            echo $value->getPrice()."</td><td><button id='addToCompareListButton' type='submit' value='";
             echo $value->getSerialNumber();
-            echo "' value='+'></td>";
+            echo "' name='addComparison'>+</button></td>";
             echo "</tr>";
             echo "</a></table></li>";
         }

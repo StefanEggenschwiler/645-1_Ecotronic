@@ -1,16 +1,11 @@
 <?php
-include_once 'header.inc';
+include_once 'headerIndex.inc';
 
 require_once 'database/class.Model.php';
 require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
 require_once 'dto/class.EfficiencyClass.php';
-
-if(!isset($_SESSION['comparedDevices'])){
-    $_SESSION['comparedDevices'] = array();
-}
-$comparedDevices = $_SESSION['comparedDevices'];
 
 $model = new Model();
 $types = $model->getAllTypes();
@@ -22,14 +17,17 @@ $selectedBrandChoice = array();
 $selectedEfficiencyClassChoice = array();
 $selectedPriceChoice = 0;
 $searchBarContent = null;
-
-
+$comparedDevices = $_SESSION['comparedDevices'];
 $showedDevices = array();
 
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
     $efficiencyClasses = $model->getEfficiencyClassesByType($selectedCategoryChoice);
+}
+if (isset ( $_POST ['addComparison'] )) {
+    $comparedDevices = array_unique(array_merge($model->getDevicesBySerialNumber($_POST['addComparison']), $comparedDevices));
+    $_SESSION['comparedDevices'] = $comparedDevices;
 }
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
@@ -162,25 +160,6 @@ if(isset($_POST['searchBar'])){
                         $model->displayDevicesForm($myDevices);
                     }
                 }
-                if($showedDevices!=null){
-                    foreach($showedDevices as $value)
-                    {
-                        if(isset($_POST[$value->getSerialNumber()])){
-
-                            if(in_array($value,$comparedDevices)){
-
-                            }else{
-                                $comparedDevices[] = $value;
-                                $_SESSION['comparedDevices'] = $comparedDevices;
-                            }
-                        }
-                    }
-                }
-
-
-
-
-
                 ?>
             </ul>
         </div>
