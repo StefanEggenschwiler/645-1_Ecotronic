@@ -10,7 +10,7 @@ require_once 'dto/class.EfficiencyClass.php';
 if(!isset($_SESSION['comparedDevices'])){
     $_SESSION['comparedDevices'] = array();
 }
-
+$comparedDevices = $_SESSION['comparedDevices'];
 
 $model = new Model();
 $types = $model->getAllTypes();
@@ -23,9 +23,8 @@ $selectedEfficiencyClassChoice = array();
 $selectedPriceChoice = 0;
 $searchBarContent = null;
 
-$showedDevices = array();
-$comparedDevices = array();
 
+$showedDevices = array();
 
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
@@ -123,14 +122,18 @@ if(isset($_POST['searchBar'])){
         <!-- right div to show compared devices-->
         <div class="rightComparator">
             <?php
-            foreach($comparedDevices as $value){
+            foreach($_SESSION['comparedDevices'] as $value){
                 echo "<table>";
                 echo "<tr>";
-                echo "<th>XXX</th>";
+                echo "<th>";
+                echo $value->getBrandName()."</br>";
+                echo $value->getModel()."</br>";
+                echo $value->getPrice();
+                echo "</th>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>XXX</td>";
-                echo "<td>XXX</td>";
+                echo "<td></td>";
+                echo "<td></td>";
                 echo "</tr>";
                 echo "</table>";
             }
@@ -159,26 +162,23 @@ if(isset($_POST['searchBar'])){
                         $model->displayDevicesForm($myDevices);
                     }
                 }
-
-                if($showedDevices !=null){
-
+                if($showedDevices!=null){
                     foreach($showedDevices as $value)
                     {
-                        $serialNumber = $value->getSerialNumber();
+                        if(isset($_POST[$value->getSerialNumber()])){
 
-                        if(isset($_POST[$serialNumber])){
-                            $myDevices = $_SESSION['comparedDevices'];
-
-                            if(in_array($value,$myDevices)){
+                            if(in_array($value,$comparedDevices)){
 
                             }else{
-                                $myDevices[] = $value;
-                                $_SESSION['comparedDevices'] = $myDevices;
+                                $comparedDevices[] = $value;
+                                $_SESSION['comparedDevices'] = $comparedDevices;
                             }
                         }
                     }
-                    var_dump($_SESSION['comparedDevices']);
                 }
+
+
+
 
 
                 ?>
