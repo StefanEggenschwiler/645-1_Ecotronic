@@ -24,6 +24,11 @@ class Device {
     private $manufacturerLink;
     private $shopLink;
 
+    public function __toString()
+    {
+        return $this->serialNumber;
+    }
+
     // Getter
     public function getId() {
         return $this->id;
