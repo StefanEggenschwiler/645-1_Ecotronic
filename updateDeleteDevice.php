@@ -27,9 +27,6 @@ function updateDevice() {
     <div id="container">
 
     </div>
-
-    </body>
-
-
-
 </div>
+
+</body>
