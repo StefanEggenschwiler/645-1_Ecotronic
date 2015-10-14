@@ -16,4 +16,4 @@ kWh/year=kWh/année
 Price=Prix
 Category=Catégorie
 Classification=Classification
-Compare = Comparer
+Compare=Comparer
