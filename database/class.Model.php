@@ -1,14 +1,14 @@
 <?php
-require_once 'dao/class.AdminDAO.php';
-require_once 'dao/class.BrandDAO.php';
-require_once 'dao/class.DeviceDAO.php';
-require_once 'dao/class.TypeDAO.php';
-require_once 'dao/class.EfficiencyClassDAO.php';
-require_once 'dto/class.Admin.php';
-require_once 'dto/class.Type.php';
-require_once 'dto/class.Brand.php';
-require_once 'dto/class.Device.php';
-require_once 'dto/class.EfficiencyClass.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.AdminDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.BrandDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.DeviceDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.TypeDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.EfficiencyClassDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Admin.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
 class Model {
 
