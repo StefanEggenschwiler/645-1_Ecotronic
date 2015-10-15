@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muhamed
- * Date: 25.09.2015
- * Time: 09:42
- */
+
 require_once 'dto/class.Device.php';
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);

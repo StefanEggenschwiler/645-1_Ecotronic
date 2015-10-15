@@ -47,7 +47,6 @@ if (isset($_POST['priceOfSlider'])){
 
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
-
 }
 
 ?>
