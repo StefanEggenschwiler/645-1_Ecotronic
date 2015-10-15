@@ -27,7 +27,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Admin</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/icons/FavIcon.ico" />`
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons/FavIcon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/updateDeleteDevice.css" type="text/css" media="all"/>
