@@ -1,3 +1,7 @@
+/**
+ * Display the menu when called
+ * @param obj the object fired
+ */
 function displayMenu(obj){
 
     var idMenu     = obj.id;
@@ -14,8 +18,10 @@ function displayMenu(obj){
 
 }
 
-
-
+/**
+ * Changes 'range' for a new price
+ * @param newPriceValue the new price to display
+ */
 function displayPrice(newPriceValue)
 {
         document.getElementById('range').innerHTML = newPriceValue;

@@ -27,9 +27,8 @@ function updateDevice() {
     <div id="container">
 
     </div>
-
-    </body>
-
-
-
 </div>
+
+<?php
+include_once 'footer.inc';
+?>

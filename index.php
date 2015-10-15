@@ -163,7 +163,7 @@ if(isset($_POST['searchBar'])){
                 ?>
             </ul>
         </div>
-        <!-- end of the form for the whol page, begins int the header.inc-->
+        <!-- end of the form for the whole page, begins int the header.inc-->
         </form>
     </div>
 
