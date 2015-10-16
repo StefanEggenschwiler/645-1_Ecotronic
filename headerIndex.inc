@@ -5,6 +5,12 @@ if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
     exit;
 }
+if(isset($_POST['compareButton'])){
+    $indexLink = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $indexLink = str_replace("index","comparison",$indexLink);
+    header('Location: '.$indexLink);
+    exit();
+}
 
 include_once 'translations/class.Translator.php';
 
@@ -58,7 +64,8 @@ header('Content-Type: text/html; charset=UTF-8');
 <!-- search bar to find your device-->
     <div class="centerVertical">
         <!-- start of the form for the whol page, ends in index.php-->
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];
+        <form method="post" action="<?php
+        echo $_SERVER['PHP_SELF'];
         echo $_SESSION['lang'];?>">
             <input id="searchBar" type="text" name="searchBar" placeholder="<?php $translate->__('Find your old product...')?>">
             <input id="searchButton" type="submit" name="searchBarButton" value="<?php $translate->__('Search')?>">

@@ -3,10 +3,17 @@ include_once 'headerIndex.inc';
 require_once 'dto/class.Device.php';
 ?>
 
-<html>
-<body>
 <table>
     <tr>
+        <th><?php $translate->__('Your old device')?>-></th>
+        <?php
+        foreach ($_SESSION['comparedDevices'] as $value){
+            echo '<th><input type="radio" name="dev" value="'.$value->getSerialNumber().'"></th>';
+        }
+        ?>
+    </tr>
+    <tr>
+        <td><?php $translate->__('Brand')?></td>
         <?php
         foreach ($_SESSION['comparedDevices'] as $value){
             echo '<td>'.$value->getBrandName().'</td>';
@@ -14,13 +21,7 @@ require_once 'dto/class.Device.php';
         ?>
     </tr>
     <tr>
-        <?php
-        foreach ($_SESSION['comparedDevices'] as $value){
-            echo '<td>'.$value->getBrandName().'</td>';
-        }
-        ?>
-    </tr>
-    <tr>
+        <td><?php $translate->__('Model')?></td>
         <?php
         foreach ($_SESSION['comparedDevices'] as $value){
             echo '<td>'.$value->getModel().'</td>';
@@ -28,6 +29,7 @@ require_once 'dto/class.Device.php';
         ?>
     </tr>
     <tr>
+        <td><?php $translate->__('Classification')?></td>
         <?php
         foreach ($_SESSION['comparedDevices'] as $value){
             echo '<td>'.$value->getEfficiencyClassName().'</td>';
@@ -35,6 +37,7 @@ require_once 'dto/class.Device.php';
         ?>
     </tr>
     <tr>
+        <td><?php $translate->__('Price')?></td>
         <?php
         foreach ($_SESSION['comparedDevices'] as $value){
             echo '<td>'.$value->getPrice().'</td>';
@@ -42,7 +45,9 @@ require_once 'dto/class.Device.php';
         ?>
     </tr>
 </table>
-</body>
-</html>
+<?php
+include_once 'footer.inc';
+?>
+
 
 
