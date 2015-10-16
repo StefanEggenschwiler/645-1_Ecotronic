@@ -332,7 +332,26 @@ body
 {
     float: right;
     width:15em;
+    background: #2abb3f;
+
 }
+
+
+.rightComparator #designThInfo
+{
+
+    font-size: 0.85em;
+    width:12em;
+    border: solid black 1px;
+    text-align: left;
+}
+
+.designThButton
+{
+    text-align:center;
+}
+
+
 
 #compareButton
 {

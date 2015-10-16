@@ -59,7 +59,7 @@ if(isset($_POST['searchBar'])){
             <div class="menu" id="menu1" onclick="displayMenu(this)">
                 <label href="#"><?php $translate->__('Category')?></label>
             </div>
-            <div id="submenu1" style="display:block">
+            <div id="submenu1">
                 <?php $model->displayCategories($types, $selectedCategoryChoice, $translate) ?>
             </div>
 
@@ -120,18 +120,20 @@ if(isset($_POST['searchBar'])){
         <div class="rightComparator">
             <?php
             foreach($_SESSION['comparedDevices'] as $value){
-                echo "<table>";
-                echo "<tr>";
-                echo "<th>";
-                echo $value->getBrandName()."</br>";
-                echo $value->getModel()."</br>";
-                echo $value->getPrice();
-                echo "</th>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td></td>";
-                echo "<td></td>";
-                echo "</tr>";
+                echo "<table cellpadding='10' cellspacing='10'>";
+                    echo "<tr>";
+                        echo "<th id='designThInfo' rowspan='2'>" ;
+                            echo $value->getBrandName()."</br>";
+                            echo $value->getModel()."</br>";
+                            echo $value->getPrice();
+                        echo "</th>";
+                        echo "<th class'designThButton'> o </th>";
+                    echo "</tr>";
+
+                    echo "<tr>";
+                        echo "<th class'designThButton'> X </th>" ;
+                    echo "</tr>";
+
                 echo "</table>";
             }
 
