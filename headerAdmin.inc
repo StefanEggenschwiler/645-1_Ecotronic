@@ -35,9 +35,9 @@ header('Content-Type: text/html; charset=UTF-8');
     <script type="text/javascript" src="javascript/javascript.js"></script>
 
     <div id="header">
-        <div class="shell">
+        <div class="shell980W">
             <div id="top">
-                <div id="top-navigation">
+                <div id="topRightBlock">
                     Welcome <strong><?php echo $admin->getUsername(); ?></strong>
                     <span>|</span>
                     <a href="#">Profile Settings</a>
