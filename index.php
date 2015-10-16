@@ -141,6 +141,7 @@ if(isset($_POST['searchBar'])){
             <label href="#" id="compare"><input id="compareButton" type="submit" name="compareButton" value="<?php $translate->__('Compare')?>"></label>
         </div>
 
+
         <!-- Center div to show the selected devices-->
         <div class="centerShowItems">
             <ul>
