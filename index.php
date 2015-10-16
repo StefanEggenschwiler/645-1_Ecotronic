@@ -118,20 +118,32 @@ if(isset($_POST['searchBar'])){
 
         <!-- right div to show compared devices-->
         <div class="rightComparator">
+
+            <table>
+                <tr>
+                    <th>
+                        <?php $translate->__("Devices to be compare");?>
+                    </th>
+                    <th>
+                        <?php $translate->__("Your old device");?>
+                    </th>
+
+                </tr>
+            </table>
             <?php
             foreach($_SESSION['comparedDevices'] as $value){
-                echo "<table cellpadding='10' cellspacing='10'>";
+                echo "<table cellpadding='10' cellspacing='5'>";
                     echo "<tr>";
                         echo "<th id='designThInfo' rowspan='2'>" ;
-                            echo $value->getBrandName()."</br>";
-                            echo $value->getModel()."</br>";
+                            echo $value->getBrandName()."</br>"."</br>";
+                            echo $value->getModel()."</br>"."</br>";
                             echo $value->getPrice();
                         echo "</th>";
-                        echo "<th class'designThButton'> o </th>";
+                        echo "<th> <input type='radio' id='radioButtonCompare' name='dev'></th>";
                     echo "</tr>";
 
                     echo "<tr>";
-                        echo "<th class'designThButton'> X </th>" ;
+                        echo "<th> <input type='button' id='deleteButtonCompare' value='Delete' size='10' </th>" ;
                     echo "</tr>";
 
                 echo "</table>";
