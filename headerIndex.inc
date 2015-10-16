@@ -6,7 +6,9 @@ if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
     exit;
 }
-
+if(!isset($_SESSION['comparedDevices'])){
+    $_SESSION['comparedDevices'] = array();
+}
 foreach($_SESSION['comparedDevices'] as $value){
     if (isset($_POST['dev'])) {
         if($_POST['dev'] == $value->getSerialNumber()){
@@ -35,9 +37,7 @@ if (isset ( $_GET ['lang'] )) {
 }
 
 $_SESSION["lang"] = "";
-if(!isset($_SESSION['comparedDevices'])){
-    $_SESSION['comparedDevices'] = array();
-}
+
 if(!isset($_SESSION['myOldDevice'])){
     $_SESSION['myOldDevice'] = null;
 }
