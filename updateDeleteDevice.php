@@ -14,90 +14,63 @@ function updateDevice()
 
 ?>
 
-<div class="shell980W">
+<div class="">
     </br>
         <div class="box">
 
             <div class="box-head">
-                <h2 class="left">All Articles</h2>
-
-                <div class="right">
-                    <label>search articles</label>
-                    <input type="text" class="field small-field"/>
-                    <input type="submit" class="button" value="search"/>
-                </div>
+                <h2 class="left">All Devices</h2>
             </div>
 
             <div class="table">
+                <div class="searchBarAdmin">
+                    <input id="searchBar" type="text" name="searchBar" placeholder="Search a product..." class="ui-autocomplete-input" autocomplete="off">
+                    <input type="submit" id="searchButton" value="search"/>
+                </div>
+
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <th width="13"><input type="checkbox" class="checkbox"/></th>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Added by</th>
-                        <th width="110" class="ac">Content Control</th>
+                        <th id="selectAll">Select all</th>
                     </tr>
+
+                    <tr>
+                        <th width="13"><input type="checkbox" class="checkbox"/></th>
+                        <th>Type</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Serial number</th>
+                        <th>Production Year</th>
+                        <th>Efficiency class</th>
+                        <th>Energy consumption</th>
+                        <th>Price</th>
+                        <th>Image URL</th>
+                        <th>Manufacturer link</th>
+                        <th>Shop link</th>
+                        <th>Action</th>
+                    </tr>
+
+
                     <tr>
                         <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+                        <td><h3>....</h3></td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td>....</td>
+                        <td><a href="#" class="ico del">Delete</a>  <a href="#" class="ico edit">Edit</a></td>
                     </tr>
-                    <tr class="odd">
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    <tr class="odd">
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    <tr class="odd">
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    <tr class="odd">
-                        <td><input type="checkbox" class="checkbox"/></td>
-                        <td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
-                        <td>12.05.09</td>
-                        <td><a href="#">Administrator</a></td>
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
+
                 </table>
 
 
                 <div class="pagging">
-                    <div class="left">Showing 1-12 of 44</div>
                     <div class="right">
                         <a href="#">Previous</a>
                         <a href="#">1</a>

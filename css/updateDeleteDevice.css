@@ -1,5 +1,5 @@
 .table th {
-    color: #818181;
+    color: black;
     text-align: left;
     padding: 7px 10px;
     border-bottom: solid 1px #d2d1cb;
@@ -22,6 +22,12 @@
 .table a.ico {
 }
 
+.searchBarAdmin {
+    margin-top: 4em;
+    margin-left: 40em;
+}
+
+
 .box {
     background: #fbfcfc;
     height: 100%;
@@ -30,7 +36,7 @@
 }
 
 .box-head {
-    background: #ba4c32;
+    background: #04B45F;
     height: 32px;
     color: #fff;
     padding: 0 10px;
@@ -40,7 +46,8 @@
 }
 
 .box-head .right {
-    padding-top: 5px;
+    padding-top: 3%;
+    margin: 0% 0% 0% 0%;
     line-height: 13px;
 }
 

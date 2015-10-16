@@ -6,8 +6,8 @@ include_once 'headerLogin.inc';
 <div class="loginBlock centered">
     <h1>Admin Login</h1>
         <form method="post" action="redirect.php">
-            <input type="text" name="user" placeholder="Username" id="username" required /> </br></br>
-            <input type="password" name="pwd" placeholder="Password" id="password" required />
+            <input type="text" name="user" placeholder="Username" required /> </br></br>
+            <input type="password" name="pwd" placeholder="Password" required />
             </br>
             </br>
 
