@@ -29,6 +29,14 @@ if (isset ( $_POST ['addComparison'] )) {
     $comparedDevices = array_unique(array_merge($comparedDevices, $model->getDevicesBySerialNumber($_POST['addComparison'])));
     $_SESSION['comparedDevices'] = $comparedDevices;
 }
+
+for($i=0; $i < count($comparedDevices); $i++){
+    if(isset($_POST[$comparedDevices[$i]->getSerialNumber()])){
+        unset($comparedDevices[$i]);
+        $comparedDevices = array_values($comparedDevices);
+        $_SESSION['comparedDevices'] = $comparedDevices;
+    }
+}
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
         $selectedBrandChoice[] = $value->getBrandName();
@@ -143,7 +151,11 @@ if(isset($_POST['searchBar'])){
             echo "</tr>";
 
             echo "<tr>";
-            echo "<th> <input type='button' id='deleteButtonCompare' value='Delete' size='10' </th>" ;
+            echo "<th> <input type='submit' id='deleteButtonCompare' name='";
+            echo $value->getSerialNumber();
+            echo "' value='";
+            echo $translate->__('Delete');
+            echo "'></th>" ;
             echo "</tr>";
 
             echo "</table>";
