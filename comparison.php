@@ -2,13 +2,17 @@
 include_once 'headerIndex.inc';
 require_once 'dto/class.Device.php';
 ?>
-
 <table>
     <tr>
         <th><?php $translate->__('Your old device')?>-></th>
         <?php
         foreach ($_SESSION['comparedDevices'] as $value){
-            echo '<th><input type="radio" name="dev" value="'.$value->getSerialNumber().'"></th>';
+            echo '<th><input type="radio" name="dev" value="';
+            echo $value->getSerialNumber().'"';
+                if($value->getSerialNumber() == $_SESSION['myOldDevice']){
+                    echo ' checked';
+                }
+            echo '></th>';
         }
         ?>
     </tr>

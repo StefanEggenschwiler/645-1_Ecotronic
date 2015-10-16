@@ -147,7 +147,14 @@ if(isset($_POST['searchBar'])){
             echo $value->getModel()."</br>"."</br>";
             echo $value->getPrice();
             echo "</th>";
-            echo "<th> <input type='radio' id='radioButtonCompare' name='dev'></th>";
+            echo "<th> <input type='radio' id='radioButtonCompare' name='dev' value='";
+            echo $value->getSerialNumber();
+            echo "'";
+            if($value->getSerialNumber() == $_SESSION['myOldDevice'])
+            {
+                echo " checked";
+            }
+            echo "'></th>";
             echo "</tr>";
 
             echo "<tr>";

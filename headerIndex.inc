@@ -1,10 +1,21 @@
 <?php
 
 require_once 'dto/class.Device.php';
+session_start();
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
     exit;
 }
+
+foreach($_SESSION['comparedDevices'] as $value){
+    if (isset($_POST['dev'])) {
+        if($_POST['dev'] == $value->getSerialNumber()){
+            $_SESSION['myOldDevice'] = $value->getSerialNumber();
+        }
+
+    }
+}
+
 if(isset($_POST['compareButton'])){
     $indexLink = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $indexLink = str_replace("index","comparison",$indexLink);
@@ -22,11 +33,15 @@ if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( $_GET ['lang'] );
     $cookie_value = $_GET['lang'];
 }
-session_start();
+
 $_SESSION["lang"] = "";
 if(!isset($_SESSION['comparedDevices'])){
     $_SESSION['comparedDevices'] = array();
 }
+if(!isset($_SESSION['myOldDevice'])){
+    $_SESSION['myOldDevice'] = null;
+}
+
 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $languageValue = substr($actual_link, -2);
