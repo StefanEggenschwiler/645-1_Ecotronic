@@ -17,3 +17,4 @@ Price=Preis
 Category=Kategorie
 Classification=Klassifizierung
 Compare=Vergleichen
+Model=Modell
