@@ -53,8 +53,9 @@ header('Content-Type: text/html; charset=UTF-8');
                     <li class="<?php echo ($pageName == "admin.php" ? "active" : "")?>"><a id="nav" href="admin.php"><span>Admin page</span></a></li>
                     <li class="<?php echo ($pageName == "addNewDevice.php" ? "active" : "")?>"><a id="nav" href="addNewDevice.php"><span>Add a new device</span></a></li>
                     <li class="<?php echo ($pageName == "updateDeleteDevice.php" ? "active" : "")?>"><a id="nav" href="updateDeleteDevice.php"><span>Update/Delete an article</span></a></li>
-                    <li class="<?php echo ($pageName == "editDiscount.php" ? "active" : "")?>"><a id="nav" href="editDiscount.php"><span>Change discount</span></a></li>
+                    <!--<li class="<?php echo ($pageName == "editDiscount.php" ? "active" : "")?>"><a id="nav" href="editDiscount.php"><span>Change discount</span></a></li>!-->
                     <li class="<?php echo ($pageName == "editTranslation.php" ? "active" : "")?>"><a id="nav" href="editTranslation.php"><span>Manage Translations</span></a></li>
+                    <li class="<?php echo ($pageName == "editFormula.php" ? "active" : "")?>"><a id="nav" href="editFormula.php"><span>Manage Formula</span></a></li>
                 </ul>
             </div>
         </div>

@@ -7,6 +7,8 @@ if (isset ( $_POST ['action'] )) {
         authenticate(); // the user is logging in
     } else if ($_POST ['action'] == 'translationSubmit') {
         saveTranslationTable();
+    } else if ($_POST ['action'] == 'formulaSubmit') {
+        saveFormula();
     }
 } else {
     echo 'ACCESS DENIED!';
@@ -55,8 +57,20 @@ function saveTranslationTable() {
     file_put_contents('translations/fr.txt', $french);
     file_put_contents('translations/it.txt', $italian);
 
-
     header ('location: editTranslation.php');
+    exit;
+}
+
+function saveFormula() {
+    $variables = array();
+    foreach($_POST as $inputName => $inputValue) {
+        if(strpos("x" . $inputName, 'formula') !== false) {
+            $variables[] = str_replace('formula', '', $inputName) . "=" . $inputValue. "\r\n";
+        }
+    }
+    file_put_contents('database/formula.txt', $variables);
+
+    header ('location: editFormula.php');
     exit;
 }
 ?>

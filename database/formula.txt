@@ -1,2 +1,2 @@
-constant=0.05
-maxDiscount=0.4
+Constant=0.05
+MaxDiscount=0.4
