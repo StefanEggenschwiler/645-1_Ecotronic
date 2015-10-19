@@ -194,19 +194,60 @@ class Model {
     }
 
     // DISPLAY
-    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null){
+    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null, $selectedSort=null){
         $this->showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass, $price);
-        usort($this->showedItems, function($a, $b)
-        {
-            return strcmp($a->getPrice(), $b->getPrice());
-        });
+        $this->showedItems = $this->orderShowedItems($this->showedItems, $selectedSort);
         $this->displayDevicesForm($this->showedItems);
     }
 
-    public function displayDevicesWithoutFilters($category){
+    public function displayDevicesWithoutFilters($category, $selectedSort=null){
         $this->showedItems = $this->deviceDao->getByFilter($category);
+        $this->showedItems = $this->orderShowedItems($this->showedItems, $selectedSort);
         $this->displayDevicesForm($this->showedItems);
 
+    }
+
+    public function orderShowedItems($showedItems, $selectedSort){
+        switch($selectedSort)
+        {
+            case "AA" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($a->getModel(), $b->getModel());
+                });
+                break;
+            case "DA" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($b->getModel(), $a->getModel());
+                });
+                break;
+            case "AP" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($a->getPrice(), $b->getPrice());
+                });
+                break;
+            case "DP" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($b->getPrice(), $a->getPrice());
+                });
+                break;
+            case "AC" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($a->getEfficiencyClassName(), $b->getEfficiencyClassName());
+                });
+                break;
+            case "DC" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($b->getEfficiencyClassName(), $a->getEfficiencyClassName());
+                });
+                break;
+        }
+        return $showedItems;
     }
 
     public function displayDevicesForm($showedItems){
@@ -255,5 +296,17 @@ class Model {
 
     public function getAutoCompleteEntries() {
         $this->deviceDao->getAutoCompleteEntries();
+    }
+
+    public function getDropdownlistSort($selectedSort){
+        $orderType = array('Ascending Price'=>'AP', 'Descending Price'=>'DP', 'Ascending Alphabetical'=>'AA', 'Descending Alphabetical'=>'DA', 'Ascending Classification'=>'AC', 'Descending Classification'=>'DC');
+
+        while(list($k,$v)=each($orderType)){
+            if($selectedSort == $v){
+                echo '<option value="'.$v.'" selected>'.$k.'</option>';
+            }else{
+                echo '<option value="'.$v.'">'.$k.'</option>';
+            }
+        }
     }
 }

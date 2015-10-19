@@ -18,7 +18,8 @@ $selectedEfficiencyClassChoice = array();
 $selectedPriceChoice = 0;
 $searchBarContent = null;
 $comparedDevices = $_SESSION['comparedDevices'];
-$showedDevices = array();
+
+$selectedSort = null;
 
 
 if(isset($_POST['cat'])) {
@@ -40,7 +41,9 @@ for($i=0; $i < count($comparedDevices); $i++){
     }
 }
 
-
+if(isset($_POST['dropdownlistSort'])){
+    $selectedSort = $_POST['dropdownlistSort'];
+}
 
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
@@ -67,19 +70,15 @@ if(isset($_POST['searchBar'])){
 <div class="sort">
     <label><?php $translate->__('Sort')?></label>
     </br>
-    <select class="dropdownlistSort";
-        <option value="AP"><?php $translate->__('Ascending Price')?></option>
-        <option value="DP"><?php $translate->__('Descending Price')?></option>
-        <option value="AC"><?php $translate->__('Ascending Classification')?></option>
-        <option value="DC"><?php $translate->__('Descending Classification')?></option>
-        <option value="AA"><?php $translate->__('Ascending Alphabetical')?></option>
-        <option value="DA"><?php $translate->__('Descending Alphabetical')?></option>
+    <select class="dropdownlistSort" name="dropdownlistSort" onchange="this.form.submit();">
+        <?php $model->getDropdownlistSort($selectedSort); ?>
     </select>
 </div>
 
 <!-- wrapper contains menu + showedItems-->
 <div class="wrapper">
     <!-- left menu filters-->
+
 
     <div id="menu">
 
@@ -199,12 +198,11 @@ if(isset($_POST['searchBar'])){
                 if($selectedCategoryChoice != null || $searchBarContent !=null) {
                     if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice != null){
 
-                        $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
+                        $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice, $selectedSort);
                         $showedDevices = $model->getDevicesByFilter($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
                     }else {
-                        $model->displayDevicesWithoutFilters($selectedCategoryChoice);
+                        $model->displayDevicesWithoutFilters($selectedCategoryChoice, $selectedSort);
                         $showedDevices = $model->getDevicesByFilter($selectedCategoryChoice);
-
                     }
                     if($searchBarContent!=null){
                         $myDevices = $model->getDevicesByModel($searchBarContent);
