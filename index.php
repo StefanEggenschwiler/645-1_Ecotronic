@@ -31,6 +31,7 @@ if (isset ( $_POST ['addComparison'] )) {
     $_SESSION['comparedDevices'] = $comparedDevices;
 }
 
+
 for($i=0; $i < count($comparedDevices); $i++){
     if(isset($_POST[$comparedDevices[$i]->getSerialNumber()])){
         unset($comparedDevices[$i]);
@@ -38,6 +39,9 @@ for($i=0; $i < count($comparedDevices); $i++){
         $_SESSION['comparedDevices'] = $comparedDevices;
     }
 }
+
+
+
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
         $selectedBrandChoice[] = $value->getBrandName();
@@ -185,6 +189,7 @@ if(isset($_POST['searchBar'])){
 
         ?>
             <label href="#" id="compare"><input id="compareButton" type="submit" name="compareButton" value="<?php $translate->__('Compare')?>"></label>
+
     </div>
         <!-- Center div to show the selected devices-->
         <div class="centerShowItems">

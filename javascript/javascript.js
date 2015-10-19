@@ -59,3 +59,5 @@ function displayPrice(newPriceValue)
 {
         document.getElementById('range').innerHTML = newPriceValue;
 }
+
+
