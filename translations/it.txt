@@ -18,3 +18,4 @@ Category=La categoria
 Classification=La classificazione
 Compare=Confrontare
 Model=Modello
+Link=Link

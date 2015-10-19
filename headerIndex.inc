@@ -64,6 +64,7 @@ header('Content-Type: text/html; charset=UTF-8');
     <link rel="shortcut icon" type="image/x-icon" href="images/icons/FavIcon.ico" />
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/comparisonTable.css">
     <script type="text/javascript" src="javascript/javascript.js"></script>
     <!-- load jquery ui css-->
     <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
