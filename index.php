@@ -20,6 +20,7 @@ $searchBarContent = null;
 $comparedDevices = $_SESSION['comparedDevices'];
 $showedDevices = array();
 
+
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
@@ -58,6 +59,20 @@ if(isset($_POST['searchBar'])){
 }
 
 ?>
+
+<div class="sort">
+    <label><?php $translate->__('Sort')?></label>
+    </br>
+    <select class="dropdownlistSort";
+        <option value="AP"><?php $translate->__('Ascending Price')?></option>
+        <option value="DP"><?php $translate->__('Descending Price')?></option>
+        <option value="AC"><?php $translate->__('Ascending Classification')?></option>
+        <option value="DC"><?php $translate->__('Descending Classification')?></option>
+        <option value="AA"><?php $translate->__('Ascending Alphabetical')?></option>
+        <option value="DA"><?php $translate->__('Descending Alphabetical')?></option>
+    </select>
+</div>
+
 <!-- wrapper contains menu + showedItems-->
 <div class="wrapper">
     <!-- left menu filters-->
@@ -154,7 +169,7 @@ if(isset($_POST['searchBar'])){
             {
                 echo " checked";
             }
-            echo "'></th>";
+            echo "></th>";
             echo "</tr>";
 
             echo "<tr>";
