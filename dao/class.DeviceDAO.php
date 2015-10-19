@@ -17,8 +17,8 @@ class DeviceDAO
     {
         $stmt = $this->_conn->getConnection()->query('
         SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
-               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
-               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.lifespan,
+               device.manufacturerLink, device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
 		FROM device, brand, type, efficiencyclass
 		WHERE device.brandId = brand.id AND device.typeId = type.id AND device.efficiencyClassId = efficiencyclass.id;');
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
@@ -40,8 +40,8 @@ class DeviceDAO
         }
         $sql = sprintf('
         SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
-               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
-               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.lifespan,
+               device.manufacturerLink, device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
         FROM device, brand, type, efficiencyclass
         WHERE
         device.brandId = brand.id AND
@@ -76,8 +76,8 @@ class DeviceDAO
     public function getByModel($model) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
-               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
-               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.lifespan,
+               device.manufacturerLink, device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
         FROM device, brand, type, efficiencyclass
         WHERE
         device.brandId = brand.id AND
@@ -93,8 +93,8 @@ class DeviceDAO
     public function getBySerialNumber($serialNumber) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
-               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.manufacturerLink,
-               device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
+               device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.lifespan,
+               device.manufacturerLink, device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
         FROM device, brand, type, efficiencyclass
         WHERE
         device.brandId = brand.id AND
@@ -108,10 +108,10 @@ class DeviceDAO
     }
 
     public function create($type, $brand, $efficiencyClass, $imageUrl, $model, $price, $energyPrice,
-                           $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
+                           $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
 
         $query = "INSERT INTO device (typeid, brandid, efficiencyClassId, image, model, price, energyPrice,
-                                 energyConsumption, serialNumber, productionYear, manufacturerLink, shopLink)
+                                 energyConsumption, serialNumber, productionYear, lifespan, manufacturerLink, shopLink)
                                  VALUES (
 								 (SELECT id from type WHERE typeName = :type),
 								 (SELECT id from brand WHERE brandName = :brand),
@@ -123,6 +123,7 @@ class DeviceDAO
 								 :energyConsumption,
 								 :serialNumber,
 								 :productionYear,
+								 :lifespan,
 								 :manufacturerLink,
 								 :shopLink
 								 )";
@@ -137,18 +138,19 @@ class DeviceDAO
         $stmt->bindParam(':energyConsumption', $energyConsumption, PDO::PARAM_STR, 20);
         $stmt->bindParam(':serialNumber', $serialNumber, PDO::PARAM_STR, 200);
         $stmt->bindParam(':productionYear', $productionYear, PDO::PARAM_INT);
+        $stmt->bindParam(':lifespan', $lifespan, PDO::PARAM_INT);
         $stmt->bindParam(':manufacturerLink', $manufacturerLink, PDO::PARAM_STR, 300);
         $stmt->bindParam(':shopLink', $shopLink, PDO::PARAM_STR, 300);
         return $stmt->execute();
     }
 
     public function update($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-                           $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
+                           $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
         $stmt = $this->_conn->getConnection()->prepare('
         UPDATE device
           SET typeId = :typeId, brandId = :brandId, efficiencyClassId = :efficiencyClassId, image = :imageUrl, model = :model,
           price = :price, energyPrice = :energyPrice, energyConsumption = :energyConsumption, serialNumber = :serialNumber,
-          productionYear = :productionYear, manufacturerLink = :manufacturerLink, shopLink = :shopLink
+          productionYear = :productionYear, lifespan = :lifespan, manufacturerLink = :manufacturerLink, shopLink = :shopLink
         WHERE id = :deviceId');
         $stmt->bindParam(':deviceId', $deviceId, PDO::PARAM_INT);
         $stmt->bindParam(':typeId', $typeId, PDO::PARAM_INT);
@@ -161,6 +163,7 @@ class DeviceDAO
         $stmt->bindParam(':energyConsumption', $energyConsumption, PDO::PARAM_STR, 20);
         $stmt->bindParam(':serialNumber', $serialNumber, PDO::PARAM_STR, 200);
         $stmt->bindParam(':productionYear', $productionYear, PDO::PARAM_INT);
+        $stmt->bindParam(':lifespan', $lifespan, PDO::PARAM_INT);
         $stmt->bindParam(':manufacturerLink', $manufacturerLink, PDO::PARAM_STR, 300);
         $stmt->bindParam(':shopLink', $shopLink, PDO::PARAM_STR, 300);
         return $stmt->execute();

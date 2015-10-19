@@ -23,6 +23,7 @@ class Device {
     private $productionYear;
     private $manufacturerLink;
     private $shopLink;
+    private $lifespan;
 
     public function __toString()
     {
@@ -82,6 +83,10 @@ class Device {
         return htmlentities(utf8_encode($this->shopLink), ENT_QUOTES, 'UTF-8');
     }
 
+    public function getLifeSpan() {
+        return $this->lifespan;
+    }
+
     // Setter
     public function setTypeId($typeId) {
         $this->typeId = $typeId;
@@ -121,5 +126,9 @@ class Device {
     }
     public function setShopLink($shopLink) {
         $this->shopLink = $shopLink;
+    }
+
+    public function setLifespan($lifespan) {
+        $this->lifespan = $lifespan;
     }
 }
