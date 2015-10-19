@@ -1,14 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muhamed
- * Date: 25.09.2015
- * Time: 09:42
- */
+
 require_once 'dto/class.Device.php';
+session_start();
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
     exit;
+}
+if(!isset($_SESSION['comparedDevices'])){
+    $_SESSION['comparedDevices'] = array();
+}
+foreach($_SESSION['comparedDevices'] as $value){
+    if (isset($_POST['dev'])) {
+        if($_POST['dev'] == $value->getSerialNumber()){
+            $_SESSION['myOldDevice'] = $value->getSerialNumber();
+        }
+
+    }
+}
+
+if(isset($_POST['compareButton'])){
+    $indexLink = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $indexLink = str_replace("index","comparison",$indexLink);
+    header('Location: '.$indexLink);
+    exit();
 }
 
 include_once 'translations/class.Translator.php';
@@ -21,11 +35,13 @@ if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( $_GET ['lang'] );
     $cookie_value = $_GET['lang'];
 }
-session_start();
+
 $_SESSION["lang"] = "";
-if(!isset($_SESSION['comparedDevices'])){
-    $_SESSION['comparedDevices'] = array();
+
+if(!isset($_SESSION['myOldDevice'])){
+    $_SESSION['myOldDevice'] = null;
 }
+
 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $languageValue = substr($actual_link, -2);
@@ -45,8 +61,10 @@ header('Content-Type: text/html; charset=UTF-8');
 <html>
 <head>
     <title>Eco Electronics</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons/FavIcon.ico" />
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/comparisonTable.css">
     <script type="text/javascript" src="javascript/javascript.js"></script>
     <!-- load jquery ui css-->
     <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
@@ -62,7 +80,8 @@ header('Content-Type: text/html; charset=UTF-8');
 <!-- search bar to find your device-->
     <div class="centerVertical">
         <!-- start of the form for the whol page, ends in index.php-->
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];
+        <form method="post" action="<?php
+        echo $_SERVER['PHP_SELF'];
         echo $_SESSION['lang'];?>">
             <input id="searchBar" type="text" name="searchBar" placeholder="<?php $translate->__('Find your old product...')?>">
             <input id="searchButton" type="submit" name="searchBarButton" value="<?php $translate->__('Search')?>">

@@ -17,3 +17,5 @@ Price=Prix
 Category=Catégorie
 Classification=Classification
 Compare=Comparer
+Model=Modèle
+Link=Lien

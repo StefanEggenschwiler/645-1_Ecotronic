@@ -1,17 +1,16 @@
 <?php
-require_once 'dao/class.AdminDAO.php';
-require_once 'dao/class.BrandDAO.php';
-require_once 'dao/class.DeviceDAO.php';
-require_once 'dao/class.TypeDAO.php';
-require_once 'dao/class.EfficiencyClassDAO.php';
-require_once 'dto/class.Admin.php';
-require_once 'dto/class.Type.php';
-require_once 'dto/class.Brand.php';
-require_once 'dto/class.Device.php';
-require_once 'dto/class.EfficiencyClass.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.AdminDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.BrandDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.DeviceDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.TypeDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dao/class.EfficiencyClassDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Admin.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
 class Model {
-
     // Fields
     private $adminDao;
     private $typeDao;
@@ -43,10 +42,14 @@ class Model {
 
     // DEVICES
     public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price,
-                                 $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink,
+                                 $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink,
                                  $shopLink) {
         return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model,
-            $price, $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
+            $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
+    }
+
+    public function getAllDevices() {
+        return $this->deviceDao->getAll();
     }
 
     public function getDevicesByFilter($type, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
@@ -59,6 +62,51 @@ class Model {
 
     public function getDevicesBySerialNumber($serialNumber){
         return $this->deviceDao->getBySerialNumber($serialNumber);
+    }
+
+    public function updateDevice($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
+                                 $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
+        return $this->deviceDao->update($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
+            $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
+    }
+
+    public function deleteDevice($deviceId) {
+        return $this->deviceDao->delete($deviceId);
+    }
+
+    public function compareDevices($oldSerialNumber, $compareDevices) {
+        $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
+        $pos = array_search($oldDevice[0], $compareDevices);
+        unset($compareDevices[$pos]);
+        sort($compareDevices);
+
+        $handle = fopen($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/formula.txt', "r");
+        if($handle) {
+            while (($line = fgets($handle)) !== false) {
+                $variables[] = explode('=',$line);
+            }
+            fclose($handle);
+        } else {
+            return false;
+        }
+
+        if(count($variables) == 2) {
+            foreach($compareDevices as $value) {
+                $discount = ($oldDevice[0]->getEnergyConsumption() - $value->getEnergyConsumption()) *
+                    ($value->getLifeSpan() - $oldDevice[0]->getLifeSpan()) * $variables[0][1];
+                if ($discount <= $variables[1][1]) {
+                    if($discount > 0) {
+                        $value->setPrice($value->getPrice()*(1-$discount).'');
+                    }
+                } else {
+                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).'');
+                }
+            }
+            array_unshift($compareDevices, $oldDevice[0]);
+            return $compareDevices;
+        } else {
+            return false;
+        }
     }
 
     // TYPES
@@ -146,19 +194,60 @@ class Model {
     }
 
     // DISPLAY
-    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null){
+    public function displayDevicesWithFilters($category, $brands = null, $efficiencyClass = null, $price = null, $selectedSort=null){
         $this->showedItems = $this->deviceDao->getByFilter($category, $brands, $efficiencyClass, $price);
-        usort($this->showedItems, function($a, $b)
-        {
-            return strcmp($a->getPrice(), $b->getPrice());
-        });
+        $this->showedItems = $this->orderShowedItems($this->showedItems, $selectedSort);
         $this->displayDevicesForm($this->showedItems);
     }
 
-    public function displayDevicesWithoutFilters($category){
+    public function displayDevicesWithoutFilters($category, $selectedSort=null){
         $this->showedItems = $this->deviceDao->getByFilter($category);
+        $this->showedItems = $this->orderShowedItems($this->showedItems, $selectedSort);
         $this->displayDevicesForm($this->showedItems);
 
+    }
+
+    public function orderShowedItems($showedItems, $selectedSort){
+        switch($selectedSort)
+        {
+            case "AA" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($a->getModel(), $b->getModel());
+                });
+                break;
+            case "DA" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($b->getModel(), $a->getModel());
+                });
+                break;
+            case "AP" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($a->getPrice(), $b->getPrice());
+                });
+                break;
+            case "DP" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($b->getPrice(), $a->getPrice());
+                });
+                break;
+            case "AC" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($a->getEfficiencyClassName(), $b->getEfficiencyClassName());
+                });
+                break;
+            case "DC" :
+                usort($showedItems, function($a, $b)
+                {
+                    return strcmp($b->getEfficiencyClassName(), $a->getEfficiencyClassName());
+                });
+                break;
+        }
+        return $showedItems;
     }
 
     public function displayDevicesForm($showedItems){
@@ -207,5 +296,17 @@ class Model {
 
     public function getAutoCompleteEntries() {
         $this->deviceDao->getAutoCompleteEntries();
+    }
+
+    public function getDropdownlistSort($selectedSort){
+        $orderType = array('Ascending Price'=>'AP', 'Descending Price'=>'DP', 'Ascending Alphabetical'=>'AA', 'Descending Alphabetical'=>'DA', 'Ascending Classification'=>'AC', 'Descending Classification'=>'DC');
+
+        while(list($k,$v)=each($orderType)){
+            if($selectedSort == $v){
+                echo '<option value="'.$v.'" selected>'.$k.'</option>';
+            }else{
+                echo '<option value="'.$v.'">'.$k.'</option>';
+            }
+        }
     }
 }

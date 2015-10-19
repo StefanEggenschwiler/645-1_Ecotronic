@@ -1,7 +1,7 @@
 <?php
-include_once 'dto/class.Type.php';
-include_once 'dto/class.Brand.php';
-include_once 'dto/class.EfficiencyClass.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
 class Device {
 
@@ -23,6 +23,7 @@ class Device {
     private $productionYear;
     private $manufacturerLink;
     private $shopLink;
+    private $lifespan;
 
     public function __toString()
     {
@@ -82,6 +83,10 @@ class Device {
         return htmlentities(utf8_encode($this->shopLink), ENT_QUOTES, 'UTF-8');
     }
 
+    public function getLifeSpan() {
+        return $this->lifespan;
+    }
+
     // Setter
     public function setTypeId($typeId) {
         $this->typeId = $typeId;
@@ -121,5 +126,9 @@ class Device {
     }
     public function setShopLink($shopLink) {
         $this->shopLink = $shopLink;
+    }
+
+    public function setLifespan($lifespan) {
+        $this->lifespan = $lifespan;
     }
 }

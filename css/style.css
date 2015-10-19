@@ -1,20 +1,36 @@
 html
 {
     overflow-y: scroll;
+    height: 100%;
 
 }
 body
 {
+    height: 100%;
     font-family: arial, sans-serif;
     background:linear-gradient(90deg, #f3f45a, #67d347, #f3f45a);
     background-size: 100%;
 
 }
 
+.sort
+{
+    margin-top:1.5em;
+    width:15em;
+    text-align: center;
+}
+
+.dropdownlistSort
+{
+    width:17em;
+    background-color:lightgreen;
+}
+
 
 
 .wrapper
 {
+    min-height: 100%;
     position:relative;
 }
 
@@ -332,18 +348,51 @@ body
 {
     float: right;
     width:15em;
+    background: #2abb3f;
+
 }
 
-#compareButton
+.centerHorizontally
 {
     position:relative;
     left:50%;
     transform:translate(-50%,0);
 }
 
+
+#designThInfo
+{
+    font-size: 0.85em;
+    width:9em;
+    border: solid black 1px;
+    text-align: left;
+}
+
+
+#compareButton
+ {
+     position:relative;
+     left:50%;
+     transform:translate(-50%,0);
+ }
+
 #addToCompareListButton
 {
     position: relative;
     float:right;
+}
+
+#radioButtonCompare
+{
+    width:20px;
+    height:20px;
+    padding-left:5px;
+}
+
+#deleteButtonCompare
+{
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
 }
 

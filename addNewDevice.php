@@ -13,12 +13,18 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $showedItems = $model->getAllBrands();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    createNewDevice();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (createNewDevice() == true)
+        echo "<script type='text/javascript'>alert('Error while inserting a new device!');</script>";
+    else
+        echo "<script type='text/javascript'>alert('New device successfully inserted!');</script>";
+
 }
 
 
-function createNewDevice() {
+function createNewDevice()
+{
     global $model;
     $selectTypeName = $_POST['selectType'];
     $selectBrandName = $_POST['selectBrand'];
@@ -31,11 +37,13 @@ function createNewDevice() {
     $energyPrice = $_POST['energyPrice'];
     $energyConsumption = $_POST['energyConsumption'];
     $serialNumber = $_POST['serialNumber'];
+    $lifeSpan = $_POST['lifeSpan'];
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
+
     $model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
-            $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
+        $energyConsumption, $serialNumber, $selectProductionYear, $lifeSpan, $manufacturerLink, $shopLink);
 }
 
 ?>
@@ -44,13 +52,15 @@ function createNewDevice() {
 <div>
     <div class="createNewArticleBlock">
         <h1>Add a new device</h1>
-        <form method="post"">
+
+        <form method="post"
+        ">
 
         Select a type
         <select name="selectType">
             <?php
-            foreach($types as $value){
-                echo '<option>'.$value->getTypeName().'</option>';
+            foreach ($types as $value) {
+                echo '<option>' . $value->getTypeName() . '</option>';
             } ?>
         </select>
 
@@ -59,8 +69,8 @@ function createNewDevice() {
         Select a brand
         <select name="selectBrand">
             <?php
-            foreach($brands as $value){
-                echo '<option>'. $value->getBrandName().'</option>';
+            foreach ($brands as $value) {
+                echo '<option>' . $value->getBrandName() . '</option>';
             } ?>
         </select>
 
@@ -91,12 +101,17 @@ function createNewDevice() {
 
         </br>
 
+        Enter the life span (in years)
+        </br>
+        <input type="number" name="lifeSpan" required/>
+        </br>
+
 
         Select an efficiency class
         <select name="selectEfficiencyClassName">
             <?php
-            foreach($efficiencyClasses as $value){
-                echo '<option>'.$value->getClassName().'</option>';
+            foreach ($efficiencyClasses as $value) {
+                echo '<option>' . $value->getClassName() . '</option>';
             } ?>
         </select>
 
@@ -120,7 +135,6 @@ function createNewDevice() {
         </br>
 
 
-
         </br>
         <h2>LINKS</h2>
         </br>
@@ -141,24 +155,15 @@ function createNewDevice() {
         </br>
 
 
-
         <button type="submit" value="create" name="create">Create</button>
         </br>
         </br>
 
 
-        <?php $reasons = array("error" => "Error while inserting", "inserted" => "New device successfully inserted!");
-        if (isset ( $_GET ['insertFailed'] )) {
-            if ($_GET["insertFailed"]) {
-                echo '<span style="color:red;">'.$reasons[$_GET["reason"]].'</span>';
-            }
-        }?>
-
         </form>
     </div>
 
     </body>
-
 
 
 </div>
