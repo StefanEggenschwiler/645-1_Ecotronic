@@ -65,9 +65,9 @@ class Model {
     }
 
     public function updateDevice($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-                                 $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink) {
+                                 $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
         return $this->deviceDao->update($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-            $energyConsumption, $serialNumber, $productionYear, $manufacturerLink, $shopLink);
+            $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
     }
 
     public function deleteDevice($deviceId) {
