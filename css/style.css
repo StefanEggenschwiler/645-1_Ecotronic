@@ -1,10 +1,12 @@
 html
 {
     overflow-y: scroll;
+    height: 100%;
 
 }
 body
 {
+    height: 100%;
     font-family: arial, sans-serif;
     background:linear-gradient(90deg, #f3f45a, #67d347, #f3f45a);
     background-size: 100%;
@@ -15,6 +17,7 @@ body
 
 .wrapper
 {
+    min-height: 100%;
     position:relative;
 }
 
