@@ -1,6 +1,14 @@
 <?php
 include_once 'headerAdmin.inc';
+require_once 'database/class.Model.php';
 
+
+$model = new Model();
+$types = $model->getAllTypes();
+$brands = $model->getAllBrands();
+$efficiencyClasses = $model->getAllEfficiencyClasses();
+$consumptions = array();
+$showedItems = $model->getAllBrands();
 
 function deleteDevice()
 {
@@ -32,6 +40,23 @@ function updateDevice()
                     <tr>
                         <th width="13"><input type="checkbox" class="checkbox"/></th>
                         <th id="selectAll">Select all</th>
+
+                        <h1>FILTERS</h1>
+                        </br>
+                        <select name="selectType"style="width: 200px">
+                            <?php
+                            foreach($types as $value){
+                                echo '<option>'.$value->getTypeName().'</option>';
+                            } ?>
+                        </select>
+
+
+                        <select name="selectBrand" style="width: 200px">
+                            <?php
+                            foreach($brands as $value){
+                                echo '<option>'. $value->getBrandName().'</option>';
+                            } ?>
+                        </select>
                     </tr>
 
                     <tr>
@@ -70,19 +95,6 @@ function updateDevice()
                 </table>
 
 
-                <div class="pagging">
-                    <div class="right">
-                        <a href="#">Previous</a>
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">245</a>
-                        <span>...</span>
-                        <a href="#">Next</a>
-                        <a href="#">View all</a>
-                    </div>
-                </div>
 
             </div>
 

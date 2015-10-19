@@ -1,3 +1,7 @@
+h1   {color:black}
+
+
+
 .table th {
     color: black;
     text-align: left;
@@ -90,3 +94,4 @@
     -moz-box-shadow: 0 0 2px #978f6c;
     -webkit-box-shadow: 0 0 2px #978f6c;
 }
+
