@@ -42,10 +42,10 @@ class Model {
 
     // DEVICES
     public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price,
-                                 $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink,
+                                 $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink,
                                  $shopLink) {
         return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model,
-            $price, $energyPrice, $energyConsumption, $serialNumber, $selectProductionYear, $manufacturerLink, $shopLink);
+            $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
     }
 
     public function getAllDevices() {
