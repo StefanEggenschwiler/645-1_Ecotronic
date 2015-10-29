@@ -96,10 +96,10 @@ class Model {
                     ($value->getLifeSpan() - $oldDevice[0]->getLifeSpan()) * $variables[0][1];
                 if ($discount <= $variables[1][1]) {
                     if($discount > 0) {
-                        $value->setPrice($value->getPrice()*(1-$discount).'');
+                        $value->setPrice($value->getPrice()*(1-$discount).' ('.$value->getPrice().')');
                     }
                 } else {
-                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).'');
+                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).' ('.$value->getPrice().')');
                 }
             }
             array_unshift($compareDevices, $oldDevice[0]);
