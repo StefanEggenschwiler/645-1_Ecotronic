@@ -78,7 +78,7 @@ class Model {
         $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
         $pos = array_search($oldDevice[0], $compareDevices);
         unset($compareDevices[$pos]);
-        sort($compareDevices);
+        array_values($compareDevices);
 
         $handle = fopen($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/formula.txt', "r");
         if($handle) {
