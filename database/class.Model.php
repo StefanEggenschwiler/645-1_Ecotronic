@@ -90,16 +90,19 @@ class Model {
             return false;
         }
 
+        // DiscountPrice;NormalPrice
         if(count($variables) == 2) {
             foreach($compareDevices as $value) {
                 $discount = ($oldDevice[0]->getEnergyConsumption() - $value->getEnergyConsumption()) *
                     ($value->getLifeSpan() - $oldDevice[0]->getLifeSpan()) * $variables[0][1];
                 if ($discount <= $variables[1][1]) {
                     if($discount > 0) {
-                        $value->setPrice($value->getPrice()*(1-$discount).' ('.$value->getPrice().')');
+                        $value->setPrice($value->getPrice()*(1-$discount).';'.$value->getPrice());
+                    } else {
+                        $value->setPrice(';'.$value->getPrice());
                     }
                 } else {
-                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).' ('.$value->getPrice().')');
+                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).';'.$value->getPrice());
                 }
             }
             array_unshift($compareDevices, $oldDevice[0]);
