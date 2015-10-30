@@ -1,13 +1,14 @@
 <?php
 include_once 'headerIndex.inc';
 
-require_once 'database/class.Model.php';
+
 require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
+
 require_once 'dto/class.EfficiencyClass.php';
 
-$model = new Model();
+
 $types = $model->getAllTypes();
 $brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();
@@ -20,6 +21,7 @@ $searchBarContent = null;
 $comparedDevices = $_SESSION['comparedDevices'];
 
 $selectedSort = null;
+
 
 
 if(isset($_POST['cat'])) {
@@ -64,6 +66,8 @@ if (isset($_POST['priceOfSlider'])){
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
 }
+
+
 
 ?>
 

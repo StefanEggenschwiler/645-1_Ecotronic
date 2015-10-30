@@ -1,7 +1,14 @@
 <?php
-
+header('Content-Type: text/html; charset=UTF-8');
+include_once 'translations/class.Translator.php';
 require_once 'dto/class.Device.php';
+include('database/class.Model.php');
+$model = new Model();
+
+
 session_start();
+
+
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
     exit;
@@ -9,6 +16,7 @@ if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
 if(!isset($_SESSION['comparedDevices'])){
     $_SESSION['comparedDevices'] = array();
 }
+
 foreach($_SESSION['comparedDevices'] as $value){
     if (isset($_POST['dev'])) {
         if($_POST['dev'] == $value->getSerialNumber()){
@@ -25,7 +33,7 @@ if(isset($_POST['compareButton'])){
     exit();
 }
 
-include_once 'translations/class.Translator.php';
+
 
 $cookie_name = 'lang';
 $cookie_value;
@@ -52,7 +60,7 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
     $_SESSION['lang'] = '?lang=en';
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
-header('Content-Type: text/html; charset=UTF-8');
+
 
 ?>
 
@@ -100,8 +108,7 @@ header('Content-Type: text/html; charset=UTF-8');
     $(function() {
         var availableTags =
             <?php
-            include('database/class.Model.php');
-            $model = new Model();
+
             $model->getAutoCompleteEntries();
             ?>;
         $("#searchBar").autocomplete({
