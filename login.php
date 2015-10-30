@@ -11,7 +11,7 @@ include_once 'headerLogin.inc';
             </br>
             </br>
 
-            <button type="submit" value="login" name="action" >Login</button>
+            <button type="submit" value="login" name="action">Login</button>
             </br>
             </br>
 

@@ -31,6 +31,11 @@ h1   {color:black}
     margin-left: 40em;
 }
 
+.displayButton{
+    margin-left: 1%;
+}
+
+
 
 .box {
     background: #fbfcfc;
@@ -93,5 +98,12 @@ h1   {color:black}
 .button {
     -moz-box-shadow: 0 0 2px #978f6c;
     -webkit-box-shadow: 0 0 2px #978f6c;
+}
+
+
+#saveChanges{
+
+    margin: 0% 0% 0% 80%;
+
 }
 

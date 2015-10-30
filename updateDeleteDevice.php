@@ -10,16 +10,17 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $itemsFiltered;
 $allItemsObjects = $model->getAllDevices();
+$currentItemsArray = $allItemsObjects;
 
 $selectedCategoryChoice = null;
 $selectedBrandChoice = null;
 $selectedEfficiencyClassChoice = null;
 
-if(isset($_POST['submit'])){
+if(isset($_POST['display'])){
     $selectedCategoryChoice = $_POST['selectedType'];  // Storing Selected Value In Variable
     $selectedBrandChoice = $_POST['selectedBrand'];  // Storing Selected Value In Variable
     $selectedEfficiencyClassChoice = $_POST['selectedEfficiencyClass'];  // Storing Selected Value In Variable
-
+    $currentItemsArray = $itemsFiltered;
 }
 
 
@@ -61,6 +62,11 @@ function updateDevice()
                 <input type="submit" id="searchButton" value="search"/>
             </div>
 
+            <div id="saveChanges">
+                <input type="submit" name="saveChanges" id="searchButton" value="Save changes"/>
+            </div>
+
+
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <th width="13"><input type="checkbox" id="selectAll" ></th>
@@ -70,6 +76,7 @@ function updateDevice()
                     </br>
 
                     <form action="#" method="post">
+
 
                         <select style="width: 200px" class="selectedType" name="selectedType" onchange="this.form.submit();">
                             <?php
@@ -120,7 +127,16 @@ function updateDevice()
                             } ?>
                         </select>
 
-                        <input type="submit" name="submit" value="Sort" />
+                        <input type="submit" name="display" id="searchButton" class="displayButton" value="Display"/>
+
+
+
+                        <?php echo 'Result of you research : '. $resultSize = sizeof($currentItemsArray) .' device(s).'; ?>
+
+
+                        <h2><a href="#" id="deleteSelected">Delete selected devices</a></h2></br>
+
+
 
                     </form>
                 </tr>
@@ -148,7 +164,8 @@ function updateDevice()
                 <tr>
                     <?php
 
-                    if(isset($_POST['submit'])){
+                    if(isset($_POST['display'])){
+
                         if($selectedCategoryChoice == 'Category') {
                             //DOESNT WORK YET!!!
                         }
@@ -163,14 +180,17 @@ function updateDevice()
                             $filterEfficiencyClass = array($selectedEfficiencyClassChoice);
                         }
                         $itemsFiltered = $model->getDevicesByFilter($selectedCategoryChoice, $filterBrand, $filterEfficiencyClass);
+                        $currentItemsArray = $itemsFiltered;
+
                     } else {
-                        $itemsFiltered = $allItemsObjects;
+                        $itemsFiltered = $allItemsObjects; // otherwise display all objects
+                        $currentItemsArray = $allItemsObjects;
                     }
 
                     foreach ($itemsFiltered as $items) {
                         echo'<td><input type="checkbox" name="check" class="checkbox"/>';
 
-                        echo '<td><a href="#" class="ico del">Delete</a> </td>';
+                        echo '<td><a href="#" id="deleteItem">Delete</a> </td>';
 
                         echo '<td contenteditable="true">'. $items->getTypeName() . '</td>';
                         echo '<td contenteditable="true">'. $items->getBrandName() . '</td>';
