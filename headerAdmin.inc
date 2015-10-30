@@ -32,6 +32,9 @@ header('Content-Type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="css/adminPage.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/updateDeleteDevice.css" type="text/css" media="all"/>
 
+    <!-- load jquery library -->
+    <script src="javascript/jquery-1.11.3.min.js"></script>
+
     <script type="text/javascript" src="javascript/javascript.js"></script>
 
     <div id="header">
