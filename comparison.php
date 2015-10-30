@@ -6,7 +6,9 @@ $check =  false;
 
 if(count($_SESSION['comparedDevices']) != 0){
     $check = true;
-    $devices = $model->compareDevices($_SESSION['myOldDevice'], $_SESSION['comparedDevices']);
+    $devices = $_SESSION['comparedDevices'];
+    $devices = unserialize(serialize($devices));
+    $devices = $model->compareDevices($_SESSION['myOldDevice'], $devices);
 }else{
     $devices = array();
 }
