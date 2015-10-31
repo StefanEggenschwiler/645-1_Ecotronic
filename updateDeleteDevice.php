@@ -8,9 +8,8 @@ $types = $model->getAllTypes();
 $brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
-$itemsFiltered;
-$allItemsObjects = $model->getAllDevices();
-$currentItemsArray = $allItemsObjects;
+$itemsFiltered = array();
+$currentItemsArray = array();
 
 $selectedCategoryChoice = null;
 $selectedBrandChoice = null;
@@ -20,9 +19,26 @@ if(isset($_POST['display'])){
     $selectedCategoryChoice = $_POST['selectedType'];  // Storing Selected Value In Variable
     $selectedBrandChoice = $_POST['selectedBrand'];  // Storing Selected Value In Variable
     $selectedEfficiencyClassChoice = $_POST['selectedEfficiencyClass'];  // Storing Selected Value In Variable
+    if($selectedCategoryChoice == 'Category') {
+        $filterCategory = null;
+    }
+    if($selectedBrandChoice == 'Brand') {
+        $filterBrand = null;
+    } else {
+        $filterBrand = array($selectedBrandChoice);
+    }
+    if($selectedEfficiencyClassChoice == 'Efficiency Class') {
+        $filterEfficiencyClass = null;
+    } else {
+        $filterEfficiencyClass = array($selectedEfficiencyClassChoice);
+    }
+    $itemsFiltered = $model->getDevicesByFilter($filterCategory, $filterBrand, $filterEfficiencyClass);
+    $currentItemsArray = $itemsFiltered;
+
+} else {
+    $itemsFiltered = $model->getAllDevices(); // otherwise display all objects
     $currentItemsArray = $itemsFiltered;
 }
-
 
 function deleteDevice()
 {
@@ -33,8 +49,6 @@ function updateDevice()
 {
 
 }
-
-
 ?>
 
 <script type="text/javascript">
@@ -43,10 +57,19 @@ function updateDevice()
             $(".checkbox").prop('checked', $(this).prop("checked"));
         });
     });
+
+    $(function() {
+        var availableTags =
+            <?php
+
+            $model->getAutoCompleteEntries();
+            ?>;
+        $("#searchBar").autocomplete({
+            source: availableTags,
+            autoFocus:true
+        });
+    });
 </script>
-
-
-
 
 <div class="">
     </br>
@@ -131,7 +154,7 @@ function updateDevice()
 
 
 
-                        <?php echo 'Result of you research : '. $resultSize = sizeof($currentItemsArray) .' device(s).'; ?>
+                        <?php echo 'Result of you research : '. count($currentItemsArray) .' device(s).'; ?>
 
 
                         <h2><a href="#" id="deleteSelected">Delete selected devices</a></h2></br>
@@ -163,30 +186,6 @@ function updateDevice()
 
                 <tr>
                     <?php
-
-                    if(isset($_POST['display'])){
-
-                        if($selectedCategoryChoice == 'Category') {
-                            //DOESNT WORK YET!!!
-                        }
-                        if($selectedBrandChoice == 'Brand') {
-                            $filterBrand = null;
-                        } else {
-                            $filterBrand = array($selectedBrandChoice);
-                        }
-                        if($selectedEfficiencyClassChoice == 'Efficiency Class') {
-                            $filterEfficiencyClass = null;
-                        } else {
-                            $filterEfficiencyClass = array($selectedEfficiencyClassChoice);
-                        }
-                        $itemsFiltered = $model->getDevicesByFilter($selectedCategoryChoice, $filterBrand, $filterEfficiencyClass);
-                        $currentItemsArray = $itemsFiltered;
-
-                    } else {
-                        $itemsFiltered = $allItemsObjects; // otherwise display all objects
-                        $currentItemsArray = $allItemsObjects;
-                    }
-
                     foreach ($itemsFiltered as $items) {
                         echo'<td><input type="checkbox" name="check" class="checkbox"/>';
 
