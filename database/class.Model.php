@@ -52,7 +52,7 @@ class Model {
         return $this->deviceDao->getAll();
     }
 
-    public function getDevicesByFilter($type, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
+    public function getDevicesByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
         return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceLow, $priceHigh);
     }
 

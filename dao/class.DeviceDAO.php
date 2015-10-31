@@ -20,12 +20,17 @@ class DeviceDAO
                device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.lifespan,
                device.manufacturerLink, device.shopLink, brand.brandName, type.typeName, efficiencyclass.className
 		FROM device, brand, type, efficiencyclass
-		WHERE device.brandId = brand.id AND device.typeId = type.id AND device.efficiencyClassId = efficiencyclass.id;');
+		WHERE device.brandId = brand.id AND
+              device.efficiencyClassId = efficiencyclass.id AND
+              device.typeId = type.id;');
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
         return $stmt->fetchAll();
     }
 
-    public function getByFilter($type, $brands = null, $efficiencyClasses = null, $priceHigh = null) {
+    public function getByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceHigh = null) {
+        if(!empty($type)) {
+            $inType = ':type';
+        }
         if(!empty($brands)) {
             $inBrand = "";
             foreach($brands as $k => $v)
@@ -46,13 +51,15 @@ class DeviceDAO
         WHERE
         device.brandId = brand.id AND
         device.efficiencyClassId = efficiencyclass.id AND
-        device.typeId = type.id AND
-        device.typeId = (SELECT id FROM type WHERE typeName = :type)  %s %s %s ;',
+        device.typeId = type.id  %s %s %s %s ;',
+            !empty($type) ? 'AND device.typeId = (SELECT id FROM type WHERE typeName = '.$inType.')' : null,
             !empty($brands)   ? 'AND device.brandId IN (SELECT id FROM brand WHERE brandName IN ('.$inBrand.'))'   : null,
             !empty($efficiencyClasses) ? 'AND device.efficiencyClassId IN (SELECT id FROM efficiencyclass WHERE className IN ('.$inClass.'))' : null,
             !empty($priceHigh) ? 'AND device.price BETWEEN 0 AND :priceHigh' : null);
         $stmt = $this->_conn->getConnection()->prepare($sql);
-        $stmt->bindParam(':type', $type, PDO::PARAM_STR, 50);
+        if(!empty($type)) {
+            $stmt->bindParam(':type', $type, PDO::PARAM_STR, 50);
+        }
         if(!empty($brands)) {
             for($i = 0; $i<count($brands); $i++) {
                 $ids = explode(',', $inBrand);
