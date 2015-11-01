@@ -52,7 +52,7 @@ class Model {
         return $this->deviceDao->getAll();
     }
 
-    public function getDevicesByFilter($type, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
+    public function getDevicesByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
         return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceLow, $priceHigh);
     }
 
@@ -78,7 +78,7 @@ class Model {
         $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
         $pos = array_search($oldDevice[0], $compareDevices);
         unset($compareDevices[$pos]);
-        sort($compareDevices);
+        array_values($compareDevices);
 
         $handle = fopen($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/formula.txt', "r");
         if($handle) {
@@ -90,16 +90,19 @@ class Model {
             return false;
         }
 
+        // DiscountPrice;NormalPrice
         if(count($variables) == 2) {
             foreach($compareDevices as $value) {
                 $discount = ($oldDevice[0]->getEnergyConsumption() - $value->getEnergyConsumption()) *
                     ($value->getLifeSpan() - $oldDevice[0]->getLifeSpan()) * $variables[0][1];
                 if ($discount <= $variables[1][1]) {
                     if($discount > 0) {
-                        $value->setPrice($value->getPrice()*(1-$discount).'');
+                        $value->setPrice($value->getPrice()*(1-$discount).';'.$value->getPrice());
+                    } else {
+                        $value->setPrice(';'.$value->getPrice());
                     }
                 } else {
-                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).'');
+                    $value->setPrice($value->getPrice()*(1-$variables[1][1]).';'.$value->getPrice());
                 }
             }
             array_unshift($compareDevices, $oldDevice[0]);

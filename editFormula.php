@@ -14,7 +14,6 @@ if ($handle) {
 ?>
 <form method="post" action="redirect.php">
     <?php
-        header("content-type: text/html;charset=UTF-8");
         echo mb_convert_encoding('&#916;', 'UTF-8', 'HTML-ENTITIES')."e * ";
         echo "<input type=\"number\" name=\"formulaConstant\" value=\"";
         echo floatval($variables[0][1]);
