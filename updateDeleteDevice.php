@@ -11,11 +11,10 @@ $consumptions = array();
 $itemsFiltered = array();
 $currentItemsArray = array();
 $searchBarContent = null;
-
+var_dump($_POST);
 $selectedCategoryChoice = null;
 $selectedBrandChoice = null;
 $selectedEfficiencyClassChoice = null;
-var_dump($_POST);
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
 }
@@ -108,11 +107,6 @@ function updateDevice()
                 </form>
             </div>
 
-            <div id="saveChanges">
-                <input type="submit" name="saveChanges" id="searchButton" value="Save changes"/>
-            </div>
-
-
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <th width="13"><input type="checkbox" id="selectAll" ></th>
@@ -122,25 +116,18 @@ function updateDevice()
                     </br>
 
                     <form name="display" method="post">
-
-
                         <select style="width: 200px" class="selectedType" id="selectedType" name="selectedType" onchange="this.form.submit();">
                             <?php
                             echo '<option>Category</option>';
                             foreach($types as $value){
                                 if(!empty($selectedCategoryChoice) && $selectedCategoryChoice == $value->getTypeName()) {
                                     echo '<option selected="selected">'. $value->getTypeName().'</option>';
-
                                 }
                                 else {
                                     echo '<option>'. $value->getTypeName().'</option>';
-
                                 }
                             } ?>
-
-
                         </select>
-
 
                         <select style="width: 200px" id="selectedBrand" name="selectedBrand" onchange="this.form.submit();">
                             <?php
@@ -148,11 +135,9 @@ function updateDevice()
                             foreach($brands as $value){
                                 if(!empty($selectedBrandChoice) && $selectedBrandChoice == $value->getBrandName()) {
                                     echo '<option selected="selected">'. $value->getBrandName().'</option>';
-
                                 }
                                 else {
                                     echo '<option>'. $value->getBrandName().'</option>';
-
                                 }
                             } ?>
                         </select>
@@ -164,11 +149,9 @@ function updateDevice()
                             foreach ($efficiencyClasses as $value) {
                                 if(!empty($selectedEfficiencyClassChoice) && $selectedEfficiencyClassChoice == $value->getClassName()) {
                                     echo '<option selected="selected">'. $value->getClassName().'</option>';
-
                                 }
                                 else {
                                     echo '<option>'. $value->getClassName().'</option>';
-
                                 }
                             } ?>
                         </select>
@@ -178,65 +161,86 @@ function updateDevice()
                         <h2><a href="#" id="deleteSelected">Delete selected devices</a></h2></br>
                     </form>
                 </tr>
-
-                <tr>
-                    <th></th>
-                    <th>Action</th>
-                    <th>Type</th>
-                    <th>Brand</th>
-                    <th>Model</th>
-                    <th>Serial number</th>
-                    <th>Production Year</th>
-                    <th>Life Span (in yrs)</th>
-                    <th>Efficiency class</th>
-                    <th>Energy price (kWh/year)</th>
-                    <th>Energy consumption</th>
-                    <th>Price (in CHF)</th>
-                    <th>Image URL</th>
-                    <th>Manufacturer link</th>
-                    <th>Shop link</th>
-                </tr>
-
-
-
-                <tr>
-                    <?php
-                    foreach ($itemsFiltered as $items) {
-                        echo '<form name="row" method="post">';
-                        echo '<td><input type="checkbox" name="check" class="checkbox"/>';
-                        echo '<td><input type="submit" id="deleteItem" name="deleteItem" value="Delete"/></td>';
-                        echo '<td style="display:none;" name="deviceId">'.   $items->getId().'</td>';
-                        echo '<td style="display:none;" name="typeId">'.   $items->getTypeId().'</td>';
-                        echo '<td style="display:none;" name="efficiencyClassId">'.   $items->getEfficiencyClassId().'</td>';
-                        echo '<td style="display:none;" name="brandId">'.   $items->getBrandId().'</td>';
-                        echo '<td contenteditable="true">'. $items->getTypeName() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getBrandName() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getModel() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getSerialNumber() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getProductionYear() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getLifeSpan() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getEfficiencyClassName() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getEnergyPrice() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getEnergyConsumption() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getPrice() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getImage() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getManufacturerLink() . '</td>';
-                        echo '<td contenteditable="true">'. $items->getShopLink() . '</td>';
-                        echo '</form>';
-                        echo'<tr>';
-                    }
-                    ?>
-
-
-
-                </tr>
-
             </table>
+            <form name="table" method="post">
+                <div id="saveChanges">
+                    <input type="submit" name="saveChanges" id="saveButton" value="Save changes"/>
+                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th></th>
+                        <th>Action</th>
+                        <th>Type</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Serial number</th>
+                        <th>Production Year</th>
+                        <th>Life Span (in yrs)</th>
+                        <th>Efficiency class</th>
+                        <th>Energy price (kWh/year)</th>
+                        <th>Energy consumption</th>
+                        <th>Price (in CHF)</th>
+                        <th>Image URL</th>
+                        <th>Manufacturer link</th>
+                        <th>Shop link</th>
+                    </tr>
 
-
-
+                    <tr>
+                        <?php
+                        foreach ($itemsFiltered as $items) {
+                            echo '<td><input type="checkbox" name="check" class="checkbox"/>';
+                            echo '<td><input type="submit" id="deleteItem" name="deleteItem" value="Delete"/></td>';
+                            echo '<td style="display:none;"><input type="hidden" name="deviceId" value="'.$items->getId().'"></td>';
+                            echo '<td style="display:none;"><input type="hidden" name="typeId" value="'.$items->getTypeId().'"></td>';
+                            echo '<td style="display:none;"><input type="hidden" name="efficiencyClassId" value="'.$items->getEfficiencyClassId().'"></td>';
+                            echo '<td style="display:none;"><input type="hidden" name="brandId" value="'.$items->getBrandId().'"></td>';
+                            echo '<td><select style="width: 170px" name="typeName">';
+                            foreach($types as $value){
+                                if($items->getTypeName() == $value->getTypeName()) {
+                                    echo '<option selected="selected">'. $value->getTypeName().'</option>';
+                                }
+                                else {
+                                    echo '<option>'. $value->getTypeName().'</option>';
+                                }
+                            }
+                            echo '</select></td>';
+                            echo '<td><select style="width: 210px" name="brandName">';
+                            foreach($brands as $value){
+                                if($items->getBrandName() == $value->getBrandName()) {
+                                    echo '<option selected="selected">'. $value->getBrandName().'</option>';
+                                }
+                                else {
+                                    echo '<option>'. $value->getBrandName().'</option>';
+                                }
+                            }
+                            echo '</select></td>';
+                            echo '<td><input type="text" name="model" value="'.$items->getModel().'"></td>';
+                            echo '<td><input type="text" name="serialNumber" value="'.$items->getSerialNumber().'"></td>';
+                            echo '<td><input type="text" name="productionYear" value="'.$items->getProductionYear().'"></td>';
+                            echo '<td><input type="text" name="lifeSpan" value="'.$items->getLifeSpan().'"></td>';
+                            echo '<td><select style="width: 105px" name="efficiencyClassName">';
+                            foreach($efficiencyClasses as $value){
+                                if($items->getEfficiencyClassName() == $value->getClassName()) {
+                                    echo '<option selected="selected">'. $value->getClassName().'</option>';
+                                }
+                                else {
+                                    echo '<option>'. $value->getClassName().'</option>';
+                                }
+                            }
+                            echo '</select></td>';
+                            echo '<td><input type="text" name="energyPrice" value="'.$items->getEnergyPrice().'"></td>';
+                            echo '<td><input type="text" name="energyConsumption" value="'.$items->getEnergyConsumption().'"></td>';
+                            echo '<td><input type="text" name="price" value="'.$items->getPrice().'"></td>';
+                            echo '<td><input type="text" name="image" value="'.$items->getImage().'"></td>';
+                            echo '<td><input type="text" name="manufacturerLink" value="'.$items->getManufacturerLink().'"></td>';
+                            echo '<td><input type="text" name="shopLink" value="'.$items->getShopLink().'"></td>';
+                            echo'<tr>';
+                        }
+                        ?>
+                    </tr>
+                </table>
+            </form>
         </div>
-
     </div>
 </div>
 
