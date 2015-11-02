@@ -78,7 +78,7 @@ function updateDevice()
                     <form action="#" method="post">
 
 
-                        <select style="width: 200px" class="selectedType" name="selectedType" onchange="this.form.submit();">
+                        <select style="width: 200px" class="selectedType" name="selectedType"">
                             <?php
                             echo '<option>Category</option>';
                             foreach($types as $value){
