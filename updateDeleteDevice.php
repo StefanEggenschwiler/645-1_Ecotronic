@@ -10,12 +10,17 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
 $itemsFiltered = array();
 $currentItemsArray = array();
+$searchBarContent = null;
 
 $selectedCategoryChoice = null;
 $selectedBrandChoice = null;
 $selectedEfficiencyClassChoice = null;
 
-if(isset($_POST['display'])){
+if(isset($_POST['searchBar'])){
+    $searchBarContent = ($_POST['searchBar']);
+}
+
+if(isset($_POST['display']) && empty($searchBarContent)){
     $selectedCategoryChoice = $_POST['selectedType'];  // Storing Selected Value In Variable
     $selectedBrandChoice = $_POST['selectedBrand'];  // Storing Selected Value In Variable
     $selectedEfficiencyClassChoice = $_POST['selectedEfficiencyClass'];  // Storing Selected Value In Variable
@@ -36,8 +41,13 @@ if(isset($_POST['display'])){
     $currentItemsArray = $itemsFiltered;
 
 } else {
-    $itemsFiltered = $model->getAllDevices(); // otherwise display all objects
-    $currentItemsArray = $itemsFiltered;
+    if(empty($searchBarContent)) {
+        $itemsFiltered = $model->getAllDevices(); // otherwise display all objects
+        $currentItemsArray = $itemsFiltered;
+    } else {
+        $itemsFiltered = $model->getDevicesByModel($searchBarContent);
+        $currentItemsArray = $itemsFiltered;
+    }
 }
 
 function deleteDevice()
@@ -81,8 +91,10 @@ function updateDevice()
 
         <div class="table">
             <div class="searchBarAdmin">
+                <form method="post">
                 <input id="searchBar" type="text" name="searchBar" placeholder="Search a product..." class="ui-autocomplete-input" autocomplete="off">
-                <input type="submit" id="searchButton" value="search"/>
+                <input type="submit" id="searchButton" name="searchButton" value="search"/>
+                </form>
             </div>
 
             <div id="saveChanges">
