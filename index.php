@@ -212,6 +212,10 @@ if(isset($_POST['searchBar'])){
                         $myDevices = $model->getDevicesByModel($searchBarContent);
                         $model->displayDevicesForm($myDevices);
                     }
+                }else{
+                    echo "<img class='imageDesign' src='images/PageHomeIndex";
+                    echo substr($_SESSION['lang'], -2);
+                    echo ".svg'>";
                 }
                 ?>
             </ul>
