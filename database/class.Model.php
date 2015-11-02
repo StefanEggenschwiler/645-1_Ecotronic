@@ -317,9 +317,7 @@ class Model {
         $types = $this->getAllTypes();
         var_dump($types);
         foreach($types as $value){
-            echo '<option value="'.$value->getTypeName().'">'.$value->getTypeName().'</option>';
+            echo '<option value="'.$value->getId().'">'.$value->getTypeName().'</option>';
         }
-
-
     }
 }
