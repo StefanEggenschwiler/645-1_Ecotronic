@@ -19,13 +19,21 @@ $selectedEfficiencyClassChoice = null;
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
 }
+if(isset($_POST['selectedType'])){
+    $selectedCategoryChoice = ($_POST['selectedType']);
+}
+if(isset($_POST['selectedBrand'])){
+    $selectedBrandChoice = ($_POST['selectedBrand']);
+}
+if(isset($_POST['selectedEfficiencyClass'])){
+    $selectedEfficiencyClassChoice = ($_POST['selectedEfficiencyClass']);
+}
 
-if(isset($_POST['display']) && empty($searchBarContent)){
-    $selectedCategoryChoice = $_POST['selectedType'];  // Storing Selected Value In Variable
-    $selectedBrandChoice = $_POST['selectedBrand'];  // Storing Selected Value In Variable
-    $selectedEfficiencyClassChoice = $_POST['selectedEfficiencyClass'];  // Storing Selected Value In Variable
+if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
     if($selectedCategoryChoice == 'Category') {
         $filterCategory = null;
+    } else {
+        $filterCategory = $selectedCategoryChoice;
     }
     if($selectedBrandChoice == 'Brand') {
         $filterBrand = null;
@@ -47,6 +55,9 @@ if(isset($_POST['display']) && empty($searchBarContent)){
     } else {
         $itemsFiltered = $model->getDevicesByModel($searchBarContent);
         $currentItemsArray = $itemsFiltered;
+        $selectedCategoryChoice = $itemsFiltered[0]->getTypeName();
+        $selectedBrandChoice = $itemsFiltered[0]->getBrandName();
+        $selectedEfficiencyClassChoice = $itemsFiltered[0]->getEfficiencyClassName();
     }
 }
 
@@ -110,14 +121,14 @@ function updateDevice()
                     <h1>FILTERS</h1>
                     </br>
 
-                    <form action="#" method="post">
+                    <form name="display" method="post">
 
 
-                        <select style="width: 200px" class="selectedType" name="selectedType" onchange="this.form.submit();">
+                        <select style="width: 200px" class="selectedType" id="selectedType" name="selectedType" onchange="this.form.submit();">
                             <?php
                             echo '<option>Category</option>';
                             foreach($types as $value){
-                                if(isset($_POST['selectedType']) && $_POST['selectedType'] == $value->getTypeName()) {
+                                if(!empty($selectedCategoryChoice) && $selectedCategoryChoice == $value->getTypeName()) {
                                     echo '<option selected="selected">'. $value->getTypeName().'</option>';
 
                                 }
@@ -131,11 +142,11 @@ function updateDevice()
                         </select>
 
 
-                        <select style="width: 200px" name="selectedBrand" >
+                        <select style="width: 200px" id="selectedBrand" name="selectedBrand" onchange="this.form.submit();">
                             <?php
                             echo '<option>Brand</option>';
                             foreach($brands as $value){
-                                if(isset($_POST['selectedBrand']) && $_POST['selectedBrand'] == $value->getBrandName()) {
+                                if(!empty($selectedBrandChoice) && $selectedBrandChoice == $value->getBrandName()) {
                                     echo '<option selected="selected">'. $value->getBrandName().'</option>';
 
                                 }
@@ -147,11 +158,11 @@ function updateDevice()
                         </select>
 
 
-                        <select style="width: 200px" name="selectedEfficiencyClass" >
+                        <select style="width: 200px" id="selectedEfficiencyClass" name="selectedEfficiencyClass" onchange="this.form.submit();">
                             <?php
                             echo '<option>Efficiency Class</option>';
                             foreach ($efficiencyClasses as $value) {
-                                if(isset($_POST['selectedEfficiencyClass']) && $_POST['selectedEfficiencyClass'] == $value->getClassName()) {
+                                if(!empty($selectedEfficiencyClassChoice) && $selectedEfficiencyClassChoice == $value->getClassName()) {
                                     echo '<option selected="selected">'. $value->getClassName().'</option>';
 
                                 }
@@ -162,17 +173,9 @@ function updateDevice()
                             } ?>
                         </select>
 
-                        <input type="submit" name="display" id="searchButton" class="displayButton" value="Display"/>
-
-
-
                         <?php echo 'Result of you research : '. count($currentItemsArray) .' device(s).'; ?>
 
-
                         <h2><a href="#" id="deleteSelected">Delete selected devices</a></h2></br>
-
-
-
                     </form>
                 </tr>
 
