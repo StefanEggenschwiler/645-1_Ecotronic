@@ -105,6 +105,7 @@ class Model {
                     $value->setPrice($value->getPrice()*(1-$variables[1][1]).';'.$value->getPrice());
                 }
             }
+            $oldDevice[0]->setPrice(";".$oldDevice[0]->getPrice());
             array_unshift($compareDevices, $oldDevice[0]);
             return $compareDevices;
         } else {

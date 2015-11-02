@@ -16,7 +16,7 @@ if(count($_SESSION['comparedDevices']) != 0){
 ?>
 <table class="comparisonTable">
     <tr>
-        <td><?php $translate->__('Your old device')?>-></td>
+        <td><div class="arrow_box"><?php $translate->__('Your old device')?></div></td>
         <?php
         if($check){
             foreach ($devices as $value){
@@ -72,11 +72,27 @@ if(count($_SESSION['comparedDevices']) != 0){
         ?>
     </tr>
     <tr>
-        <td><?php $translate->__('Price')?></td>
+        <td><?php $translate->__('Normal price')?></td>
         <?php
         if($check) {
             foreach ($devices as $value) {
-                echo '<td>' . $value->getPrice() . '</td>';
+                $normalPrices = array();
+                //discountPrice;normalPrice
+                $normalPrices = explode(";",$value->getPrice());
+                echo '<td>' . $normalPrices[1] . '</td>';
+            }
+        }
+        ?>
+    </tr>
+    <tr>
+        <td class="discountPrice"><?php $translate->__('Discount price')?></td>
+        <?php
+        if($check) {
+            foreach ($devices as $value) {
+                $discountPrices = array();
+                //discountPrice;normalPrice
+                $discountPrices = explode(";",$value->getPrice());
+                echo '<td class="discountPrice">' . $discountPrices[0] . '</td>';
             }
         }
         ?>
