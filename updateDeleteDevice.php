@@ -15,7 +15,7 @@ $searchBarContent = null;
 $selectedCategoryChoice = null;
 $selectedBrandChoice = null;
 $selectedEfficiencyClassChoice = null;
-
+var_dump($_POST);
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
 }
@@ -202,10 +202,13 @@ function updateDevice()
                 <tr>
                     <?php
                     foreach ($itemsFiltered as $items) {
-                        echo'<td><input type="checkbox" name="check" class="checkbox"/>';
-
-                        echo '<td><a href="#" id="deleteItem">Delete</a> </td>';
-
+                        echo '<form name="row" method="post">';
+                        echo '<td><input type="checkbox" name="check" class="checkbox"/>';
+                        echo '<td><input type="submit" id="deleteItem" name="deleteItem" value="Delete"/></td>';
+                        echo '<td style="display:none;" name="deviceId">'.   $items->getId().'</td>';
+                        echo '<td style="display:none;" name="typeId">'.   $items->getTypeId().'</td>';
+                        echo '<td style="display:none;" name="efficiencyClassId">'.   $items->getEfficiencyClassId().'</td>';
+                        echo '<td style="display:none;" name="brandId">'.   $items->getBrandId().'</td>';
                         echo '<td contenteditable="true">'. $items->getTypeName() . '</td>';
                         echo '<td contenteditable="true">'. $items->getBrandName() . '</td>';
                         echo '<td contenteditable="true">'. $items->getModel() . '</td>';
@@ -219,9 +222,8 @@ function updateDevice()
                         echo '<td contenteditable="true">'. $items->getImage() . '</td>';
                         echo '<td contenteditable="true">'. $items->getManufacturerLink() . '</td>';
                         echo '<td contenteditable="true">'. $items->getShopLink() . '</td>';
-
+                        echo '</form>';
                         echo'<tr>';
-
                     }
                     ?>
 
