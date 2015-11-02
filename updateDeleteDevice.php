@@ -8,47 +8,21 @@ $types = $model->getAllTypes();
 $brands = $model->getAllBrands();
 $efficiencyClasses = $model->getAllEfficiencyClasses();
 $consumptions = array();
-$itemsFiltered = array();
-$currentItemsArray = array();
-$searchBarContent = null;
+$itemsFiltered;
+$allItemsObjects = $model->getAllDevices();
+$currentItemsArray = $allItemsObjects;
 
 $selectedCategoryChoice = null;
 $selectedBrandChoice = null;
 $selectedEfficiencyClassChoice = null;
 
-if(isset($_POST['searchBar'])){
-    $searchBarContent = ($_POST['searchBar']);
-}
-
-if(isset($_POST['display']) && empty($searchBarContent)){
+if(isset($_POST['display'])){
     $selectedCategoryChoice = $_POST['selectedType'];  // Storing Selected Value In Variable
     $selectedBrandChoice = $_POST['selectedBrand'];  // Storing Selected Value In Variable
     $selectedEfficiencyClassChoice = $_POST['selectedEfficiencyClass'];  // Storing Selected Value In Variable
-    if($selectedCategoryChoice == 'Category') {
-        $filterCategory = null;
-    }
-    if($selectedBrandChoice == 'Brand') {
-        $filterBrand = null;
-    } else {
-        $filterBrand = array($selectedBrandChoice);
-    }
-    if($selectedEfficiencyClassChoice == 'Efficiency Class') {
-        $filterEfficiencyClass = null;
-    } else {
-        $filterEfficiencyClass = array($selectedEfficiencyClassChoice);
-    }
-    $itemsFiltered = $model->getDevicesByFilter($filterCategory, $filterBrand, $filterEfficiencyClass);
     $currentItemsArray = $itemsFiltered;
-
-} else {
-    if(empty($searchBarContent)) {
-        $itemsFiltered = $model->getAllDevices(); // otherwise display all objects
-        $currentItemsArray = $itemsFiltered;
-    } else {
-        $itemsFiltered = $model->getDevicesByModel($searchBarContent);
-        $currentItemsArray = $itemsFiltered;
-    }
 }
+
 
 function deleteDevice()
 {
@@ -59,6 +33,8 @@ function updateDevice()
 {
 
 }
+
+
 ?>
 
 <script type="text/javascript">
@@ -67,19 +43,10 @@ function updateDevice()
             $(".checkbox").prop('checked', $(this).prop("checked"));
         });
     });
-
-    $(function() {
-        var availableTags =
-            <?php
-
-            $model->getAutoCompleteEntries();
-            ?>;
-        $("#searchBar").autocomplete({
-            source: availableTags,
-            autoFocus:true
-        });
-    });
 </script>
+
+
+
 
 <div class="">
     </br>
@@ -91,10 +58,8 @@ function updateDevice()
 
         <div class="table">
             <div class="searchBarAdmin">
-                <form method="post">
                 <input id="searchBar" type="text" name="searchBar" placeholder="Search a product..." class="ui-autocomplete-input" autocomplete="off">
-                <input type="submit" id="searchButton" name="searchButton" value="search"/>
-                </form>
+                <input type="submit" id="searchButton" value="search"/>
             </div>
 
             <div id="saveChanges">
@@ -166,7 +131,7 @@ function updateDevice()
 
 
 
-                        <?php echo 'Result of you research : '. count($currentItemsArray) .' device(s).'; ?>
+                        <?php echo 'Result of your research : '. $resultSize = sizeof($currentItemsArray) .' device(s).'; ?>
 
 
                         <h2><a href="#" id="deleteSelected">Delete selected devices</a></h2></br>
@@ -198,6 +163,30 @@ function updateDevice()
 
                 <tr>
                     <?php
+
+                    if(isset($_POST['display'])){
+
+                        if($selectedCategoryChoice == 'Category') {
+                            //DOESNT WORK YET!!!
+                        }
+                        if($selectedBrandChoice == 'Brand') {
+                            $filterBrand = null;
+                        } else {
+                            $filterBrand = array($selectedBrandChoice);
+                        }
+                        if($selectedEfficiencyClassChoice == 'Efficiency Class') {
+                            $filterEfficiencyClass = null;
+                        } else {
+                            $filterEfficiencyClass = array($selectedEfficiencyClassChoice);
+                        }
+                        $itemsFiltered = $model->getDevicesByFilter($selectedCategoryChoice, $filterBrand, $filterEfficiencyClass);
+                        $currentItemsArray = $itemsFiltered;
+
+                    } else {
+                        $itemsFiltered = $allItemsObjects; // otherwise display all objects
+                        $currentItemsArray = $allItemsObjects;
+                    }
+
                     foreach ($itemsFiltered as $items) {
                         echo'<td><input type="checkbox" name="check" class="checkbox"/>';
 
