@@ -161,18 +161,18 @@ if(isset($_POST['searchBar'])){
             </tr>
         </table>
         <?php
-        foreach($_SESSION['comparedDevices'] as $value){
+        for($i = 0; $i < count($_SESSION['comparedDevices']); $i++){
             echo "<table cellpadding='10' cellspacing='5'>";
             echo "<tr>";
             echo "<th id='designThInfo' rowspan='2'>" ;
-            echo $value->getBrandName()."</br>"."</br>";
-            echo $value->getModel()."</br>"."</br>";
-            echo $value->getPrice();
+            echo $_SESSION['comparedDevices'][$i]->getBrandName()."</br>"."</br>";
+            echo $_SESSION['comparedDevices'][$i]->getModel()."</br>"."</br>";
+            echo $_SESSION['comparedDevices'][$i]->getPrice();
             echo "</th>";
             echo "<th> <input type='radio' id='radioButtonCompare' name='dev' value='";
-            echo $value->getSerialNumber();
+            echo $_SESSION['comparedDevices'][$i]->getSerialNumber();
             echo "'";
-            if($value->getSerialNumber() == $_SESSION['myOldDevice'])
+            if($i == 0)
             {
                 echo " checked";
             }
@@ -181,7 +181,7 @@ if(isset($_POST['searchBar'])){
 
             echo "<tr>";
             echo "<th> <input type='submit' id='deleteButtonCompare' name='";
-            echo $value->getSerialNumber();
+            echo $_SESSION['comparedDevices'][$i]->getSerialNumber();
             echo "' value='";
             echo $translate->__('Delete');
             echo "'></th>" ;

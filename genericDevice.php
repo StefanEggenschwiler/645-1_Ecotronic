@@ -1,17 +1,21 @@
 <?php
 include_once 'headerLogin.inc';
+
 ?>
 
 
 <div class="loginBlock centered">
-    <h1><?php $translate->__("")?></h1>
+    <h1><?php $translate->__("Your generic device")?></h1>
     <form method="post" action="redirect.php">
-        <input type="text" name="user" placeholder="Username" required /> </br></br>
-        <input type="text" name="pwd" placeholder="Password" required />
+        <select name="categoryDropdownlist">
+            <?php $model->getDropdownlistCategory(); ?>
+        </select>
+        <input type="text" name="kwh" placeholder="Year" required />
+        <input type="text" name="lifespan" placeholder="Resting lifespan" required />
         </br>
         </br>
 
-        <button type="submit" value="login" name="action"><?php $translate->__str("Create")?></button>
+        <button type="submit" value="Create your device" name="action"><?php $translate->__("Create")?></button>
         </br>
         </br>
 

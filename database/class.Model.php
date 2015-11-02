@@ -313,4 +313,13 @@ class Model {
             }
         }
     }
+    public function getDropdownlistCategory(){
+        $types = $this->getAllTypes();
+        var_dump($types);
+        foreach($types as $value){
+            echo '<option value="'.$value->getTypeName().'">'.$value->getTypeName().'</option>';
+        }
+
+
+    }
 }

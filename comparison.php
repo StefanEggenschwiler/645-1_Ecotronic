@@ -16,16 +16,14 @@ if(count($_SESSION['comparedDevices']) != 0){
 ?>
 <table class="comparisonTable">
     <tr>
-        <td><div class="arrow_box"><?php $translate->__('Your old device')?></div></td>
+        <td></td>
         <?php
         if($check){
-            foreach ($devices as $value){
-                echo '<td><input type="radio" name="dev" value="';
-                echo $value->getSerialNumber().'"';
-                if($value->getSerialNumber() == $_SESSION['myOldDevice']){
-                    echo ' checked';
-                }
-                echo '></td>';
+            echo '<td>';
+            echo $translate->__('Your old device');
+            echo '</td>';
+            for ($i= 0; $i <count($devices)-1; $i++){
+                echo '<td></td>';
             }
         }
 
