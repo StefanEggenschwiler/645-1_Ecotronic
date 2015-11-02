@@ -191,15 +191,23 @@ if(isset($_POST['searchBar'])){
         }
 
         ?>
-            <label href="#" id="compare"><input id="compareButton" type="submit" name="compareButton" value="<?php $translate->__('Compare')?>"></label>
+        <label href="#" id="compare"><input id="compareButton" type="submit" name="compareButton" value="<?php $translate->__('Compare')?>"></label>
 
     </div>
-        <!-- Center div to show the selected devices-->
-        <div class="centerShowItems">
-            <ul>
-                <?php
+    <!-- Center div to show the selected devices-->
+    <div class="centerShowItems">
+        <ul>
+            <?php
 
-                if($selectedCategoryChoice != null || $searchBarContent !=null) {
+            if($selectedCategoryChoice != null|| $searchBarContent !=null) {
+                $checker = true;
+                if($searchBarContent!=null){
+                    $myDevices = $model->getDevicesByModel($searchBarContent);
+                    $model->displayDevicesForm($myDevices);
+                    $checker = false;
+                }
+
+                if($checker){
                     if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice != null){
 
                         $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice, $selectedSort);
@@ -208,19 +216,17 @@ if(isset($_POST['searchBar'])){
                         $model->displayDevicesWithoutFilters($selectedCategoryChoice, $selectedSort);
                         $showedDevices = $model->getDevicesByFilter($selectedCategoryChoice);
                     }
-                    if($searchBarContent!=null){
-                        $myDevices = $model->getDevicesByModel($searchBarContent);
-                        $model->displayDevicesForm($myDevices);
-                    }
-                }else{
-                    echo "<img class='imageDesign' src='images/PageHomeIndex";
-                    echo substr($_SESSION['lang'], -2);
-                    echo ".svg'>";
                 }
-                ?>
-            </ul>
-        </div>
-        <!-- end of the form for the whole page, begins int the header.inc-->
+
+            }else{
+                echo "<img class='imageDesign' src='images/PageHomeIndex";
+                echo substr($_SESSION['lang'], -2);
+                echo ".svg'>";
+            }
+            ?>
+        </ul>
+    </div>
+    <!-- end of the form for the whole page, begins int the header.inc-->
     </form>
 </div>
 

@@ -108,7 +108,6 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
     $(function() {
         var availableTags =
             <?php
-
             $model->getAutoCompleteEntries();
             ?>;
         $("#searchBar").autocomplete({

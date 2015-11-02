@@ -4,14 +4,14 @@ include_once 'headerLogin.inc';
 
 
 <div class="loginBlock centered">
-    <h1><?php ?></h1>
+    <h1><?php $translate->__("")?></h1>
     <form method="post" action="redirect.php">
         <input type="text" name="user" placeholder="Username" required /> </br></br>
-        <input type="password" name="pwd" placeholder="Password" required />
+        <input type="text" name="pwd" placeholder="Password" required />
         </br>
         </br>
 
-        <button type="submit" value="login" name="action"><?php translate->__str()?></button>
+        <button type="submit" value="login" name="action"><?php $translate->__str("Create")?></button>
         </br>
         </br>
 
