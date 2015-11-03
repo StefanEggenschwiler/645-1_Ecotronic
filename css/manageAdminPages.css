@@ -131,7 +131,7 @@ a {
     width: auto;
 }
 
-.gridder_input {
+.gridder_input, .gridder_add {
     display:none;
     margin:0;
     padding:0;
@@ -141,4 +141,33 @@ a {
     border:#000000 solid 1px;
     width:auto;
     height:auto;
+}
+
+.gridder_add {
+    display:block;
+    border:#CCCCCC solid 1px;
+}
+
+.gridder_input.select, .gridder_add.select {
+    height:auto;
+}
+
+.gridder_input:hover, .gridder_input:active, .gridder_add:hover, .gridder_add:active {
+    outline:none;
+}
+
+#addnew {
+    display:none;
+}
+
+.gridder_addrecord_button {
+    margin:0;
+    padding:0;
+    outline:none;
+    border:none;
+    background:url(../images/icons/tick.png) no-repeat;
+    cursor:pointer;
+    display:inline-block;
+    height:16px;
+    width:16px;
 }

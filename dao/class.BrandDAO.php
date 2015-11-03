@@ -48,21 +48,20 @@ class BrandDAO
         return $stmt->execute();
     }
 
-    public function update($oldName, $newName) {
+    public function update($brandId, $newName) {
         $stmt = $this->_conn->getConnection()->prepare('
-        IF (NOT EXISTS(SELECT * FROM brand WHERE brandName = :newName))
-        BEGIN
-            UPDATE brand SET brandName = :newName WHERE brandName = :oldName
-        END');
+          UPDATE brand
+            SET brandName = :newName
+          WHERE id = :brandId');
+        $stmt->bindParam(':brandId', $brandId, PDO::PARAM_INT);
         $stmt->bindParam(':newName', $newName, PDO::PARAM_STR, 60);
-        $stmt->bindParam(':oldName', $oldName, PDO::PARAM_STR, 60);
         return $stmt->execute();
     }
 
-    public function delete($brandName) {
+    public function delete($brandId) {
         $stmt = $this->_conn->getConnection()->prepare('
-        DELETE FROM brand WHERE brandName = :brandName');
-        $stmt->bindParam(':brandName', $brandName, PDO::PARAM_STR, 60);
+        DELETE FROM brand WHERE id = :brandId');
+        $stmt->bindParam(':brandId', $brandId, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }

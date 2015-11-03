@@ -35,21 +35,20 @@ class TypeDAO
         return $stmt->execute();
     }
 
-    public function update($oldName, $newName) {
+    public function update($typeId, $newName) {
         $stmt = $this->_conn->getConnection()->prepare('
-        IF (NOT EXISTS(SELECT * FROM type WHERE typeName = :newName))
-        BEGIN
-            UPDATE type SET typeName = :newName WHERE typeName = :oldName
-        END');
+          UPDATE type
+            SET typeName = :newName
+          WHERE id = :typeId');
+        $stmt->bindParam(':typeId', $typeId, PDO::PARAM_INT);
         $stmt->bindParam(':newName', $newName, PDO::PARAM_STR, 50);
-        $stmt->bindParam(':oldName', $oldName, PDO::PARAM_STR, 50);
         return $stmt->execute();
     }
 
-    public function delete($typeName) {
+    public function delete($typeId) {
         $stmt = $this->_conn->getConnection()->prepare('
-        DELETE FROM type WHERE typeName = :typeName');
-        $stmt->bindParam(':typeName', $typeName, PDO::PARAM_STR, 50);
+        DELETE FROM type WHERE id = :typeId');
+        $stmt->bindParam(':typeId', $typeId, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }

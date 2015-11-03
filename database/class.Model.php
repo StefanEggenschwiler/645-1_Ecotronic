@@ -153,12 +153,12 @@ class Model {
         return $this->typeDao->create($typeName);
     }
 
-    public function updateType($oldName, $newName) {
-        return $this->typeDao->update($oldName, $newName);
+    public function updateType($typeId, $newName) {
+        return $this->typeDao->update($typeId, $newName);
     }
 
-    public function deleteType($typeName) {
-        return $this->typeDao->delete($typeName);
+    public function deleteType($typeId) {
+        return $this->typeDao->delete($typeId);
     }
 
     // BRANDS
@@ -184,12 +184,12 @@ class Model {
         return $this->brandDao->create($brandName);
     }
 
-    public function updateBrand($oldName, $newName) {
-        return $this->brandDao->update($oldName, $newName);
+    public function updateBrand($brandId, $newName) {
+        return $this->brandDao->update($brandId, $newName);
     }
 
-    public function deleteBrand($brandName) {
-        return $this->brandDao->delete($brandName);
+    public function deleteBrand($brandId) {
+        return $this->brandDao->delete($brandId);
     }
 
     // EFFICIENCY CLASSES
@@ -215,12 +215,12 @@ class Model {
         return $this->efficiencyClassDao->create($efficiencyClassName);
     }
 
-    public function updateEfficiencyClass($oldName, $newName) {
-        return $this->efficiencyClassDao->update($oldName, $newName);
+    public function updateEfficiencyClass($efficiencyClassId, $newName) {
+        return $this->efficiencyClassDao->update($efficiencyClassId, $newName);
     }
 
-    public function deleteEfficiencyClass($efficiencyClassName) {
-        return $this->efficiencyClassDao->delete($efficiencyClassName);
+    public function deleteEfficiencyClass($efficiencyClassId) {
+        return $this->efficiencyClassDao->delete($efficiencyClassId);
     }
 
     // DISPLAY

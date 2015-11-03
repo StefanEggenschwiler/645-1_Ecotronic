@@ -48,21 +48,20 @@ class EfficiencyClassDAO
         return $stmt->execute();
     }
 
-    public function update($oldName, $newName) {
+    public function update($efficiencyClassId, $newName) {
         $stmt = $this->_conn->getConnection()->prepare('
-        IF (NOT EXISTS(SELECT * FROM efficiencyclass WHERE className = :newName))
-        BEGIN
-            UPDATE efficiencyclass SET className = :newName WHERE className = :oldName
-        END');
+          UPDATE efficiencyclass
+            SET className = :newName
+          WHERE id = :efficiencyClassId');
+        $stmt->bindParam(':efficiencyClassId', $efficiencyClassId, PDO::PARAM_INT);
         $stmt->bindParam(':newName', $newName, PDO::PARAM_STR, 50);
-        $stmt->bindParam(':oldName', $oldName, PDO::PARAM_STR, 50);
         return $stmt->execute();
     }
 
-    public function delete($efficiencyClassName) {
+    public function delete($efficiencyClassId) {
         $stmt = $this->_conn->getConnection()->prepare('
-        DELETE FROM efficiencyclass WHERE className = :efficiencyClassName');
-        $stmt->bindParam(':efficiencyClassName', $efficiencyClassName, PDO::PARAM_STR, 50);
+        DELETE FROM efficiencyclass WHERE id = :efficiencyClassId');
+        $stmt->bindParam(':efficiencyClassId', $efficiencyClassId, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }

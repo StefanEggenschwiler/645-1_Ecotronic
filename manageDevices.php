@@ -62,12 +62,6 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
 ?>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $("#selectAll").change(function(){
-            $(".checkbox").prop('checked', $(this).prop("checked"));
-        });
-    });
-
     $(function() {
         var availableTags =
             <?php
@@ -77,6 +71,57 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
         $("#searchBar").autocomplete({
             source: availableTags,
             autoFocus:true
+        });
+    });
+
+    $(function(){
+        // Show the text box on click
+        $('body').delegate('.editable', 'click', function(){
+            var ThisElement = $(this);
+            ThisElement.find('span').hide();
+            ThisElement.find('.gridder_input').show().focus();
+        });
+
+        // Pass and save the textbox values on blur function
+        $('body').delegate('.gridder_input', 'blur', function(){
+            var ThisElement = $(this);
+            ThisElement.hide();
+            ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
+            var UrlToPass = 'action=updateDevice&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
+            $.ajax({
+                url : 'database/class.Ajax.php',
+                type : 'POST',
+                data : UrlToPass
+            });
+            return false;
+        });
+
+        // Same as the above blur() when user hits the 'Enter' key
+        $('body').delegate('.gridder_input', 'keypress', function(e){
+            if(e.keyCode == '13') {
+                var ThisElement = $(this);
+                ThisElement.hide();
+                ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
+            }
+        });
+
+        // Function for delete the record
+        $('body').delegate('.gridder_delete', 'click', function(){
+            var conf = confirm('Are you sure want to delete this device?');
+            if(!conf) {
+                return false;
+            }
+            var ThisElement = $(this);
+            var UrlToPass = 'action=deleteDevice&value='+ThisElement.attr('href');
+            $.ajax({
+                url : 'database/class.Ajax.php',
+                type : 'POST',
+                data : UrlToPass,
+                success: function() {
+                    location.reload();
+                }
+            });
+            return false;
         });
     });
 </script>
@@ -226,58 +271,6 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                     echo '</tr>';
                 }
                 ?>
-                <script type="text/javascript">
-                    $(function(){
-                        // Show the text box on click
-                        $('body').delegate('.editable', 'click', function(){
-                            var ThisElement = $(this);
-                            ThisElement.find('span').hide();
-                            ThisElement.find('.gridder_input').show().focus();
-                        });
-
-                        // Pass and save the textbox values on blur function
-                        $('body').delegate('.gridder_input', 'blur', function(){
-                            var ThisElement = $(this);
-                            ThisElement.hide();
-                            ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
-                            var UrlToPass = 'action=update&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
-                            $.ajax({
-                                url : 'database/class.Ajax.php',
-                                type : 'POST',
-                                data : UrlToPass
-                            });
-                            return false;
-                        });
-
-                        // Same as the above blur() when user hits the 'Enter' key
-                        $('body').delegate('.gridder_input', 'keypress', function(e){
-                            if(e.keyCode == '13') {
-                                var ThisElement = $(this);
-                                ThisElement.hide();
-                                ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
-                            }
-                        });
-
-                        // Function for delete the record
-                        $('body').delegate('.gridder_delete', 'click', function(){
-                            var conf = confirm('Are you sure want to delete this record?');
-                            if(!conf) {
-                                return false;
-                            }
-                            var ThisElement = $(this);
-                            var UrlToPass = 'action=delete&value='+ThisElement.attr('href');
-                            $.ajax({
-                                url : 'database/class.Ajax.php',
-                                type : 'POST',
-                                data : UrlToPass,
-                                success: function() {
-                                    location.reload();
-                                }
-                            });
-                            return false;
-                        });
-                    });
-                </script>
             </table>
         </div>
     </div>

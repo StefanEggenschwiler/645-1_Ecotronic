@@ -7,29 +7,45 @@ $columnName = null;
 $deviceId = null;
 
 switch($action) {
-    case "update":
+    case "updateDevice":
         $crypto = decrypt($_POST['crypto']);
         $value 	= $_POST['value'];
         $explode = explode('|', $crypto);
-        var_dump($crypto);
-        var_dump($value);
         if(count($explode) == 2) {
             $columnName = $explode[0];
             $deviceId = $explode[1];
-            var_dump($model->updateDevice($deviceId, $columnName, $value));
+            $model->updateDevice($deviceId, $columnName, $value);
             //set columnName = value where Id = deviceId;
         }
         if(count($explode) == 3) {
             $columnName = $explode[0];
             $deviceId = $explode[1];
-            var_dump($model->updateDevice($deviceId, $columnName, $value, true));
+            $model->updateDevice($deviceId, $columnName, $value, true);
             //set columnName = value where Id = deviceId;
         }
         break;
 
-    case "delete":
+    case "deleteDevice":
         $deviceId = decrypt($_POST['value']);
-        echo $deviceId;
         $model->deleteDevice($deviceId);
+        break;
+
+    case "addType":
+        $value 	= $_POST['typeName'];
+        var_dump($model->createType($value));
+        break;
+
+    case "updateType":
+        $crypto = decrypt($_POST['crypto']);
+        $value 	= $_POST['value'];
+        $explode = explode('|', $crypto);
+        $columnName = $explode[0];
+        $typeId = $explode[1];
+        $model->updateType($typeId, $value);
+        break;
+
+    case "deleteType":
+        $typeId = decrypt($_POST['value']);
+        $model->deleteType($typeId);
         break;
 }
