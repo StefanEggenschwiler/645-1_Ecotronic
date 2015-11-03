@@ -94,7 +94,7 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
             <input id="searchBar" type="text" name="searchBar" placeholder="<?php $translate->__('Find your old product...')?>">
             <input id="searchButton" type="submit" name="searchBarButton" value="<?php $translate->__('Search')?>">
 
-        <a class="italicText" href="genericDevice.php" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea')?></a>
+        <a class="italicText" href="genericDevice.php<?php echo $_SESSION['lang']?>" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea')?></a>
     </div>
 <div class="languages">
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=en';?>"><img class ="flags" src="images/flags/flagEN.png" alt="EN" title="English"></a>

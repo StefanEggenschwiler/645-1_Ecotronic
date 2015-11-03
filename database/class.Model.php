@@ -323,11 +323,19 @@ class Model {
             }
         }
     }
+
     public function getDropdownlistCategory(){
         $types = $this->getAllTypes();
         var_dump($types);
         foreach($types as $value){
             echo '<option value="'.$value->getId().'">'.$value->getTypeName().'</option>';
         }
+    }
+
+    public function redirectToIndex($pageName){
+        $indexLink = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $indexLink = str_replace("index",$pageName,$indexLink);
+        header('Location: '.$indexLink);
+        exit();
     }
 }
