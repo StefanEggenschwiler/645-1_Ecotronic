@@ -52,8 +52,8 @@ class Model {
         return $this->deviceDao->getAll();
     }
 
-    public function getDevicesByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
-        return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceLow, $priceHigh);
+    public function getDevicesByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceHigh = null) {
+        return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceHigh);
     }
 
     public function getDevicesByModel($model) {
@@ -84,6 +84,7 @@ class Model {
                     break;
             }
         }
+        return false;
     }
 
     public function deleteDevice($deviceId) {

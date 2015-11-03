@@ -36,6 +36,6 @@ class Translator {
         else {
             return $this->findString($str);
         }
+        return false;
     }
 }
-?>

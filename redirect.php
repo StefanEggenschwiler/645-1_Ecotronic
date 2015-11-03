@@ -76,8 +76,6 @@ function saveFormula() {
     header ('location: editFormula.php');
     exit;
 }
-?>
-
 
 
 

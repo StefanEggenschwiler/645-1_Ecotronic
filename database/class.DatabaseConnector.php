@@ -35,4 +35,3 @@ class PdoConnector {
         return $result;
     }
 }
-?>

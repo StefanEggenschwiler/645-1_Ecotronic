@@ -8,5 +8,3 @@ function encrypt($data) {
 function decrypt($data) {
     return strrev(base64_decode(base64_decode(base64_decode($data))));
 }
-
-?>
