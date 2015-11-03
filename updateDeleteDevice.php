@@ -63,6 +63,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
 function deleteDevice()
 {
 
+
 }
 
 function updateDevice()
