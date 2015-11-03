@@ -1,5 +1,5 @@
 I have no idea=Je n'ai aucune idée
-Find your old product...=Trouvez votre ancien produit...
+Find your old product...=Trouvez votre produit...
 Search=Chercher
 Oven=Four
 Steamer=Cuiseur à vapeur

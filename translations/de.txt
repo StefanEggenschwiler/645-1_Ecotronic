@@ -1,5 +1,5 @@
 I have no idea=Ich habe keine Ahnung
-Find your old product...=Finden Sie ihr altes Produkt...
+Find your old product...=Finden Sie ihr Produkt...
 Search=Suchen
 Oven=Ofen
 Steamer=Dampfgarer

@@ -1,5 +1,5 @@
 I have no idea=Non ne ho idea
-Find your old product...=Trovare il vostro vecchio produtto
+Find your old product...=Trovare il vostro produtto
 Search=Ricercare
 Oven=Forno
 Steamer=Vaporiera

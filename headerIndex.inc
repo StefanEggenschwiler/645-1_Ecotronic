@@ -72,8 +72,9 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
     <link rel="shortcut icon" type="image/x-icon" href="images/icons/FavIcon.ico" />
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="css/style.css">
+    <link rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="css/comparisonTable.css">
     <link rel="stylesheet" media="screen and (max-width: 1023px)" type="text/css" href="css/styleMobile.css">
-    <link rel="stylesheet" type="text/css" href="css/comparisonTable.css">
+    <link rel="stylesheet" media="screen and (max-width: 1023px)" type="text/css" href="css/comparisonTableMobile.css">
     <script type="text/javascript" src="javascript/javascript.js"></script>
     <!-- load jquery ui css-->
     <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
@@ -92,7 +93,7 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
         <form method="post" action="<?php
         echo $_SERVER['PHP_SELF'];
         echo $_SESSION['lang'];?>">
-            <input id="searchBar" type="text" name="searchBar" placeholder="<?php $translate->__('Find your old product...')?>">
+            <input id="searchBar" type="text" name="searchBar" placeholder="<?php $translate->__('Find your product...')?>">
             <input id="searchButton" type="submit" name="searchBarButton" value="<?php $translate->__('Search')?>">
 
         <a class="italicText" href="genericDevice.php<?php echo $_SESSION['lang']?>" alt="Generic device" title="Generic device"><?php $translate->__('I have no idea')?></a>
