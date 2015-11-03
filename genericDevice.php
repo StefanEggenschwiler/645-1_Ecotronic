@@ -56,7 +56,7 @@ if(isset($_POST['deleteGenericDevice'])){
             echo '<input type="number" name="lifespan" placeholder="Resting lifespan" required />';
             echo '</br>';
             echo '</br>';
-            echo '<button class="buttons"type="submit" value="Create your device" name="createGenericDevice">';
+            echo '<button id="createGenericDevice" type="submit" value="Create your device" name="createGenericDevice">';
             echo $translate->__("Create");
             echo '</button>';
             echo '</br>';
@@ -71,7 +71,7 @@ if(isset($_POST['deleteGenericDevice'])){
             echo 'Lifespan'.' : '.$generic->getLifeSpan();
             echo '</br>';
             echo '</br>';
-            echo '<button class="buttons" type="submit" value="Delete your device" name="deleteGenericDevice">';
+            echo '<button id="deleteGenericDevice" type="submit" value="Delete your device" name="deleteGenericDevice">';
             echo $translate->__("Delete");
             echo '</button>';
         }
@@ -83,7 +83,7 @@ if(isset($_POST['deleteGenericDevice'])){
     </br>
 
     <form method="post" action="index.php">
-        <button class="buttons" type="submit" value="back" name="back"><?php $translate->__("Back")?></button>
+        <button id="backGenericDevice" type="submit" value="back" name="back"><?php $translate->__("Back")?></button>
     </form>
 
     <!--

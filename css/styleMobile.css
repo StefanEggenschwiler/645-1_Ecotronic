@@ -174,7 +174,7 @@ body {
     border-radius: 7px;
     border-top: 7px solid #04B45F;
     font-size: 150%;
-    height: 40em;
+    height: 48em;
 }
 
 .loginBlock h1 {
@@ -426,11 +426,22 @@ body {
     height: 2em;
 }
 
-.buttons
+.loginBlock form
+{
+    height: 2em;
+    font-size: 1.5em;
+}
+
+#createGenericDevice, #deleteGenericDevice, #backGenericDevice
 {
 
     width: 10em;
     height: 2em;
     font-size: 2em;
-    margin-top: 5em;
+}
+
+#backGenericDevice
+{
+    position: relative;
+    margin-top: 10em;
 }
