@@ -244,10 +244,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                             $.ajax({
                                 url : 'database/class.Ajax.php',
                                 type : 'POST',
-                                data : UrlToPass,
-                                success: function() {
-                                    location.reload();
-                                }
+                                data : UrlToPass
                             });
                             return false;
                         });
