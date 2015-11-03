@@ -142,7 +142,7 @@ if(isset($_POST['searchBar'])){
             </div>
         </div>
 
-        <label href="#" id="show"><input id="searchButton" type="submit" name="searchButton" value="<?php $translate->__('Show')?>"></label>
+        <label href="#" id="show"><input id="showButton" type="submit" name="showButton" value="<?php $translate->__('Show')?>"></label>
 
     </div>
 

@@ -19,3 +19,4 @@ Classification=Classification
 Compare=Comparer
 Model=Modèle
 Link=Lien
+Delete=Suppr.

@@ -57,7 +57,7 @@ body {
 }
 
 .submenu {
-    height: 40px;
+    height: 5em;
     text-align: left;
     background: rgb(0, 200, 0);
     color: #fff;
@@ -82,14 +82,19 @@ body {
     height: 100%;
     color: #fff;
     font-family: arial, sans-serif;
-    font-size: 1.2em;
+    font-size: 2em;
     font-weight: bold;
     text-decoration: none;
     background: rgb(0, 200, 0);
 }
 
+.submenu label
+{
+    font-size: 150%;
+}
+
 #submenu4 .submenu {
-    height: 63px;
+    height: 6em;
     text-align: center;
     background: rgb(0, 200, 0);
     color: #fff;
@@ -102,10 +107,14 @@ body {
     height: 100%;
     color: #fff;
     font-family: arial, sans-serif;
-    font-size: 15px;
     font-weight: bold;
     text-decoration: none;
     background: rgb(0, 200, 0);
+}
+
+#submenu4 .submenu label input
+{
+    width: 95%;
 }
 
 #show {
@@ -160,18 +169,18 @@ body {
 
 /* LOGIN BLOCK */
 .loginBlock {
-    width: 420px;
-    height: 320px;
     padding: 20px;
     background: #fff;
     border-radius: 7px;
     border-top: 7px solid #04B45F;
+    font-size: 150%;
+    height: 40em;
 }
 
 .loginBlock h1 {
     text-align: center;
     color: #000;
-    font-size: 22px;
+    font-size: 5em
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 40px;
@@ -201,9 +210,8 @@ body {
     margin-bottom: 15px;
 }
 
-.loginBlock button, #searchButton, #compareButton {
-    width: 100%;
-    height: 40px;
+.loginBlock button, #showButton, #compareButton {
+
     background: #04B45F;
     box-sizing: border-box;
     border-radius: 5px;
@@ -211,9 +219,15 @@ body {
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 14px;
     outline: none;
     cursor: pointer;
+}
+
+#showButton, #compareButton
+{
+    font-size: 1.5em;
+    height: 4em;
+    width: 8em;
 }
 
 .loginBlock button:hover {
@@ -302,8 +316,9 @@ body {
 }
 
 .centerShowItems {
-    margin-left: 17em;
+    margin-left: 16em;
     margin-right: 18em;
+    position: relative;
 }
 
 .centerShowItems li {
@@ -367,8 +382,8 @@ body {
 }
 
 #radioButtonCompare {
-    width: 20px;
-    height: 20px;
+    width: 5em;
+    height: 5em;
     padding-left: 5px;
 }
 
@@ -376,6 +391,7 @@ body {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+    font-size: 120%;
 }
 
 #searchButton
@@ -396,4 +412,25 @@ body {
 .rightComparator table tbody tr th
 {
     font-size: 150%;
+}
+
+#categoryDropdownlist, .loginBlock form
+{
+    width: 100%;
+    height: 2.5em;
+    font-size: 120%;
+}
+
+.loginBlock form input
+{
+    height: 2em;
+}
+
+.buttons
+{
+
+    width: 10em;
+    height: 2em;
+    font-size: 2em;
+    margin-top: 5em;
 }
