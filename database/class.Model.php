@@ -75,7 +75,17 @@ class Model {
     }
 
     public function compareDevices($oldSerialNumber, $compareDevices) {
-        $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
+        $oldDevice = array();
+        if($oldSerialNumber == 'MY-DEVICE'){
+            foreach($compareDevices as $value){
+                if($value->getSerialNumber() == $oldSerialNumber){
+                    $oldDevice[0] = $value;
+                }
+            }
+        }else{
+            $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
+        }
+
         $pos = array_search($oldDevice[0], $compareDevices);
         unset($compareDevices[$pos]);
         array_values($compareDevices);

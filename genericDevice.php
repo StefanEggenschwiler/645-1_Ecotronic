@@ -6,6 +6,7 @@ if(!isset($_SESSION['myGenericDevice'])){
 
 ?>
 
+//add already created device if wanna delete it...
 
 <div class="loginBlock centered">
     <h1><?php $translate->__("Your generic device")?></h1>
@@ -42,7 +43,10 @@ if(!isset($_SESSION['myGenericDevice'])){
             $_SESSION['myGenericDevice']->setTypeId($_POST['categoryDropdownlist']);
             $_SESSION['myGenericDevice']->setEnergyConsumption($_POST['kwh']);
             $_SESSION['myGenericDevice']->setLifespan($_POST['lifespan']);
-            var_dump($_SESSION['myGenericDevice']);
+            $_SESSION['myGenericDevice']->setSerialNumber('MY-DEVICE');
+            $_SESSION['myGenericDevice']->setModel($translate->__('My generic device'));
+            array_push($_SESSION['comparedDevices'], $_SESSION['myGenericDevice']);
+            var_dump($_SESSION['comparedDevices']);
         }
 
         ?>

@@ -2,6 +2,7 @@
 
 include_once 'translations/class.Translator.php';
 include_once 'database/class.Model.php';
+include_once 'dto/class.Device.php';
 $translate;
 $model = new Model();
 if (isset ( $_GET ['lang'] )) {
@@ -11,6 +12,7 @@ if (isset ( $_GET ['lang'] )) {
 }
 
 header('Content-Type: text/html; charset=UTF-8');
+session_start();
 
 ?>
 
