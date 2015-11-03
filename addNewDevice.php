@@ -141,17 +141,17 @@ function createNewDevice()
 
         Enter the image URL
         </br>
-        <input type="text" name="imageURL" required/>
+        <input type="text" name="imageURL" value="www." required/>
         </br>
 
         Enter the manufacturer link
         </br>
-        <input type="text" name="manufacturerLink" required/>
+        <input type="text" name="manufacturerLink" value="www." required/>
         </br>
 
         Enter the shop link
         </br>
-        <input type="text" name="shopLink" required/>
+        <input type="text" name="shopLink" value="www." required/>
         </br>
 
 

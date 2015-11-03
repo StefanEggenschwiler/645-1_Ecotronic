@@ -17,7 +17,7 @@ if ($handle) {
 
 ?>
 
-<link rel="stylesheet" href="css/editFormula.css" type="text/css" media="all" xmlns="http://www.w3.org/1999/html"/>
+<link rel="stylesheet" href="css/editTranslations.css" type="text/css" media="all" xmlns="http://www.w3.org/1999/html"/>
 
 
 <div class="container">
@@ -33,14 +33,14 @@ if ($handle) {
         T = Life Span </br>
         i = Indice </br> </br>
         x = Maximum discount defined by the administrator </br>
-        &#916;e = (KWha - KWhb) * (Tb - Ta) </br></br>
+        &#916;e = (KWha - KWhb) * (Tb - Ta) </br></br></br></br></br></br>
 
 
 
         <u>Formula & Condition</u> </br></br>
 
-        Formula : &#916;e * i &#8804; x </br>
-        Discount Condition : 0 &#8804; x &#8804; 0.4 (maximum 40%)</br></br></br></br></br>
+        Formula :<b> &#916;e * i &#8804; x </br></b>
+        Discount Condition : <b> 0 &#8804; x &#8804; 0.4 (maximum 40%)</b></br></br></br></br>
     </p>
 
     <p>

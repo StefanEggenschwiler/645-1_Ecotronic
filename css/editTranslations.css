@@ -22,11 +22,13 @@ table {
 
 /* All input cells fit the td content */
 
-input {
+input, p {
     width: 100%;
     padding: 10px;
     margin: 0px;
+    font-size: 15px;
 }
+
 
 #saveChangesButton {
     height: 40px;

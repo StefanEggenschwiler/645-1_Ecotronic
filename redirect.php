@@ -71,7 +71,7 @@ function saveFormula() {
     file_put_contents('database/formula.txt', $variables);
 
     session_start();
-    $_SESSION['message'] = 'Changes saved!';
+    $_SESSION['message'] = 'Changes sucessfully saved!';
 
     header ('location: editFormula.php');
     exit;
