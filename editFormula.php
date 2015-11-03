@@ -60,13 +60,14 @@ if ($handle) {
     </p>
 
 
-    <form method="post" action="redirect.php">
-        <table border="3">
-            <tr><th>Formula =</th><th>&#916;e</th><th>*</th><th>Indice</th><th>&#8804;</th><th>Maximum discount</th></tr> <!--Headers, column names-->
 
-            <tr><td></td><td>&#916;e</td><td>*</td><td><?php echo "<input type=\"number\" name=\"formulaConstant\" value=\"";
+    <form method="post" action="redirect.php">
+        <table id="editFormulaTable" border="3" >
+            <tr><th>Formula =</th><th>&#916;e</th><th>*</th><th>Indice (i)</th><th>&#8804;</th><th>Max discount (x)</th></tr> <!--Headers, column names-->
+
+            <tr><td></td><td>&#916;e</td><td>*</td><td><?php echo "<input style=\"text-align:center\" type=\"number\" name=\"formulaConstant\" value=\"";
                     echo floatval($variables[0][1]);
-                    echo "\" size=\"5\" min=\"0\" max=\"1\" step=\"0.01\" required>"; ?></td><td>&#8804;</td><td><?php echo "<input type=\"number\" name=\"formulaMaxDiscount\" value=\"";
+                    echo "\" size=\"5\" min=\"0\" max=\"1\" step=\"0.01\" required>"; ?></td><td>&#8804;</td><td><?php echo "<input style=\"text-align:center\" type=\"number\" name=\"formulaMaxDiscount\" value=\"";
                     echo floatval($variables[1][1]);
                     echo "\" size=\"5\" min=\"0\" max=\"1\" step=\"0.01\" required>"; ?></td></tr>
 

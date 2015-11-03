@@ -4,7 +4,18 @@
 
 }
 
-table {
+#editFormulaTable {
+    color: black;
+    width: 768px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 7px solid #04B45F;
+    padding: 2px 24px 2px 0px;
+    background: #fff;
+
+}
+
+#editTranslationsTable {
     color: black;
     width: 980px;
     border-collapse: collapse;
@@ -15,6 +26,10 @@ table {
 
 }
 
+h1 {
+    font-size: 40px;
+}
+
 .alignRight {
     margin-top: 2%;
     float: right;
@@ -23,7 +38,7 @@ table {
 /* All input cells fit the td content */
 
 input, p {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin: 0px;
     font-size: 15px;

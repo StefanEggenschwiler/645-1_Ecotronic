@@ -34,7 +34,7 @@ if ($handle) {
 <div class="container">
 
     <form method="post" action="redirect.php">
-        <table>
+        <table id="editTranslationsTable">
             <tr>
                 <th>English</th>
                 <th>German</th>
