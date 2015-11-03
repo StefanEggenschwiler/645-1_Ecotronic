@@ -337,8 +337,11 @@ body {
 }
 
 #addToCompareListButton {
+    font-size:120%;
     position: relative;
-    float: right;
+    left: 50%;
+    transform: translate(-50%, 0);
+
 }
 
 #radioButtonCompare {
