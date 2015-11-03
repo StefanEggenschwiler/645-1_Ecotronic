@@ -7,7 +7,6 @@ session_start();
 if (isset ( $_SESSION ['user'] )) {
     $admin = $_SESSION ['user'];
 
-
 }
 else
 {
