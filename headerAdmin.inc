@@ -48,21 +48,18 @@ header('Content-Type: text/html; charset=UTF-8');
                 <div id="topRightBlock">
                     Welcome <strong><?php echo $admin->getUsername(); ?></strong>
                     <span>|</span>
-                    <a href="#">Profile Settings</a>
-                    <span>|</span>
-
                     <a href="logout.php">Log out</a>
                 </div>
-
             </div>
 
             <div id="navigation">
                 <ul>
-                    <li class="<?php echo ($pageName == "admin.php" ? "active" : "")?>"><a id="nav" href="admin.php"><span>Admin page</span></a></li>
-                    <li class="<?php echo ($pageName == "addNewDevice.php" ? "active" : "")?>"><a id="nav" href="addNewDevice.php"><span>Add a new device</span></a></li>
-                    <li class="<?php echo ($pageName == "updateDeleteDevice.php" ? "active" : "")?>"><a id="nav" href="updateDeleteDevice.php"><span>Update/Delete an article</span></a></li>
-                    <!--<li class="<?php echo ($pageName == "editDiscount.php" ? "active" : "")?>"><a id="nav" href="editDiscount.php"><span>Change discount</span></a></li>!-->
-                    <li class="<?php echo ($pageName == "editTranslation.php" ? "active" : "")?>"><a id="nav" href="editTranslation.php"><span>Manage Translations</span></a></li>
+                    <li class="<?php echo ($pageName == "addNewDevice.php" ? "active" : "")?>"><a id="nav" href="addNewDevice.php"><span>Add Device</span></a></li>
+                    <li class="<?php echo ($pageName == "updateDeleteDevice.php" ? "active" : "")?>"><a id="nav" href="updateDeleteDevice.php"><span>Edit Devices</span></a></li>
+                    <li class="<?php echo ($pageName == "manageTypes.php" ? "active" : "")?>"><a id="nav" href="manageTypes.php"><span>Manage Types</span></a></li>
+                    <li class="<?php echo ($pageName == "manageBrands.php" ? "active" : "")?>"><a id="nav" href="manageBrands.php"><span>Manage Brands</span></a></li>
+                    <li class="<?php echo ($pageName == "manageEfficiencyClasses.php" ? "active" : "")?>"><a id="nav" href="manageEfficiencyClasses.php"><span>Manage Efficiency Classes</span></a></li>
+                    <li class="<?php echo ($pageName == "editTranslation.php" ? "active" : "")?>"><a id="nav" href="editTranslation.php"><span>Manage Translation</span></a></li>
                     <li class="<?php echo ($pageName == "editFormula.php" ? "active" : "")?>"><a id="nav" href="editFormula.php"><span>Manage Formula</span></a></li>
                 </ul>
             </div>
