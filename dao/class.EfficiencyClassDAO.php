@@ -20,6 +20,14 @@ class EfficiencyClassDAO
         return $stmt->fetchAll();
     }
 
+    public function getIdByName($efficiencyClassName) {
+        $stmt = $this->_conn->getConnection()->prepare('
+        SELECT id FROM efficiencyclass WHERE className = :efficiencyClassName');
+        $stmt->bindParam(':efficiencyClassName', $efficiencyClassName, PDO::PARAM_STR, 50);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function getByType($typeName) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT DISTINCT efficiencyclass.id, efficiencyclass.className

@@ -20,6 +20,14 @@ class TypeDAO
         return $stmt->fetchAll();
     }
 
+    public function getIdByName($typeName) {
+        $stmt = $this->_conn->getConnection()->prepare('
+        SELECT id FROM type WHERE typeName = :typeName');
+        $stmt->bindParam(':typeName', $typeName, PDO::PARAM_STR, 50);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function create($typeName) {
         $stmt = $this->_conn->getConnection()->prepare('
         INSERT IGNORE INTO type (typeName) VALUES (:typeName)');

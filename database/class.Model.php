@@ -64,10 +64,26 @@ class Model {
         return $this->deviceDao->getBySerialNumber($serialNumber);
     }
 
-    public function updateDevice($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-                                 $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
-        return $this->deviceDao->update($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-            $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
+    public function updateDevice($deviceId, $columnName, $newValue, $foreignTable = null) {
+        $tmpValue = null;
+        if (is_null($foreignTable)) {
+            return $this->deviceDao->update($deviceId, $columnName, $newValue);
+        } else {
+            switch($columnName) {
+                case 'typeId':
+                    $tmpValue = $this->typeDao->getIdByName($newValue);
+                    return $this->deviceDao->update($deviceId, $columnName, $tmpValue[0]);
+                    break;
+                case 'brandId':
+                    $tmpValue = $this->brandDao->getIdByName($newValue);
+                    return $this->deviceDao->update($deviceId, $columnName, $tmpValue[0]);
+                    break;
+                case 'efficiencyClassId':
+                    $tmpValue = $this->efficiencyClassDao->getIdByName($newValue);
+                    return $this->deviceDao->update($deviceId, $columnName, $tmpValue[0]);
+                    break;
+            }
+        }
     }
 
     public function deleteDevice($deviceId) {

@@ -20,6 +20,14 @@ class BrandDAO
         return $stmt->fetchAll();
     }
 
+    public function getIdByName($brandName) {
+        $stmt = $this->_conn->getConnection()->prepare('
+        SELECT id FROM brand WHERE brandName = :brandName');
+        $stmt->bindParam(':brandName', $brandName, PDO::PARAM_STR, 60);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function getByType($typeName) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT DISTINCT brand.id, brand.brandName

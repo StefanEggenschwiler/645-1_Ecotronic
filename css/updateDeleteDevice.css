@@ -1,28 +1,5 @@
 h1   {color:black}
 
-
-
-.table th {
-    color: black;
-    text-align: left;
-    padding: 7px 10px;
-    border-bottom: solid 1px #d2d1cb;
-}
-
-.table td {
-    background: #fbfcfc;
-    border-bottom: solid 1px #e0e0e0;
-    padding: 8px 10px;
-}
-
-.table tr.odd td {
-    background: #f8f8f8;
-}
-
-.table tr:hover td {
-    background: #fff9e1;
-}
-
 .table a.ico {
 }
 
@@ -34,8 +11,6 @@ h1   {color:black}
 .displayButton{
     margin-left: 1%;
 }
-
-
 
 .box {
     background: #fbfcfc;
@@ -102,8 +77,68 @@ h1   {color:black}
 
 
 #saveChanges{
-
     margin: 0% 0% 0% 80%;
-
 }
 
+img {
+    border:none;
+    outline:none;
+}
+
+a {
+    text-decoration:none;
+}
+
+.as_gridder_table th {
+    color: black;
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: solid 1px #d2d1cb;
+}
+
+.as_gridder_table td {
+    background: #fbfcfc;
+    border-bottom: solid 1px #e0e0e0;
+    padding: 8px 10px;
+}
+
+.as_gridder_table {
+    border-collapse:collapse;
+    border:#c9e7e9 solid 1px;
+}
+
+.as_gridder_table tr.odd {
+    background-color:#fffeff;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
+.as_gridder_table tr.even {
+    background-color:#F1F1F1;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
+
+.as_gridder_table tr:hover td {
+    background: #fff9e1;
+}
+
+.grid_content span {
+    display: inline-block;
+    width: auto;
+}
+
+.gridder_input {
+    display:none;
+    margin:0;
+    padding:0;
+    outline:none;
+    border:none;
+    padding:2px;
+    border:#000000 solid 1px;
+    width:auto;
+    height:auto;
+}
