@@ -126,7 +126,7 @@ function createNewDevice()
 
         Enter the energy consumption (ex: 0.84)
         </br>
-        <input type="number" name="energyConsumption" step="0.01" required/>
+        <input type="number" name="energyConsumption" step="0.01" value="0." required/>
         </br>
 
         Enter the price (in CHF)
