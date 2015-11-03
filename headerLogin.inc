@@ -3,6 +3,7 @@
 include_once 'translations/class.Translator.php';
 include_once 'database/class.Model.php';
 include_once 'dto/class.Device.php';
+include_once 'dto/class.Type.php';
 $translate;
 $model = new Model();
 if (isset ( $_GET ['lang'] )) {

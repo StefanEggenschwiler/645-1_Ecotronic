@@ -329,24 +329,29 @@ class Model {
         $this->deviceDao->getAutoCompleteEntries();
     }
 
-    public function getDropdownlistSort($selectedSort){
+    public function getDropdownlistSort($selectedSort, $translate){
         $orderType = array('Ascending Price'=>'AP', 'Descending Price'=>'DP', 'Ascending Alphabetical'=>'AA', 'Descending Alphabetical'=>'DA', 'Ascending Classification'=>'AC', 'Descending Classification'=>'DC');
 
         while(list($k,$v)=each($orderType)){
             if($selectedSort == $v){
-                echo '<option value="'.$v.'" selected>'.$k.'</option>';
+                echo '<option value="'.$v.'" selected>';
+                echo $translate->__($k);
+                echo '</option>';
             }else{
-                echo '<option value="'.$v.'">'.$k.'</option>';
+                echo '<option value="'.$v.'">';
+                echo $translate->__($k);
+                echo '</option>';
             }
         }
     }
 
     public function getDropdownlistCategory(){
         $types = $this->getAllTypes();
-        var_dump($types);
         foreach($types as $value){
             echo '<option value="'.$value->getId().'">'.$value->getTypeName().'</option>';
         }
+
+        return $types;
     }
 
     public function redirectToIndex($pageName){

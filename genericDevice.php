@@ -13,6 +13,9 @@ foreach($_SESSION['comparedDevices'] as $value){
     }
 }
 
+if(!isset($_SESSION['categories'])){
+    $_SESSION['categories'] = array();
+}
 
 
 if(isset($_POST['createGenericDevice'])){
@@ -39,7 +42,6 @@ if(isset($_POST['deleteGenericDevice'])){
 }
 
 ?>
-
 <div class="loginBlock centered">
     <h1><?php $translate->__("Your generic device")?></h1>
     <form method="post" action="<?php
@@ -48,31 +50,41 @@ if(isset($_POST['deleteGenericDevice'])){
         <?php
         if($checker){
             echo '<select id="categoryDropdownlist"name="categoryDropdownlist">';
-            $model->getDropdownlistCategory();
+            $_SESSION['categories'] = $model->getDropdownlistCategory();
             echo '</select>';
-            echo '<input type="number" name="kwh" placeholder="kW/h per year" required />';
+            echo '<input type="number" name="kwh" placeholder="';
+            echo $translate->__('kW/h per year');
+            echo '" required />';
             echo '</br>';
             echo '</br>';
-            echo '<input type="number" name="lifespan" placeholder="Resting lifespan" required />';
+            echo '<input type="number" name="lifespan" placeholder="';
+            echo $translate->__('Resting lifespan');
+            echo '" required />';
             echo '</br>';
             echo '</br>';
             echo '<button id="createGenericDevice" type="submit" value="Create your device" name="createGenericDevice">';
-            echo $translate->__("Create");
+            echo $translate->__('Create');
             echo '</button>';
             echo '</br>';
             echo '</br>';
         }else{
-            echo 'Category'.' : '.$generic->getTypeId();
+            echo $translate->__('Category').' : ';
+            foreach($_SESSION['categories'] as $categories){
+                if($generic->getTypeId() == $categories->getId()){
+                    echo $translate->__($categories->getTypeName());
+                    break;
+                }
+            }
             echo '</br>';
             echo '</br>';
-            echo 'Energy consumption'.' : '.$generic->getEnergyConsumption();
+            echo $translate->__('Energy consumption').' : '.$generic->getEnergyConsumption();
             echo '</br>';
             echo '</br>';
-            echo 'Lifespan'.' : '.$generic->getLifeSpan();
+            echo $translate->__('Resting lifespan').' : '.$generic->getLifeSpan();
             echo '</br>';
             echo '</br>';
             echo '<button id="deleteGenericDevice" type="submit" value="Delete your device" name="deleteGenericDevice">';
-            echo $translate->__("Delete");
+            echo $translate->__('Delete');
             echo '</button>';
         }
 

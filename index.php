@@ -75,7 +75,7 @@ if(isset($_POST['searchBar'])){
     <label><?php $translate->__('Sort')?></label>
     </br>
     <select class="dropdownlistSort" name="dropdownlistSort" onchange="this.form.submit();">
-        <?php $model->getDropdownlistSort($selectedSort); ?>
+        <?php $model->getDropdownlistSort($selectedSort, $translate); ?>
     </select>
 </div>
 
@@ -152,7 +152,7 @@ if(isset($_POST['searchBar'])){
         <table>
             <tr>
                 <th>
-                    <?php $translate->__("Devices to be compare");?>
+                    <?php $translate->__("Compared devices");?>
                 </th>
                 <th>
                     <?php $translate->__("Your old device");?>
