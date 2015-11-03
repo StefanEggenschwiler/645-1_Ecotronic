@@ -39,7 +39,6 @@ switch($action) {
         $crypto = decrypt($_POST['crypto']);
         $value 	= $_POST['value'];
         $explode = explode('|', $crypto);
-        $columnName = $explode[0];
         $typeId = $explode[1];
         $model->updateType($typeId, $value);
         break;
@@ -47,5 +46,41 @@ switch($action) {
     case "deleteType":
         $typeId = decrypt($_POST['value']);
         $model->deleteType($typeId);
+        break;
+
+    case "addBrand":
+        $value 	= $_POST['brandName'];
+        $model->createBrand($value);
+        break;
+
+    case "updateBrand":
+        $crypto = decrypt($_POST['crypto']);
+        $value 	= $_POST['value'];
+        $explode = explode('|', $crypto);
+        $brandId = $explode[1];
+        $model->updateBrand($brandId, $value);
+        break;
+
+    case "deleteBrand":
+        $brandId = decrypt($_POST['value']);
+        $model->deleteBrand($brandId);
+        break;
+
+    case "addEfficiencyClass":
+        $value 	= $_POST['efficiencyClassName'];
+        $model->createEfficiencyClass($value);
+        break;
+
+    case "updateEfficiencyClass":
+        $crypto = decrypt($_POST['crypto']);
+        $value 	= $_POST['value'];
+        $explode = explode('|', $crypto);
+        $efficiencyClassId = $explode[1];
+        $model->updateEfficiencyClass($efficiencyClassId, $value);
+        break;
+
+    case "deleteEfficiencyClass":
+        $efficiencyClassId = decrypt($_POST['value']);
+        $model->deleteEfficiencyClass($efficiencyClassId);
         break;
 }

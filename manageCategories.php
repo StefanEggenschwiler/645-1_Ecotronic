@@ -2,7 +2,7 @@
 include_once 'headerAdmin.inc';
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
 require_once 'database/class.Model.php';
-require_once 'dto/class.Device.php';
+require_once 'dto/class.Type.php';
 
 $model = new Model();
 $types = $model->getAllTypes();
@@ -52,7 +52,7 @@ $types = $model->getAllTypes();
                 type : 'POST',
                 data : UrlToPass,
                 success: function() {
-                    //location.reload();
+                    location.reload();
                 }
             });
             return false;
@@ -96,7 +96,7 @@ $types = $model->getAllTypes();
                 type : 'POST',
                 data : data,
                 success: function() {
-                    //location.reload();
+                    location.reload();
                 }
             });
             return false;

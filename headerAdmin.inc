@@ -55,7 +55,7 @@ header('Content-Type: text/html; charset=UTF-8');
                 <ul>
                     <li class="<?php echo ($pageName == "addNewDevice.php" ? "active" : "")?>"><a id="nav" href="addNewDevice.php"><span>Add Device</span></a></li>
                     <li class="<?php echo ($pageName == "manageDevices.php" ? "active" : "")?>"><a id="nav" href="manageDevices.php"><span>Edit Devices</span></a></li>
-                    <li class="<?php echo ($pageName == "manageTypes.php" ? "active" : "")?>"><a id="nav" href="manageTypes.php"><span>Manage Categories</span></a></li>
+                    <li class="<?php echo ($pageName == "manageCategories.php" ? "active" : "")?>"><a id="nav" href="manageCategories.php"><span>Manage Categories</span></a></li>
                     <li class="<?php echo ($pageName == "manageBrands.php" ? "active" : "")?>"><a id="nav" href="manageBrands.php"><span>Manage Brands</span></a></li>
                     <li class="<?php echo ($pageName == "manageEfficiencyClasses.php" ? "active" : "")?>"><a id="nav" href="manageEfficiencyClasses.php"><span>Manage Efficiency Classes</span></a></li>
                     <li class="<?php echo ($pageName == "editTranslation.php" ? "active" : "")?>"><a id="nav" href="editTranslation.php"><span>Manage Translation</span></a></li>
