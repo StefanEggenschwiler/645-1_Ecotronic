@@ -49,9 +49,7 @@ function changeMenu(){
 function getValueInSelect(id)
 {
     var e = document.getElementById(id).value;
-    var strUser = e.options[e.selectedIndex].text;
-
-    return strUser;
+    return e.options[e.selectedIndex].text;
 }
 
 
