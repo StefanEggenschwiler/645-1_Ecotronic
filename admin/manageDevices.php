@@ -194,16 +194,16 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                     <th>Type</th>
                     <th>Brand</th>
                     <th>Model</th>
-                    <th>Serial number</th>
+                    <th>Serial Number</th>
                     <th>Production Year</th>
-                    <th>Life Span (in yrs)</th>
-                    <th>Efficiency class</th>
-                    <th>Energy price (kWh/year)</th>
-                    <th>Energy consumption</th>
-                    <th>Price (in CHF)</th>
+                    <th>Life Span (Years)</th>
+                    <th>Efficiency Class</th>
+                    <th>Energy Price (CHF)</th>
+                    <th>Energy Consumption</th>
+                    <th>Price (CHF)</th>
                     <th>Image URL</th>
-                    <th>Manufacturer link</th>
-                    <th>Shop link</th>
+                    <th>Manufacturer Link</th>
+                    <th>Shop Link</th>
                 </tr>
                 <?php
                 $i = 0;
@@ -238,13 +238,13 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                     }
                     echo '</select></div></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 190px">'.$items->getModel().'</span>
-                            <input type="text" class="gridder_input" style="width: 190px" name="'.encrypt("model|".$items->getId()).'" value="'.$items->getModel().'"></div></td>';
+                            <input required type="text" class="gridder_input" style="width: 190px" name="'.encrypt("model|".$items->getId()).'" value="'.$items->getModel().'"></div></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 260px">'.$items->getSerialNumber().'</span>
-                            <input type="text" class="gridder_input" style="width: 260px" name="'.encrypt("serialNumber|".$items->getId()).'" value="'.$items->getSerialNumber().'"></div></td>';
+                            <input required type="text" class="gridder_input" style="width: 260px" name="'.encrypt("serialNumber|".$items->getId()).'" value="'.$items->getSerialNumber().'"></div></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 100px">'.$items->getProductionYear().'</span>
-                            <input type="text" class="gridder_input" style="width: 100px" name="'.encrypt("productionYear|".$items->getId()).'" value="'.$items->getProductionYear().'"></div></td>';
+                            <input required type="number" step="1" class="gridder_input" style="width: 100px" name="'.encrypt("productionYear|".$items->getId()).'" value="'.$items->getProductionYear().'"></div></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 100px">'.$items->getLifeSpan().'</span>
-                            <input type="text" class="gridder_input" style="width: 100px" name="'.encrypt("lifespan|".$items->getId()).'" value="'.$items->getLifeSpan().'"></div></td>';
+                            <input required type="number" step="1" class="gridder_input" style="width: 100px" name="'.encrypt("lifespan|".$items->getId()).'" value="'.$items->getLifeSpan().'"></div></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 105px">'.$items->getEfficiencyClassName().'</span>
                             <select class="gridder_input select" style="width: 105px" name="'.encrypt("efficiencyClassId|".$items->getId()."|".$items->getEfficiencyClassId()).'">';
                     foreach($efficiencyClasses as $value){
@@ -257,17 +257,17 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                     }
                     echo '</select></div></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 100px">'.$items->getEnergyPrice().'</span>
-                            <input type="text" class="gridder_input" style="width: 100px" name="'.encrypt("energyPrice|".$items->getId()).'" value="'.$items->getEnergyPrice().'"></td>';
+                            <input required type="number" step="0.01" class="gridder_input" style="width: 100px" name="'.encrypt("energyPrice|".$items->getId()).'" value="'.$items->getEnergyPrice().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 100px">'.$items->getEnergyConsumption().'</span>
-                            <input type="text" class="gridder_input" style="width: 100px" name="'.encrypt("energyConsumption|".$items->getId()).'" value="'.$items->getEnergyConsumption().'"></td>';
+                            <input required type="number" step="0.01" class="gridder_input" style="width: 100px" name="'.encrypt("energyConsumption|".$items->getId()).'" value="'.$items->getEnergyConsumption().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 100px">'.$items->getPrice().'</span>
-                            <input type="text" class="gridder_input" style="width: 100px" name="'.encrypt("price|".$items->getId()).'" value="'.$items->getPrice().'"></td>';
+                            <input required type="number" step="0.01" class="gridder_input" style="width: 100px" name="'.encrypt("price|".$items->getId()).'" value="'.$items->getPrice().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 800px">'.$items->getImage().'</span>
-                            <input type="text" class="gridder_input" style="width: 800px" name="'.encrypt("image|".$items->getId()).'" value="'.$items->getImage().'"></td>';
+                            <input required type="text" class="gridder_input" style="width: 800px" name="'.encrypt("image|".$items->getId()).'" value="'.$items->getImage().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 310px">'.$items->getManufacturerLink().'</span>
-                            <input type="text" class="gridder_input" style="width: 310px" name="'.encrypt("manufacturerLink|".$items->getId()).'" value="'.$items->getManufacturerLink().'"></td>';
+                            <input required type="text" class="gridder_input" style="width: 310px" name="'.encrypt("manufacturerLink|".$items->getId()).'" value="'.$items->getManufacturerLink().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 230px">'.$items->getShopLink().'</span>
-                            <input type="text" class="gridder_input" style="width: 230px" name="'.encrypt("shopLink|".$items->getId()).'" value="'.$items->getShopLink().'"></td>';
+                            <input required type="text" class="gridder_input" style="width: 230px" name="'.encrypt("shopLink|".$items->getId()).'" value="'.$items->getShopLink().'"></td>';
                     echo '</tr>';
                 }
                 ?>

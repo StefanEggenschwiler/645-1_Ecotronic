@@ -128,7 +128,7 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
                             <tr>
                                 <td><input type="text" name="efficiencyClassName" id="efficiencyClassName" class="gridder_add" /></td>
                                 <td>&nbsp;
-                                    <input type="submit" id="gridder_addrecord" value="" class="gridder_addrecord_button" title="Add" />
+                                    <input required type="submit" id="gridder_addrecord" value="" class="gridder_addrecord_button" title="Add" />
                                     <a href="cancel" id="gridder_cancel" class="gridder_cancel"><img src="../images/icons/delete.png" alt="Cancel" title="Cancel" /></a></td>
                             </tr>
                         </table>

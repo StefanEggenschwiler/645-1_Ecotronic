@@ -125,7 +125,7 @@ $types = $model->getAllTypes();
                         <input type="hidden" name="action" value="addType" />
                         <table width="25%">
                             <tr>
-                                <td><input type="text" name="typeName" id="typeName" class="gridder_add" /></td>
+                                <td><input required type="text" name="typeName" id="typeName" class="gridder_add" /></td>
                                 <td>&nbsp;
                                     <input type="submit" id="gridder_addrecord" value="" class="gridder_addrecord_button" title="Add" />
                                     <a href="cancel" id="gridder_cancel" class="gridder_cancel"><img src="../images/icons/delete.png" alt="Cancel" title="Cancel" /></a></td>
