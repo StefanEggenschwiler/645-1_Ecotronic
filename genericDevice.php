@@ -26,7 +26,7 @@ if(isset($_POST['createGenericDevice'])){
     $name = 'GENERIC';
     $_SESSION['myGenericDevice']->setModel($name);
     array_push($_SESSION['comparedDevices'], $_SESSION['myGenericDevice']);
-    header("Refresh:0");
+    echo '<meta http-equiv="refresh" content="0">';
 }
 
 if(isset($_POST['deleteGenericDevice'])){
@@ -37,7 +37,7 @@ if(isset($_POST['deleteGenericDevice'])){
             break;
         }
     }
-    header("Refresh:0");
+    echo '<meta http-equiv="refresh" content="0">';
 }
 
 ?>
