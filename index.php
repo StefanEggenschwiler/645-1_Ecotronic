@@ -25,6 +25,7 @@ if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
     $efficiencyClasses = $model->getEfficiencyClassesByType($selectedCategoryChoice);
+    $selectedPriceChoice = $_POST['priceOfSlider'];
 }
 if (isset ( $_POST ['addComparison'] )) {
     $comparedDevices = array_unique(array_merge($comparedDevices, $model->getDevicesBySerialNumber($_POST['addComparison'])));
@@ -55,9 +56,7 @@ foreach($efficiencyClasses as $value){
     }
 }
 
-if (isset($_POST['priceOfSlider'])){
-    $selectedPriceChoice = $_POST['priceOfSlider'];
-}
+
 
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
@@ -131,7 +130,7 @@ if(isset($_POST['searchBar'])){
         </div>
         <div id="submenu4" style="display:none">
             <div class='submenu'>
-                <label style="text-align:center"><?php $translate->__('Max')?><br /><input type="range" name="priceOfSlider" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="0" oninput="displayPrice(value)" onchange="displayPrice(value)"><br /><span id="range">0</span> </label>
+                <label style="text-align:center"><?php $translate->__('Max')?><br /><input type="range" name="priceOfSlider" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="<?php echo $selectedPriceChoice ?>" oninput="displayPrice(value)" onchange="displayPrice(value)"><br /><span id="range"><?php echo $selectedPriceChoice ?></span> </label>
             </div>
         </div>
 
