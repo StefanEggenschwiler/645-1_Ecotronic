@@ -20,7 +20,7 @@ $comparedDevices = $_SESSION['comparedDevices'];
 
 $selectedSort = null;
 
-
+//post for categories and showButton
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
