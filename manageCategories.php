@@ -23,7 +23,7 @@ $types = $model->getAllTypes();
             ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
             var UrlToPass = 'action=updateType&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
             $.ajax({
-                url : 'database/class.Ajax.php',
+                url : 'database/ajax.php',
                 type : 'POST',
                 data : UrlToPass
             });
@@ -48,7 +48,7 @@ $types = $model->getAllTypes();
             var ThisElement = $(this);
             var UrlToPass = 'action=deleteType&value='+ThisElement.attr('href');
             $.ajax({
-                url : 'database/class.Ajax.php',
+                url : 'database/ajax.php',
                 type : 'POST',
                 data : UrlToPass,
                 success: function() {
@@ -92,7 +92,7 @@ $types = $model->getAllTypes();
             // Pass the form data to the ajax page
             var data = $('#gridder_addform').serialize();
             $.ajax({
-                url : 'database/class.Ajax.php',
+                url : 'database/ajax.php',
                 type : 'POST',
                 data : data,
                 success: function() {

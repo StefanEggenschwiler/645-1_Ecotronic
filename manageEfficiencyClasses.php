@@ -24,7 +24,7 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
             ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
             var UrlToPass = 'action=updateEfficiencyClass&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
             $.ajax({
-                url : 'database/class.Ajax.php',
+                url : 'database/ajax.php',
                 type : 'POST',
                 data : UrlToPass
             });
@@ -49,7 +49,7 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
             var ThisElement = $(this);
             var UrlToPass = 'action=deleteEfficiencyClass&value='+ThisElement.attr('href');
             $.ajax({
-                url : 'database/class.Ajax.php',
+                url : 'database/ajax.php',
                 type : 'POST',
                 data : UrlToPass,
                 success: function() {
@@ -93,7 +93,7 @@ $efficiencyClasses = $model->getAllEfficiencyClasses();
             // Pass the form data to the ajax page
             var data = $('#gridder_addform').serialize();
             $.ajax({
-                url : 'database/class.Ajax.php',
+                url : 'database/ajax.php',
                 type : 'POST',
                 data : data,
                 success: function() {
