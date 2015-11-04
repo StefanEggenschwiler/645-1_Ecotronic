@@ -104,7 +104,7 @@ $brands = $model->getAllBrands();
 </script>
 
 <div class="">
-    </br>
+    <br />
     <div class="box">
         <div class="box-head">
             <h2 class="left">Brands</h2>

@@ -287,8 +287,8 @@ class Model {
             echo "<td><img src=";
             echo $value->getImage();
             echo "></td><td>";
-            echo $value->getBrandName()."</br>";
-            echo $value->getModel()."</br>";
+            echo $value->getBrandName()."<br />";
+            echo $value->getModel()."<br />";
             echo $value->getEfficiencyClassName();
             echo "</tr></td>";
             echo "<tr><td>";

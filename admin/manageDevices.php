@@ -127,7 +127,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
 </script>
 
 <div class="">
-    </br>
+    <br />
     <div class="box">
         <div class="box-head">
             <h2 class="left">Devices</h2>
@@ -143,7 +143,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <h1>FILTERS</h1>
-                    </br>
+                    <br />
 
                     <form name="display" method="post">
                         <select style="width: 200px" class="selectedType" id="selectedType" name="selectedType" onchange="this.form.submit();">

@@ -54,18 +54,18 @@ if(isset($_POST['deleteGenericDevice'])){
             echo '<input type="number" name="kwh" placeholder="';
             echo $translate->__('kW/h per year');
             echo '" required>';
-            echo '</br>';
-            echo '</br>';
+            echo '<br />';
+            echo '<br />';
             echo '<input type="number" name="lifespan" placeholder="';
             echo $translate->__('Resting lifespan');
             echo '" required>';
-            echo '</br>';
-            echo '</br>';
+            echo '<br />';
+            echo '<br />';
             echo '<button id="createGenericDevice" type="submit" value="Create your device" name="createGenericDevice">';
             echo $translate->__('Create');
             echo '</button>';
-            echo '</br>';
-            echo '</br>';
+            echo '<br />';
+            echo '<br />';
         }else{
             echo $translate->__('Category').' : ';
             foreach($_SESSION['categories'] as $categories){
@@ -74,14 +74,14 @@ if(isset($_POST['deleteGenericDevice'])){
                     break;
                 }
             }
-            echo '</br>';
-            echo '</br>';
+            echo '<br />';
+            echo '<br />';
             echo $translate->__('Energy consumption').' : '.$generic->getEnergyConsumption();
-            echo '</br>';
-            echo '</br>';
+            echo '<br />';
+            echo '<br />';
             echo $translate->__('Resting lifespan').' : '.$generic->getLifeSpan();
-            echo '</br>';
-            echo '</br>';
+            echo '<br />';
+            echo '<br />';
             echo '<button id="deleteGenericDevice" type="submit" value="Delete your device" name="deleteGenericDevice">';
             echo $translate->__('Delete');
             echo '</button>';
@@ -89,9 +89,9 @@ if(isset($_POST['deleteGenericDevice'])){
 
         ?>
     </form>
-    </br>
-    </br>
-    </br>
+    <br />
+    <br />
+    <br />
 
     <form method="post" action="index.php">
         <button id="backGenericDevice" type="submit" value="back" name="back"><?php $translate->__("Back")?></button>

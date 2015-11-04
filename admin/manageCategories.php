@@ -104,7 +104,7 @@ $types = $model->getAllTypes();
 </script>
 
 <div class="">
-    </br>
+    <br />
     <div class="box">
         <div class="box-head">
             <h2 class="left">Types</h2>

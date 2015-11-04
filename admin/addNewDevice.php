@@ -61,7 +61,7 @@ function createNewDevice()
             } ?>
         </select>
 
-        </br>
+        <br />
 
         Select a brand
         <select name="selectBrand">
@@ -71,18 +71,18 @@ function createNewDevice()
             } ?>
         </select>
 
-        </br>
+        <br />
 
         Enter the model
-        </br>
+        <br />
         <input type="text" name="model" required/>
-        </br>
+        <br />
 
         Enter the serial number
-        </br>
+        <br />
 
         <input type="text" name="serialNumber" required/>
-        </br>
+        <br />
 
         Select the production year
         <select name="selectProductionYear">
@@ -95,12 +95,12 @@ function createNewDevice()
             <option value="2010">2010</option>
         </select>
 
-        </br>
+        <br />
 
         Enter the life span (in years)
-        </br>
+        <br />
         <input type="number" name="lifeSpan" required/>
-        </br>
+        <br />
 
         Select an efficiency class
         <select name="selectEfficiencyClassName">
@@ -110,45 +110,45 @@ function createNewDevice()
             } ?>
         </select>
 
-        </br>
+        <br />
 
         Enter the energy price (kWh/year)
-        </br>
+        <br />
         <input type="number" name="energyPrice" step="0.01" required/>
-        </br>
+        <br />
 
         Enter the energy consumption (ex: 0.84)
-        </br>
+        <br />
         <input type="number" name="energyConsumption" step="0.01" value="0." required/>
-        </br>
+        <br />
 
         Enter the price (in CHF)
-        </br>
+        <br />
         <input type="number" name="price" step="0.01" required/>
-        </br>
+        <br />
 
-        </br>
+        <br />
         <h2>LINKS</h2>
-        </br>
+        <br />
 
         Enter the image URL
-        </br>
+        <br />
         <input type="text" name="imageURL" value="www." required/>
-        </br>
+        <br />
 
         Enter the manufacturer link
-        </br>
+        <br />
         <input type="text" name="manufacturerLink" value="www." required/>
-        </br>
+        <br />
 
         Enter the shop link
-        </br>
+        <br />
         <input type="text" name="shopLink" value="www." required/>
-        </br>
+        <br />
 
         <button type="submit" value="create" name="create">Create</button>
-        </br>
-        </br>
+        <br />
+        <br />
 
         </form>
     </div>

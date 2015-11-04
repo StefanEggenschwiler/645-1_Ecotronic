@@ -68,7 +68,7 @@ if(isset($_POST['searchBar'])){
 
 <div class="sort">
     <label><?php $translate->__('Sort')?></label>
-    </br>
+    <br />
     <select class="dropdownlistSort" name="dropdownlistSort" onchange="this.form.submit();">
         <?php $model->getDropdownlistSort($selectedSort, $translate); ?>
     </select>
@@ -101,7 +101,7 @@ if(isset($_POST['searchBar'])){
                     }
                 }
                 echo ">";
-                echo $value->getBrandName()."</br>";
+                echo $value->getBrandName()."<br />";
                 echo "</label></div>";
             } ?>
         </div>
@@ -121,7 +121,7 @@ if(isset($_POST['searchBar'])){
                     }
                 }
                 echo ">";
-                echo $value->getClassName()."</br>";
+                echo $value->getClassName()."<br />";
                 echo "</label></div>";
             } ?>
         </div>
@@ -131,7 +131,7 @@ if(isset($_POST['searchBar'])){
         </div>
         <div id="submenu4" style="display:none">
             <div class='submenu'>
-                <label style="text-align:center"><?php $translate->__('Max')?></br><input type="range" name="priceOfSlider" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="0" oninput="displayPrice(value)" onchange="displayPrice(value)"></br><span id="range">0</span> </label>
+                <label style="text-align:center"><?php $translate->__('Max')?><br /><input type="range" name="priceOfSlider" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="0" oninput="displayPrice(value)" onchange="displayPrice(value)"><br /><span id="range">0</span> </label>
             </div>
         </div>
 
@@ -158,8 +158,8 @@ if(isset($_POST['searchBar'])){
             echo "<table cellpadding='10' cellspacing='5'>";
             echo "<tr>";
             echo "<th id='designThInfo' rowspan='2'>" ;
-            echo $_SESSION['comparedDevices'][$i]->getBrandName()."</br>"."</br>";
-            echo $_SESSION['comparedDevices'][$i]->getModel()."</br>"."</br>";
+            echo $_SESSION['comparedDevices'][$i]->getBrandName()."<br />"."<br />";
+            echo $_SESSION['comparedDevices'][$i]->getModel()."<br />"."<br />";
             echo $_SESSION['comparedDevices'][$i]->getPrice();
             echo "</th>";
             echo "<th> <input type='radio' id='radioButtonCompare' name='dev' value='";
