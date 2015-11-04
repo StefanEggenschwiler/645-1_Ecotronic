@@ -24,7 +24,7 @@ if ($handle) {
 
     <p>
 
-        <u>Legend</u> </br></br>
+        <cite>Legend</cite> </br></br>
         a = Old Device </br>
         b = New Device </br>
         KWh = Consumption </br>
@@ -35,14 +35,14 @@ if ($handle) {
 
 
 
-        <u>Formula & Condition</u> </br></br>
+        <cite>Formula & Condition</cite> </br></br>
 
         Formula :<b> &#916;e * i &#8804; x </br></b>
         Discount Condition : <b> 0 &#8804; x &#8804; 0.4 (maximum 40%)</b></br></br></br></br>
     </p>
 
     <p>
-        <u>Example</u> </br></br>
+        <cite>Example</cite> </br></br>
 
         Device A = 10KWh, 2 years (old device)</br>
         Device B = 7KWh, 10 years, Price 5000.-, x=0.4 </br></br>
