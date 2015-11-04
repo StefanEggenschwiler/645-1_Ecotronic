@@ -27,7 +27,7 @@ if(isset($_POST['createGenericDevice'])){
     $name = 'GENERIC';
     $_SESSION['myGenericDevice']->setModel($name);
     array_push($_SESSION['comparedDevices'], $_SESSION['myGenericDevice']);
-    $model->redirectToIndex('genericDevice');
+    header("Refresh:0");
 }
 
 if(isset($_POST['deleteGenericDevice'])){
@@ -38,7 +38,7 @@ if(isset($_POST['deleteGenericDevice'])){
             break;
         }
     }
-    $model->redirectToIndex('genericDevice');
+    header("Refresh:0");
 }
 
 ?>

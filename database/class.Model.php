@@ -353,11 +353,4 @@ class Model {
 
         return $types;
     }
-
-    public function redirectToIndex($pageName){
-        $indexLink = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $indexLink = str_replace("index",$pageName,$indexLink);
-        header('Location: '.$indexLink);
-        exit();
-    }
 }
