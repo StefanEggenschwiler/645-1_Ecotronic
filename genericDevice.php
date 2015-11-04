@@ -54,12 +54,12 @@ if(isset($_POST['deleteGenericDevice'])){
             echo '</select>';
             echo '<input type="number" name="kwh" placeholder="';
             echo $translate->__('kW/h per year');
-            echo '" required />';
+            echo '" required>';
             echo '</br>';
             echo '</br>';
             echo '<input type="number" name="lifespan" placeholder="';
             echo $translate->__('Resting lifespan');
-            echo '" required />';
+            echo '" required>';
             echo '</br>';
             echo '</br>';
             echo '<button id="createGenericDevice" type="submit" value="Create your device" name="createGenericDevice">';
