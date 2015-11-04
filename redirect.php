@@ -29,7 +29,7 @@ function authenticate() {
     session_start(); // the result is Admin Object, successfully logged in, the sessions start
     $_SESSION['user'] = $result;
 
-    header ('location: manageDevices.php');
+    header ('location: admin/manageDevices.php');
     exit;
 }
 
@@ -57,7 +57,7 @@ function saveTranslationTable() {
     file_put_contents('translations/fr.txt', $french);
     file_put_contents('translations/it.txt', $italian);
 
-    header ('location: editTranslation.php');
+    header ('location: admin/editTranslation.php');
     exit;
 }
 
@@ -73,7 +73,7 @@ function saveFormula() {
     session_start();
     $_SESSION['message'] = 'Changes sucessfully saved!';
 
-    header ('location: editFormula.php');
+    header ('location: admin/editFormula.php');
     exit;
 }
 

@@ -1,5 +1,5 @@
 <?php
-include_once 'headerComparison.inc';
+include_once 'header/headerComparison.inc';
 require_once 'dto/class.Device.php';
 
 $check =  false;

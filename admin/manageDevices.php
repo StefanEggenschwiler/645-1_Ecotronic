@@ -1,8 +1,8 @@
 <?php
-include_once 'headerAdmin.inc';
+include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
-require_once 'database/class.Model.php';
-require_once 'dto/class.Device.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 
 $model = new Model();
 $types = $model->getAllTypes();
@@ -214,7 +214,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                     } else {
                         echo '<tr class="odd">';
                     }
-                    echo '<td><a href="'.encrypt($items->getId()).'" class="gridder_delete"><img src="images/icons/delete.png" alt="Delete" title="Delete" /></a></td>';
+                    echo '<td><a href="'.encrypt($items->getId()). '" class="gridder_delete"><img src="../images/icons/delete.png" alt="Delete" title="Delete" /></a></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 150px">'.$items->getTypeName().'</span>
                             <select class="gridder_input select" style="width: 150px" name="'.encrypt("typeId|".$items->getId()."|".$items->getTypeId()).'">';
                     foreach($types as $value){

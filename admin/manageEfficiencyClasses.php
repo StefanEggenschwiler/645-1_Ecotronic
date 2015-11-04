@@ -1,12 +1,12 @@
 <?php
-include_once 'headerAdmin.inc';
+include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
-require_once 'database/class.Model.php';
-require_once 'dto/class.Brand.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
 
 $model = new Model();
-$brands = $model->getAllBrands();
+$efficiencyClasses = $model->getAllEfficiencyClasses();
 ?>
 <script type="text/javascript">
     $(function(){
@@ -22,7 +22,7 @@ $brands = $model->getAllBrands();
             var ThisElement = $(this);
             ThisElement.hide();
             ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
-            var UrlToPass = 'action=updateBrand&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
+            var UrlToPass = 'action=updateEfficiencyClass&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
             $.ajax({
                 url : 'database/ajax.php',
                 type : 'POST',
@@ -42,12 +42,12 @@ $brands = $model->getAllBrands();
 
         // Function for delete the record
         $('body').delegate('.gridder_delete', 'click', function(){
-            var conf = confirm('Are you sure want to delete this brand? Every devices with this brand will be deleted too!');
+            var conf = confirm('Are you sure want to delete this efficiency class? Every devices with this efficiency class will be deleted too!');
             if(!conf) {
                 return false;
             }
             var ThisElement = $(this);
-            var UrlToPass = 'action=deleteBrand&value='+ThisElement.attr('href');
+            var UrlToPass = 'action=deleteEfficiencyClass&value='+ThisElement.attr('href');
             $.ajax({
                 url : 'database/ajax.php',
                 type : 'POST',
@@ -84,9 +84,9 @@ $brands = $model->getAllBrands();
         $('body').delegate('#gridder_addrecord', 'click', function(){
 
             // Do insert vaidation here
-            if($('#brandName').val() == '') {
-                $('#brandName').focus();
-                alert('Enter Brand Name');
+            if($('#efficiencyClassName').val() == '') {
+                $('#efficiencyClassName').focus();
+                alert('Enter Efficiency Class Name');
                 return false;
             }
 
@@ -109,13 +109,13 @@ $brands = $model->getAllBrands();
     </br>
     <div class="box">
         <div class="box-head">
-            <h2 class="left">Brands</h2>
+            <h2 class="left">Efficiency Classes</h2>
         </div>
         <table class="as_gridder_table" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr class="grid_header">
                 <th style="width: 20px"></th>
                 <th style="width: 20px"></th>
-                <th>Brand Name</th>
+                <th>Efficiency Class Name</th>
             </tr>
 
             <tr id="addnew">
@@ -123,13 +123,13 @@ $brands = $model->getAllBrands();
                 <td></td>
                 <td>
                     <form id="gridder_addform" method="post">
-                        <input type="hidden" name="action" value="addBrand" />
+                        <input type="hidden" name="action" value="addEfficiencyClass" />
                         <table width="25%">
                             <tr>
-                                <td><input type="text" name="brandName" id="brandName" class="gridder_add" /></td>
+                                <td><input type="text" name="efficiencyClassName" id="efficiencyClassName" class="gridder_add" /></td>
                                 <td>&nbsp;
                                     <input type="submit" id="gridder_addrecord" value="" class="gridder_addrecord_button" title="Add" />
-                                    <a href="cancel" id="gridder_cancel" class="gridder_cancel"><img src="images/icons/delete.png" alt="Cancel" title="Cancel" /></a></td>
+                                    <a href="cancel" id="gridder_cancel" class="gridder_cancel"><img src="../images/icons/delete.png" alt="Cancel" title="Cancel" /></a></td>
                             </tr>
                         </table>
                     </form>
@@ -137,17 +137,17 @@ $brands = $model->getAllBrands();
             </tr>
             <?php
             $i = 0;
-            foreach ($brands as $brand) {
+            foreach ($efficiencyClasses as $efficiencyClass) {
                 $i = $i + 1;
                 if($i % 2 == 0) {
                     echo '<tr class="even">';
                 } else {
                     echo '<tr class="odd">';
                 }
-                echo '<td><a href="'.encrypt($brand->getId()).'" class="gridder_delete"><img src="images/icons/delete.png" alt="Delete" title="Delete" /></a></td>';
-                echo '<td><a href="gridder_addnew" id="gridder_addnew" class="gridder_addnew"><img src="images/icons/insert.png" alt="Add New" title="Add New" /></a></td>';
-                echo '<td><div class="grid_content editable"><span style="width: 190px">'.$brand->getBrandName().'</span>
-                            <input type="text" class="gridder_input" style="width: 190px" name="'.encrypt("brandName|".$brand->getId()).'" value="'.$brand->getBrandName().'"></div></td>';
+                echo '<td><a href="'.encrypt($efficiencyClass->getId()). '" class="gridder_delete"><img src="../images/icons/delete.png" alt="Delete" title="Delete" /></a></td>';
+                echo '<td><a href="gridder_addnew" id="gridder_addnew" class="gridder_addnew"><img src="../images/icons/insert.png" alt="Add New" title="Add New" /></a></td>';
+                echo '<td><div class="grid_content editable"><span style="width: 190px">'.$efficiencyClass->getClassName().'</span>
+                            <input type="text" class="gridder_input" style="width: 190px" name="'.encrypt("efficiencyClassName|".$efficiencyClass->getId()).'" value="'.$efficiencyClass->getClassName().'"></div></td>';
                 echo '</tr>';
             }
             ?>

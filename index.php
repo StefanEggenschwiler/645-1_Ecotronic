@@ -1,5 +1,5 @@
 <?php
-include_once 'headerIndex.inc';
+include_once 'header/headerIndex.inc';
 
 
 require_once 'dto/class.Type.php';

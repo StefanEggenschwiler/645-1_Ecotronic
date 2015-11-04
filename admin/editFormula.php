@@ -1,7 +1,7 @@
 <?php
-include_once 'headerAdmin.inc';
+include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 
-$handle = fopen("database/formula.txt", "r");
+$handle = fopen("../database/formula.txt", "r");
 $variables;
 $message;
 
@@ -17,7 +17,7 @@ if ($handle) {
 
 ?>
 
-<link rel="stylesheet" href="css/editTranslations.css" type="text/css" media="all" xmlns="http://www.w3.org/1999/html"/>
+<link rel="stylesheet" href="../css/editTranslations.css" type="text/css" media="all" xmlns="http://www.w3.org/1999/html"/>
 
 
 <div class="container">
@@ -61,7 +61,7 @@ if ($handle) {
 
 
 
-    <form method="post" action="redirect.php">
+    <form method="post" action="../redirect.php">
         <table id="editFormulaTable" border="3" >
             <tr><th>Formula =</th><th>&#916;e</th><th>*</th><th>Indice (i)</th><th>&#8804;</th><th>Max discount (x)</th></tr> <!--Headers, column names-->
 

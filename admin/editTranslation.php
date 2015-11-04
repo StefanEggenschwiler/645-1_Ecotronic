@@ -1,7 +1,7 @@
 <?php
-include_once 'headerAdmin.inc';
+include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 
-$handle = fopen("translations/de.txt", "r");
+$handle = fopen("../translations/de.txt", "r");
 $german;
 $french;
 $italian;
@@ -12,7 +12,7 @@ if ($handle) {
     fclose($handle);
 }
 
-$handle = fopen("translations/fr.txt", "r");
+$handle = fopen("../translations/fr.txt", "r");
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         $french[] = explode('=',$line);
@@ -20,7 +20,7 @@ if ($handle) {
     fclose($handle);
 }
 
-$handle = fopen("translations/it.txt", "r");
+$handle = fopen("../translations/it.txt", "r");
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         $italian[] = explode('=',$line);
@@ -29,11 +29,11 @@ if ($handle) {
 }
 ?>
 
-<link rel="stylesheet" href="css/editTranslations.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="../css/editTranslations.css" type="text/css" media="all"/>
 
 <div class="container">
 
-    <form method="post" action="redirect.php">
+    <form method="post" action="../redirect.php">
         <table id="editTranslationsTable">
             <tr>
                 <th>English</th>
@@ -65,6 +65,5 @@ if ($handle) {
         </span>
 
 </div>
-
 </form>
 </body>

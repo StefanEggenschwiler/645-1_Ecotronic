@@ -38,7 +38,6 @@ Serial number=Seriennummer
 Manufacturer link=Hersteller Link
 Shop link=Shop Link
 Create=Erstellen
-Delete=Löschen
 Back=Zurück
 kW/h per year=kW/h pro Jahr
 Resting lifespan=Restliche lebensdauer

@@ -1,10 +1,10 @@
 <?php
-include_once 'headerAdmin.inc';
-require_once 'database/class.Model.php';
-require_once 'dto/class.Type.php';
-require_once 'dto/class.Brand.php';
-require_once 'dto/class.Device.php';
-require_once 'dto/class.EfficiencyClass.php';
+include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
 $model = new Model();
 $types = $model->getAllTypes();
