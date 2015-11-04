@@ -1,15 +1,8 @@
 h1   {color:black}
 
-.table a.ico {
-}
-
 .searchBarAdmin {
     margin-top: 3%;
     margin-left: 35%;
-}
-
-.displayButton{
-    margin-left: 1%;
 }
 
 .box {
@@ -48,10 +41,6 @@ h1   {color:black}
     margin-left: 5px;
 }
 
-.box-content {
-    padding: 10px;
-}
-
 .box-content p {
     padding-top: 10px;
 }
@@ -73,11 +62,6 @@ h1   {color:black}
 .button {
     -moz-box-shadow: 0 0 2px #978f6c;
     -webkit-box-shadow: 0 0 2px #978f6c;
-}
-
-
-#saveChanges{
-    margin: 0% 0% 0% 80%;
 }
 
 img {
@@ -107,21 +91,6 @@ a {
     border:#c9e7e9 solid 1px;
 }
 
-.as_gridder_table tr.odd {
-    background-color:#fffeff;
-    -webkit-transition: background-color 0.5s ease-out;
-    -moz-transition: background-color 0.5s ease-out;
-    -o-transition: background-color 0.5s ease-out;
-    transition: background-color 0.5s ease-out;
-}
-.as_gridder_table tr.even {
-    background-color:#F1F1F1;
-    -webkit-transition: background-color 0.5s ease-out;
-    -moz-transition: background-color 0.5s ease-out;
-    -o-transition: background-color 0.5s ease-out;
-    transition: background-color 0.5s ease-out;
-}
-
 .as_gridder_table tr:hover td {
     background: #fff9e1;
 }
@@ -131,29 +100,9 @@ a {
     width: auto;
 }
 
-.gridder_input, .gridder_add {
-    display:none;
-    margin:0;
-    padding:0;
-    outline:none;
-    border:none;
-    padding:2px;
-    border:#000000 solid 1px;
-    width:auto;
-    height:auto;
-}
-
 .gridder_add {
     display:block;
     border:#CCCCCC solid 1px;
-}
-
-.gridder_input.select, .gridder_add.select {
-    height:auto;
-}
-
-.gridder_input:hover, .gridder_input:active, .gridder_add:hover, .gridder_add:active {
-    outline:none;
 }
 
 #addnew {

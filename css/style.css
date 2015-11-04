@@ -174,16 +174,6 @@ body {
 
 }
 
-.menuInput {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    padding: 0 20px 0 20px;
-    outline: none;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
 .loginBlock button, #showButton, #compareButton, #searchButton {
     width: 100%;
     height: 40px;
@@ -306,28 +296,11 @@ body {
     color: grey;
 }
 
-.menuLabel {
-    text-align: center;
-}
-
 .rightComparator {
     float: right;
     width: 15em;
     background: #2abb3f;
 
-}
-
-.centerHorizontally {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-#designThInfo {
-    font-size: 0.85em;
-    width: 9em;
-    border: solid black 1px;
-    text-align: left;
 }
 
 #compareButton {
@@ -336,22 +309,3 @@ body {
     transform: translate(-50%, 0);
 }
 
-#addToCompareListButton {
-    font-size:120%;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-
-}
-
-#radioButtonCompare {
-    width: 20px;
-    height: 20px;
-    padding-left: 5px;
-}
-
-#deleteButtonCompare {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-}

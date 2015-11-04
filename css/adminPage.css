@@ -98,20 +98,9 @@ h2 {
     text-decoration: none;
 }
 
-#navigation ul li.active,
-#navigation ul li:hover {
-    background-position: 0 bottom;
-}
-
 #navigation ul li.active span,
 #navigation ul li:hover span {
     background-position: right bottom;
-}
-
-#navigation ul li.active {
-    font-size: 12px;
-    font-weight: bold;
-    color: black;
 }
 
 /*remove arrows from number input*/
