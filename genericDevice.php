@@ -50,7 +50,7 @@ if(isset($_POST['deleteGenericDevice'])){
         <?php
         if($checker){
             echo '<select id="categoryDropdownlist"name="categoryDropdownlist">';
-            $_SESSION['categories'] = $model->getDropdownlistCategory();
+            $_SESSION['categories'] = $model->getDropdownlistCategory($translate);
             echo '</select>';
             echo '<input type="number" name="kwh" placeholder="';
             echo $translate->__('kW/h per year');

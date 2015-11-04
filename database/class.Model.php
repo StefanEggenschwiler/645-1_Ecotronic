@@ -345,10 +345,12 @@ class Model {
         }
     }
 
-    public function getDropdownlistCategory(){
+    public function getDropdownlistCategory($translate){
         $types = $this->getAllTypes();
         foreach($types as $value){
-            echo '<option value="'.$value->getId().'">'.$value->getTypeName().'</option>';
+            echo '<option value="'.$value->getId().'">';
+            echo $translate->__($value->getTypeName());
+            echo '</option>';
         }
 
         return $types;
