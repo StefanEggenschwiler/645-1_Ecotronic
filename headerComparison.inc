@@ -26,13 +26,6 @@ foreach($_SESSION['comparedDevices'] as $value){
     }
 }
 
-if(isset($_POST['compareButton'])){
-    $indexLink = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $indexLink = str_replace("index","comparison",$indexLink);
-    header('Location: '.$indexLink);
-    exit();
-}
-
 
 
 $cookie_name = 'lang';
@@ -75,13 +68,6 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
     <link rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="css/comparisonTable.css">
     <link rel="stylesheet" media="screen and (max-width: 1023px)" type="text/css" href="css/styleMobile.css">
     <link rel="stylesheet" media="screen and (max-width: 1023px)" type="text/css" href="css/comparisonTableMobile.css">
-    <script type="text/javascript" src="javascript/javascript.js"></script>
-    <!-- load jquery ui css-->
-    <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-    <!-- load jquery library -->
-    <script src="javascript/jquery-1.11.3.min.js"></script>
-    <!-- load jquery ui js file -->
-    <script src="javascript/jquery-ui.min.js"></script>
 </head>
 <body>
 <div class="bannerHead">
@@ -95,15 +81,3 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
 </div>
 
 </div>
-<script type="text/javascript">
-    $(function() {
-        var availableTags =
-            <?php
-            $model->getAutoCompleteEntries();
-            ?>;
-        $("#searchBar").autocomplete({
-            source: availableTags,
-            autoFocus:true
-        });
-    });
-</script>
