@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-
 function createNewDevice()
 {
     global $model;
@@ -41,13 +40,11 @@ function createNewDevice()
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-
     $model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
         $energyConsumption, $serialNumber, $selectProductionYear, $lifeSpan, $manufacturerLink, $shopLink);
 }
 
 ?>
-
 
 <div>
     <div class="createNewArticleBlock">
@@ -87,7 +84,6 @@ function createNewDevice()
         <input type="text" name="serialNumber" required/>
         </br>
 
-
         Select the production year
         <select name="selectProductionYear">
             <option value="2016">2016</option>
@@ -106,7 +102,6 @@ function createNewDevice()
         <input type="number" name="lifeSpan" required/>
         </br>
 
-
         Select an efficiency class
         <select name="selectEfficiencyClassName">
             <?php
@@ -115,9 +110,7 @@ function createNewDevice()
             } ?>
         </select>
 
-
         </br>
-
 
         Enter the energy price (kWh/year)
         </br>
@@ -133,7 +126,6 @@ function createNewDevice()
         </br>
         <input type="number" name="price" step="0.01" required/>
         </br>
-
 
         </br>
         <h2>LINKS</h2>
@@ -154,16 +146,13 @@ function createNewDevice()
         <input type="text" name="shopLink" value="www." required/>
         </br>
 
-
         <button type="submit" value="create" name="create">Create</button>
         </br>
         </br>
-
 
         </form>
     </div>
 
     </body>
-
 
 </div>

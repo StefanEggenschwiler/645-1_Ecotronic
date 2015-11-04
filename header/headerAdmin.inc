@@ -3,7 +3,6 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Admin.php';
 
 session_start();
 
-
 if (isset ( $_SESSION ['user'] )) {
     $admin = $_SESSION ['user'];
 
@@ -17,7 +16,6 @@ else
 header('Content-Type: text/html; charset=UTF-8');
 
 ?>
-
 
 
 <head>
@@ -66,6 +64,5 @@ header('Content-Type: text/html; charset=UTF-8');
     </div>
 
 </head>
-
 
 <body>

@@ -65,7 +65,6 @@ $types = $model->getAllTypes();
             return false;
         });
 
-
         // Add new record when the table in non-empty
         $('body').delegate('.gridder_addnew', 'click', function(){
             $('html, body').animate({ scrollTop: $('.box').offset().top}, 250); // Scroll to top gridder table

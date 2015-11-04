@@ -17,7 +17,6 @@ if(!isset($_SESSION['categories'])){
     $_SESSION['categories'] = array();
 }
 
-
 if(isset($_POST['createGenericDevice'])){
     $_SESSION['myGenericDevice']->setTypeId($_POST['categoryDropdownlist']);
     $_SESSION['myGenericDevice']->setEnergyConsumption($_POST['kwh']);

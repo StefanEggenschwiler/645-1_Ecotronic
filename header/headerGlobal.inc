@@ -16,7 +16,6 @@ session_start();
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +29,6 @@ session_start();
 <body>
 <div class="bannerHead">
     <a href="./index.php"><img src="./images/logo.png" id="logo" alt="EcoElectronics" title="Accueil"></a>
-
-
-
 
 <div class="languages">
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=en';?>"><img class ="flags" src="./images/flags/flagEN.png" alt="EN" title="English"></a>

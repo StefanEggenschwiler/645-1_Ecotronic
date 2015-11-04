@@ -44,7 +44,6 @@ input, p {
     font-size: 15px;
 }
 
-
 #saveChangesButton {
     height: 40px;
     background: #04B45F;
@@ -59,7 +58,6 @@ input, p {
     border-radius: 5px;
 
 }
-
 
 td, th {
     border: 1px solid transparent; /* No more visible border */

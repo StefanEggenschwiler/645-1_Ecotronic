@@ -5,9 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 include($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php');
 $model = new Model();
 
-
 session_start();
-
 
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
@@ -27,7 +25,6 @@ foreach($_SESSION['comparedDevices'] as $value){
 }
 
 
-
 $cookie_name = 'lang';
 
 if (isset ( $_GET ['lang'] )) {
@@ -41,7 +38,6 @@ if(!isset($_SESSION['myOldDevice'])){
     $_SESSION['myOldDevice'] = null;
 }
 
-
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $languageValue = substr($actual_link, -2);
 if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
@@ -52,9 +48,7 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html>

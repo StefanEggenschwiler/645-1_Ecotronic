@@ -16,7 +16,6 @@ if (isset ( $_GET ['lang'] )) {
     </div>
 </footer>
 
-
 </body>
 
 </html>

@@ -1,7 +1,6 @@
 <?php
 require_once 'database/class.Model.php';
 
-
 if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
         authenticate(); // the user is logging in
@@ -13,7 +12,6 @@ if (isset ( $_POST ['action'] )) {
 } else {
     echo 'ACCESS DENIED!';
 }
-
 
 // checking if the username + pwd are correct
 function authenticate() {
@@ -76,7 +74,4 @@ function saveFormula() {
     header ('location: admin/editFormula.php');
     exit;
 }
-
-
-
 

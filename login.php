@@ -2,7 +2,6 @@
 include_once 'header/headerGlobal.inc';
 ?>
 
-
 <div class="loginBlock centered">
     <h1>Admin Login</h1>
         <form method="post" action="redirect.php">
@@ -14,7 +13,6 @@ include_once 'header/headerGlobal.inc';
             <button type="submit" value="login" name="action">Login</button>
             </br>
             </br>
-
 
             <!--
                 if the user enter a wrong user password -> Message in red : Wrong Username or Password

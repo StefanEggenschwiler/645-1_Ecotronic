@@ -10,13 +10,9 @@ if ($handle) {
     fclose($handle);
 }
 
-
-
-
 ?>
 
 <link rel="stylesheet" href="../css/editTranslations.css" type="text/css" media="all" xmlns="http://www.w3.org/1999/html"/>
-
 
 <div class="container">
 
@@ -32,7 +28,6 @@ if ($handle) {
         i = Indice </br> </br>
         x = Maximum discount defined by the administrator </br>
         &#916;e = (KWha - KWhb) * (Tb - Ta) </br></br></br></br></br></br>
-
 
 
         <cite>Formula & Condition</cite> </br></br>
@@ -56,7 +51,6 @@ if ($handle) {
         Final Discounted price = Market Price B * (1-y) = 5000 * (1-0.4) =  <b>3000.- instead of 5000.-</b></br></br></br></br>
 
     </p>
-
 
 
     <form method="post" action="../redirect.php">

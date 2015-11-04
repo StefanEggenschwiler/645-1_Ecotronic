@@ -276,4 +276,3 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
     </div>
 </div>
 
-

@@ -8,7 +8,6 @@ function displayMenu(obj){
     var idSubMenu = 'sub' + idMenu;
     var subMenu   = document.getElementById(idSubMenu);
 
-
     if(idMenu == 'menu1')
     {
         for (var menuNumber = 2 ; menuNumber < 5 ; menuNumber++) {
@@ -52,9 +51,6 @@ function getValueInSelect(id)
     return e.options[e.selectedIndex].text;
 }
 
-
-
-
 /**
  * Changes 'range' for a new price
  * @param newPriceValue the new price to display
@@ -63,5 +59,4 @@ function displayPrice(newPriceValue)
 {
         document.getElementById('range').innerHTML = newPriceValue;
 }
-
 

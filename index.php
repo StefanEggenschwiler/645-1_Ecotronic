@@ -1,13 +1,11 @@
 <?php
 include_once 'header/headerIndex.inc';
 
-
 require_once 'dto/class.Type.php';
 require_once 'dto/class.Brand.php';
 require_once 'dto/class.Device.php';
 
 require_once 'dto/class.EfficiencyClass.php';
-
 
 $types = $model->getAllTypes();
 $brands = $model->getAllBrands();
@@ -23,7 +21,6 @@ $comparedDevices = $_SESSION['comparedDevices'];
 $selectedSort = null;
 
 
-
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
     $brands = $model->getBrandsByType($selectedCategoryChoice);
@@ -33,7 +30,6 @@ if (isset ( $_POST ['addComparison'] )) {
     $comparedDevices = array_unique(array_merge($comparedDevices, $model->getDevicesBySerialNumber($_POST['addComparison'])));
     $_SESSION['comparedDevices'] = $comparedDevices;
 }
-
 
 for($i=0; $i < count($comparedDevices); $i++){
     if(isset($_POST[$comparedDevices[$i]->getSerialNumber()])){
@@ -68,7 +64,6 @@ if(isset($_POST['searchBar'])){
 }
 
 
-
 ?>
 
 <div class="sort">
@@ -82,7 +77,6 @@ if(isset($_POST['searchBar'])){
 <!-- wrapper contains menu + showedItems-->
 <div class="wrapper">
     <!-- left menu filters-->
-
 
     <div id="menu">
 
@@ -111,7 +105,6 @@ if(isset($_POST['searchBar'])){
                 echo "</label></div>";
             } ?>
         </div>
-
 
 
         <div class="menu" id="menu3" onclick="displayMenu(this)">
