@@ -36,8 +36,6 @@ if(isset($_POST['compareButton'])){
 
 
 $cookie_name = 'lang';
-$cookie_value;
-$translate;
 
 if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( $_GET ['lang'] );

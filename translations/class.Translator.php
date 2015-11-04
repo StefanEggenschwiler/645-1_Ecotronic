@@ -11,7 +11,7 @@ class Translator {
     private function findString($str) {
         if (array_key_exists($str, $this->lang[$this->language])) {
             echo $this->lang[$this->language][$str];
-            return;
+            return null;
         }
         echo $str;
     }

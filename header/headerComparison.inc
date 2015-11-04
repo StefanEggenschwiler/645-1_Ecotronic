@@ -29,8 +29,6 @@ foreach($_SESSION['comparedDevices'] as $value){
 
 
 $cookie_name = 'lang';
-$cookie_value;
-$translate;
 
 if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( $_GET ['lang'] );
@@ -71,7 +69,7 @@ if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
 </head>
 <body>
 <div class="bannerHead">
-    <a href="./index.php"><img src="./images/logo.png" id="logo" alt="EcoElectronics" title="Accueil"></a>
+    <a href="./index.php"><img src="./images/logo.png" id="logo" alt="EcoElectronics" title="Index"></a>
 
 <div class="languages">
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=en';?>"><img class ="flags" src="./images/flags/flagEN.png" alt="EN" title="English"></a>

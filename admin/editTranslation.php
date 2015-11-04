@@ -2,9 +2,6 @@
 include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 
 $handle = fopen("../translations/de.txt", "r");
-$german;
-$french;
-$italian;
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         $german[] = explode('=',$line);

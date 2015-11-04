@@ -2,8 +2,6 @@
 include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 
 $handle = fopen("../database/formula.txt", "r");
-$variables;
-$message;
 
 if ($handle) {
     while (($line = fgets($handle)) !== false) {

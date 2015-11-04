@@ -4,7 +4,6 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/translations/class.Tran
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
-$translate;
 $model = new Model();
 if (isset ( $_GET ['lang'] )) {
     $translate = new Translator ( $_GET ['lang'] );
