@@ -89,7 +89,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
             ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
             var UrlToPass = 'action=updateDevice&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
             $.ajax({
-                url : 'database/ajax.php',
+                url : './database/ajax.php',
                 type : 'POST',
                 data : UrlToPass
             });
@@ -114,7 +114,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
             var ThisElement = $(this);
             var UrlToPass = 'action=deleteDevice&value='+ThisElement.attr('href');
             $.ajax({
-                url : 'database/ajax.php',
+                url : './database/ajax.php',
                 type : 'POST',
                 data : UrlToPass,
                 success: function() {
