@@ -1,5 +1,5 @@
 <?php
-include_once 'headerLogin.inc';
+include_once 'headerGlobal.inc';
 if(!isset($_SESSION['myGenericDevice'])){
     $_SESSION['myGenericDevice'] = new Device();
 }
