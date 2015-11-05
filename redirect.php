@@ -1,4 +1,31 @@
 <?php
+/*
+ * This php site is used for the redirecting of multiple pages:
+ *  login.php
+ *  editFormula.php
+ *  editTranslation.php
+ *
+ * Depending on which of those pages access redirect.php different
+ * operations will made.
+ *
+ * Login:
+ *      It checks if the login information entered by the user
+ *      in the login.php is valid. If it's valid it redirects the user
+ *      to the admin part, if it's wrong it redirects back to the login
+ *      page showing a message.
+ * EditFormula:
+ *      If the admin changes parts of the formula which is used in order
+ *      to calculate the discount for the device comparison, the changed
+ *      values will be stored into the formula.txt located in /database.
+ * EditTranslation:
+ *      If the admin changes parts of the translation used for the client
+ *      side of ecoelectronics, the changed values will be stored into the
+ *      corresponding translation files (de.txt, fr.txt, it.txt) located
+ *      in /translations.
+ *
+ * If redirect.php is called without a valid POST request it simply shows
+ * the message 'ACCESS DENIED!'.
+ */
 require_once 'database/class.Model.php';
 
 if (isset ( $_POST ['action'] )) {

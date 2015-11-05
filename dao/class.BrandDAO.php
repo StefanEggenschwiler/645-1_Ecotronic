@@ -3,6 +3,15 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.DatabaseConnector.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 
+/*
+ * This class is used as DataAccessObject for the brand table in the database.
+ * It offers the CRUD operations in addition to different getters used by multiple
+ * pages. Prepared statements are used wherever possible.
+ *
+ * Since we use PDO for the database connection we fetch the result set of the SELECT
+ * statements into an array of DTO objects of the specified type and use the array as
+ * the functions return value. Source: http://php.net/manual/en/pdostatement.fetchobject.php
+ */
 class BrandDAO
 {
     // Database Connection

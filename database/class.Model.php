@@ -10,6 +10,12 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
+/*
+ * This class is used as abstraction layer between the different DAOs and the view.
+ *
+ * It calls the functions of the DAOs and returns either the unchanged result set or
+ * it formats the result and produces HTML code. (Used for some functionality in the index.php)
+ */
 class Model {
     // Fields
     private $adminDao;

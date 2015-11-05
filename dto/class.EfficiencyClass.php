@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * DTO for the efficiencyclass table in the database.
+ */
 class EfficiencyClass {
     // Fields
     private $id;

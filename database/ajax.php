@@ -1,4 +1,12 @@
 <?php
+/*
+ * This php file is used as abstraction for ajax calls.
+ * It is used solely for CRUD operations used in the admin part.
+ *
+ * For security reasons all the database values (column name, id)
+ * are encoded using base64. The call will decoded and the method
+ * called on the model.
+ */
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
 require_once 'class.Model.php';
 $action = $_REQUEST['action'];
@@ -15,13 +23,13 @@ switch($action) {
             $columnName = $explode[0];
             $deviceId = $explode[1];
             $model->updateDevice($deviceId, $columnName, $value);
-            //set columnName = value where Id = deviceId;
+            //set columnName = value where id = deviceId;
         }
         if(count($explode) == 3) {
             $columnName = $explode[0];
             $deviceId = $explode[1];
             $model->updateDevice($deviceId, $columnName, $value, true);
-            //set columnName = value where Id = deviceId;
+            //set columnName = value where id = deviceId;
         }
         break;
 
@@ -32,7 +40,7 @@ switch($action) {
 
     case "addType":
         $value 	= $_POST['typeName'];
-        var_dump($model->createType($value));
+        $model->createType($value);
         break;
 
     case "updateType":

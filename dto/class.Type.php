@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * DTO for the type table in the database.
+ */
 class Type {
     // Fields
     private $id;

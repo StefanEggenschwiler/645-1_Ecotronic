@@ -1,4 +1,7 @@
 <?php
+/*
+ * DTO for the admin table in the database.
+ */
 class Admin {
     // Fields
     private $id;
