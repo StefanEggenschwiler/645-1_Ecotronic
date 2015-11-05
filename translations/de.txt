@@ -40,5 +40,5 @@ Shop link=Shop Link
 Create=Erstellen
 Back=Zurück
 kW/h per year=kW/h pro Jahr
-Resting lifespan=Restliche lebensdauer
+Resting lifespan per year=Restliche lebensdauer pro Jahr
 Your generic device=Ihr Modell des Gerätes

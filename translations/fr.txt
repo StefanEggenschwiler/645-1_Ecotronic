@@ -40,5 +40,5 @@ Shop link=Lien magasin
 Create=Créer
 Back=Retour
 kW/h per year=kW/h par année
-Resting lifespan=Durée de vie restante
+Resting lifespan per year=Durée de vie restante par année
 Your generic device=Votre appareil générique
