@@ -244,6 +244,7 @@ class Model {
 
     }
 
+    //sort items based on selected sort
     public function orderShowedItems($showedItems, $selectedSort){
         switch($selectedSort)
         {
@@ -335,6 +336,7 @@ class Model {
         $this->deviceDao->getAutoCompleteEntries();
     }
 
+    //get options for sortdropdownlist
     public function getDropdownlistSort($selectedSort, $translate){
         $orderType = array('Ascending Price'=>'AP', 'Descending Price'=>'DP', 'Ascending Alphabetical'=>'AA', 'Descending Alphabetical'=>'DA', 'Ascending Classification'=>'AC', 'Descending Classification'=>'DC');
 
@@ -351,6 +353,7 @@ class Model {
         }
     }
 
+    //get options for categorydropdownlist
     public function getDropdownlistCategory($translate){
         $types = $this->getAllTypes();
         foreach($types as $value){
