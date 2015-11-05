@@ -189,7 +189,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                 </tr>
             </table>
 
-            <div style="overflow-x: scroll">
+            <div style="overflow-x: scroll | visible">
                 <table class="as_gridder_table" width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr class="grid_header">
                         <th></th>
