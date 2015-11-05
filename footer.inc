@@ -1,13 +1,3 @@
-<?php
-
-include_once 'translations/class.Translator.php';
-if (isset ( $_GET ['lang'] )) {
-    $translate = new Translator ( $_GET ['lang'] );
-} else {
-    $translate = new Translator ( 'en' );
-}
-?>
-
 <footer id="bannerFooter">
     <div>
         Web Design
