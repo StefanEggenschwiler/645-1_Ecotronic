@@ -74,6 +74,11 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
         });
     });
 
+    // Double scrollbar for the table div.
+    $(document).ready(function(){
+        $('#double-scroll').doubleScroll();
+    });
+
     $(function(){
         // Show the text box on click
         $('body').delegate('.editable', 'click', function(){
@@ -189,7 +194,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                 </tr>
             </table>
 
-            <div style="overflow-x: auto">
+            <div id="double-scroll">
                 <table class="as_gridder_table" width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr class="grid_header">
                         <th></th>

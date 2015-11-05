@@ -38,6 +38,8 @@ header('Content-Type: text/html; charset=UTF-8');
     <script src="../javascript/jquery-1.11.3.min.js"></script>
     <!-- load jquery ui js file -->
     <script src="../javascript/jquery-ui.min.js"></script>
+    <!-- load jquery doublescroll js file -->
+    <script src="../javascript/jquery.doubleScroll.js"></script>
 
     <div id="header">
         <div class="shell980W">
