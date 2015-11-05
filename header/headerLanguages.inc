@@ -1,3 +1,4 @@
+<!-- add ?lang=XX to current adress -->
 <div class="languages">
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=en';?>"><img class ="flags" src="./images/flags/flagEN.png" alt="EN" title="English"></a>
     <a href="<?php echo $_SERVER['PHP_SELF'].'?lang=fr';?>"><img class ="flags"  src="./images/flags/flagFR.png" alt="FR" title="Français"></a>
