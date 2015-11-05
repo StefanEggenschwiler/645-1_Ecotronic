@@ -1,3 +1,4 @@
+<!-- footer, click on copyright logo to go to admin login page -->
 <footer id="bannerFooter">
     <div>
         Web Design

@@ -2,6 +2,7 @@
 include_once 'header/headerGlobal.inc';
 ?>
 
+<!-- login form for admin -->
 <div class="loginBlock centered">
     <h1>Admin Login</h1>
         <form method="post" action="redirect.php">
@@ -15,10 +16,9 @@ include_once 'header/headerGlobal.inc';
             <br />
 
             <!--
-                if the user enter a wrong user password -> Message in red : Wrong Username or Password
-                if the user enter a wrong username -> Message in red : User not found.
-                -->
-
+            if the user enter a wrong user password -> Message in red : Wrong Username or Password
+            if the user enter a wrong username -> Message in red : User not found.
+            -->
             <?php $reasons = array("password" => "Wrong Username or Password", "notfound" => "Username not found.");
             if (isset ( $_GET ['loginFailed'] )) {
                 if ($_GET["loginFailed"]) {
