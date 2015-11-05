@@ -6,12 +6,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php');
 session_start();
 $model = new Model();
 
+include_once 'headerCookies.inc';
 
-
-if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
-    header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
-    exit;
-}
 if(!isset($_SESSION['comparedDevices'])){
     $_SESSION['comparedDevices'] = array();
 }
@@ -25,28 +21,8 @@ foreach($_SESSION['comparedDevices'] as $value){
     }
 }
 
-
-$cookie_name = 'lang';
-
-if (isset ( $_GET ['lang'] )) {
-    $translate = new Translator ( $_GET ['lang'] );
-    $cookie_value = $_GET['lang'];
-}
-
-$_SESSION["lang"] = "";
-
 if(!isset($_SESSION['myOldDevice'])){
     $_SESSION['myOldDevice'] = null;
-}
-
-$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$languageValue = substr($actual_link, -2);
-if($languageValue == 'fr' || $languageValue == 'de' || $languageValue == 'it'){
-    $_SESSION['lang'] = '?lang='.$languageValue;
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-}else{
-    $_SESSION['lang'] = '?lang=en';
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
 
 ?>
