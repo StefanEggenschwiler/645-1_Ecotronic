@@ -3,9 +3,10 @@ header('Content-Type: text/html; charset=UTF-8');
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/translations/class.Translator.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 include($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php');
+session_start();
 $model = new Model();
 
-session_start();
+
 
 if (!strpos("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", "?lang=")) {
     header("Location: ".$_SERVER['PHP_SELF']."?lang=".$_COOKIE['lang']);
