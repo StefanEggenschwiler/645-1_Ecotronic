@@ -262,7 +262,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                             <input required type="number" step="0.01" class="gridder_input" style="width: 100px" name="'.encrypt("energyConsumption|".$items->getId()).'" value="'.$items->getEnergyConsumption().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 100px">'.$items->getPrice().'</span>
                             <input required type="number" step="0.01" class="gridder_input" style="width: 100px" name="'.encrypt("price|".$items->getId()).'" value="'.$items->getPrice().'"></td>';
-                    echo '<td><div class="grid_content editable"><span style="width: 800px">'.$items->getImage().'</span>
+                    echo '<td><div class="grid_content editable"><span style="width: 950px">'.$items->getImage().'</span>
                             <input required type="text" class="gridder_input" style="width: 800px" name="'.encrypt("image|".$items->getId()).'" value="'.$items->getImage().'"></td>';
                     echo '<td><div class="grid_content editable"><span style="width: 310px">'.$items->getManufacturerLink().'</span>
                             <input required type="text" class="gridder_input" style="width: 310px" name="'.encrypt("manufacturerLink|".$items->getId()).'" value="'.$items->getManufacturerLink().'"></td>';
