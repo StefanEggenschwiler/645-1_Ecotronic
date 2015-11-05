@@ -57,7 +57,7 @@ if(isset($_POST['deleteGenericDevice'])){
             echo '<br />';
             echo '<br />';
             echo '<input type="number" name="lifespan" placeholder="';
-            echo $translate->__('Resting lifespan');
+            echo $translate->__('Resting lifespan per year');
             echo '" required>';
             echo '<br />';
             echo '<br />';
@@ -79,7 +79,7 @@ if(isset($_POST['deleteGenericDevice'])){
             echo $translate->__('Energy consumption').' : '.$generic->getEnergyConsumption();
             echo '<br />';
             echo '<br />';
-            echo $translate->__('Resting lifespan').' : '.$generic->getLifeSpan();
+            echo $translate->__('Resting lifespan per year').' : '.$generic->getLifeSpan();
             echo '<br />';
             echo '<br />';
             echo '<button id="deleteGenericDevice" type="submit" value="Delete your device" name="deleteGenericDevice">';
