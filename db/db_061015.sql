@@ -7,6 +7,9 @@
 -- Server version: 5.6.15-log
 -- PHP Version: 5.5.8
 
+-- This is the initial script in order to generate the database
+-- structure and populate the database from scratch.
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

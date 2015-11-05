@@ -1,4 +1,10 @@
 <?php
+/*
+ * This php files was first used in order to parse the html code on topten.ch into
+ * readable sql insert statements which could be used in order to populate our used
+ * database for the project.
+ */
+
 require_once ('simple_html_dom.php');
 
 $table = file_get_html('table.html');
