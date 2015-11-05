@@ -126,7 +126,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
     });
 </script>
 
-<div class="">
+<body>
     <br />
     <div class="box">
         <div class="box-head">
@@ -189,7 +189,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
                 </tr>
             </table>
 
-            <div style="overflow-x: scroll | visible">
+            <div style="overflow-x: auto">
                 <table class="as_gridder_table" width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr class="grid_header">
                         <th></th>
@@ -279,5 +279,5 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
 
         </div>
     </div>
-</div>
+</body>
 
