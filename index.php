@@ -27,11 +27,13 @@ if(isset($_POST['cat'])) {
     $efficiencyClasses = $model->getEfficiencyClassesByType($selectedCategoryChoice);
     $selectedPriceChoice = $_POST['priceOfSlider'];
 }
+//post to add device to comparison basket
 if (isset ( $_POST ['addComparison'] )) {
     $comparedDevices = array_unique(array_merge($comparedDevices, $model->getDevicesBySerialNumber($_POST['addComparison'])));
     $_SESSION['comparedDevices'] = $comparedDevices;
 }
 
+//delete device from comparison basket
 for($i=0; $i < count($comparedDevices); $i++){
     if(isset($_POST[$comparedDevices[$i]->getSerialNumber()])){
         unset($comparedDevices[$i]);
@@ -40,16 +42,19 @@ for($i=0; $i < count($comparedDevices); $i++){
     }
 }
 
+//sort showed items by clicking on dropdownlist
 if(isset($_POST['dropdownlistSort'])){
     $selectedSort = $_POST['dropdownlistSort'];
 }
 
+//save selected brandnames to reuse after refresh
 foreach($brands as $value){
     if (isset($_POST[$value->getBrandName()])) {
         $selectedBrandChoice[] = $value->getBrandName();
     }
 }
 
+//save seleted classnames to reuse after refresh
 foreach($efficiencyClasses as $value){
     if (isset($_POST[$value->getClassName()])) {
         $selectedEfficiencyClassChoice[] = $value->getClassName();
@@ -57,7 +62,7 @@ foreach($efficiencyClasses as $value){
 }
 
 
-
+//save content of searchbar to use it
 if(isset($_POST['searchBar'])){
     $searchBarContent = ($_POST['searchBar']);
 }
@@ -65,6 +70,7 @@ if(isset($_POST['searchBar'])){
 
 ?>
 
+<!-- sort dropdownlist-->
 <div class="sort">
     <label><?php $translate->__('Sort')?></label>
     <br />
@@ -79,6 +85,7 @@ if(isset($_POST['searchBar'])){
 
     <div id="menu">
 
+        <!-- Show categories in menu -->
         <div class="menu" id="menu1" onclick="displayMenu(this)">
             <label href="#"><?php $translate->__('Category')?></label>
         </div>
@@ -89,6 +96,7 @@ if(isset($_POST['searchBar'])){
         <div class="menu" id="menu2" onclick="displayMenu(this)">
             <label href="#"> <?php $translate->__('Brand')?></label>
         </div>
+        <!-- display brands based on selected category in menu -->
         <div id="submenu2" style="display:none">
             <?php
             foreach($brands as $value){
@@ -104,8 +112,7 @@ if(isset($_POST['searchBar'])){
                 echo "</label></div>";
             } ?>
         </div>
-
-
+        <!-- display classifications based on selected category in menu -->
         <div class="menu" id="menu3" onclick="displayMenu(this)">
             <label href="#"><?php $translate->__('Classification')?></label>
         </div>
@@ -124,7 +131,7 @@ if(isset($_POST['searchBar'])){
                 echo "</label></div>";
             } ?>
         </div>
-
+        <!-- display price slider starting with 0 -->
         <div class="menu" id="menu4" onclick="displayMenu(this)">
             <label href="#"><?php $translate->__('Price')?></label>
         </div>
@@ -138,7 +145,7 @@ if(isset($_POST['searchBar'])){
 
     </div>
 
-    <!-- right div to show compared devices-->
+    <!-- right div to show basket compared devices-->
     <div class="rightComparator">
 
         <table>
@@ -153,6 +160,7 @@ if(isset($_POST['searchBar'])){
             </tr>
         </table>
         <?php
+        //display basket of devices and check radiobutton of first
         for($i = 0; $i < count($_SESSION['comparedDevices']); $i++){
             echo "<table cellpadding='10' cellspacing='5'>";
             echo "<tr>";
@@ -170,7 +178,7 @@ if(isset($_POST['searchBar'])){
             }
             echo "></th>";
             echo "</tr>";
-
+            //delete based on serial number of each device
             echo "<tr>";
             echo "<th> <input type='submit' id='deleteButtonCompare' name='";
             echo $_SESSION['comparedDevices'][$i]->getSerialNumber();
@@ -183,22 +191,25 @@ if(isset($_POST['searchBar'])){
         }
 
         ?>
+        <!-- Compare button which redirects to comparison.php -->
         <label href="#" id="compare"><input id="compareButton" type="submit" name="compareButton" value="<?php $translate->__('Compare')?>"></label>
 
     </div>
-    <!-- Center div to show the selected devices-->
+    <!-- Center div to show the selected devices in menu-->
     <div class="centerShowItems">
         <ul>
             <?php
 
             if($selectedCategoryChoice != null|| $searchBarContent !=null) {
                 $checker = true;
+                //don't display searchbar content
                 if($searchBarContent!=null){
                     $myDevices = $model->getDevicesByModel($searchBarContent);
                     $model->displayDevicesForm($myDevices);
                     $checker = false;
                 }
 
+                //display everything selected in the left menu
                 if($checker){
                     if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice != null){
 
@@ -211,6 +222,7 @@ if(isset($_POST['searchBar'])){
                 }
 
             }else{
+                //display explanation picture of how to use the website if no devices are selected in left menu
                 echo "<img class='imageDesign' src='images/PageHomeIndex";
                 echo substr($_SESSION['lang'], -2);
                 echo ".svg'>";

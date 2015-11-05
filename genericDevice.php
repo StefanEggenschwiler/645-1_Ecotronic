@@ -6,6 +6,7 @@ if(!isset($_SESSION['myGenericDevice'])){
 
 $checker = true;
 $generic = new Device();
+//check if generic device already created
 foreach($_SESSION['comparedDevices'] as $value){
     if($value->getSerialNumber() == 'MY-DEVICE'){
         $checker = false;
@@ -13,10 +14,12 @@ foreach($_SESSION['comparedDevices'] as $value){
     }
 }
 
+//create session for categories to display
 if(!isset($_SESSION['categories'])){
     $_SESSION['categories'] = array();
 }
 
+//create generic device and refresh page
 if(isset($_POST['createGenericDevice'])){
     $_SESSION['myGenericDevice']->setTypeId($_POST['categoryDropdownlist']);
     $_SESSION['myGenericDevice']->setEnergyConsumption($_POST['kwh']);
@@ -29,6 +32,7 @@ if(isset($_POST['createGenericDevice'])){
     echo '<meta http-equiv="refresh" content="0">';
 }
 
+//delete generic device and refresh page
 if(isset($_POST['deleteGenericDevice'])){
     for($i = 0; $i < count($_SESSION['comparedDevices']); $i++){
         if($_SESSION['comparedDevices'][$i]->getSerialNumber() == 'MY-DEVICE'){
@@ -47,6 +51,7 @@ if(isset($_POST['deleteGenericDevice'])){
     echo $_SERVER['PHP_SELF'];
     echo $_SESSION['lang'];?>">
         <?php
+        //if checker= true display form to create generic device
         if($checker){
             echo '<select id="categoryDropdownlist"name="categoryDropdownlist">';
             $_SESSION['categories'] = $model->getDropdownlistCategory($translate);
@@ -67,6 +72,7 @@ if(isset($_POST['deleteGenericDevice'])){
             echo '<br />';
             echo '<br />';
         }else{
+            //if checker=false display already created generic device
             echo $translate->__('Category').' : ';
             foreach($_SESSION['categories'] as $categories){
                 if($generic->getTypeId() == $categories->getId()){
@@ -93,22 +99,8 @@ if(isset($_POST['deleteGenericDevice'])){
     <br />
     <br />
 
+    <!-- back button to return to index.php-->
     <form method="post" action="index.php">
         <button id="backGenericDevice" type="submit" value="back" name="back"><?php $translate->__("Back")?></button>
     </form>
-
-    <!--
-        if the user enter a wrong user password -> Message in red : Wrong Username or Password
-        if the user enter a wrong username -> Message in red : User not found.
-        -->
-
-    <?php
-    $reasons = array("password" => "Wrong Username or Password", "notfound" => "Username not found.");
-    if (isset ( $_GET ['loginFailed'] )) {
-        if ($_GET["loginFailed"]) {
-            echo '<span style="color:red;">'.$reasons[$_GET["reason"]].'</span>';
-        }
-    }
-
-    ?>
 </div>
