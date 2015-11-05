@@ -14,6 +14,7 @@ if (isset ( $_GET ['lang'] )) {
 header('Content-Type: text/html; charset=UTF-8');
 session_start();
 
+include_once 'headerCookies.inc';
 ?>
 
 <!DOCTYPE html>
