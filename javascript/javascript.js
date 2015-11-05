@@ -7,6 +7,8 @@ function displayMenu(obj){
     var idMenu     = obj.id;
     var idSubMenu = 'sub' + idMenu;
     var subMenu   = document.getElementById(idSubMenu);
+    var idSubMenuOne;
+    var subMenuOne;
 
     if(idMenu == 'menu1')
     {
@@ -18,6 +20,12 @@ function displayMenu(obj){
         idSubMenu = 'submenu' + 1 ;
         subMenu = document.getElementById(idSubMenu);
     }
+    else
+    {
+        idSubMenuOne = 'submenu1';
+        subMenuOne = document.getElementById(idSubMenuOne);
+        subMenuOne.style.display = "none";
+    }
     if(subMenu.style.display == "none"){
         subMenu.style.display = "block";
     }
@@ -27,7 +35,7 @@ function displayMenu(obj){
 
 }
 
-//Not work now ! It's suppose to close category and open the another filters
+//Not work ! It's suppose to close category and open the another filters
 function changeMenu(){
 
     var id          = 1 ;
