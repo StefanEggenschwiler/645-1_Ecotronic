@@ -200,6 +200,11 @@ text-transform: uppercase;
 
 }
 
+#ui-id-1
+{
+    font-size:250%;
+}
+
 .loginBlock button, #showButton, #compareButton {
 
     background: #04B45F;
