@@ -54,7 +54,7 @@ if(isset($_POST['deleteGenericDevice'])){
         //if checker= true display form to create generic device
         if($checker){
             echo '<select id="categoryDropdownlist"name="categoryDropdownlist">';
-            $_SESSION['categories'] = $model->getDropdownlistCategory($translate);
+            $_SESSION['categories'] = $controller->getDropdownlistCategory($translate);
             echo '</select>';
             echo '<input type="number" name="kwh" placeholder="';
             echo $translate->__('kW/h per year');

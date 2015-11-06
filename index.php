@@ -7,9 +7,9 @@ require_once 'dto/class.Device.php';
 
 require_once 'dto/class.EfficiencyClass.php';
 
-$types = $model->getAllTypes();
-$brands = $model->getAllBrands();
-$efficiencyClasses = $model->getAllEfficiencyClasses();
+$types = $controller->getAllTypes();
+$brands = $controller->getAllBrands();
+$efficiencyClasses = $controller->getAllEfficiencyClasses();
 $consumptions = array();
 $selectedCategoryChoice = null;
 $selectedBrandChoice = array();
@@ -23,13 +23,13 @@ $selectedSort = null;
 //post for categories and showButton
 if(isset($_POST['cat'])) {
     $selectedCategoryChoice = $_POST['cat'];
-    $brands = $model->getBrandsByType($selectedCategoryChoice);
-    $efficiencyClasses = $model->getEfficiencyClassesByType($selectedCategoryChoice);
+    $brands = $controller->getBrandsByType($selectedCategoryChoice);
+    $efficiencyClasses = $controller->getEfficiencyClassesByType($selectedCategoryChoice);
     $selectedPriceChoice = $_POST['priceOfSlider'];
 }
 //post to add device to comparison basket
 if (isset ( $_POST ['addComparison'] )) {
-    $comparedDevices = array_unique(array_merge($comparedDevices, $model->getDevicesBySerialNumber($_POST['addComparison'])));
+    $comparedDevices = array_unique(array_merge($comparedDevices, $controller->getDevicesBySerialNumber($_POST['addComparison'])));
     $_SESSION['comparedDevices'] = $comparedDevices;
 }
 
@@ -75,7 +75,7 @@ if(isset($_POST['searchBar'])){
     <label><?php $translate->__('Sort')?></label>
     <br />
     <select class="dropdownlistSort" name="dropdownlistSort" onchange="this.form.submit();">
-        <?php $model->getDropdownlistSort($selectedSort, $translate); ?>
+        <?php $controller->getDropdownlistSort($selectedSort, $translate); ?>
     </select>
 </div>
 
@@ -90,7 +90,7 @@ if(isset($_POST['searchBar'])){
             <label href="#"><?php $translate->__('Category')?></label>
         </div>
         <div id="submenu1">
-            <?php $model->displayCategories($types, $selectedCategoryChoice, $translate) ?>
+            <?php $controller->displayCategories($types, $selectedCategoryChoice, $translate) ?>
         </div>
 
         <div class="menu" id="menu2" onclick="displayMenu(this)">
@@ -137,7 +137,7 @@ if(isset($_POST['searchBar'])){
         </div>
         <div id="submenu4" style="display:none">
             <div class='submenu'>
-                <label style="text-align:center"><?php $translate->__('Max')?><br /><input type="range" name="priceOfSlider" min="0" max="<?php echo $model->getMaxPriceOfDevices($model->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="<?php echo $selectedPriceChoice ?>" oninput="displayPrice(value)" onchange="displayPrice(value)"><br /><span id="range"><?php echo $selectedPriceChoice ?></span> </label>
+                <label style="text-align:center"><?php $translate->__('Max')?><br /><input type="range" name="priceOfSlider" min="0" max="<?php echo $controller->getMaxPriceOfDevices($controller->getDevicesByFilter($selectedCategoryChoice))+100; ?>" step="100" value="<?php echo $selectedPriceChoice ?>" oninput="displayPrice(value)" onchange="displayPrice(value)"><br /><span id="range"><?php echo $selectedPriceChoice ?></span> </label>
             </div>
         </div>
 
@@ -204,8 +204,8 @@ if(isset($_POST['searchBar'])){
                 $checker = true;
                 //don't display searchbar content
                 if($searchBarContent!=null){
-                    $myDevices = $model->getDevicesByModel($searchBarContent);
-                    $model->displayDevicesForm($myDevices);
+                    $myDevices = $controller->getDevicesByModel($searchBarContent);
+                    $controller->displayDevicesForm($myDevices);
                     $checker = false;
                 }
 
@@ -213,11 +213,11 @@ if(isset($_POST['searchBar'])){
                 if($checker){
                     if($selectedBrandChoice != null || $selectedEfficiencyClassChoice != null || $selectedPriceChoice != null){
 
-                        $model->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice, $selectedSort);
-                        $showedDevices = $model->getDevicesByFilter($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
+                        $controller->displayDevicesWithFilters($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice, $selectedSort);
+                        $showedDevices = $controller->getDevicesByFilter($selectedCategoryChoice, $selectedBrandChoice, $selectedEfficiencyClassChoice, $selectedPriceChoice);
                     }else {
-                        $model->displayDevicesWithoutFilters($selectedCategoryChoice, $selectedSort);
-                        $showedDevices = $model->getDevicesByFilter($selectedCategoryChoice);
+                        $controller->displayDevicesWithoutFilters($selectedCategoryChoice, $selectedSort);
+                        $showedDevices = $controller->getDevicesByFilter($selectedCategoryChoice);
                     }
                 }
 

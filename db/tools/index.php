@@ -19,7 +19,7 @@ $energyPriceColumn = 0;
 $efficiencyClassColumn = 0;
 $energyConsumptionColumn = 0;
 $shopLink = "'http://www.melectronics.ch/'";
-$brandId; $efficiencyClassId; $image; $model; $price; $energyPrice; $energyConsumption; global $manufacturerLink;
+$brandId; $efficiencyClassId; $image; $controller; $price; $energyPrice; $energyConsumption; global $manufacturerLink;
 
 echo "INSERT INTO `device`(`id`, `typeId`, `brandId`, `efficiencyClassId`, `image`, `model`, `price`, `energyPrice`, `energyConsumption`, `serialNumber`, `productionYear`, `manufacturerLink`, `shopLink`, `discount`, `discountStart`, `discountEnd`) VALUES ";
 
@@ -314,7 +314,7 @@ for($x = 0; $x < count($table->find('tr', 0)->find('td')); $x++) {
 				$brandId = getBrandId($tr->find('td', $x)->plaintext);
 				break;
 			case $modelColumn:
-				$model = "'".str_replace(array('\''), '',$tr->find('td', $x)->plaintext)."'";
+				$controller = "'".str_replace(array('\''), '',$tr->find('td', $x)->plaintext)."'";
 				break;
 			case $priceColumn:
 				$price = str_replace(array('\''), '',$tr->find('td', $x)->plaintext);
@@ -330,7 +330,7 @@ for($x = 0; $x < count($table->find('tr', 0)->find('td')); $x++) {
 		}
 		$i++;
 	}
-	$output .= $typeId.", ".$brandId.", ".$efficiencyClassId.", ".$image.", ".$model.", ".$price.", ".$energyPrice.", ".
+	$output .= $typeId.", ".$brandId.", ".$efficiencyClassId.", ".$image.", ".$controller.", ".$price.", ".$energyPrice.", ".
 		$energyConsumption.", ".$serialNumber.", ".$productionYear.", ".$manufacturerLink.", ".$shopLink.", null, null, null),";
 	echo $output;
 }

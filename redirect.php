@@ -26,7 +26,7 @@
  * If redirect.php is called without a valid POST request it simply shows
  * the message 'ACCESS DENIED!'.
  */
-require_once 'database/class.Model.php';
+require_once 'database/class.Controller.php';
 
 if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
@@ -42,10 +42,10 @@ if (isset ( $_POST ['action'] )) {
 
 // checking if the username + pwd are correct
 function authenticate() {
-    $model = new Model ();
+    $controller = new Controller ();
     $uname = $_POST['user'];
     $pwd = $_POST['pwd'];
-    $result = $model->checkLogin($uname, $pwd);
+    $result = $controller->checkLogin($uname, $pwd);
 
     if(!$result) {
         header ('location: login.php');

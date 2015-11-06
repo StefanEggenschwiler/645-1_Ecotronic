@@ -16,7 +16,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyCla
  * It calls the functions of the DAOs and returns either the unchanged result set or
  * it formats the result and produces HTML code. (Used for some functionality in the index.php)
  */
-class Model {
+class Controller {
     // Fields
     private $adminDao;
     private $typeDao;
@@ -47,10 +47,10 @@ class Model {
     }
 
     // DEVICES
-    public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price,
+    public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $controller, $price,
                                  $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink,
                                  $shopLink) {
-        return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model,
+        return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $controller,
             $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
     }
 
@@ -62,8 +62,8 @@ class Model {
         return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceHigh);
     }
 
-    public function getDevicesByModel($model) {
-        return $this->deviceDao->getByModel($model);
+    public function getDevicesByModel($controller) {
+        return $this->deviceDao->getByModel($controller);
     }
 
     public function getDevicesBySerialNumber($serialNumber){

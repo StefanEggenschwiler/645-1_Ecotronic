@@ -89,7 +89,7 @@ class DeviceDAO
         return $stmt->fetchAll();
     }
 
-    public function getByModel($model) {
+    public function getByModel($controller) {
         $stmt = $this->_conn->getConnection()->prepare('
         SELECT device.id, device.typeId, device.brandId, device.efficiencyClassId, device.image, device.model, device.price,
                device.energyPrice, device.energyConsumption, device.serialNumber, device.productionYear, device.lifespan,
@@ -100,7 +100,7 @@ class DeviceDAO
         device.efficiencyClassId = efficiencyclass.id AND
         device.typeId = type.id AND
         device.model = :model');
-        $stmt->bindParam(':model', $model, PDO::PARAM_STR, 200);
+        $stmt->bindParam(':model', $controller, PDO::PARAM_STR, 200);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Device');
         $stmt->execute();
         return $stmt->fetchAll();
@@ -123,7 +123,7 @@ class DeviceDAO
         return $stmt->fetchAll();
     }
 
-    public function create($type, $brand, $efficiencyClass, $imageUrl, $model, $price, $energyPrice,
+    public function create($type, $brand, $efficiencyClass, $imageUrl, $controller, $price, $energyPrice,
                            $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
 
         $query = "INSERT INTO device (typeid, brandid, efficiencyClassId, image, model, price, energyPrice,
@@ -148,7 +148,7 @@ class DeviceDAO
         $stmt->bindParam(':brand', $brand, PDO::PARAM_STR, 60);
         $stmt->bindParam(':efficiencyClass', $efficiencyClass, PDO::PARAM_STR, 50);
         $stmt->bindParam(':imageUrl', $imageUrl, PDO::PARAM_STR, 300);
-        $stmt->bindParam(':model', $model, PDO::PARAM_STR, 200);
+        $stmt->bindParam(':model', $controller, PDO::PARAM_STR, 200);
         $stmt->bindParam(':price', $price, PDO::PARAM_STR, 20);
         $stmt->bindParam(':energyPrice', $energyPrice, PDO::PARAM_STR, 20);
         $stmt->bindParam(':energyConsumption', $energyConsumption, PDO::PARAM_STR, 20);

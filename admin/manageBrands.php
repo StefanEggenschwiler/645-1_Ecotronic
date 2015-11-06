@@ -1,11 +1,11 @@
 <?php
 include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
-require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Controller.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 
-$model = new Model();
-$brands = $model->getAllBrands();
+$controller = new Controller();
+$brands = $controller->getAllBrands();
 ?>
 <script type="text/javascript">
     $(function(){

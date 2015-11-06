@@ -1,17 +1,17 @@
 <?php
 include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
-require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Controller.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
-$model = new Model();
-$types = $model->getAllTypes();
-$brands = $model->getAllBrands();
-$efficiencyClasses = $model->getAllEfficiencyClasses();
+$controller = new Controller();
+$types = $controller->getAllTypes();
+$brands = $controller->getAllBrands();
+$efficiencyClasses = $controller->getAllEfficiencyClasses();
 $consumptions = array();
-$showedItems = $model->getAllBrands();
+$showedItems = $controller->getAllBrands();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 function createNewDevice()
 {
-    global $model;
+    global $controller;
     $selectTypeName = $_POST['selectType'];
     $selectBrandName = $_POST['selectBrand'];
     $selectEfficiencyClassName = $_POST['selectEfficiencyClassName'];
@@ -40,7 +40,7 @@ function createNewDevice()
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-    $model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
+    $controller->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
         $energyConsumption, $serialNumber, $selectProductionYear, $lifeSpan, $manufacturerLink, $shopLink);
 }
 

@@ -1,11 +1,11 @@
 <?php
 include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
-require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Controller.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
-$model = new Model();
-$efficiencyClasses = $model->getAllEfficiencyClasses();
+$controller = new Controller();
+$efficiencyClasses = $controller->getAllEfficiencyClasses();
 ?>
 <script type="text/javascript">
     $(function(){

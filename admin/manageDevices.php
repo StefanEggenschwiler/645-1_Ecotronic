@@ -1,13 +1,13 @@
 <?php
 include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
 include $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/functions/cryption.php';
-require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Controller.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 
-$model = new Model();
-$types = $model->getAllTypes();
-$brands = $model->getAllBrands();
-$efficiencyClasses = $model->getAllEfficiencyClasses();
+$controller = new Controller();
+$types = $controller->getAllTypes();
+$brands = $controller->getAllBrands();
+$efficiencyClasses = $controller->getAllEfficiencyClasses();
 $consumptions = array();
 $itemsFiltered = array();
 $currentItemsArray = array();
@@ -44,15 +44,15 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
     } else {
         $filterEfficiencyClass = array($selectedEfficiencyClassChoice);
     }
-    $itemsFiltered = $model->getDevicesByFilter($filterCategory, $filterBrand, $filterEfficiencyClass);
+    $itemsFiltered = $controller->getDevicesByFilter($filterCategory, $filterBrand, $filterEfficiencyClass);
     $currentItemsArray = $itemsFiltered;
 
 } else {
     if(empty($searchBarContent)) {
-        $itemsFiltered = $model->getAllDevices(); // otherwise display all objects
+        $itemsFiltered = $controller->getAllDevices(); // otherwise display all objects
         $currentItemsArray = $itemsFiltered;
     } else {
-        $itemsFiltered = $model->getDevicesByModel($searchBarContent);
+        $itemsFiltered = $controller->getDevicesByModel($searchBarContent);
         $currentItemsArray = $itemsFiltered;
         $selectedCategoryChoice = $itemsFiltered[0]->getTypeName();
         $selectedBrandChoice = $itemsFiltered[0]->getBrandName();
@@ -66,7 +66,7 @@ if(!empty($selectedCategoryChoice) && empty($searchBarContent)){
         var availableTags =
             <?php
 
-            $model->getAutoCompleteEntries();
+            $controller->getAutoCompleteEntries();
             ?>;
         $("#searchBar").autocomplete({
             source: availableTags,

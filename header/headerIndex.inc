@@ -2,10 +2,10 @@
 header('Content-Type: text/html; charset=UTF-8');
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/translations/class.Translator.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
-include($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Model.php');
+include($_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Controller.php');
 session_start();
 
-$model = new Model();
+$controller = new Controller();
 
 include_once 'headerCookies.inc';
 
@@ -75,7 +75,7 @@ include_once 'headerLanguages.inc'
     $(function() {
         var availableTags =
             <?php
-            $model->getAutoCompleteEntries();
+            $controller->getAutoCompleteEntries();
             ?>;
         $("#searchBar").autocomplete({
             source: availableTags,
