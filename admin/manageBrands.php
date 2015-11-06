@@ -23,7 +23,7 @@ $brands = $controller->getAllBrands();
             ThisElement.prev('span').show().html($(this).val()).prop('title', $(this).val());
             var UrlToPass = 'action=updateBrand&value='+ThisElement.val()+'&crypto='+ThisElement.prop('name');
             $.ajax({
-                url : './database/ajax.php',
+                url : '../database/ajax.php',
                 type : 'POST',
                 data : UrlToPass
             });
@@ -48,7 +48,7 @@ $brands = $controller->getAllBrands();
             var ThisElement = $(this);
             var UrlToPass = 'action=deleteBrand&value='+ThisElement.attr('href');
             $.ajax({
-                url : './database/ajax.php',
+                url : '../database/ajax.php',
                 type : 'POST',
                 data : UrlToPass,
                 success: function() {
@@ -91,7 +91,7 @@ $brands = $controller->getAllBrands();
             // Pass the form data to the ajax page
             var data = $('#gridder_addform').serialize();
             $.ajax({
-                url : './database/ajax.php',
+                url : '../database/ajax.php',
                 type : 'POST',
                 data : data,
                 success: function() {
