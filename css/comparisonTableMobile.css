@@ -73,7 +73,7 @@
     border-width:0px 1px 1px 0px;
     text-align:left;
     padding:10px;
-    font-size:2em
+    font-size:3em;
     font-family:Arial;
 }
 .comparisonTable tr:last-child td
@@ -99,7 +99,7 @@
     border:0px solid #3f7f00;
     text-align:center;
     border-width:0px 0px 1px 1px;
-    font-size:14px;
+    font-size:3em;
     font-family:Arial;
     font-weight:bold;
 }

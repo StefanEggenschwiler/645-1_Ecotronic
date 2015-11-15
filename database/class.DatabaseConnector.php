@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * This class is used as DatabaseConnector.
+ *
+ * We're using PDO (PHP Data Objects) in order to connect to our MySQL database.
+ * Source: http://php.net/manual/en/book.pdo.php
+ */
 class PdoConnector {
 
     const HOST = "127.0.0.1";
@@ -35,4 +41,3 @@ class PdoConnector {
         return $result;
     }
 }
-?>

@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * DTO for the discount table in the database.
+ */
 class Discount {
     // Fields
     private $id;

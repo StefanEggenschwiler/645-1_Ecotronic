@@ -3,6 +3,9 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
+/*
+ * DTO for the device table in the database.
+ */
 class Device {
 
     // Fields
@@ -15,7 +18,7 @@ class Device {
     private $className;
     private $discountId;
     private $image;
-    private $model;
+    private $controller;
     private $price;
     private $energyPrice;
     private $energyConsumption;
@@ -103,8 +106,8 @@ class Device {
     public function setImage($image) {
         $this->image = $image;
     }
-    public function setModel($model) {
-        $this->model = $model;
+    public function setModel($controller) {
+        $this->model = $controller;
     }
     public function setPrice($price) {
         $this->price = $price;

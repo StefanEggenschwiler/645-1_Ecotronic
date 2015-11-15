@@ -10,7 +10,13 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
-class Model {
+/*
+ * This class is used as abstraction layer between the different DAOs and the view.
+ *
+ * It calls the functions of the DAOs and returns either the unchanged result set or
+ * it formats the result and produces HTML code. (Used for some functionality in the index.php)
+ */
+class Controller {
     // Fields
     private $adminDao;
     private $typeDao;
@@ -41,10 +47,10 @@ class Model {
     }
 
     // DEVICES
-    public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model, $price,
+    public function createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $controller, $price,
                                  $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink,
                                  $shopLink) {
-        return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $model,
+        return $this->deviceDao->create($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $controller,
             $price, $energyPrice, $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
     }
 
@@ -52,22 +58,39 @@ class Model {
         return $this->deviceDao->getAll();
     }
 
-    public function getDevicesByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceLow = null, $priceHigh = null) {
-        return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceLow, $priceHigh);
+    public function getDevicesByFilter($type = null, $brands = null, $efficiencyClasses = null, $priceHigh = null) {
+        return $this->deviceDao->getByFilter($type, $brands, $efficiencyClasses, $priceHigh);
     }
 
-    public function getDevicesByModel($model) {
-        return $this->deviceDao->getByModel($model);
+    public function getDevicesByModel($controller) {
+        return $this->deviceDao->getByModel($controller);
     }
 
     public function getDevicesBySerialNumber($serialNumber){
         return $this->deviceDao->getBySerialNumber($serialNumber);
     }
 
-    public function updateDevice($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-                                 $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink) {
-        return $this->deviceDao->update($deviceId, $typeId, $brandId, $efficiencyClassId, $imageUrl, $model, $price, $energyPrice,
-            $energyConsumption, $serialNumber, $productionYear, $lifespan, $manufacturerLink, $shopLink);
+    public function updateDevice($deviceId, $columnName, $newValue, $foreignTable = null) {
+        $tmpValue = null;
+        if (is_null($foreignTable)) {
+            return $this->deviceDao->update($deviceId, $columnName, $newValue);
+        } else {
+            switch($columnName) {
+                case 'typeId':
+                    $tmpValue = $this->typeDao->getIdByName($newValue);
+                    return $this->deviceDao->update($deviceId, $columnName, $tmpValue[0]);
+                    break;
+                case 'brandId':
+                    $tmpValue = $this->brandDao->getIdByName($newValue);
+                    return $this->deviceDao->update($deviceId, $columnName, $tmpValue[0]);
+                    break;
+                case 'efficiencyClassId':
+                    $tmpValue = $this->efficiencyClassDao->getIdByName($newValue);
+                    return $this->deviceDao->update($deviceId, $columnName, $tmpValue[0]);
+                    break;
+            }
+        }
+        return false;
     }
 
     public function deleteDevice($deviceId) {
@@ -75,7 +98,17 @@ class Model {
     }
 
     public function compareDevices($oldSerialNumber, $compareDevices) {
-        $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
+        $oldDevice = array();
+        if($oldSerialNumber == 'MY-DEVICE'){
+            foreach($compareDevices as $value){
+                if($value->getSerialNumber() == $oldSerialNumber){
+                    $oldDevice[0] = $value;
+                }
+            }
+        }else{
+            $oldDevice = $this->deviceDao->getBySerialNumber($oldSerialNumber);
+        }
+
         $pos = array_search($oldDevice[0], $compareDevices);
         unset($compareDevices[$pos]);
         array_values($compareDevices);
@@ -105,6 +138,7 @@ class Model {
                     $value->setPrice($value->getPrice()*(1-$variables[1][1]).';'.$value->getPrice());
                 }
             }
+            $oldDevice[0]->setPrice(";".$oldDevice[0]->getPrice());
             array_unshift($compareDevices, $oldDevice[0]);
             return $compareDevices;
         } else {
@@ -126,12 +160,12 @@ class Model {
         return $this->typeDao->create($typeName);
     }
 
-    public function updateType($oldName, $newName) {
-        return $this->typeDao->update($oldName, $newName);
+    public function updateType($typeId, $newName) {
+        return $this->typeDao->update($typeId, $newName);
     }
 
-    public function deleteType($typeName) {
-        return $this->typeDao->delete($typeName);
+    public function deleteType($typeId) {
+        return $this->typeDao->delete($typeId);
     }
 
     // BRANDS
@@ -157,12 +191,12 @@ class Model {
         return $this->brandDao->create($brandName);
     }
 
-    public function updateBrand($oldName, $newName) {
-        return $this->brandDao->update($oldName, $newName);
+    public function updateBrand($brandId, $newName) {
+        return $this->brandDao->update($brandId, $newName);
     }
 
-    public function deleteBrand($brandName) {
-        return $this->brandDao->delete($brandName);
+    public function deleteBrand($brandId) {
+        return $this->brandDao->delete($brandId);
     }
 
     // EFFICIENCY CLASSES
@@ -188,12 +222,12 @@ class Model {
         return $this->efficiencyClassDao->create($efficiencyClassName);
     }
 
-    public function updateEfficiencyClass($oldName, $newName) {
-        return $this->efficiencyClassDao->update($oldName, $newName);
+    public function updateEfficiencyClass($efficiencyClassId, $newName) {
+        return $this->efficiencyClassDao->update($efficiencyClassId, $newName);
     }
 
-    public function deleteEfficiencyClass($efficiencyClassName) {
-        return $this->efficiencyClassDao->delete($efficiencyClassName);
+    public function deleteEfficiencyClass($efficiencyClassId) {
+        return $this->efficiencyClassDao->delete($efficiencyClassId);
     }
 
     // DISPLAY
@@ -210,6 +244,7 @@ class Model {
 
     }
 
+    //sort items based on selected sort
     public function orderShowedItems($showedItems, $selectedSort){
         switch($selectedSort)
         {
@@ -259,8 +294,8 @@ class Model {
             echo "<td><img src=";
             echo $value->getImage();
             echo "></td><td>";
-            echo $value->getBrandName()."</br>";
-            echo $value->getModel()."</br>";
+            echo $value->getBrandName()."<br />";
+            echo $value->getModel()."<br />";
             echo $value->getEfficiencyClassName();
             echo "</tr></td>";
             echo "<tr><td>";
@@ -301,15 +336,32 @@ class Model {
         $this->deviceDao->getAutoCompleteEntries();
     }
 
-    public function getDropdownlistSort($selectedSort){
+    //get options for sortdropdownlist
+    public function getDropdownlistSort($selectedSort, $translate){
         $orderType = array('Ascending Price'=>'AP', 'Descending Price'=>'DP', 'Ascending Alphabetical'=>'AA', 'Descending Alphabetical'=>'DA', 'Ascending Classification'=>'AC', 'Descending Classification'=>'DC');
 
         while(list($k,$v)=each($orderType)){
             if($selectedSort == $v){
-                echo '<option value="'.$v.'" selected>'.$k.'</option>';
+                echo '<option value="'.$v.'" selected>';
+                echo $translate->__($k);
+                echo '</option>';
             }else{
-                echo '<option value="'.$v.'">'.$k.'</option>';
+                echo '<option value="'.$v.'">';
+                echo $translate->__($k);
+                echo '</option>';
             }
         }
+    }
+
+    //get options for categorydropdownlist
+    public function getDropdownlistCategory($translate){
+        $types = $this->getAllTypes();
+        foreach($types as $value){
+            echo '<option value="'.$value->getId().'">';
+            echo $translate->__($value->getTypeName());
+            echo '</option>';
+        }
+
+        return $types;
     }
 }

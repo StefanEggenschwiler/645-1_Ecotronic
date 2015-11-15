@@ -1,14 +1,4 @@
-<?php
-
-include_once 'translations/class.Translator.php';
-$translate;
-if (isset ( $_GET ['lang'] )) {
-    $translate = new Translator ( $_GET ['lang'] );
-} else {
-    $translate = new Translator ( 'en' );
-}
-?>
-
+<!-- footer, click on copyright logo to go to admin login page -->
 <footer id="bannerFooter">
     <div>
         Web Design
@@ -16,7 +6,6 @@ if (isset ( $_GET ['lang'] )) {
         HES-SO Valais
     </div>
 </footer>
-
 
 </body>
 

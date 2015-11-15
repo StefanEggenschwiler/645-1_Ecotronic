@@ -10,9 +10,6 @@ body {
     line-height: 14px;
 }
 
-
-
-
 h1 {
     font-size: 22px;
     line-height: 24px;
@@ -30,14 +27,10 @@ h2 {
     font-weight: normal;
 }
 
-
-
-
 .shell980W {
-    margin: 0% 10% 0% 10%;
+    margin: 0% 1% 0% 5%;
 
 }
-
 
 
 #header {
@@ -63,7 +56,6 @@ h2 {
 }
 
 
-
 #top {
     height: 53px;
 }
@@ -71,7 +63,6 @@ h2 {
 #navigation {
     height: 136px;
 }
-
 
 #navigation ul li {
     float: left;
@@ -98,20 +89,9 @@ h2 {
     text-decoration: none;
 }
 
-#navigation ul li.active,
-#navigation ul li:hover {
-    background-position: 0 bottom;
-}
-
 #navigation ul li.active span,
 #navigation ul li:hover span {
     background-position: right bottom;
-}
-
-#navigation ul li.active {
-    font-size: 12px;
-    font-weight: bold;
-    color: black;
 }
 
 /*remove arrows from number input*/
@@ -123,7 +103,13 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+#navigation ul li.active,
+#navigation ul li:hover {
+    background-position: 0 bottom;
+}
 
-
-
-
+#navigation ul li.active {
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}

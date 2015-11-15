@@ -15,19 +15,28 @@ body {
 }
 
 .sort {
-    margin-top: 1.5em;
-    width: 15em;
-    text-align: center;
+    margin-top: 7em;
+    width: 100%;
+    font-size: 150%;
+}
+
+.sort label
+{
+    display: none;
 }
 
 .dropdownlistSort {
-    width: 17em;
+    width: 100%;
+    height: 2.5em;
     background-color: lightgreen;
+    font-size: 120%;
+    margin-top: 2em;
 }
 
 .wrapper {
     min-height: 100%;
     position: relative;
+    margin-top: 3em;
 }
 
 #menu {
@@ -36,11 +45,11 @@ body {
 }
 
 .menu, .submenu {
-    width: 15em;
+    width: 18em;
 }
 
 .menu {
-    height: 55px;
+    height: 5em;
     text-align: center;
     background: #2abb3f;
     color: #fff;
@@ -48,7 +57,7 @@ body {
 }
 
 .submenu {
-    height: 40px;
+    height: 5em;
     text-align: left;
     background: rgb(0, 200, 0);
     color: #fff;
@@ -61,7 +70,7 @@ body {
     height: 100%;
     color: #fff;
     font-family: arial, sans-serif;
-    font-size: 20px;
+    font-size: 2em;
     font-weight: bold;
     text-decoration: none;
 }
@@ -73,14 +82,19 @@ body {
     height: 100%;
     color: #fff;
     font-family: arial, sans-serif;
-    font-size: 15px;
+    font-size: 2em;
     font-weight: bold;
     text-decoration: none;
     background: rgb(0, 200, 0);
 }
 
+.submenu label
+{
+    font-size: 150%;
+}
+
 #submenu4 .submenu {
-    height: 63px;
+    height: 6em;
     text-align: center;
     background: rgb(0, 200, 0);
     color: #fff;
@@ -93,10 +107,14 @@ body {
     height: 100%;
     color: #fff;
     font-family: arial, sans-serif;
-    font-size: 15px;
     font-weight: bold;
     text-decoration: none;
     background: rgb(0, 200, 0);
+}
+
+#submenu4 .submenu label input
+{
+    width: 95%;
 }
 
 #show {
@@ -123,7 +141,7 @@ body {
 }
 
 .flags, #copyrightLogo {
-    width: 2em;
+    width: 5em;
     text-align: center;
     vertical-align: middle;
 }
@@ -132,6 +150,13 @@ body {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+    display:block;
+    width: 100%;
+}
+
+.centerVertical form
+{
+    width: 100%;
 }
 
 .centered {
@@ -144,19 +169,19 @@ body {
 
 /* LOGIN BLOCK */
 .loginBlock {
-    width: 420px;
-    height: 320px;
     padding: 20px;
     background: #fff;
     border-radius: 7px;
     border-top: 7px solid #04B45F;
+    font-size: 150%;
+    height: 48em;
 }
 
 .loginBlock h1 {
     text-align: center;
     color: #000;
-    font-size: 22px;
-    text-transform: uppercase;
+    font-size: 5em
+text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 40px;
 }
@@ -166,17 +191,22 @@ body {
     height: 35px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 14px;
+    font-size: 1.5em;
     padding: 0 20px 0 20px;
     outline: none;
     box-sizing: border-box;
     margin-bottom: 15px;
+    margin-top: 1em;
 
 }
 
-.loginBlock button, #showButton, #compareButton, #searchButton {
-    width: 100%;
-    height: 40px;
+#ui-id-1
+{
+    font-size:250%;
+}
+
+.loginBlock button, #showButton, #compareButton {
+
     background: #04B45F;
     box-sizing: border-box;
     border-radius: 5px;
@@ -184,9 +214,15 @@ body {
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 14px;
     outline: none;
     cursor: pointer;
+}
+
+#showButton, #compareButton
+{
+    font-size: 1.5em;
+    height: 4em;
+    width: 8em;
 }
 
 .loginBlock button:hover {
@@ -258,10 +294,11 @@ body {
 }
 
 #searchBar {
-    width: 30em;
+    width: 100%;
+    height: 5em;
 }
 
-#showButton, #compareButton, #searchButton {
+#searchButton, #compareButton {
     width: 10em;
 }
 
@@ -270,35 +307,40 @@ body {
 }
 
 #logo {
-    width: 15em;
+    width: 20em;
 }
 
 .centerShowItems {
-    margin-left: 15em;
-    margin-right: 15em;
+    margin-left: 16em;
+    margin-right: 18em;
+    position: relative;
 }
 
 .centerShowItems li {
     list-style-type: none;
     display: inline-block;
     width: 13em;
-    margin: 0.5em;
     border-radius: 0.3em;
     background: white;
     padding: 1em;
     border-style: solid;
     border-color: green;
     background-image: linear-gradient(60deg, rgb(240, 255, 240), lightyellow);
+    font-size: 150%;
 }
 
 .italicText {
     font-style: italic;
     color: grey;
+    position: relative;
+    font-size: 150%;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .rightComparator {
     float: right;
-    width: 15em;
+    width: 18em;
     background: #2abb3f;
 
 }
@@ -307,6 +349,38 @@ body {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+#searchButton
+{
+    display: none;
+}
+
+.centerShowItems ul li tbody tr td
+{
+    width: 7em;
+}
+
+.rightComparator table tbody tr th
+{
+    font-size: 150%;
+}
+
+.loginBlock form input
+{
+    height: 2em;
+}
+
+.loginBlock form
+{
+    height: 2em;
+    font-size: 1.5em;
+}
+
+#backGenericDevice
+{
+    position: relative;
+    margin-top: 10em;
 }
 
 .menuInput {
@@ -330,23 +404,23 @@ body {
 }
 
 #designThInfo {
-    font-size: 0.85em;
+    font-size: 150%;
     width: 9em;
     border: solid black 1px;
     text-align: left;
 }
 
 #addToCompareListButton {
-    font-size:120%;
     position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-
+    float: right;
+    width: 100%;
+    height: 1.5em;
+    font-size: 1.5em;
 }
 
 #radioButtonCompare {
-    width: 20px;
-    height: 20px;
+    width: 5em;
+    height: 5em;
     padding-left: 5px;
 }
 
@@ -354,4 +428,25 @@ body {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+    font-size: 120%;
+}
+
+.imageDesign
+{
+    display: none;
+}
+
+#categoryDropdownlist, .loginBlock form
+{
+    width: 100%;
+    height: 2.5em;
+    font-size: 120%;
+}
+
+#createGenericDevice, #deleteGenericDevice, #backGenericDevice
+{
+
+    width: 10em;
+    height: 2em;
+    font-size: 2em;
 }

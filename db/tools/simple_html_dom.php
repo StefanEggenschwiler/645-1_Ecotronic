@@ -104,7 +104,6 @@ function dump_html_tree($node, $show_attr=true, $deep=0)
 	$node->dump($node);
 }
 
-
 /**
  * simple html dom node
  * PaperG - added ability for "find" routine to lowercase the value of the selector.
@@ -173,7 +172,6 @@ class simple_html_dom_node
 			}
 		}
 	}
-
 
 	// Debugging function to dump a single dom node with a bunch of information about it.
 	function dump_node($echo=true)
@@ -452,7 +450,6 @@ class simple_html_dom_node
 			{
 				$ret .= $this->dom->default_span_text;
 			}
-
 
 		}
 		return $ret;
@@ -1738,5 +1735,3 @@ class simple_html_dom
 	function getElementsByTagName($name, $idx=-1) {return $this->find($name, $idx);}
 	function loadFile() {$args = func_get_args();$this->load_file($args);}
 }
-
-?>

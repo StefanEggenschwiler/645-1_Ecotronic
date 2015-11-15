@@ -1,6 +1,32 @@
 <?php
-require_once 'database/class.Model.php';
-
+/*
+ * This php site is used for the redirecting of multiple pages:
+ *  login.php
+ *  editFormula.php
+ *  editTranslation.php
+ *
+ * Depending on which of those pages access redirect.php different
+ * operations will made.
+ *
+ * Login:
+ *      It checks if the login information entered by the user
+ *      in the login.php is valid. If it's valid it redirects the user
+ *      to the admin part, if it's wrong it redirects back to the login
+ *      page showing a message.
+ * EditFormula:
+ *      If the admin changes parts of the formula which is used in order
+ *      to calculate the discount for the device comparison, the changed
+ *      values will be stored into the formula.txt located in /database.
+ * EditTranslation:
+ *      If the admin changes parts of the translation used for the client
+ *      side of ecoelectronics, the changed values will be stored into the
+ *      corresponding translation files (de.txt, fr.txt, it.txt) located
+ *      in /translations.
+ *
+ * If redirect.php is called without a valid POST request it simply shows
+ * the message 'ACCESS DENIED!'.
+ */
+require_once 'database/class.Controller.php';
 
 if (isset ( $_POST ['action'] )) {
     if ($_POST ['action'] == 'login') {
@@ -14,13 +40,12 @@ if (isset ( $_POST ['action'] )) {
     echo 'ACCESS DENIED!';
 }
 
-
 // checking if the username + pwd are correct
 function authenticate() {
-    $model = new Model ();
+    $controller = new Controller ();
     $uname = $_POST['user'];
     $pwd = $_POST['pwd'];
-    $result = $model->checkLogin($uname, $pwd);
+    $result = $controller->checkLogin($uname, $pwd);
 
     if(!$result) {
         header ('location: login.php');
@@ -29,7 +54,7 @@ function authenticate() {
     session_start(); // the result is Admin Object, successfully logged in, the sessions start
     $_SESSION['user'] = $result;
 
-    header ('location: admin.php');
+    header ('location: admin/manageDevices.php');
     exit;
 }
 
@@ -57,7 +82,7 @@ function saveTranslationTable() {
     file_put_contents('translations/fr.txt', $french);
     file_put_contents('translations/it.txt', $italian);
 
-    header ('location: editTranslation.php');
+    header ('location: admin/editTranslation.php');
     exit;
 }
 
@@ -70,12 +95,10 @@ function saveFormula() {
     }
     file_put_contents('database/formula.txt', $variables);
 
-    header ('location: editFormula.php');
+    session_start();
+    $_SESSION['message'] = 'Changes sucessfully saved!';
+
+    header ('location: admin/editFormula.php');
     exit;
 }
-?>
-
-
-
-
 

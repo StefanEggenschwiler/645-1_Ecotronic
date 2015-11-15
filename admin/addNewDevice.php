@@ -1,17 +1,17 @@
 <?php
-include_once 'headerAdmin.inc';
-require_once 'database/class.Model.php';
-require_once 'dto/class.Type.php';
-require_once 'dto/class.Brand.php';
-require_once 'dto/class.Device.php';
-require_once 'dto/class.EfficiencyClass.php';
+include_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/header/headerAdmin.inc';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.Controller.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Type.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Device.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.EfficiencyClass.php';
 
-$model = new Model();
-$types = $model->getAllTypes();
-$brands = $model->getAllBrands();
-$efficiencyClasses = $model->getAllEfficiencyClasses();
+$controller = new Controller();
+$types = $controller->getAllTypes();
+$brands = $controller->getAllBrands();
+$efficiencyClasses = $controller->getAllEfficiencyClasses();
 $consumptions = array();
-$showedItems = $model->getAllBrands();
+$showedItems = $controller->getAllBrands();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -22,10 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-
 function createNewDevice()
 {
-    global $model;
+    global $controller;
     $selectTypeName = $_POST['selectType'];
     $selectBrandName = $_POST['selectBrand'];
     $selectEfficiencyClassName = $_POST['selectEfficiencyClassName'];
@@ -41,13 +40,11 @@ function createNewDevice()
     $manufacturerLink = $_POST['manufacturerLink'];
     $shopLink = $_POST['shopLink'];
 
-
-    $model->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
+    $controller->createDevice($selectTypeName, $selectBrandName, $selectEfficiencyClassName, $imageURL, $modelName, $price, $energyPrice,
         $energyConsumption, $serialNumber, $selectProductionYear, $lifeSpan, $manufacturerLink, $shopLink);
 }
 
 ?>
-
 
 <div>
     <div class="createNewArticleBlock">
@@ -64,7 +61,7 @@ function createNewDevice()
             } ?>
         </select>
 
-        </br>
+        <br />
 
         Select a brand
         <select name="selectBrand">
@@ -74,19 +71,18 @@ function createNewDevice()
             } ?>
         </select>
 
-        </br>
+        <br />
 
         Enter the model
-        </br>
+        <br />
         <input type="text" name="model" required/>
-        </br>
+        <br />
 
         Enter the serial number
-        </br>
+        <br />
 
         <input type="text" name="serialNumber" required/>
-        </br>
-
+        <br />
 
         Select the production year
         <select name="selectProductionYear">
@@ -99,13 +95,12 @@ function createNewDevice()
             <option value="2010">2010</option>
         </select>
 
-        </br>
+        <br />
 
         Enter the life span (in years)
-        </br>
+        <br />
         <input type="number" name="lifeSpan" required/>
-        </br>
-
+        <br />
 
         Select an efficiency class
         <select name="selectEfficiencyClassName">
@@ -115,55 +110,49 @@ function createNewDevice()
             } ?>
         </select>
 
-
-        </br>
-
+        <br />
 
         Enter the energy price (kWh/year)
-        </br>
+        <br />
         <input type="number" name="energyPrice" step="0.01" required/>
-        </br>
+        <br />
 
         Enter the energy consumption (ex: 0.84)
-        </br>
-        <input type="number" name="energyConsumption" step="0.01" required/>
-        </br>
+        <br />
+        <input type="number" name="energyConsumption" step="0.01" value="0." required/>
+        <br />
 
         Enter the price (in CHF)
-        </br>
+        <br />
         <input type="number" name="price" step="0.01" required/>
-        </br>
+        <br />
 
-
-        </br>
+        <br />
         <h2>LINKS</h2>
-        </br>
+        <br />
 
         Enter the image URL
-        </br>
-        <input type="text" name="imageURL" required/>
-        </br>
+        <br />
+        <input type="text" name="imageURL" value="www." required/>
+        <br />
 
         Enter the manufacturer link
-        </br>
-        <input type="text" name="manufacturerLink" required/>
-        </br>
+        <br />
+        <input type="text" name="manufacturerLink" value="www." required/>
+        <br />
 
         Enter the shop link
-        </br>
-        <input type="text" name="shopLink" required/>
-        </br>
-
+        <br />
+        <input type="text" name="shopLink" value="www." required/>
+        <br />
 
         <button type="submit" value="create" name="create">Create</button>
-        </br>
-        </br>
-
+        <br />
+        <br />
 
         </form>
     </div>
 
     </body>
-
 
 </div>

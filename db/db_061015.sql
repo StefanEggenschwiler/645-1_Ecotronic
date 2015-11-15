@@ -7,9 +7,11 @@
 -- Server version: 5.6.15-log
 -- PHP Version: 5.5.8
 
+-- This is the initial script in order to generate the database
+-- structure and populate the database from scratch.
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -74,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `device` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 ALTER TABLE `device` ADD UNIQUE(`serialNumber`);
-
 
 --
 -- RELATIONS FOR TABLE `device`:
@@ -391,7 +392,6 @@ CREATE TABLE IF NOT EXISTS `type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 ALTER TABLE `type` ADD UNIQUE(`typeName`);
-
 
 --
 -- Dumping data for table `type`

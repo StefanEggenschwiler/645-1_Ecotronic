@@ -1,5 +1,5 @@
 <?php
-include_once 'headerIndex.inc';
+include_once 'header/headerComparison.inc';
 require_once 'dto/class.Device.php';
 
 $check =  false;
@@ -8,7 +8,7 @@ if(count($_SESSION['comparedDevices']) != 0){
     $check = true;
     $devices = $_SESSION['comparedDevices'];
     $devices = unserialize(serialize($devices));
-    $devices = $model->compareDevices($_SESSION['myOldDevice'], $devices);
+    $devices = $controller->compareDevices($_SESSION['myOldDevice'], $devices);
 }else{
     $devices = array();
 }
@@ -16,16 +16,14 @@ if(count($_SESSION['comparedDevices']) != 0){
 ?>
 <table class="comparisonTable">
     <tr>
-        <td><?php $translate->__('Your old device')?>-></td>
+        <td></td>
         <?php
         if($check){
-            foreach ($devices as $value){
-                echo '<td><input type="radio" name="dev" value="';
-                echo $value->getSerialNumber().'"';
-                if($value->getSerialNumber() == $_SESSION['myOldDevice']){
-                    echo ' checked';
-                }
-                echo '></td>';
+            echo '<td>';
+            echo $translate->__('Your old device');
+            echo '</td>';
+            for ($i= 0; $i <count($devices)-1; $i++){
+                echo '<td></td>';
             }
         }
 
@@ -72,11 +70,27 @@ if(count($_SESSION['comparedDevices']) != 0){
         ?>
     </tr>
     <tr>
-        <td><?php $translate->__('Price')?></td>
+        <td><?php $translate->__('Normal price')?></td>
         <?php
         if($check) {
             foreach ($devices as $value) {
-                echo '<td>' . $value->getPrice() . '</td>';
+                $normalPrices = array();
+                //discountPrice;normalPrice
+                $normalPrices = explode(";",$value->getPrice());
+                echo '<td>' . $normalPrices[1] . '</td>';
+            }
+        }
+        ?>
+    </tr>
+    <tr>
+        <td class="discountPrice"><?php $translate->__('Discount price')?></td>
+        <?php
+        if($check) {
+            foreach ($devices as $value) {
+                $discountPrices = array();
+                //discountPrice;normalPrice
+                $discountPrices = explode(";",$value->getPrice());
+                echo '<td class="discountPrice">' . $discountPrices[0] . '</td>';
             }
         }
         ?>
@@ -153,6 +167,5 @@ if(count($_SESSION['comparedDevices']) != 0){
 <?php
 include_once 'footer.inc';
 ?>
-
 
 

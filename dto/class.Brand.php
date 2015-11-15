@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * DTO for the brand table in the database.
+ */
 class Brand {
     // Fields
     private $id;

@@ -3,6 +3,15 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/database/class.DatabaseConnector.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/645-1_Ecotronic/dto/class.Brand.php';
 
+/*
+ * This class is used as DataAccessObject for the brand table in the database.
+ * It offers the CRUD operations in addition to different getters used by multiple
+ * pages. Prepared statements are used wherever possible.
+ *
+ * Since we use PDO for the database connection we fetch the result set of the SELECT
+ * statements into an array of DTO objects of the specified type and use the array as
+ * the functions return value. Source: http://php.net/manual/en/pdostatement.fetchobject.php
+ */
 class BrandDAO
 {
     // Database Connection
@@ -18,6 +27,14 @@ class BrandDAO
         SELECT * FROM brand');
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Brand');
         return $stmt->fetchAll();
+    }
+
+    public function getIdByName($brandName) {
+        $stmt = $this->_conn->getConnection()->prepare('
+        SELECT id FROM brand WHERE brandName = :brandName');
+        $stmt->bindParam(':brandName', $brandName, PDO::PARAM_STR, 60);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 
     public function getByType($typeName) {
@@ -40,21 +57,20 @@ class BrandDAO
         return $stmt->execute();
     }
 
-    public function update($oldName, $newName) {
+    public function update($brandId, $newName) {
         $stmt = $this->_conn->getConnection()->prepare('
-        IF (NOT EXISTS(SELECT * FROM brand WHERE brandName = :newName))
-        BEGIN
-            UPDATE brand SET brandName = :newName WHERE brandName = :oldName
-        END');
+          UPDATE brand
+            SET brandName = :newName
+          WHERE id = :brandId');
+        $stmt->bindParam(':brandId', $brandId, PDO::PARAM_INT);
         $stmt->bindParam(':newName', $newName, PDO::PARAM_STR, 60);
-        $stmt->bindParam(':oldName', $oldName, PDO::PARAM_STR, 60);
         return $stmt->execute();
     }
 
-    public function delete($brandName) {
+    public function delete($brandId) {
         $stmt = $this->_conn->getConnection()->prepare('
-        DELETE FROM brand WHERE brandName = :brandName');
-        $stmt->bindParam(':brandName', $brandName, PDO::PARAM_STR, 60);
+        DELETE FROM brand WHERE id = :brandId');
+        $stmt->bindParam(':brandId', $brandId, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
